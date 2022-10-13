@@ -27,7 +27,7 @@ namespace Urd.Utils
         {
             if (!Services.TryGetValue(typeof(T), out var newInstance))
             {
-                Debug.LogWarning($"Service of type {typeof(T)} not registered, trying to create a default one");
+                Debug.LogWarning($"Service of type {typeof(T)} not registered");
             }
 
             return (T)newInstance;
