@@ -53,21 +53,16 @@ namespace Urd.Services
             while (_update)
             {
                 float deltaTime = Time.deltaTime;
-
-                UpdateUpdates(deltaTime);
-                UpdateDelayedCalls(deltaTime);
-
-                for (int i = 0; i < _updateListeners.Count; i++)
-                {
-                    if (!IsInPause || !_updateListeners[i].IsPausable)
-                    {
-                        _updateListeners[i].CallListener(deltaTime);
-                    }
-                }
+                Update(deltaTime);
                 yield return 0;
             }
         }
 
+        public void Update(float deltaTime)
+        {
+            UpdateUpdates(deltaTime);
+            UpdateDelayedCalls(deltaTime);
+        }
 
         private void UpdateUpdates(float deltaTime)
         {
@@ -90,6 +85,7 @@ namespace Urd.Services
 
                     if (_delayedCalls[i].IsExpired)
                     {
+                        _delayedCalls[i].CallMethodWhenFinish();
                         _delayedCalls.RemoveAt(i);
                     }
                 }
@@ -111,6 +107,11 @@ namespace Urd.Services
                 RemainingTime = DelayTime;
                 MethodWhenFinish = methodWhenFinish;
                 IsPausable = pausable;
+            }
+
+            public void CallMethodWhenFinish()
+            {
+                MethodWhenFinish?.Invoke();
             }
 
             public void DeductTime(float deltaTime)
