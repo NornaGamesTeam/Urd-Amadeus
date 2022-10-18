@@ -8,7 +8,7 @@ namespace Urd.Services
     {
         private static string COROUTINE_GAMEOBJECT_NAME = "CoroutineView";
 
-        private CoroutineView _coroutineView;
+        private CoroutineServiceView _coroutineView;
 
         public override void Init()
         {
@@ -19,7 +19,7 @@ namespace Urd.Services
 
         private void CreateCoroutineView()
         {
-            _coroutineView = new GameObject(COROUTINE_GAMEOBJECT_NAME).AddComponent<CoroutineView>();
+            _coroutineView = new GameObject(COROUTINE_GAMEOBJECT_NAME).AddComponent<CoroutineServiceView>();
 
             if (Application.isPlaying)
             {

@@ -4,6 +4,7 @@ namespace Urd.Services
 {
     public interface IClockService : IBaseService
     {
+        public bool IsInPause { get; }
         void SuscribeToUpdate(Action<float> listener, bool pausable = true);
 
         void UnSuscribeToUpdate(Action<float> listener);
