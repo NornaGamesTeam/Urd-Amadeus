@@ -83,7 +83,7 @@ namespace Urd.Services
             }
         }
 
-        public void Call(IEventBusMessage eventCalled)
+        public void Send(IEventBusMessage eventCalled)
         {
             if (_observers.TryGetValue(eventCalled.GetType(), out var eventBusHandler))
             {

@@ -6,10 +6,20 @@ using Urd.Utils;
 
 public class UnityServiceView : MonoBehaviour
 {
-    IUnityService _unityService;
+    private IUnityService _unityService;
 
     void Awake()
     {
         _unityService = StaticServiceLocator.Get<IUnityService>();
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        _unityService.OnChangeGameFocus(focus);
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        _unityService.OnChangeGamePause(pause);
     }
 }

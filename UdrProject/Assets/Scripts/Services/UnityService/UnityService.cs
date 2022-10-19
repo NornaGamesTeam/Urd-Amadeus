@@ -1,4 +1,5 @@
 using UnityEngine;
+using Urd.Services.Unity;
 
 namespace Urd.Services
 {
@@ -9,12 +10,14 @@ namespace Urd.Services
         private UnityServiceView _unityServiceView;
 
         private IClockService _clockService;
+        private IEventBusService _eventBusService;
 
         public override void Init()
         {
             base.Init();
 
             _clockService = ServiceLocatorService.Get<IClockService>();
+            _eventBusService = ServiceLocatorService.Get<IEventBusService>();
 
             CreateCoroutineView();
         }
@@ -31,13 +34,13 @@ namespace Urd.Services
 
         public void OnChangeGameFocus(bool focus)
         {
-            // TODO event bus for game Focus
+            _eventBusService.Send(new EventOnUnityFocusChanged(focus));
         }
 
         public void OnChangeGamePause(bool pause)
         {
-            // TODO event bus for game pause
             _clockService.SetPause(pause);
+            _eventBusService.Send(new EventOnUnityPausedChanged(pause));
         }
     }
 }

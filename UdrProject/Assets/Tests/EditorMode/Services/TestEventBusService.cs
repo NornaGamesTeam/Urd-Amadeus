@@ -6,10 +6,10 @@ namespace Urd.Test
 {
     public class TestEventBusService
     {
-        IEventBusService _eventBusService;
-        
-        DummyMessage _dummyMessage;
-        DummyMessageTwo _dummyMessageTwo;
+        private IEventBusService _eventBusService;
+
+        private DummyMessage _dummyMessage;
+        private DummyMessageTwo _dummyMessageTwo;
 
         public static int DummyMessageTimesCalled;
         public static int DummyMessageTwoTimesCalled;
@@ -32,7 +32,7 @@ namespace Urd.Test
             var dummySingleObserver = new DummyObserverOneType();
             _eventBusService.Subscribe(dummySingleObserver);
 
-            _eventBusService.Call(_dummyMessage);
+            _eventBusService.Send(_dummyMessage);
 
             Assert.That(DummyMessageTimesCalled, Is.EqualTo(1));
         }
@@ -43,8 +43,8 @@ namespace Urd.Test
             var dummyMultipleObserver = new DummyObserverMultipleType();
             _eventBusService.Subscribe(dummyMultipleObserver);
 
-            _eventBusService.Call(_dummyMessage);
-            _eventBusService.Call(_dummyMessageTwo);
+            _eventBusService.Send(_dummyMessage);
+            _eventBusService.Send(_dummyMessageTwo);
 
             Assert.That(DummyMessageTimesCalled + DummyMessageTwoTimesCalled, Is.EqualTo(2));
         }
@@ -55,7 +55,7 @@ namespace Urd.Test
             var dummySingleObserver = new DummyObserverOneType();
             _eventBusService.Subscribe(dummySingleObserver, typeof(DummyMessage));
 
-            _eventBusService.Call(_dummyMessage);
+            _eventBusService.Send(_dummyMessage);
 
             Assert.That(DummyMessageTimesCalled, Is.EqualTo(1));
         }
@@ -66,8 +66,8 @@ namespace Urd.Test
             var dummyMultipleObserver = new DummyObserverMultipleType();
             _eventBusService.Subscribe(dummyMultipleObserver, typeof(DummyMessage));
 
-            _eventBusService.Call(_dummyMessage);
-            _eventBusService.Call(_dummyMessageTwo);
+            _eventBusService.Send(_dummyMessage);
+            _eventBusService.Send(_dummyMessageTwo);
 
             Assert.That(DummyMessageTimesCalled + DummyMessageTwoTimesCalled, Is.EqualTo(1));
         }
@@ -77,10 +77,10 @@ namespace Urd.Test
         {
             var dummySingleObserver = new DummyObserverOneType();
             _eventBusService.Subscribe(dummySingleObserver);
-            _eventBusService.Call(_dummyMessage);
+            _eventBusService.Send(_dummyMessage);
 
             _eventBusService.Unsubscribe(dummySingleObserver);
-            _eventBusService.Call(_dummyMessage);
+            _eventBusService.Send(_dummyMessage);
 
             Assert.That(DummyMessageTimesCalled, Is.EqualTo(1));
         }
@@ -90,12 +90,12 @@ namespace Urd.Test
         {
             var dummyMultipleObserver = new DummyObserverMultipleType();
             _eventBusService.Subscribe(dummyMultipleObserver);
-            _eventBusService.Call(_dummyMessage);
-            _eventBusService.Call(_dummyMessageTwo);
+            _eventBusService.Send(_dummyMessage);
+            _eventBusService.Send(_dummyMessageTwo);
 
             _eventBusService.Unsubscribe(dummyMultipleObserver);
-            _eventBusService.Call(_dummyMessage);
-            _eventBusService.Call(_dummyMessageTwo);
+            _eventBusService.Send(_dummyMessage);
+            _eventBusService.Send(_dummyMessageTwo);
 
             Assert.That(DummyMessageTimesCalled + DummyMessageTwoTimesCalled, Is.EqualTo(2));
         }
@@ -105,10 +105,10 @@ namespace Urd.Test
         {
             var dummySingleObserver = new DummyObserverOneType();
             _eventBusService.Subscribe(dummySingleObserver, typeof(DummyMessage));
-            _eventBusService.Call(_dummyMessage);
+            _eventBusService.Send(_dummyMessage);
 
             _eventBusService.Unsubscribe(dummySingleObserver, typeof(DummyMessage));
-            _eventBusService.Call(_dummyMessage);
+            _eventBusService.Send(_dummyMessage);
 
             Assert.That(DummyMessageTimesCalled, Is.EqualTo(1));
         }
@@ -118,12 +118,12 @@ namespace Urd.Test
         {
             var dummyMultipleObserver = new DummyObserverMultipleType();
             _eventBusService.Subscribe(dummyMultipleObserver, typeof(DummyMessage));
-            _eventBusService.Call(_dummyMessage);
-            _eventBusService.Call(_dummyMessageTwo);
+            _eventBusService.Send(_dummyMessage);
+            _eventBusService.Send(_dummyMessageTwo);
 
             _eventBusService.Unsubscribe(dummyMultipleObserver, typeof(DummyMessage));
-            _eventBusService.Call(_dummyMessage);
-            _eventBusService.Call(_dummyMessageTwo);
+            _eventBusService.Send(_dummyMessage);
+            _eventBusService.Send(_dummyMessageTwo);
 
             Assert.That(DummyMessageTimesCalled + DummyMessageTwoTimesCalled, Is.EqualTo(1));
         }
@@ -133,12 +133,12 @@ namespace Urd.Test
         {
             var dummyMultipleObserver = new DummyObserverMultipleType();
             _eventBusService.Subscribe(dummyMultipleObserver);
-            _eventBusService.Call(_dummyMessage);
-            _eventBusService.Call(_dummyMessageTwo);
+            _eventBusService.Send(_dummyMessage);
+            _eventBusService.Send(_dummyMessageTwo);
 
             _eventBusService.Unsubscribe(dummyMultipleObserver, typeof(DummyMessage));
-            _eventBusService.Call(_dummyMessage);
-            _eventBusService.Call(_dummyMessageTwo);
+            _eventBusService.Send(_dummyMessage);
+            _eventBusService.Send(_dummyMessageTwo);
 
             Assert.That(DummyMessageTimesCalled + DummyMessageTwoTimesCalled, Is.EqualTo(3));
         }
