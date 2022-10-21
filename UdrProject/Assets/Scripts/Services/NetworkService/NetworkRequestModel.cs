@@ -1,15 +1,16 @@
 using System;
+using System.Diagnostics.Contracts;
 using UnityEngine.Networking;
 
 namespace Urd.Services.Network
 {
     public class NetworkRequestModel
 	{
-
         public string Url { get; private set; }
         public NetworkRequestType RequestType { get; private set; }
 		public string PostData { get; private set; }
         public byte[] PutData { get; private set; }
+        public bool UseCache { get; private set; }
 
         private string _responseData;
 
@@ -24,7 +25,9 @@ namespace Urd.Services.Network
 
         public NetworkRequestModel(string url, NetworkRequestType requestType, string postData = null, byte[] putData = null)
 		{
-			Url = url;
+            Contract.Assert(url?.Length > 0, "[NetworkRequestModel] the url is null or empty");
+
+            Url = url;
 			RequestType = requestType;
 			PostData = postData;
             PutData = putData;

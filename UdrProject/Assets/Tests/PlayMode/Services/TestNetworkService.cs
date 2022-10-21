@@ -6,6 +6,7 @@ using System.Security.Policy;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.TestTools;
+using Urd.Error;
 using Urd.Services;
 using Urd.Services.Network;
 
@@ -38,7 +39,7 @@ namespace Urd.Test
         {
             var url = "www.google.es";
             _networkRequestModel = new NetworkRequestModel(url);
-            _networkService.Request(_networkRequestModel, OnRequestFinished);
+            _networkService.Request(_networkRequestModel, OnRequestFinishedSuccess, OnRequestFinishedFailed);
             
             yield return new WaitUntil(() => _networkRequestModel.Result != UnityWebRequest.Result.InProgress);
             
@@ -50,16 +51,21 @@ namespace Urd.Test
         {
             var url = "www.google.eo";
             _networkRequestModel = new NetworkRequestModel(url);
-            _networkService.Request(_networkRequestModel, OnRequestFinished);
+            _networkService.Request(_networkRequestModel, OnRequestFinishedSuccess, OnRequestFinishedFailed);
 
             yield return new WaitUntil(() => _networkRequestModel.Result != UnityWebRequest.Result.InProgress);
 
             Assert.That(_requestStatus, Is.EqualTo(UnityWebRequest.Result.ConnectionError));
         }
 
-        private void OnRequestFinished(NetworkRequestModel networkRequestModel)
+        private void OnRequestFinishedSuccess(NetworkRequestModel networkRequestModel)
         {
             _requestStatus = networkRequestModel.Result;
+        }
+
+        private void OnRequestFinishedFailed(ErrorModel errorModel)
+        {
+            _requestStatus = UnityWebRequest.Result.InProgress;
         }
     }
 }
