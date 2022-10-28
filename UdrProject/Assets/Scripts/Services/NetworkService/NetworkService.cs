@@ -40,7 +40,7 @@ namespace Urd.Services
             else
             {
                 networkRequestModel.SetErrorResponse(unityWebRequest.error, unityWebRequest.result);
-                var error = new ErrorModel(unityWebRequest.error, unityWebRequest.responseCode);
+                var error = new ErrorModel(unityWebRequest.error, unityWebRequest.responseCode, unityWebRequest.result);
                 onRequestHttpFinishedFailed?.Invoke(error);
             }
         }

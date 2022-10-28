@@ -27,6 +27,9 @@ namespace Urd.Test
             var coroutineService = new CoroutineService();
             serviceLocator.Register<ICoroutineService>(coroutineService);
 
+            var cacheService = new CacheService();
+            serviceLocator.Register<ICacheService>(cacheService);
+
             _networkService = new NetworkService();
             serviceLocator.Register<INetworkService>(_networkService);
 
@@ -65,7 +68,7 @@ namespace Urd.Test
 
         private void OnRequestFinishedFailed(ErrorModel errorModel)
         {
-            _requestStatus = UnityWebRequest.Result.InProgress;
+            _requestStatus = errorModel.ConectionResult;
         }
     }
 }
