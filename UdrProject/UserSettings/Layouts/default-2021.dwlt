@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 989
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Console
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 4293
+  controlID: 148
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 4294
+  controlID: 149
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,9 +167,9 @@ MonoBehaviour:
     height: 481
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 16}
+  m_ActualView: {fileID: 17}
   m_Panes:
-  - {fileID: 16}
+  - {fileID: 17}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &8
@@ -193,9 +193,9 @@ MonoBehaviour:
     height: 458
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 16}
   m_Panes:
-  - {fileID: 15}
+  - {fileID: 16}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &9
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 4274
+  controlID: 108
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 4275
+  controlID: 109
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -269,10 +269,10 @@ MonoBehaviour:
     height: 541
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 17}
+  m_ActualView: {fileID: 18}
   m_Panes:
-  - {fileID: 17}
   - {fileID: 18}
+  - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &12
@@ -296,10 +296,11 @@ MonoBehaviour:
     height: 541
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 20}
+  m_ActualView: {fileID: 21}
   m_Panes:
-  - {fileID: 19}
   - {fileID: 20}
+  - {fileID: 21}
+  - {fileID: 15}
   m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &13
@@ -312,7 +313,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: TestRunnerWindow
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -325,10 +326,10 @@ MonoBehaviour:
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
-  - {fileID: 21}
   - {fileID: 22}
-  m_Selected: 1
-  m_LastSelected: 0
+  - {fileID: 23}
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -350,13 +351,41 @@ MonoBehaviour:
     height: 939
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 23}
+  m_ActualView: {fileID: 24}
   m_Panes:
-  - {fileID: 23}
   - {fileID: 24}
+  - {fileID: 25}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &15
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12402, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 300, y: 150}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Services
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 1119
+    y: 73
+    width: 630
+    height: 520
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -448,7 +477,7 @@ MonoBehaviour:
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
---- !u!114 &16
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -695,9 +724,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: 0}
+    m_Target: {x: 387.08362, y: 211.07808, z: -0.04638499}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: 387.08362, y: 211.07808, z: -0.04638499}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -748,9 +777,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 10
+    m_Target: 107.71614
     speed: 2
-    m_Value: 10
+    m_Value: 107.71614
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -775,7 +804,7 @@ MonoBehaviour:
   m_SceneVisActive: 1
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &17
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -808,7 +837,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: ca27ffff7228ffff7c2bffff4a30fffff230fffff633ffffe034ffff8835ffff8c38ffffb06dffff586effff4a71fffff271ffff9272ffffe676ffff8e77ffff987affff6a7bffff127cffff047fffffd47fffff7c80ffff6e83ffff8685ffff2e86ffff3889ffffee89ffff968affff0c8fffff3291ffffda91ffff1295ffff2a97ffffd297ffffee9affffae9bffff569cffff729fffff46a0ffffeea0ffff0aa4ffffeca4ffff94a5ffffb0a8ffff10abffffb8abffffeaaeffff2eb1ffffd6b1ffff08b5ffff22b7ffffcab7ffff14bbfffff8bbffffa0bcffffd2bfffff76c3ffff1ec4ffff44c7ffff04c8ffffacc8ffffe2cbffffbaccffff62cdffff88d0ffff60d3ffff08d4ffff42d7ffffacd9ffff54daffff90ddffff26fbffff
+      m_ExpandedIDs: 26fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -832,7 +861,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: f8a2d1b21a498f94fb2cc58a751946ab
---- !u!114 &18
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -888,7 +917,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: a26b0000
     m_LastClickedID: 27554
-    m_ExpandedIDs: ffffffff00000000f66b0000f86b0000fa6b0000fc6b0000fe6b0000026c0000046c0000066c0000086c00000a6c00000c6c00000e6c0000106c0000146c000004910000
+    m_ExpandedIDs: 00000000f86d0000fa6d0000fc6d0000fe6d0000006e0000026e0000046e0000066e0000086e00000a6e00000c6e00000e6e0000106e0000126e0000146e0000166e0000186e00001a6e00001c6e00001e6e0000206e0000226e0000246e0000266e0000286e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -916,7 +945,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 926d0000
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000f66b0000f86b0000fa6b0000fc6b0000fe6b0000026c0000046c0000066c0000086c00000a6c00000c6c00000e6c0000106c0000146c000004910000
+    m_ExpandedIDs: 00000000f86d0000fa6d0000fc6d0000fe6d0000006e0000026e0000046e0000066e0000086e00000a6e00000c6e00000e6e0000106e0000126e0000146e0000166e0000186e00001a6e00001c6e00001e6e0000206e0000226e0000246e0000266e0000286e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -972,7 +1001,7 @@ MonoBehaviour:
     m_GridSize: 96
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 200
---- !u!114 &19
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -992,10 +1021,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1551
+    x: 1119
     y: 73
-    width: 424
-    height: 605
+    width: 630
+    height: 520
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1006,14 +1035,14 @@ MonoBehaviour:
     m_CachedPref: 1
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: -48488
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &20
+--- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1053,11 +1082,12 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders: []
+    m_Folders:
+    - Assets/Scripts/Utils
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
-  m_StartGridSize: 64
+  m_StartGridSize: 16
   m_LastFolders:
   - Assets
   m_LastFoldersGridSize: -1
@@ -1068,7 +1098,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: a26b0000
     m_LastClickedID: 27554
-    m_ExpandedIDs: ffffffff00000000f66b0000f86b0000fa6b0000fc6b0000fe6b0000026c0000046c0000066c0000086c00000a6c00000c6c00000e6c0000106c0000146c000004910000
+    m_ExpandedIDs: 00000000f86d0000fa6d0000fc6d0000fe6d0000006e0000026e0000046e0000066e0000086e00000a6e00000c6e00000e6e0000106e0000126e0000146e0000166e0000186e00001a6e00001c6e00001e6e0000206e0000226e0000246e0000266e0000286e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1093,10 +1123,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 118}
+    scrollPos: {x: 0, y: 342}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000f66b0000f86b0000fa6b0000fc6b0000fe6b0000026c0000046c0000066c0000086c00000a6c00000c6c00000e6c0000106c0000146c000004910000
+    m_ExpandedIDs: ffffffff00000000f86d0000fa6d0000fc6d0000fe6d0000006e0000026e0000046e0000066e0000086e00000a6e00000c6e00000e6e0000106e0000126e0000146e0000166e0000186e00001a6e00001c6e00001e6e0000206e0000226e0000246e0000266e0000286e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1149,10 +1179,10 @@ MonoBehaviour:
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
-    m_GridSize: 64
+    m_GridSize: 16
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 115
---- !u!114 &21
+--- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1180,7 +1210,7 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
---- !u!114 &22
+--- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1209,7 +1239,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 4362
+    ID: 149
     splitterInitialOffset: 272
     currentActiveSplitter: -1
     realSizes:
@@ -1232,9 +1262,9 @@ MonoBehaviour:
     oldMinSizes: 
     oldMaxSizes: 
     oldSplitSize: 0
-  m_TestTypeToolbarIndex: 0
+  m_TestTypeToolbarIndex: 1
   m_PlayModeTestListGUI:
-    m_Window: {fileID: 22}
+    m_Window: {fileID: 23}
     m_NewResultList:
     - id: 1023
       uniqueId: '[Udr][suite]'
@@ -1487,7 +1517,7 @@ MonoBehaviour:
     m_ResultText: TestNetworkService (20.171s)
     m_ResultStacktrace: 
     m_TestListState:
-      scrollPos: {x: 0, y: 16}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 4e33fac5
       m_LastClickedID: -973458610
       m_ExpandedIDs: d97b7c8d11ee18c14e33fac541a0c0d37cdff5dca628335de0e729604a63d36bffffff7f
@@ -1518,14 +1548,14 @@ MonoBehaviour:
       - Uncategorized
     m_SelectedOption: 0
   m_EditModeTestListGUI:
-    m_Window: {fileID: 22}
+    m_Window: {fileID: 23}
     m_NewResultList:
     - id: 1000
       uniqueId: '[Udr][suite]'
       name: Udr
       fullName: Udr
       resultStatus: 1
-      duration: 0.1790267
+      duration: 0.1323904
       messages: 
       output: 
       stacktrace: 
@@ -1540,8 +1570,8 @@ MonoBehaviour:
       uniqueId: '[TestsEditorMode.dll][suite]'
       name: TestsEditorMode.dll
       fullName: D:/User/Documents/Urd/UdrProject/Library/ScriptAssemblies/TestsEditorMode.dll
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0959734
       messages: 
       output: 
       stacktrace: 
@@ -1556,8 +1586,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/[Urd][suite]
       name: Urd
       fullName: Urd
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0947441
       messages: 
       output: 
       stacktrace: 
@@ -1572,8 +1602,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/[TestsEditorMode][Urd.Test][suite]
       name: Test
       fullName: Urd.Test
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.093818
       messages: 
       output: 
       stacktrace: 
@@ -1584,12 +1614,230 @@ MonoBehaviour:
       categories: []
       parentId: 1023
       parentUniqueId: TestsEditorMode.dll/[Urd][suite]
+    - id: 1017
+      uniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestCacheService][suite]
+      name: TestCacheService
+      fullName: Urd.Test.TestCacheService
+      resultStatus: 1
+      duration: 0.0882152
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1042
+      parentUniqueId: TestsEditorMode.dll/Urd/[TestsEditorMode][Urd.Test][suite]
+    - id: 1005
+      uniqueId: TestsEditorMode.dll/Urd/Test/TestCacheService/[TestsEditorMode][Urd.Test.TestCacheService.CacheService_LoadCache_Failed]
+      name: CacheService_LoadCache_Failed
+      fullName: Urd.Test.TestCacheService.CacheService_LoadCache_Failed
+      resultStatus: 1
+      duration: 0.0736198
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestCacheService][suite]
+    - id: 1004
+      uniqueId: TestsEditorMode.dll/Urd/Test/TestCacheService/[TestsEditorMode][Urd.Test.TestCacheService.CacheService_LoadCache_Success]
+      name: CacheService_LoadCache_Success
+      fullName: Urd.Test.TestCacheService.CacheService_LoadCache_Success
+      resultStatus: 1
+      duration: 0.0911663
+      messages: 
+      output: "[CacheService] Error while try to save cache in path ArbitraryKey
+        with value {\"arbitraryInt\":5,\"arbitraryString\":\"string\"}. Error: System.NotImplementedException:
+        The method or operation is not implemented.\r\n  at Urd.Services.Cache.CacheModelRaw.SetLoadedValue
+        (System.String textValue) [0x00001] in D:\\User\\Documents\\Urd\\UdrProject\\Assets\\Scripts\\Services\\CacheService\\CacheModel\\CacheModelRaw.cs:48
+        \r\n  at Urd.Services.CacheService.LoadCache (Urd.Services.Cache.CacheModelRaw
+        cacheModel, System.Action`1[T] onCacheLoadedSuccess, System.Action`1[T] onCacheLoadedFailed)
+        [0x00011] in D:\\User\\Documents\\Urd\\UdrProject\\Assets\\Scripts\\Services\\CacheService\\CacheService.cs:49
+        \r\n"
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestCacheService][suite]
+    - id: 1005
+      uniqueId: TestsEditorMode.dll/Urd/Test/TestCacheService/[TestsEditorMode][Urd.Test.TestCacheService.CacheService_LoadCacheRaw_Failed]
+      name: CacheService_LoadCacheRaw_Failed
+      fullName: Urd.Test.TestCacheService.CacheService_LoadCacheRaw_Failed
+      resultStatus: 1
+      duration: 0.0015624
+      messages: 
+      output: "[CacheService] Error while try to save cache in path \n with value
+        . Error: System.ArgumentException: Name has invalid chars\r\n  at System.IO.FileStream..ctor
+        (System.String path, System.IO.FileMode mode, System.IO.FileAccess access,
+        System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous,
+        System.IO.FileOptions options) [0x000ae] in <9aad1b3a47484d63ba2b3985692d80e9>:0
+        \r\n  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode
+        mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32
+        bufferSize, System.IO.FileOptions options) [0x00000] in <9aad1b3a47484d63ba2b3985692d80e9>:0
+        \r\n  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)\r\n 
+        at System.IO.StreamWriter..ctor (System.String path, System.Boolean append,
+        System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <9aad1b3a47484d63ba2b3985692d80e9>:0
+        \r\n  at System.IO.StreamWriter..ctor (System.String path) [0x00008] in <9aad1b3a47484d63ba2b3985692d80e9>:0
+        \r\n  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string)\r\n 
+        at System.IO.File.WriteAllText (System.String path, System.String contents)
+        [0x00026] in <9aad1b3a47484d63ba2b3985692d80e9>:0 \r\n  at Urd.Services.CacheService.SaveCacheInternal
+        (Urd.Services.Cache.CacheModelRaw cacheModel, System.Action`1[T] onCacheSavedSuccess,
+        System.Action`1[T] onCacheSavedFailed) [0x0000a] in D:\\User\\Documents\\Urd\\UdrProject\\Assets\\Scripts\\Services\\CacheService\\CacheService.cs:24
+        \r\n"
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestCacheService][suite]
+    - id: 1004
+      uniqueId: TestsEditorMode.dll/Urd/Test/TestCacheService/[TestsEditorMode][Urd.Test.TestCacheService.CacheService_LoadCacheRaw_Success]
+      name: CacheService_LoadCacheRaw_Success
+      fullName: Urd.Test.TestCacheService.CacheService_LoadCacheRaw_Success
+      resultStatus: 1
+      duration: 0.0118318
+      messages: 
+      output: "[CacheService] Error while try to save cache in path ArbitraryKey
+        with value . Error: System.NotImplementedException: The method or operation
+        is not implemented.\r\n  at Urd.Services.Cache.CacheModelRaw.SetLoadedValue
+        (System.String textValue) [0x00001] in D:\\User\\Documents\\Urd\\UdrProject\\Assets\\Scripts\\Services\\CacheService\\CacheModel\\CacheModelRaw.cs:48
+        \r\n  at Urd.Services.CacheService.LoadCache (Urd.Services.Cache.CacheModelRaw
+        cacheModel, System.Action`1[T] onCacheLoadedSuccess, System.Action`1[T] onCacheLoadedFailed)
+        [0x00011] in D:\\User\\Documents\\Urd\\UdrProject\\Assets\\Scripts\\Services\\CacheService\\CacheService.cs:49
+        \r\n"
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestCacheService][suite]
+    - id: 1003
+      uniqueId: TestsEditorMode.dll/Urd/Test/TestCacheService/[TestsEditorMode][Urd.Test.TestCacheService.CacheService_SaveCache_Failed]
+      name: CacheService_SaveCache_Failed
+      fullName: Urd.Test.TestCacheService.CacheService_SaveCache_Failed
+      resultStatus: 1
+      duration: 0.0655735
+      messages: 
+      output: "[CacheService] Error while try to save cache in path \n with value
+        {\"arbitraryInt\":5,\"arbitraryString\":\"string\"}. Error: System.ArgumentException:
+        Name has invalid chars\r\n  at System.IO.FileStream..ctor (System.String
+        path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare
+        share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions
+        options) [0x000ae] in <9aad1b3a47484d63ba2b3985692d80e9>:0 \r\n  at System.IO.FileStream..ctor
+        (System.String path, System.IO.FileMode mode, System.IO.FileAccess access,
+        System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions
+        options) [0x00000] in <9aad1b3a47484d63ba2b3985692d80e9>:0 \r\n  at (wrapper
+        remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)\r\n 
+        at System.IO.StreamWriter..ctor (System.String path, System.Boolean append,
+        System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <9aad1b3a47484d63ba2b3985692d80e9>:0
+        \r\n  at System.IO.StreamWriter..ctor (System.String path) [0x00008] in <9aad1b3a47484d63ba2b3985692d80e9>:0
+        \r\n  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string)\r\n 
+        at System.IO.File.WriteAllText (System.String path, System.String contents)
+        [0x00026] in <9aad1b3a47484d63ba2b3985692d80e9>:0 \r\n  at Urd.Services.CacheService.SaveCacheInternal
+        (Urd.Services.Cache.CacheModelRaw cacheModel, System.Action`1[T] onCacheSavedSuccess,
+        System.Action`1[T] onCacheSavedFailed) [0x0000a] in D:\\User\\Documents\\Urd\\UdrProject\\Assets\\Scripts\\Services\\CacheService\\CacheService.cs:24
+        \r\n"
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestCacheService][suite]
+    - id: 1018
+      uniqueId: TestsEditorMode.dll/Urd/Test/TestCacheService/[TestsEditorMode][Urd.Test.TestCacheService.CacheService_SaveCache_Success]
+      name: CacheService_SaveCache_Success
+      fullName: Urd.Test.TestCacheService.CacheService_SaveCache_Success
+      resultStatus: 1
+      duration: 0.0010582
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1017
+      parentUniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestCacheService][suite]
+    - id: 1003
+      uniqueId: TestsEditorMode.dll/Urd/Test/TestCacheService/[TestsEditorMode][Urd.Test.TestCacheService.CacheService_SaveCacheRaw_Failed]
+      name: CacheService_SaveCacheRaw_Failed
+      fullName: Urd.Test.TestCacheService.CacheService_SaveCacheRaw_Failed
+      resultStatus: 1
+      duration: 0.0693775
+      messages: 
+      output: "[CacheService] Error while try to save cache in path \n with value
+        . Error: System.ArgumentException: Name has invalid chars\r\n  at System.IO.FileStream..ctor
+        (System.String path, System.IO.FileMode mode, System.IO.FileAccess access,
+        System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous,
+        System.IO.FileOptions options) [0x000ae] in <9aad1b3a47484d63ba2b3985692d80e9>:0
+        \r\n  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode
+        mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32
+        bufferSize, System.IO.FileOptions options) [0x00000] in <9aad1b3a47484d63ba2b3985692d80e9>:0
+        \r\n  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)\r\n 
+        at System.IO.StreamWriter..ctor (System.String path, System.Boolean append,
+        System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <9aad1b3a47484d63ba2b3985692d80e9>:0
+        \r\n  at System.IO.StreamWriter..ctor (System.String path) [0x00008] in <9aad1b3a47484d63ba2b3985692d80e9>:0
+        \r\n  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string)\r\n 
+        at System.IO.File.WriteAllText (System.String path, System.String contents)
+        [0x00026] in <9aad1b3a47484d63ba2b3985692d80e9>:0 \r\n  at Urd.Services.CacheService.SaveCacheInternal
+        (Urd.Services.Cache.CacheModelRaw cacheModel, System.Action`1[T] onCacheSavedSuccess,
+        System.Action`1[T] onCacheSavedFailed) [0x0000a] in D:\\User\\Documents\\Urd\\UdrProject\\Assets\\Scripts\\Services\\CacheService\\CacheService.cs:24
+        \r\n"
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestCacheService][suite]
+    - id: 1002
+      uniqueId: TestsEditorMode.dll/Urd/Test/TestCacheService/[TestsEditorMode][Urd.Test.TestCacheService.CacheService_SaveCacheRaw_Success]
+      name: CacheService_SaveCacheRaw_Success
+      fullName: Urd.Test.TestCacheService.CacheService_SaveCacheRaw_Success
+      resultStatus: 1
+      duration: 0.0014334
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestCacheService][suite]
     - id: 1001
       uniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestClockService][suite]
       name: TestClockService
       fullName: Urd.Test.TestClockService
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0316165
       messages: 
       output: 
       stacktrace: 
@@ -1604,8 +1852,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestClockService/[TestsEditorMode][Urd.Test.TestClockService.ClockService_AddDelayCall_Finish][suite]
       name: ClockService_AddDelayCall_Finish
       fullName: Urd.Test.TestClockService.ClockService_AddDelayCall_Finish
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0135946
       messages: 
       output: 
       stacktrace: 
@@ -1620,8 +1868,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestClockService/ClockService_AddDelayCall_Finish/[TestsEditorMode][Urd.Test.TestClockService.ClockService_AddDelayCall_Finish(0.2f,1.0f,True)]
       name: ClockService_AddDelayCall_Finish(0.2f,1.0f,True)
       fullName: Urd.Test.TestClockService.ClockService_AddDelayCall_Finish(0.2f,1.0f,True)
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0109294
       messages: 
       output: 
       stacktrace: 
@@ -1637,8 +1885,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestClockService/ClockService_AddDelayCall_Finish/[TestsEditorMode][Urd.Test.TestClockService.ClockService_AddDelayCall_Finish(0.2f,0.1f,False)]
       name: ClockService_AddDelayCall_Finish(0.2f,0.1f,False)
       fullName: Urd.Test.TestClockService.ClockService_AddDelayCall_Finish(0.2f,0.1f,False)
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0012001
       messages: 
       output: 
       stacktrace: 
@@ -1654,8 +1902,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestClockService/[TestsEditorMode][Urd.Test.TestClockService.ClockService_SuscribeToUpdate_Success]
       name: ClockService_SuscribeToUpdate_Success
       fullName: Urd.Test.TestClockService.ClockService_SuscribeToUpdate_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0014865
       messages: 
       output: 
       stacktrace: 
@@ -1671,8 +1919,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestClockService/[TestsEditorMode][Urd.Test.TestClockService.ClockService_SuscribeToUpdateButPause_Success]
       name: ClockService_SuscribeToUpdateButPause_Success
       fullName: Urd.Test.TestClockService.ClockService_SuscribeToUpdateButPause_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0005233
       messages: 
       output: 
       stacktrace: 
@@ -1688,8 +1936,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestClockService/[TestsEditorMode][Urd.Test.TestClockService.ClockService_SuscribeToUpdateButUnPause_Success]
       name: ClockService_SuscribeToUpdateButUnPause_Success
       fullName: Urd.Test.TestClockService.ClockService_SuscribeToUpdateButUnPause_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0003542
       messages: 
       output: 
       stacktrace: 
@@ -1705,8 +1953,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestClockService/[TestsEditorMode][Urd.Test.TestClockService.ClockService_UnsuscribeToUpdate_Success]
       name: ClockService_UnsuscribeToUpdate_Success
       fullName: Urd.Test.TestClockService.ClockService_UnsuscribeToUpdate_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0020676
       messages: 
       output: 
       stacktrace: 
@@ -1722,8 +1970,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestEventBusService][suite]
       name: TestEventBusService
       fullName: Urd.Test.TestEventBusService
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0165843
       messages: 
       output: 
       stacktrace: 
@@ -1738,8 +1986,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestEventBusService/[TestsEditorMode][Urd.Test.TestEventBusService.EventBusService_SubscribeMultiple_Success]
       name: EventBusService_SubscribeMultiple_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_SubscribeMultiple_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0028186
       messages: 
       output: 
       stacktrace: 
@@ -1755,8 +2003,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestEventBusService/[TestsEditorMode][Urd.Test.TestEventBusService.EventBusService_SubscribeMultipleOneType_Success]
       name: EventBusService_SubscribeMultipleOneType_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_SubscribeMultipleOneType_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0004118
       messages: 
       output: 
       stacktrace: 
@@ -1772,8 +2020,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestEventBusService/[TestsEditorMode][Urd.Test.TestEventBusService.EventBusService_SubscribeSingle_Success]
       name: EventBusService_SubscribeSingle_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_SubscribeSingle_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0003501
       messages: 
       output: 
       stacktrace: 
@@ -1789,8 +2037,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestEventBusService/[TestsEditorMode][Urd.Test.TestEventBusService.EventBusService_SubscribeSingleOneType_Success]
       name: EventBusService_SubscribeSingleOneType_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_SubscribeSingleOneType_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.00027
       messages: 
       output: 
       stacktrace: 
@@ -1806,8 +2054,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestEventBusService/[TestsEditorMode][Urd.Test.TestEventBusService.EventBusService_UnsubscribeMultiple_Success]
       name: EventBusService_UnsubscribeMultiple_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_UnsubscribeMultiple_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0006429
       messages: 
       output: 
       stacktrace: 
@@ -1823,8 +2071,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestEventBusService/[TestsEditorMode][Urd.Test.TestEventBusService.EventBusService_UnsubscribeMultipleOneType_Success]
       name: EventBusService_UnsubscribeMultipleOneType_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_UnsubscribeMultipleOneType_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0002957
       messages: 
       output: 
       stacktrace: 
@@ -1840,8 +2088,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestEventBusService/[TestsEditorMode][Urd.Test.TestEventBusService.EventBusService_UnsubscribeMultipleOneTypeSuscribe_Success]
       name: EventBusService_UnsubscribeMultipleOneTypeSuscribe_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_UnsubscribeMultipleOneTypeSuscribe_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0002677
       messages: 
       output: 
       stacktrace: 
@@ -1857,8 +2105,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestEventBusService/[TestsEditorMode][Urd.Test.TestEventBusService.EventBusService_UnsubscribeSingle_Success]
       name: EventBusService_UnsubscribeSingle_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_UnsubscribeSingle_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0002612
       messages: 
       output: 
       stacktrace: 
@@ -1874,8 +2122,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestEventBusService/[TestsEditorMode][Urd.Test.TestEventBusService.EventBusService_UnsubscribeSingleOneType_Success]
       name: EventBusService_UnsubscribeSingleOneType_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_UnsubscribeSingleOneType_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0003001
       messages: 
       output: 
       stacktrace: 
@@ -1891,8 +2139,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestServiceLocator][suite]
       name: TestServiceLocator
       fullName: Urd.Test.TestServiceLocator
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0140477
       messages: 
       output: 
       stacktrace: 
@@ -1907,10 +2155,12 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestServiceLocator/[TestsEditorMode][Urd.Test.TestServiceLocator.ServiceLocator_GetService_FailedBecauseServiceDoesntExit]
       name: ServiceLocator_GetService_FailedBecauseServiceDoesntExit
       fullName: Urd.Test.TestServiceLocator.ServiceLocator_GetService_FailedBecauseServiceDoesntExit
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0042529
       messages: 
-      output: 
+      output: 'Service of type Urd.Test.TestServiceLocator+IDummyService2 not registered
+
+'
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
@@ -1924,8 +2174,8 @@ MonoBehaviour:
       uniqueId: TestsEditorMode.dll/Urd/Test/TestServiceLocator/[TestsEditorMode][Urd.Test.TestServiceLocator.ServiceLocator_GetService_Success]
       name: ServiceLocator_GetService_Success
       fullName: Urd.Test.TestServiceLocator.ServiceLocator_GetService_Success
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0005315
       messages: 
       output: 
       stacktrace: 
@@ -1937,13 +2187,13 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1019
       parentUniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestServiceLocator][suite]
-    m_ResultText: 
+    m_ResultText: CacheService_LoadCache_Failed (0.074s)
     m_ResultStacktrace: 
     m_TestListState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 4d1924b5
-      m_LastClickedID: -1255925427
-      m_ExpandedIDs: 9f8509877d87879ed3cd659f11ee18c1f4b281dce557abf7d367a4f8985d340bffffff7f
+      scrollPos: {x: 0, y: 60}
+      m_SelectedIDs: 1e703466
+      m_LastClickedID: 1714712606
+      m_ExpandedIDs: 9f8509877d87879ed3cd659f11ee18c1f4b281dce557abf7d367a4f8985d340bba9cd151ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1969,7 +2219,7 @@ MonoBehaviour:
       selectedCategoryMask: 0
       availableCategories:
       - Uncategorized
---- !u!114 &23
+--- !u!114 &24
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2004,13 +2254,13 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 112
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &24
+--- !u!114 &25
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2045,8 +2295,8 @@ MonoBehaviour:
   m_SearchText: 
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a73eced7
-    m_LastClickedID: -674349401
+    m_SelectedIDs: a01a5fa6
+    m_LastClickedID: -1503716704
     m_ExpandedIDs: a01a5fa653336be200000000c53aba5a
     m_RenameOverlay:
       m_UserAcceptedRename: 0
