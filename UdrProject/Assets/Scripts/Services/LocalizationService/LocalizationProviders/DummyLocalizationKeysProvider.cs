@@ -7,10 +7,7 @@ namespace Urd.Services.Localization
     {
         public void GetLocalization(LocalizationLanguages language, Action<Dictionary<string, string>> localizationKeyValuesCallback)
         {
-            var localizationKeyValues = new Dictionary<string, string>();
-            localizationKeyValues.Add("OK", "ok");
-
-            localizationKeyValuesCallback?.Invoke(localizationKeyValues);
+            localizationKeyValuesCallback?.Invoke(new Dictionary<string, string>());
         }
     }
 }

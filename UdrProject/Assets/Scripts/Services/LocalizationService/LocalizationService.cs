@@ -19,7 +19,15 @@ namespace Urd.Services
 
             _eventBusService = ServiceLocatorService.Get<IEventBusService>();
 
+        //private ILocalizationKeysProvider _localizationKeysProvider = new DummyLocalizationKeysProvider();
+            SetProvider(new RemoteConfigurationLocalizationKeyProvider());
             LoadLanguage();
+            LoadLocalization();
+        }
+
+        public void SetProvider(ILocalizationKeysProvider localizationKeysProvider)
+        {
+            _localizationKeysProvider = localizationKeysProvider;
             LoadLocalization();
         }
 

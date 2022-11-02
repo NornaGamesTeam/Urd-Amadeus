@@ -7,5 +7,7 @@ namespace Urd.Services
         LocalizationLanguages Language { get; }
         string Locate(string key);
         bool TryLocate(string key, out string value);
+
+        void SetProvider(ILocalizationKeysProvider localizationKeysProvider);
     }
 }
