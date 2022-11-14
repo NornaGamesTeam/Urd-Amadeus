@@ -8,7 +8,7 @@ using UnityEngine;
 using Urd.Services;
 using Urd.Services.Localization;
 
-namespace Urd.Editor
+namespace Urd.UrdEditor
 {
     public class EditorLocalizationService
     {
@@ -56,10 +56,11 @@ namespace Urd.Editor
             File.WriteAllText(filePath, Newtonsoft.Json.JsonConvert.SerializeObject(dictionary).ToString());
         }
 
-        public static string Locate(string key)
+        public static string Locate(string key, LocalizationLanguages language = LocalizationLanguages.None)
         {
             var localizationConfig = _resourceHelper.FileLoaded;
-            var localizationKeys = localizationConfig.GetLanguageForLanguage(localizationConfig.EditorLanguage);
+            language = language != LocalizationLanguages.None ? language : localizationConfig.EditorLanguage;
+            var localizationKeys = localizationConfig.GetLanguageForLanguage(language);
 
             if(localizationKeys.TryGetValue(key, out var value))
             {
@@ -69,6 +70,7 @@ namespace Urd.Editor
             return key;
         }
 
+        public static Dictionary<string, string> GetKeysValues() => _resourceHelper.FileLoaded.GetLanguageForLanguage(LocalizationLanguages.English);
 
     }
 }

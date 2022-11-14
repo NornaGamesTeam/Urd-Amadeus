@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Urd.Services.Localization;
 
-namespace Urd.Editor
+namespace Urd.UrdEditor
 {
     public interface IEditorLocalizationServiceProvider
     {

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01878971a5b135e46a07e4d87e1f773b, type: 3}
   m_Name: LocalizationConfig
   m_EditorClassIdentifier: 
+  <EditorLanguage>k__BackingField: 0
   _languageCache:
   - <Language>k__BackingField: 1
     <File>k__BackingField: {fileID: 4900000, guid: 6639ea3095d13bf469e9eae4e87b6ec5, type: 3}
+  - <Language>k__BackingField: 2
+    <File>k__BackingField: {fileID: 4900000, guid: 98d66f15da43bee4486798d58870f395, type: 3}

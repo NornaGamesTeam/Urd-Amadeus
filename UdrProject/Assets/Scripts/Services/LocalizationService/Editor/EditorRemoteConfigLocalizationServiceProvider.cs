@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Services.RemoteConfig;
 using Urd.Services.Localization;
 
-namespace Urd.Editor
+namespace Urd.UrdEditor
 {
     public class EditorRemoteConfigLocalizationServiceProvider : IEditorLocalizationServiceProvider
     {

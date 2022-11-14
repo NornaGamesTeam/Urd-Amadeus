@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Urd.Editor
+namespace Urd.UrdEditor
 {
     public class UrdEditorUtils
     {

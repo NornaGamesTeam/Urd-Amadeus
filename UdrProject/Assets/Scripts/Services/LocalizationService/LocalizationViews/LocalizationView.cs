@@ -10,18 +10,31 @@ namespace Urd.View.Localization
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class LocalizationView : MonoBehaviour, IEventBusObservable<EventOnLocalizationChanged>
     {
-        [field: SerializeField]
-        public string Key { get; private set; }
+        public string Key => _key;
 
+        [SerializeField]
+        private string _key;
+        [SerializeField]
         private string _value;
 
         private ILocalizationService _localizationService;
+
         private TextMeshProUGUI _textMeshProUGUI;
+        private TextMeshProUGUI TextMeshProUGUI
+        {
+            get
+            {
+                if (_textMeshProUGUI == null)
+                {
+                    _textMeshProUGUI = GetComponent<TextMeshProUGUI>();
+                }
+                return _textMeshProUGUI;
+            }
+        }
 
         private void Start()
         {
             _localizationService = StaticServiceLocator.Get<ILocalizationService>();
-            _textMeshProUGUI = GetComponent<TextMeshProUGUI>();
 
             SetKeyValueToTextMeshPro();
         }
@@ -33,18 +46,27 @@ namespace Urd.View.Localization
 
         public void SetKey(string newKey)
         {
-            Key = newKey;
+            _key = newKey;
         }
 
-        [ContextMenu("SetKeyValueToTextMeshPro")]
+        public void SeValueFromKey()
+        {
+            _value = GetValueFromKey();
+        }
+
         public void SetKeyValueToTextMeshPro()
         {
             if (string.IsNullOrEmpty(Key))
             {
                 return;
             }
+            _value = GetValueFromKey();
+            SetTextMeshProValue(_value);
+        }
 
-            _textMeshProUGUI.text = GetValueFromKey();
+        public void SetTextMeshProValue(string textMeshProValue)
+        {
+            TextMeshProUGUI.text = textMeshProValue;
         }
 
         private string GetValueFromKey()
@@ -61,7 +83,7 @@ namespace Urd.View.Localization
 #if UNITY_EDITOR
         private string GetValueFromKeyEditor()
         {
-            return Editor.EditorLocalizationService.Locate(Key);
+            return UrdEditor.EditorLocalizationService.Locate(Key);
         }
 
 #endif
