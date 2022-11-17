@@ -30,7 +30,7 @@ namespace Urd.Services.Localization
             }
         }
 
-        internal void SetFileForLanguage(LocalizationLanguages language)
+        public void SetFileForLanguage(LocalizationLanguages language)
         {
             var textAsset = Resources.Load<TextAsset>(LOCALIZATION_FOLDER_PATH + "/" + language + ".json");
             if(textAsset == null)

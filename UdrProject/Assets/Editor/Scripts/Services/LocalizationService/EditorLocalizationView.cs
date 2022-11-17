@@ -78,7 +78,8 @@ namespace Urd.UrdEditor
                 _selectionIndex = newSelectionIndex;
                 _target.SetKey(keys[_selectionIndex].Key);
                 _target.SeValueFromKey();
-                _target.SetKeyValueToTextMeshPro();
+                var value = EditorLocalizationService.Locate(keys[_selectionIndex].Key);
+                _target.SetTextMeshProValue(value);
             }
         }
 

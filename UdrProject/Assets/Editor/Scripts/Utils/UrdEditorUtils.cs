@@ -9,7 +9,7 @@ namespace Urd.UrdEditor
         {
             var allPrefabs = AssetDatabase.FindAssets(configFilePath);
             for (int i = 0; i < allPrefabs.Length; i++)
-            {
+           {
                 var assetPath = AssetDatabase.GUIDToAssetPath(allPrefabs[i]);
                 var prefabObject = AssetDatabase.LoadMainAssetAtPath(assetPath);
 

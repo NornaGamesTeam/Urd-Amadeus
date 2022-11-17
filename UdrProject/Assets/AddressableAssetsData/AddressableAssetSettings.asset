@@ -43,6 +43,7 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 782ec557e8289b74fbccee8856d7e5ce, type: 2}
   - {fileID: 11400000, guid: d8b4323fb13d7824285b4865b356f93f, type: 2}
+  - {fileID: 11400000, guid: 11918c21550f59c4c87f8e186d10ceeb, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -57,13 +58,13 @@ MonoBehaviour:
       - m_Id: 67b644f2c5a03884f974400cba72efc6
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: 47a2e29d526e2144dacd356f10507a41
-        m_Value: ServerData/[BuildTarget]
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: aabb963e1f971cc4cb5d5e3a864337ee
-        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: 3e0fb34b45066e946854d1b7e8d15cac
         m_Value: ServerData/[BuildTarget]
       - m_Id: 682729c1937ff7b4b84e01b14d5a1f25
-        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+        m_Value: ServerData/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: 67b644f2c5a03884f974400cba72efc6
       m_Name: BuildTarget
@@ -84,6 +85,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Test
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: b7a13bf4344012641ac0d84bc0158c7a, type: 2}

@@ -1,0 +1,21 @@
+{
+    "name": "UrdEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:57d3e96d50e623b4ea3b38671b5ea7fc",
+        "GUID:9d6c7830d9ab746a7a12f144bdeeee7c"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

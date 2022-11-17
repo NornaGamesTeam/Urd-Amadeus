@@ -12,6 +12,8 @@ namespace Urd.Services
     public class AssetService : BaseService, IAssetService
     {
         private IResourceLocator _resourceLocator;
+        
+        public bool IsInitialized { get; private set; }
 
         public override void Init()
         {
@@ -22,19 +24,11 @@ namespace Urd.Services
 
         private void OnAddressableInitialize(AsyncOperationHandle<IResourceLocator> resourceLocator)
         {
+            _resourceLocator = resourceLocator.Result;
+            
             UnityEngine.Debug.Log($"[AssetService] OnAddressableInitialize {resourceLocator.Status}");
 
-            _resourceLocator = resourceLocator.Result;
-        }
-        
-        public void LoadLabel(string label)
-        {
-            Addressables.LoadContentCatalogAsync(label).Completed += OnLoadLabel;
-        }
-
-        private void OnLoadLabel(AsyncOperationHandle<IResourceLocator> labelResources)
-        {
-            UnityEngine.Debug.Log($"[AssetService] OnLoadLabel {labelResources}");
+            IsInitialized = true;
         }
 
         public void LoadAsset<T>(string addressName, Action<T> assetCallback)

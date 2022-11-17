@@ -71,21 +71,7 @@ namespace Urd.View.Localization
 
         private string GetValueFromKey()
         {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                return GetValueFromKeyEditor();
-            }
-#endif
-
             return _localizationService.Locate(Key);
         }
-#if UNITY_EDITOR
-        private string GetValueFromKeyEditor()
-        {
-            return UrdEditor.EditorLocalizationService.Locate(Key);
-        }
-
-#endif
     }
 }

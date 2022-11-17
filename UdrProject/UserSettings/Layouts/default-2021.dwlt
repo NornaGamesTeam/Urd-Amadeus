@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 153
+  controlID: 119
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 130
+  controlID: 96
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
+  m_Name: AddressableAssetsWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -165,12 +165,13 @@ MonoBehaviour:
     y: 0
     width: 784
     height: 481
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 17}
+  m_MinSize: {x: 431, y: 271}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 15}
   m_Panes:
-  - {fileID: 17}
-  m_Selected: 0
+  - {fileID: 18}
+  - {fileID: 15}
+  m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -193,9 +194,9 @@ MonoBehaviour:
     height: 458
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 16}
+  m_ActualView: {fileID: 17}
   m_Panes:
-  - {fileID: 16}
+  - {fileID: 17}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &9
@@ -217,12 +218,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 784
     y: 0
-    width: 752
+    width: 953
     height: 939
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 16
+  controlID: 60
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -242,12 +243,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 752
-    height: 480
+    width: 953
+    height: 564
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 85
+  controlID: 61
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -265,14 +266,14 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 260
-    height: 480
+    width: 326
+    height: 564
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 18}
+  m_ActualView: {fileID: 19}
   m_Panes:
-  - {fileID: 18}
   - {fileID: 19}
+  - {fileID: 20}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &12
@@ -290,17 +291,17 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 260
+    x: 326
     y: 0
-    width: 492
-    height: 480
+    width: 627
+    height: 564
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 21}
+  m_ActualView: {fileID: 22}
   m_Panes:
-  - {fileID: 20}
   - {fileID: 21}
-  - {fileID: 15}
+  - {fileID: 22}
+  - {fileID: 16}
   m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &13
@@ -319,15 +320,15 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 480
-    width: 752
-    height: 459
+    y: 564
+    width: 953
+    height: 375
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 22}
+  m_ActualView: {fileID: 23}
   m_Panes:
-  - {fileID: 22}
   - {fileID: 23}
+  - {fileID: 24}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &14
@@ -345,19 +346,136 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1536
+    x: 1737
     y: 0
-    width: 1024
+    width: 823
     height: 939
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 24}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 25}
   m_Panes:
-  - {fileID: 24}
   - {fileID: 25}
+  - {fileID: 26}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &15
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98b4a8982e76bc4d86c10db25cd7193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 430, y: 250}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Addressables Groups
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 0
+    y: 73
+    width: 783
+    height: 460
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+  m_GroupEditor:
+    m_TreeState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 9b50acf1
+      m_LastClickedID: -240365413
+      m_ExpandedIDs: c56bf1ebeeae4563
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: TestPackedAsset
+        m_OriginalName: TestPackedAsset
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: -336499771
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 0
+        m_IsRenamingFilename: 0
+        m_ClientGUIView: {fileID: 7}
+      m_SearchString: 
+    m_Mchs:
+      m_Columns:
+      - width: 407
+        sortedAscending: 1
+        headerContent:
+          m_Text: Group Name \ Addressable Name
+          m_Image: {fileID: 0}
+          m_Tooltip: Address used to load asset at runtime
+        contextMenuText: 
+        headerTextAlignment: 0
+        sortingArrowAlignment: 1
+        minWidth: 100
+        maxWidth: 10000
+        autoResize: 1
+        allowToggleVisibility: 1
+        canSort: 1
+        userData: 0
+      - width: 20
+        sortedAscending: 0
+        headerContent:
+          m_Text: 
+          m_Image: {fileID: 3147778976006948682, guid: 0000000000000000d000000000000000, type: 0}
+          m_Tooltip: Asset type
+        contextMenuText: 
+        headerTextAlignment: 0
+        sortingArrowAlignment: 1
+        minWidth: 20
+        maxWidth: 20
+        autoResize: 1
+        allowToggleVisibility: 1
+        canSort: 0
+        userData: 0
+      - width: 150
+        sortedAscending: 0
+        headerContent:
+          m_Text: Path
+          m_Image: {fileID: 0}
+          m_Tooltip: Current Path of asset
+        contextMenuText: 
+        headerTextAlignment: 0
+        sortingArrowAlignment: 1
+        minWidth: 100
+        maxWidth: 10000
+        autoResize: 1
+        allowToggleVisibility: 1
+        canSort: 1
+        userData: 0
+      - width: 160
+        sortedAscending: 1
+        headerContent:
+          m_Text: Labels
+          m_Image: {fileID: 0}
+          m_Tooltip: Assets can have multiple labels
+        contextMenuText: 
+        headerTextAlignment: 0
+        sortingArrowAlignment: 1
+        minWidth: 20
+        maxWidth: 1000
+        autoResize: 1
+        allowToggleVisibility: 1
+        canSort: 1
+        userData: 0
+      m_VisibleColumns: 00000000010000000200000003000000
+      m_SortedColumns: 0300000000000000
+    window: {fileID: 15}
+    m_VerticalSplitterPercent: 0.8
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -385,7 +503,7 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
---- !u!114 &16
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -477,7 +595,7 @@ MonoBehaviour:
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
---- !u!114 &17
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -804,7 +922,7 @@ MonoBehaviour:
   m_SceneVisActive: 1
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &18
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -826,8 +944,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 784
     y: 73
-    width: 258
-    height: 459
+    width: 324
+    height: 543
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -835,23 +953,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 306d0000
-      m_LastClickedID: 27952
-      m_ExpandedIDs: 26fbffff0e6d0000266d0000
+      m_SelectedIDs: 22730000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 26f9ffffd6f9ffff26fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Canvas
-        m_OriginalName: Canvas
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 27942
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 11}
       m_SearchString: 
@@ -861,7 +979,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: f8a2d1b21a498f94fb2cc58a751946ab
---- !u!114 &19
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -917,7 +1035,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: a26b0000
     m_LastClickedID: 27554
-    m_ExpandedIDs: 00000000086f00000a6f00000c6f00000e6f0000106f0000126f0000146f0000166f0000186f00001a6f00001c6f00001e6f0000206f0000226f0000246f0000266f0000286f00002a6f00002c6f00002e6f0000306f0000326f0000346f0000366f0000386f00003a6f00003c6f00003e6f0000
+    m_ExpandedIDs: 00000000f8720000fa720000fc720000fe72000000730000027300000473000006730000087300000a7300000c7300000e73000010730000127300001473000016730000187300001a7300001c7300001e73000020730000227300002473000026730000287300002a7300002c7300002e730000307300003273000034730000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -945,7 +1063,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 926d0000
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000086f00000a6f00000c6f00000e6f0000106f0000126f0000146f0000166f0000186f00001a6f00001c6f00001e6f0000206f0000226f0000246f0000266f0000286f00002a6f00002c6f00002e6f0000306f0000326f0000346f0000366f0000386f00003a6f00003c6f00003e6f0000
+    m_ExpandedIDs: 00000000f8720000fa720000fc720000fe72000000730000027300000473000006730000087300000a7300000c7300000e73000010730000127300001473000016730000187300001a7300001c7300001e73000020730000227300002473000026730000287300002a7300002c7300002e730000307300003273000034730000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1001,7 +1119,7 @@ MonoBehaviour:
     m_GridSize: 96
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 200
---- !u!114 &20
+--- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1035,14 +1153,14 @@ MonoBehaviour:
     m_CachedPref: 1
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 27952
+  m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &21
+--- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1062,10 +1180,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1044
+    x: 1110
     y: 73
-    width: 490
-    height: 459
+    width: 625
+    height: 543
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1083,7 +1201,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Services/LocalizationService/Resources
+    - Assets/Tests
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -1098,7 +1216,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: a26b0000
     m_LastClickedID: 27554
-    m_ExpandedIDs: 00000000086f00000a6f00000c6f00000e6f0000106f0000126f0000146f0000166f0000186f00001a6f00001c6f00001e6f0000206f0000226f0000246f0000266f0000286f00002a6f00002c6f00002e6f0000306f0000326f0000346f0000366f0000386f00003a6f00003c6f00003e6f0000
+    m_ExpandedIDs: 00000000f8720000fa720000fc720000fe72000000730000027300000473000006730000087300000a7300000c7300000e73000010730000127300001473000016730000187300001a7300001c7300001e73000020730000227300002473000026730000287300002a7300002c7300002e730000307300003273000034730000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1126,21 +1244,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000086f00000a6f00000c6f00000e6f0000106f0000126f0000146f0000166f0000186f00001a6f00001c6f00001e6f0000206f0000226f0000246f0000266f0000286f00002a6f00002c6f00002e6f0000306f0000326f0000346f0000366f0000386f00003a6f00003c6f00003e6f0000
+    m_ExpandedIDs: ffffffff00000000f8720000fe72000000730000027300000473000006730000087300000a7300000c7300000e730000127300001473000016730000187300001a7300001c7300001e7300002073000022730000267300002c7300002e73000032730000347300003a730000a4730000b27300004280000062890000f49c0000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Spanish
-      m_OriginalName: Spanish
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 28864
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_SearchString: 
@@ -1182,7 +1300,7 @@ MonoBehaviour:
     m_GridSize: 16
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 115
---- !u!114 &22
+--- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1203,14 +1321,14 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 784
-    y: 553
-    width: 750
-    height: 438
+    y: 637
+    width: 951
+    height: 354
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
---- !u!114 &23
+--- !u!114 &24
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1231,20 +1349,20 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 784
-    y: 533
-    width: 1264
-    height: 458
+    y: 637
+    width: 951
+    height: 354
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 143
+    ID: 180
     splitterInitialOffset: 364
     currentActiveSplitter: -1
     realSizes:
-    - 238
-    - 150
+    - 174
+    - 110
     relativeSizes:
     - 0.6129707
     - 0.3870293
@@ -1254,7 +1372,7 @@ MonoBehaviour:
     maxSizes:
     - 0
     - 0
-    lastTotalSize: 388
+    lastTotalSize: 284
     splitSize: 6
     xOffset: 0
     m_Version: 1
@@ -1264,15 +1382,15 @@ MonoBehaviour:
     oldSplitSize: 0
   m_TestTypeToolbarIndex: 1
   m_PlayModeTestListGUI:
-    m_Window: {fileID: 23}
+    m_Window: {fileID: 24}
     m_NewResultList:
     - id: 1023
       uniqueId: '[Udr][suite]'
       name: Udr
       fullName: Udr
-      resultStatus: 1
-      duration: 1.3733188
-      messages: 
+      resultStatus: 0
+      duration: 0.4117576
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -1282,12 +1400,12 @@ MonoBehaviour:
       categories: []
       parentId: 
       parentUniqueId: 
-    - id: 1010
+    - id: 1020
       uniqueId: '[TestsPlayMode.dll][suite]'
       name: TestsPlayMode.dll
       fullName: D:/User/Documents/Urd/UdrProject/Library/ScriptAssemblies/TestsPlayMode.dll
-      resultStatus: 1
-      duration: 1.0843381
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1298,12 +1416,12 @@ MonoBehaviour:
       categories: []
       parentId: 1000
       parentUniqueId: '[Udr][suite]'
-    - id: 1011
+    - id: 1021
       uniqueId: TestsPlayMode.dll/[Urd][suite]
       name: Urd
       fullName: Urd
-      resultStatus: 1
-      duration: 1.072929
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1312,14 +1430,14 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1010
+      parentId: 1020
       parentUniqueId: '[TestsPlayMode.dll][suite]'
-    - id: 1012
+    - id: 1022
       uniqueId: TestsPlayMode.dll/Urd/[TestsPlayMode][Urd.Test][suite]
       name: Test
       fullName: Urd.Test
-      resultStatus: 1
-      duration: 1.0679613
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1328,14 +1446,47 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1011
+      parentId: 1021
       parentUniqueId: TestsPlayMode.dll/[Urd][suite]
     - id: 1001
+      uniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestAssetService][suite]
+      name: TestAssetService
+      fullName: Urd.Test.TestAssetService
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1022
+      parentUniqueId: TestsPlayMode.dll/Urd/[TestsPlayMode][Urd.Test][suite]
+    - id: 1002
+      uniqueId: TestsPlayMode.dll/Urd/Test/TestAssetService/[TestsPlayMode][Urd.Test.TestAssetService.AssetService_LoadLabel_Success]
+      name: AssetService_LoadLabel_Success
+      fullName: Urd.Test.TestAssetService.AssetService_LoadLabel_Success
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestAssetService][suite]
+    - id: 1003
       uniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestCoroutineService][suite]
       name: TestCoroutineService
       fullName: Urd.Test.TestCoroutineService
-      resultStatus: 1
-      duration: 0.4504098
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1344,14 +1495,14 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1012
+      parentId: 1022
       parentUniqueId: TestsPlayMode.dll/Urd/[TestsPlayMode][Urd.Test][suite]
-    - id: 1002
+    - id: 1004
       uniqueId: TestsPlayMode.dll/Urd/Test/TestCoroutineService/[TestsPlayMode][Urd.Test.TestCoroutineService.CoroutineService_StartCoroutine_Success]
       name: CoroutineService_StartCoroutine_Success
       fullName: Urd.Test.TestCoroutineService.CoroutineService_StartCoroutine_Success
-      resultStatus: 1
-      duration: 0.042042
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1361,14 +1512,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1001
+      parentId: 1003
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestCoroutineService][suite]
-    - id: 1004
+    - id: 1006
       uniqueId: TestsPlayMode.dll/Urd/Test/TestCoroutineService/[TestsPlayMode][Urd.Test.TestCoroutineService.CoroutineService_StartCoroutineWait_Failed]
       name: CoroutineService_StartCoroutineWait_Failed
       fullName: Urd.Test.TestCoroutineService.CoroutineService_StartCoroutineWait_Failed
-      resultStatus: 1
-      duration: 0.1217885
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1378,14 +1529,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1001
+      parentId: 1003
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestCoroutineService][suite]
-    - id: 1003
+    - id: 1005
       uniqueId: TestsPlayMode.dll/Urd/Test/TestCoroutineService/[TestsPlayMode][Urd.Test.TestCoroutineService.CoroutineService_StartCoroutineWait_Success]
       name: CoroutineService_StartCoroutineWait_Success
       fullName: Urd.Test.TestCoroutineService.CoroutineService_StartCoroutineWait_Success
-      resultStatus: 1
-      duration: 0.2180136
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1395,14 +1546,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1001
+      parentId: 1003
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestCoroutineService][suite]
-    - id: 1007
+    - id: 1008
       uniqueId: TestsPlayMode.dll/Urd/Test/TestCoroutineService/[TestsPlayMode][Urd.Test.TestCoroutineService.CoroutineService_StopAllCoroutine_Success]
       name: CoroutineService_StopAllCoroutine_Success
       fullName: Urd.Test.TestCoroutineService.CoroutineService_StopAllCoroutine_Success
-      resultStatus: 1
-      duration: 0.0181707
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1412,14 +1563,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1001
+      parentId: 1003
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestCoroutineService][suite]
-    - id: 1006
+    - id: 1007
       uniqueId: TestsPlayMode.dll/Urd/Test/TestCoroutineService/[TestsPlayMode][Urd.Test.TestCoroutineService.CoroutineService_StopCoroutine_Success]
       name: CoroutineService_StopCoroutine_Success
       fullName: Urd.Test.TestCoroutineService.CoroutineService_StopCoroutine_Success
-      resultStatus: 1
-      duration: 0.0170626
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1429,14 +1580,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1001
+      parentId: 1003
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestCoroutineService][suite]
-    - id: 1007
+    - id: 1009
       uniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestNetworkService][suite]
       name: TestNetworkService
       fullName: Urd.Test.TestNetworkService
-      resultStatus: 1
-      duration: 0.2686104
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1445,14 +1596,14 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1013
+      parentId: 1022
       parentUniqueId: TestsPlayMode.dll/Urd/[TestsPlayMode][Urd.Test][suite]
-    - id: 1009
+    - id: 1011
       uniqueId: TestsPlayMode.dll/Urd/Test/TestNetworkService/[TestsPlayMode][Urd.Test.TestNetworkService.NetworkService_Request_Failed]
       name: NetworkService_Request_Failed
       fullName: Urd.Test.TestNetworkService.NetworkService_Request_Failed
-      resultStatus: 1
-      duration: 0.0612092
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1462,14 +1613,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1007
+      parentId: 1009
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestNetworkService][suite]
-    - id: 1008
+    - id: 1010
       uniqueId: TestsPlayMode.dll/Urd/Test/TestNetworkService/[TestsPlayMode][Urd.Test.TestNetworkService.NetworkService_Request_Success]
       name: NetworkService_Request_Success
       fullName: Urd.Test.TestNetworkService.NetworkService_Request_Success
-      resultStatus: 1
-      duration: 0.199064
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1479,14 +1630,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1007
+      parentId: 1009
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestNetworkService][suite]
-    - id: 1047
+    - id: 1012
       uniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestRemoteConfigurationService][suite]
       name: TestRemoteConfigurationService
       fullName: Urd.Test.TestRemoteConfigurationService
-      resultStatus: 1
-      duration: 0.3132585
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1495,14 +1646,14 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1053
+      parentId: 1022
       parentUniqueId: TestsPlayMode.dll/Urd/[TestsPlayMode][Urd.Test][suite]
-    - id: 1048
+    - id: 1013
       uniqueId: TestsPlayMode.dll/Urd/Test/TestRemoteConfigurationService/[TestsPlayMode][Urd.Test.TestRemoteConfigurationService.RemoteConfigurationService_FetchData_Success]
       name: RemoteConfigurationService_FetchData_Success
       fullName: Urd.Test.TestRemoteConfigurationService.RemoteConfigurationService_FetchData_Success
-      resultStatus: 1
-      duration: 0.2260552
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1512,14 +1663,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1047
+      parentId: 1012
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestRemoteConfigurationService][suite]
-    - id: 1012
+    - id: 1014
       uniqueId: TestsPlayMode.dll/Urd/Test/TestRemoteConfigurationService/[TestsPlayMode][Urd.Test.TestRemoteConfigurationService.RemoteConfigurationService_GetDataBool_Success]
       name: RemoteConfigurationService_GetDataBool_Success
       fullName: Urd.Test.TestRemoteConfigurationService.RemoteConfigurationService_GetDataBool_Success
-      resultStatus: 1
-      duration: 0.0167191
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1529,14 +1680,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1010
+      parentId: 1012
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestRemoteConfigurationService][suite]
-    - id: 1016
+    - id: 1017
       uniqueId: TestsPlayMode.dll/Urd/Test/TestRemoteConfigurationService/[TestsPlayMode][Urd.Test.TestRemoteConfigurationService.RemoteConfigurationService_GetDataDictionary_Success]
       name: RemoteConfigurationService_GetDataDictionary_Success
       fullName: Urd.Test.TestRemoteConfigurationService.RemoteConfigurationService_GetDataDictionary_Success
-      resultStatus: 1
-      duration: 0.0282902
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1546,14 +1697,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1010
+      parentId: 1012
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestRemoteConfigurationService][suite]
-    - id: 1014
+    - id: 1016
       uniqueId: TestsPlayMode.dll/Urd/Test/TestRemoteConfigurationService/[TestsPlayMode][Urd.Test.TestRemoteConfigurationService.RemoteConfigurationService_GetDataFloat_Success]
       name: RemoteConfigurationService_GetDataFloat_Success
       fullName: Urd.Test.TestRemoteConfigurationService.RemoteConfigurationService_GetDataFloat_Success
-      resultStatus: 1
-      duration: 0.0161291
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1563,14 +1714,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1010
+      parentId: 1012
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestRemoteConfigurationService][suite]
-    - id: 1013
+    - id: 1015
       uniqueId: TestsPlayMode.dll/Urd/Test/TestRemoteConfigurationService/[TestsPlayMode][Urd.Test.TestRemoteConfigurationService.RemoteConfigurationService_GetDataInt_Success]
       name: RemoteConfigurationService_GetDataInt_Success
       fullName: Urd.Test.TestRemoteConfigurationService.RemoteConfigurationService_GetDataInt_Success
-      resultStatus: 1
-      duration: 0.0149198
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1580,14 +1731,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1010
+      parentId: 1012
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestRemoteConfigurationService][suite]
-    - id: 1008
+    - id: 1018
       uniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestUnityService][suite]
       name: TestUnityService
       fullName: Urd.Test.TestUnityService
-      resultStatus: 1
-      duration: 0.02557
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1596,14 +1747,14 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1012
+      parentId: 1022
       parentUniqueId: TestsPlayMode.dll/Urd/[TestsPlayMode][Urd.Test][suite]
-    - id: 1009
+    - id: 1019
       uniqueId: TestsPlayMode.dll/Urd/Test/TestUnityService/[TestsPlayMode][Urd.Test.TestUnityService.UnityService_SetGamePause_Success]
       name: UnityService_SetGamePause_Success
       fullName: Urd.Test.TestUnityService.UnityService_SetGamePause_Success
-      resultStatus: 1
-      duration: 0.018191
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1613,15 +1764,15 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1008
+      parentId: 1018
       parentUniqueId: TestsPlayMode.dll/Urd/Test/[TestsPlayMode][Urd.Test.TestUnityService][suite]
-    m_ResultText: Udr (1.373s)
+    m_ResultText: 
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 11ee18c1
-      m_LastClickedID: -1055330799
-      m_ExpandedIDs: d97b7c8d11ee18c14e33fac541a0c0d37cdff5dcb8a88b5ee0e729604a63d36bffffff7f
+      m_SelectedIDs: b85fa544
+      m_LastClickedID: 1151688632
+      m_ExpandedIDs: 84520584d97b7c8d11ee18c14e33fac541a0c0d37cdff5dcb8a88b5ee0e729604a63d36bffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1649,14 +1800,14 @@ MonoBehaviour:
       - Uncategorized
     m_SelectedOption: 0
   m_EditModeTestListGUI:
-    m_Window: {fileID: 23}
+    m_Window: {fileID: 24}
     m_NewResultList:
     - id: 1000
       uniqueId: '[Udr][suite]'
       name: Udr
       fullName: Udr
       resultStatus: 1
-      duration: 0.0371249
+      duration: 0.3164314
       messages: 
       output: 
       stacktrace: 
@@ -1672,7 +1823,7 @@ MonoBehaviour:
       name: TestsEditorMode.dll
       fullName: D:/User/Documents/Urd/UdrProject/Library/ScriptAssemblies/TestsEditorMode.dll
       resultStatus: 1
-      duration: 0.0110146
+      duration: 0.2787832
       messages: 
       output: 
       stacktrace: 
@@ -1688,7 +1839,7 @@ MonoBehaviour:
       name: Urd
       fullName: Urd
       resultStatus: 1
-      duration: 0.009998
+      duration: 0.2775419
       messages: 
       output: 
       stacktrace: 
@@ -1704,7 +1855,7 @@ MonoBehaviour:
       name: Test
       fullName: Urd.Test
       resultStatus: 1
-      duration: 0.0091403
+      duration: 0.2762865
       messages: 
       output: 
       stacktrace: 
@@ -1720,7 +1871,7 @@ MonoBehaviour:
       name: TestCacheService
       fullName: Urd.Test.TestCacheService
       resultStatus: 1
-      duration: 0.0882152
+      duration: 0.1017442
       messages: 
       output: 
       stacktrace: 
@@ -1736,7 +1887,7 @@ MonoBehaviour:
       name: CacheService_LoadCache_Failed
       fullName: Urd.Test.TestCacheService.CacheService_LoadCache_Failed
       resultStatus: 1
-      duration: 0.0736198
+      duration: 0.0553144
       messages: 
       output: 
       stacktrace: 
@@ -1753,7 +1904,7 @@ MonoBehaviour:
       name: CacheService_LoadCache_Success
       fullName: Urd.Test.TestCacheService.CacheService_LoadCache_Success
       resultStatus: 1
-      duration: 0.0911663
+      duration: 0.0220818
       messages: 
       output: "[CacheService] Error while try to save cache in path ArbitraryKey
         with value {\"arbitraryInt\":5,\"arbitraryString\":\"string\"}. Error: System.NotImplementedException:
@@ -1777,7 +1928,7 @@ MonoBehaviour:
       name: CacheService_LoadCacheRaw_Failed
       fullName: Urd.Test.TestCacheService.CacheService_LoadCacheRaw_Failed
       resultStatus: 1
-      duration: 0.0015624
+      duration: 0.0024438
       messages: 
       output: "[CacheService] Error while try to save cache in path \n with value
         . Error: System.ArgumentException: Name has invalid chars\r\n  at System.IO.FileStream..ctor
@@ -1811,7 +1962,7 @@ MonoBehaviour:
       name: CacheService_LoadCacheRaw_Success
       fullName: Urd.Test.TestCacheService.CacheService_LoadCacheRaw_Success
       resultStatus: 1
-      duration: 0.0118318
+      duration: 0.001414
       messages: 
       output: "[CacheService] Error while try to save cache in path ArbitraryKey
         with value . Error: System.NotImplementedException: The method or operation
@@ -1835,7 +1986,7 @@ MonoBehaviour:
       name: CacheService_SaveCache_Failed
       fullName: Urd.Test.TestCacheService.CacheService_SaveCache_Failed
       resultStatus: 1
-      duration: 0.0655735
+      duration: 0.0013228
       messages: 
       output: "[CacheService] Error while try to save cache in path \n with value
         {\"arbitraryInt\":5,\"arbitraryString\":\"string\"}. Error: System.ArgumentException:
@@ -1870,7 +2021,7 @@ MonoBehaviour:
       name: CacheService_SaveCache_Success
       fullName: Urd.Test.TestCacheService.CacheService_SaveCache_Success
       resultStatus: 1
-      duration: 0.0010582
+      duration: 0.0012515
       messages: 
       output: 
       stacktrace: 
@@ -1887,7 +2038,7 @@ MonoBehaviour:
       name: CacheService_SaveCacheRaw_Failed
       fullName: Urd.Test.TestCacheService.CacheService_SaveCacheRaw_Failed
       resultStatus: 1
-      duration: 0.0693775
+      duration: 0.001371
       messages: 
       output: "[CacheService] Error while try to save cache in path \n with value
         . Error: System.ArgumentException: Name has invalid chars\r\n  at System.IO.FileStream..ctor
@@ -1921,7 +2072,7 @@ MonoBehaviour:
       name: CacheService_SaveCacheRaw_Success
       fullName: Urd.Test.TestCacheService.CacheService_SaveCacheRaw_Success
       resultStatus: 1
-      duration: 0.0014334
+      duration: 0.0008251
       messages: 
       output: 
       stacktrace: 
@@ -1938,7 +2089,7 @@ MonoBehaviour:
       name: TestClockService
       fullName: Urd.Test.TestClockService
       resultStatus: 1
-      duration: 0.0316165
+      duration: 0.1195433
       messages: 
       output: 
       stacktrace: 
@@ -1954,7 +2105,7 @@ MonoBehaviour:
       name: ClockService_AddDelayCall_Finish
       fullName: Urd.Test.TestClockService.ClockService_AddDelayCall_Finish
       resultStatus: 1
-      duration: 0.0135946
+      duration: 0.1033451
       messages: 
       output: 
       stacktrace: 
@@ -1970,7 +2121,7 @@ MonoBehaviour:
       name: ClockService_AddDelayCall_Finish(0.2f,1.0f,True)
       fullName: Urd.Test.TestClockService.ClockService_AddDelayCall_Finish(0.2f,1.0f,True)
       resultStatus: 1
-      duration: 0.0109294
+      duration: 0.0998098
       messages: 
       output: 
       stacktrace: 
@@ -1987,7 +2138,7 @@ MonoBehaviour:
       name: ClockService_AddDelayCall_Finish(0.2f,0.1f,False)
       fullName: Urd.Test.TestClockService.ClockService_AddDelayCall_Finish(0.2f,0.1f,False)
       resultStatus: 1
-      duration: 0.0012001
+      duration: 0.0020292
       messages: 
       output: 
       stacktrace: 
@@ -2004,7 +2155,7 @@ MonoBehaviour:
       name: ClockService_SuscribeToUpdate_Success
       fullName: Urd.Test.TestClockService.ClockService_SuscribeToUpdate_Success
       resultStatus: 1
-      duration: 0.0014865
+      duration: 0.0029249
       messages: 
       output: 
       stacktrace: 
@@ -2021,7 +2172,7 @@ MonoBehaviour:
       name: ClockService_SuscribeToUpdateButPause_Success
       fullName: Urd.Test.TestClockService.ClockService_SuscribeToUpdateButPause_Success
       resultStatus: 1
-      duration: 0.0005233
+      duration: 0.0011777
       messages: 
       output: 
       stacktrace: 
@@ -2038,7 +2189,7 @@ MonoBehaviour:
       name: ClockService_SuscribeToUpdateButUnPause_Success
       fullName: Urd.Test.TestClockService.ClockService_SuscribeToUpdateButUnPause_Success
       resultStatus: 1
-      duration: 0.0003542
+      duration: 0.0008086
       messages: 
       output: 
       stacktrace: 
@@ -2055,7 +2206,7 @@ MonoBehaviour:
       name: ClockService_UnsuscribeToUpdate_Success
       fullName: Urd.Test.TestClockService.ClockService_UnsuscribeToUpdate_Success
       resultStatus: 1
-      duration: 0.0020676
+      duration: 0.0026471
       messages: 
       output: 
       stacktrace: 
@@ -2072,7 +2223,7 @@ MonoBehaviour:
       name: TestEventBusService
       fullName: Urd.Test.TestEventBusService
       resultStatus: 1
-      duration: 0.0165843
+      duration: 0.0177254
       messages: 
       output: 
       stacktrace: 
@@ -2088,7 +2239,7 @@ MonoBehaviour:
       name: EventBusService_SubscribeMultiple_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_SubscribeMultiple_Success
       resultStatus: 1
-      duration: 0.0028186
+      duration: 0.003405
       messages: 
       output: 
       stacktrace: 
@@ -2105,7 +2256,7 @@ MonoBehaviour:
       name: EventBusService_SubscribeMultipleOneType_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_SubscribeMultipleOneType_Success
       resultStatus: 1
-      duration: 0.0004118
+      duration: 0.0005084
       messages: 
       output: 
       stacktrace: 
@@ -2122,7 +2273,7 @@ MonoBehaviour:
       name: EventBusService_SubscribeSingle_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_SubscribeSingle_Success
       resultStatus: 1
-      duration: 0.0003501
+      duration: 0.0004672
       messages: 
       output: 
       stacktrace: 
@@ -2139,7 +2290,7 @@ MonoBehaviour:
       name: EventBusService_SubscribeSingleOneType_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_SubscribeSingleOneType_Success
       resultStatus: 1
-      duration: 0.00027
+      duration: 0.0004155
       messages: 
       output: 
       stacktrace: 
@@ -2156,7 +2307,7 @@ MonoBehaviour:
       name: EventBusService_UnsubscribeMultiple_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_UnsubscribeMultiple_Success
       resultStatus: 1
-      duration: 0.0006429
+      duration: 0.0008057
       messages: 
       output: 
       stacktrace: 
@@ -2173,7 +2324,7 @@ MonoBehaviour:
       name: EventBusService_UnsubscribeMultipleOneType_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_UnsubscribeMultipleOneType_Success
       resultStatus: 1
-      duration: 0.0002957
+      duration: 0.0003902
       messages: 
       output: 
       stacktrace: 
@@ -2190,7 +2341,7 @@ MonoBehaviour:
       name: EventBusService_UnsubscribeMultipleOneTypeSuscribe_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_UnsubscribeMultipleOneTypeSuscribe_Success
       resultStatus: 1
-      duration: 0.0002677
+      duration: 0.0003767
       messages: 
       output: 
       stacktrace: 
@@ -2207,7 +2358,7 @@ MonoBehaviour:
       name: EventBusService_UnsubscribeSingle_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_UnsubscribeSingle_Success
       resultStatus: 1
-      duration: 0.0002612
+      duration: 0.000421
       messages: 
       output: 
       stacktrace: 
@@ -2224,7 +2375,7 @@ MonoBehaviour:
       name: EventBusService_UnsubscribeSingleOneType_Success
       fullName: Urd.Test.TestEventBusService.EventBusService_UnsubscribeSingleOneType_Success
       resultStatus: 1
-      duration: 0.0003001
+      duration: 0.0003653
       messages: 
       output: 
       stacktrace: 
@@ -2241,7 +2392,7 @@ MonoBehaviour:
       name: TestLocalizationService
       fullName: Urd.Test.TestLocalizationService
       resultStatus: 1
-      duration: 0.0051322
+      duration: 0.0225677
       messages: 
       output: 
       stacktrace: 
@@ -2257,7 +2408,7 @@ MonoBehaviour:
       name: UnityService_TryLocate_Failed
       fullName: Urd.Test.TestLocalizationService.UnityService_TryLocate_Failed
       resultStatus: 1
-      duration: 0.0011802
+      duration: 0.0146106
       messages: 
       output: '[LocalizationService] The key WRONG_KEY is not in the dictionary
 
@@ -2276,7 +2427,7 @@ MonoBehaviour:
       name: UnityService_TryLocate_Success
       fullName: Urd.Test.TestLocalizationService.UnityService_TryLocate_Success
       resultStatus: 1
-      duration: 0.0004175
+      duration: 0.0006482
       messages: 
       output: 
       stacktrace: 
@@ -2293,7 +2444,7 @@ MonoBehaviour:
       name: TestServiceLocator
       fullName: Urd.Test.TestServiceLocator
       resultStatus: 1
-      duration: 0.0140477
+      duration: 0.0085575
       messages: 
       output: 
       stacktrace: 
@@ -2309,7 +2460,7 @@ MonoBehaviour:
       name: ServiceLocator_GetService_FailedBecauseServiceDoesntExit
       fullName: Urd.Test.TestServiceLocator.ServiceLocator_GetService_FailedBecauseServiceDoesntExit
       resultStatus: 1
-      duration: 0.0042529
+      duration: 0.0011812
       messages: 
       output: 'Service of type Urd.Test.TestServiceLocator+IDummyService2 not registered
 
@@ -2328,7 +2479,7 @@ MonoBehaviour:
       name: ServiceLocator_GetService_Success
       fullName: Urd.Test.TestServiceLocator.ServiceLocator_GetService_Success
       resultStatus: 1
-      duration: 0.0005315
+      duration: 0.0004958
       messages: 
       output: 
       stacktrace: 
@@ -2340,12 +2491,12 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1019
       parentUniqueId: TestsEditorMode.dll/Urd/Test/[TestsEditorMode][Urd.Test.TestServiceLocator][suite]
-    m_ResultText: TestLocalizationService (0.005s)
+    m_ResultText: TestEventBusService (0.018s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 6554089b
-      m_LastClickedID: -1693952923
+      m_SelectedIDs: 9e0437ef
+      m_LastClickedID: -281607010
       m_ExpandedIDs: 9f8509876554089b7d87879ed3cd659f11ee18c1e557abf7d367a4f8985d340bffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -2372,7 +2523,7 @@ MonoBehaviour:
       selectedCategoryMask: 0
       availableCategories:
       - Uncategorized
---- !u!114 &24
+--- !u!114 &25
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2392,9 +2543,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1536
+    x: 1737
     y: 73
-    width: 1023
+    width: 822
     height: 918
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -2407,13 +2558,13 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 468
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &25
+--- !u!114 &26
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
