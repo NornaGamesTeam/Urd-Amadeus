@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 00c713a09ac0eea4aaa6531991a70f7f
   m_SerializeEntries:
-  - m_GUID: 1c17ed95f2dd21d46b9a113d6e6e4912
-    m_Address: DebugTest
+  - m_GUID: d8279e4e38024b24e8a8954d295f3d08
+    m_Address: TestAssetObjects
     m_ReadOnly: 0
     m_SerializedLabels:
     - Test
