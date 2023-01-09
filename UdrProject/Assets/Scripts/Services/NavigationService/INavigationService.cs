@@ -5,9 +5,9 @@ namespace Urd.Services
 {
     public interface INavigationService : IBaseService
     {
-        void Open(INavigable navegable, Action<bool> OnOpenNavegable);
-        bool IsOpen(INavigable navegable);
-        void Close(INavigable navegable, Action<bool> OnCloseNavegable);
+        void Open(INavigable navigable, Action<bool> onOpenNavigableCallback);
+        bool IsOpen(INavigable navigable);
+        void Close(INavigable navigable, Action<bool> onCloseNavigable);
 
     }
 }

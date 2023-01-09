@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Networking;
+using Urd.Error;
 using Urd.Services.Navigation;
 
 namespace Urd.Services
@@ -9,39 +12,77 @@ namespace Urd.Services
         private List<INavigable> _navigableOpened = new List<INavigable>();
         private List<INavigable> _navigableHistory = new List<INavigable>();
 
+        private List<INavigationManager> _navigationManagers = new List<INavigationManager>();
+        
         public override void Init()
         {
-            base.Init();
+            _navigationManagers.Add(new NavigationPopupManager());
         }
 
-        public void Open(INavigable navegable, Action<bool> OnOpenNavegable)
+        public void Open(INavigable navigable, Action<bool> onOpenNavigableCallback)
         {
-            _navigableOpened.Add(navegable);
-            navegable.ChangeStatus(NavigableStatus.Open);
+            var navigationManager = GetNavigationManager(navigable);
+            if (navigationManager == null)
+            {
+                var error = new ErrorModel(
+                    $"[NavigationService] There no manager for the navigable {navigable}",
+                    ErrorCode.Error_404_Not_Found,
+                    UnityWebRequest.Result.DataProcessingError);
+                Debug.LogWarning(error.ToString());
+                return;
+            }
 
-            AddToHistory(navegable);
+            if (!navigationManager.CanOpen(navigable))
+            {
+                onOpenNavigableCallback?.Invoke(false);
+                return;
+            }
 
-            OnOpenNavegable?.Invoke(true);
-
-            navegable.ChangeStatus(NavigableStatus.Idle);
+            navigationManager.Open(navigable,
+                (success) => OnOpenNavigable(success, navigable, onOpenNavigableCallback));
         }
 
-        public bool IsOpen(INavigable navegable)
+
+        private void OnOpenNavigable(bool success, INavigable navigable, Action<bool> onOpenNavigableCallback)
         {
-            return _navigableOpened.Exists(navegableOpened => navegableOpened.Id == navegable.Id);
+            if (success)
+            {
+                _navigableOpened.Add(navigable);
+                AddToHistory(navigable);
+            }
+
+            onOpenNavigableCallback?.Invoke(success);
+        }
+        
+        private INavigationManager GetNavigationManager(INavigable navigable)
+        {
+            for (int i = 0; i < _navigationManagers.Count; i++)
+            {
+                if (_navigationManagers[i].CanHandle(navigable))
+                {
+                    return _navigationManagers[i];
+                }
+            }
+
+            return null;
         }
 
-        private void AddToHistory(INavigable navegable)
+        public bool IsOpen(INavigable navigable)
         {
-            _navigableHistory.Add(navegable);
+            return _navigableOpened.Exists(navigableOpened => navigableOpened.Id == navigable.Id);
         }
 
-        public void Close(INavigable navegable, Action<bool> OnCloseNavegable)
+        private void AddToHistory(INavigable navigable)
         {
-            _navigableOpened.Remove(navegable);
-            navegable.ChangeStatus(NavigableStatus.Closed);
+            _navigableHistory.Add(navigable);
+        }
 
-            OnCloseNavegable?.Invoke(true);
+        public void Close(INavigable navigable, Action<bool> onCloseNavigable)
+        {
+            _navigableOpened.Remove(navigable);
+            navigable.ChangeStatus(NavigableStatus.Closed);
+
+            onCloseNavigable?.Invoke(true);
         }
     }
 }
