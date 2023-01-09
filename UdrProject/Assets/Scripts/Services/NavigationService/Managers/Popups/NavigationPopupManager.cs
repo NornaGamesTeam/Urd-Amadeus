@@ -16,7 +16,7 @@ namespace Urd.Services.Navigation
 
         public void Open(INavigable navigable, Action<bool> onOpenNavigable)
         {
-            throw new NotImplementedException();
+            onOpenNavigable?.Invoke(true);
         }
 
         public bool CanOpen(INavigable navigable)
@@ -24,14 +24,9 @@ namespace Urd.Services.Navigation
             return true;
         }
 
-        public bool IsOpen(INavigable navigable)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Close(INavigable navigable, Action<bool> onCloseNavigable)
         {
-            throw new NotImplementedException();
+            onCloseNavigable?.Invoke(true);
         }
     }
 }

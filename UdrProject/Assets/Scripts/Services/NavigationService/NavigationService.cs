@@ -29,6 +29,8 @@ namespace Urd.Services
                     ErrorCode.Error_404_Not_Found,
                     UnityWebRequest.Result.DataProcessingError);
                 Debug.LogWarning(error.ToString());
+
+                onOpenNavigableCallback?.Invoke(false);
                 return;
             }
 
@@ -77,12 +79,33 @@ namespace Urd.Services
             _navigableHistory.Add(navigable);
         }
 
-        public void Close(INavigable navigable, Action<bool> onCloseNavigable)
+        public void Close(INavigable navigable, Action<bool> onCloseNavigableCallback)
         {
-            _navigableOpened.Remove(navigable);
-            navigable.ChangeStatus(NavigableStatus.Closed);
+            var navigationManager = GetNavigationManager(navigable);
+            if (navigationManager == null)
+            {
+                var error = new ErrorModel(
+                    $"[NavigationService] There no manager for the navigable {navigable}",
+                    ErrorCode.Error_404_Not_Found,
+                    UnityWebRequest.Result.DataProcessingError);
+                Debug.LogWarning(error.ToString());
+                onCloseNavigableCallback?.Invoke(false);
+                
+                return;
+            }
+            
+            navigationManager.Close(navigable, (success) => OnCloseNavigable(success, navigable, onCloseNavigableCallback));
+        }
 
-            onCloseNavigable?.Invoke(true);
+        private void OnCloseNavigable(bool success, INavigable navigable, Action<bool> onCloseNavigable)
+        {
+            if (success)
+            {
+                _navigableOpened.Remove(navigable);
+                navigable.ChangeStatus(NavigableStatus.Closed);
+            }
+
+            onCloseNavigable?.Invoke(success);
         }
     }
 }

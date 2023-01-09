@@ -8,7 +8,6 @@ namespace Urd.Services.Navigation
 
         void Open(INavigable navigable, Action<bool> onOpenNavigable);
         bool CanOpen(INavigable navigable);
-        bool IsOpen(INavigable navigable);
         void Close(INavigable navigable, Action<bool> onCloseNavigable);
     }
 }

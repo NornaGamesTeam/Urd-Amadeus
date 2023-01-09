@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="925376bf-a809-42a9-b0c3-7a10036cf7e1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UdrProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UdrProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Scripts/Services/LocalizationService/EditorLocalizationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Scripts/Services/LocalizationService/EditorLocalizationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Scripts/Utils/UrdEditorUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Scripts/Utils/UrdEditorUtils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/INavigationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/INavigationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/INavigationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/INavigationManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/NavigationPopupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/NavigationPopupManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/NavigationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/NavigationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/PlayMode/Services/TestUnityService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/PlayMode/Services/TestUnityService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +24,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ef85d0231b4441b83db57eb0a44f6b2de18/a8/0bae20f3/UnityWebRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/90ee3cbb9dbb439fb2a3106cefde0581564d90/1e/a8375628/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99feab6f3db6407493924fe4a179a95b814000/b2/31f8dd1e/MenuItem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/Scripts/Services/NavigationService/EditorNavigationPopupManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupTypesConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -69,10 +83,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16368">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="16368" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -88,7 +102,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673297634013</updated>
-      <workItem from="1673297636726" duration="6501000" />
+      <workItem from="1673297636726" duration="8446000" />
     </task>
     <servers />
   </component>
@@ -99,5 +113,63 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs</url>
+          <line>23</line>
+          <properties documentPath="D:\User\Documents\Urd\UdrProject\Assets\Tests\EditorMode\Services\TestNavigationPopupManager.cs" initialLine="23" containingFunctionPresentation="method 'SetUp'">
+            <startOffsets>
+              <option value="635" />
+            </startOffsets>
+            <endOffsets>
+              <option value="680" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs</url>
+          <line>33</line>
+          <properties documentPath="D:\User\Documents\Urd\UdrProject\Assets\Tests\EditorMode\Services\TestNavigationPopupManager.cs" initialLine="33" containingFunctionPresentation="method 'NavigationService_Open_Success'">
+            <startOffsets>
+              <option value="953" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1007" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs</url>
+          <line>41</line>
+          <properties documentPath="D:\User\Documents\Urd\UdrProject\Assets\Tests\EditorMode\Services\TestNavigationPopupManager.cs" initialLine="41" containingFunctionPresentation="method 'NavigationService_IsOpen_Success'">
+            <startOffsets>
+              <option value="1163" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1217" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs</url>
+          <line>51</line>
+          <properties documentPath="D:\User\Documents\Urd\UdrProject\Assets\Tests\EditorMode\Services\TestNavigationPopupManager.cs" initialLine="51" containingFunctionPresentation="method 'NavigationService_Close_Success'">
+            <startOffsets>
+              <option value="1461" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1515" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

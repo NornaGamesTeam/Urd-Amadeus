@@ -7,7 +7,7 @@ namespace Urd.Services
     {
         void Open(INavigable navigable, Action<bool> onOpenNavigableCallback);
         bool IsOpen(INavigable navigable);
-        void Close(INavigable navigable, Action<bool> onCloseNavigable);
+        void Close(INavigable navigable, Action<bool> onCloseNavigableCallback);
 
     }
 }

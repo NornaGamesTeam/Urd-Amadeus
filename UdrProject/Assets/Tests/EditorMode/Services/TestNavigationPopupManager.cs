@@ -6,12 +6,12 @@ using Urd.Services.Navigation;
 
 namespace Urd.Test
 {
-    public class TestNavigationService
+    public class TestNavigationPopupManager
     {
         private IAssetService _assetService;
         private INavigationService _navigationService;
 
-        private NavigableArbitraryClass _navigableArbitraryClass;
+        private PopupModel _popupModel;
         private bool _onOpenCallback;
 
         [SetUp]
@@ -25,36 +25,36 @@ namespace Urd.Test
             _navigationService.SetServiceLocatorService(serviceLocator);
             _navigationService.Init();
 
-            _navigableArbitraryClass = new NavigableArbitraryClass();
+            _popupModel = new PopupModel(PopupType.Info);
         }
 
         [Test]
-        public void NavigationService_Open_Failed()
+        public void NavigationService_Open_Success()
         {
-            _navigationService.Open(_navigableArbitraryClass, OnOpenNavegable);
+            _navigationService.Open(_popupModel, OnOpenNavegable);
 
-            Assert.That(_onOpenCallback, Is.False);
+            Assert.That(_onOpenCallback, Is.True);
         }
 
         [Test]
-        public void NavigationService_IsOpen_Failed()
+        public void NavigationService_IsOpen_Success()
         {
-            _navigationService.Open(_navigableArbitraryClass, OnOpenNavegable);
+            _navigationService.Open(_popupModel, OnOpenNavegable);
 
-            bool isOpen = _navigationService.IsOpen(_navigableArbitraryClass);
+            bool isOpen = _navigationService.IsOpen(_popupModel);
             
-            Assert.That(_onOpenCallback && isOpen, Is.False);
+            Assert.That(_onOpenCallback && isOpen, Is.True);
         }
 
         [Test]
-        public void NavigationService_Close_Failed()
+        public void NavigationService_Close_Success()
         {
-            _navigationService.Open(_navigableArbitraryClass, OnOpenNavegable);
-            _navigationService.Close(_navigableArbitraryClass, OnOpenNavegable);
+            _navigationService.Open(_popupModel, OnOpenNavegable);
+            _navigationService.Close(_popupModel, OnOpenNavegable);
 
-            bool isOpen = _navigationService.IsOpen(_navigableArbitraryClass);
+            bool isOpen = _navigationService.IsOpen(_popupModel);
 
-            Assert.That(_onOpenCallback && !isOpen, Is.False);
+            Assert.That(_onOpenCallback && !isOpen, Is.True);
         }
 
         private void OnOpenNavegable(bool success)
