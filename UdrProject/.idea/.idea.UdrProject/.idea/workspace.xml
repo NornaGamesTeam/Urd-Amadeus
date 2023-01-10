@@ -2,17 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="925376bf-a809-42a9-b0c3-7a10036cf7e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UdrProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UdrProject/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Editor/Scripts/Services/LocalizationService/EditorLocalizationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Scripts/Services/LocalizationService/EditorLocalizationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Scripts/Utils/UrdEditorUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Scripts/Utils/UrdEditorUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/INavigationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/INavigationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/INavigationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/INavigationManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LoadingScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LoadingScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/NavigationPopupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/NavigationPopupManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/NavigationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/NavigationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupModel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupTypes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupType.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupTypes.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupTypesConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupTypesConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/Resources/PopupTypesConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/Resources/PopupTypesConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/ResourceHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/ResourceHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tests/PlayMode/Services/TestUnityService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/PlayMode/Services/TestUnityService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,11 +28,19 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ef85d0231b4441b83db57eb0a44f6b2de18/a8/0bae20f3/UnityWebRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/88d854ea2c91426ebc464f01cd71aa85157a00/ed/130cf374/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/88d854ea2c91426ebc464f01cd71aa85157a00/ef/ae1323cb/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/90ee3cbb9dbb439fb2a3106cefde0581564d90/1e/a8375628/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/90ee3cbb9dbb439fb2a3106cefde0581564d90/e3/ae09e1be/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99feab6f3db6407493924fe4a179a95b814000/b2/31f8dd1e/MenuItem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a058e4ec6a7e4491ac617ff088a69454134c18/b6/e2357ff3/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f40d2ed085934200883648594ebf68b917a730/a7/f9ea59fe/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Scripts/Services/NavigationService/EditorNavigationPopupManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupTypes.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupTypesConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupViews/IPopupView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupViews/PopupView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupViews/PopupViewNoModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -39,23 +51,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\estop\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\estop\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\estop\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\estop\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\estop\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\estop\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.10f1\Editor\Unity.exe" />
@@ -83,10 +95,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16368">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="16368" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -103,6 +115,7 @@
       <option name="presentableId" value="Default" />
       <updated>1673297634013</updated>
       <workItem from="1673297636726" duration="8446000" />
+      <workItem from="1673386241577" duration="3691000" />
     </task>
     <servers />
   </component>
@@ -119,52 +132,52 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs</url>
-          <line>23</line>
+          <line>24</line>
           <properties documentPath="D:\User\Documents\Urd\UdrProject\Assets\Tests\EditorMode\Services\TestNavigationPopupManager.cs" initialLine="23" containingFunctionPresentation="method 'SetUp'">
             <startOffsets>
-              <option value="635" />
+              <option value="660" />
             </startOffsets>
             <endOffsets>
-              <option value="680" />
+              <option value="705" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs</url>
-          <line>33</line>
+          <line>34</line>
           <properties documentPath="D:\User\Documents\Urd\UdrProject\Assets\Tests\EditorMode\Services\TestNavigationPopupManager.cs" initialLine="33" containingFunctionPresentation="method 'NavigationService_Open_Success'">
             <startOffsets>
-              <option value="953" />
+              <option value="972" />
             </startOffsets>
             <endOffsets>
-              <option value="1007" />
+              <option value="1030" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs</url>
-          <line>41</line>
+          <line>42</line>
           <properties documentPath="D:\User\Documents\Urd\UdrProject\Assets\Tests\EditorMode\Services\TestNavigationPopupManager.cs" initialLine="41" containingFunctionPresentation="method 'NavigationService_IsOpen_Success'">
             <startOffsets>
-              <option value="1163" />
+              <option value="1186" />
             </startOffsets>
             <endOffsets>
-              <option value="1217" />
+              <option value="1244" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs</url>
-          <line>51</line>
+          <line>52</line>
           <properties documentPath="D:\User\Documents\Urd\UdrProject\Assets\Tests\EditorMode\Services\TestNavigationPopupManager.cs" initialLine="51" containingFunctionPresentation="method 'NavigationService_Close_Success'">
             <startOffsets>
-              <option value="1461" />
+              <option value="1492" />
             </startOffsets>
             <endOffsets>
-              <option value="1515" />
+              <option value="1550" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />

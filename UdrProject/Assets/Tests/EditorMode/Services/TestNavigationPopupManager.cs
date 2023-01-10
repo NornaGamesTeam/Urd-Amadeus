@@ -1,6 +1,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using Urd.Popup;
 using Urd.Services;
 using Urd.Services.Navigation;
 
@@ -11,7 +12,7 @@ namespace Urd.Test
         private IAssetService _assetService;
         private INavigationService _navigationService;
 
-        private PopupModel _popupModel;
+        private PopupInfoModel _popupInfoModel;
         private bool _onOpenCallback;
 
         [SetUp]
@@ -25,13 +26,13 @@ namespace Urd.Test
             _navigationService.SetServiceLocatorService(serviceLocator);
             _navigationService.Init();
 
-            _popupModel = new PopupModel(PopupType.Info);
+            _popupInfoModel = new PopupInfoModel();
         }
 
         [Test]
         public void NavigationService_Open_Success()
         {
-            _navigationService.Open(_popupModel, OnOpenNavegable);
+            _navigationService.Open(_popupInfoModel, OnOpenNavigable);
 
             Assert.That(_onOpenCallback, Is.True);
         }
@@ -39,9 +40,9 @@ namespace Urd.Test
         [Test]
         public void NavigationService_IsOpen_Success()
         {
-            _navigationService.Open(_popupModel, OnOpenNavegable);
+            _navigationService.Open(_popupInfoModel, OnOpenNavigable);
 
-            bool isOpen = _navigationService.IsOpen(_popupModel);
+            bool isOpen = _navigationService.IsOpen(_popupInfoModel);
             
             Assert.That(_onOpenCallback && isOpen, Is.True);
         }
@@ -49,22 +50,17 @@ namespace Urd.Test
         [Test]
         public void NavigationService_Close_Success()
         {
-            _navigationService.Open(_popupModel, OnOpenNavegable);
-            _navigationService.Close(_popupModel, OnOpenNavegable);
+            _navigationService.Open(_popupInfoModel, OnOpenNavigable);
+            _navigationService.Close(_popupInfoModel, OnOpenNavigable);
 
-            bool isOpen = _navigationService.IsOpen(_popupModel);
+            bool isOpen = _navigationService.IsOpen(_popupInfoModel);
 
             Assert.That(_onOpenCallback && !isOpen, Is.True);
         }
 
-        private void OnOpenNavegable(bool success)
+        private void OnOpenNavigable(bool success)
         {
             _onOpenCallback = success;
-        }
-
-        private class NavigableArbitraryClass : Navigable
-        {
-            public override string Id => "NavigableArbitraryClass";
         }
     }
 }

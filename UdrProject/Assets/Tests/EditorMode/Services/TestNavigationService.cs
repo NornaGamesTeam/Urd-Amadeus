@@ -31,7 +31,7 @@ namespace Urd.Test
         [Test]
         public void NavigationService_Open_Failed()
         {
-            _navigationService.Open(_navigableArbitraryClass, OnOpenNavegable);
+            _navigationService.Open(_navigableArbitraryClass, OnOpenNavigable);
 
             Assert.That(_onOpenCallback, Is.False);
         }
@@ -39,7 +39,7 @@ namespace Urd.Test
         [Test]
         public void NavigationService_IsOpen_Failed()
         {
-            _navigationService.Open(_navigableArbitraryClass, OnOpenNavegable);
+            _navigationService.Open(_navigableArbitraryClass, OnOpenNavigable);
 
             bool isOpen = _navigationService.IsOpen(_navigableArbitraryClass);
             
@@ -49,15 +49,15 @@ namespace Urd.Test
         [Test]
         public void NavigationService_Close_Failed()
         {
-            _navigationService.Open(_navigableArbitraryClass, OnOpenNavegable);
-            _navigationService.Close(_navigableArbitraryClass, OnOpenNavegable);
+            _navigationService.Open(_navigableArbitraryClass, OnOpenNavigable);
+            _navigationService.Close(_navigableArbitraryClass, OnOpenNavigable);
 
             bool isOpen = _navigationService.IsOpen(_navigableArbitraryClass);
 
             Assert.That(_onOpenCallback && !isOpen, Is.False);
         }
 
-        private void OnOpenNavegable(bool success)
+        private void OnOpenNavigable(bool success)
         {
             _onOpenCallback = success;
         }

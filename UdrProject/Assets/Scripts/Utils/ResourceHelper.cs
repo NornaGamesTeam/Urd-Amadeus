@@ -1,32 +1,34 @@
-using System;
 using UnityEngine;
 
-public class ResourceHelper<T> where T : UnityEngine.Object
+namespace Urd.Utils
 {
-    public T FileLoaded
+    public class ResourceHelper<T> where T : UnityEngine.Object
     {
-        get
+        public T FileLoaded
         {
-            if(_fileLoaded == null)
+            get
             {
-                LoadFile();
+                if (_fileLoaded == null)
+                {
+                    LoadFile();
+                }
+
+                return _fileLoaded;
             }
-
-            return _fileLoaded;
         }
-    }
 
-    private T _fileLoaded;
-    private string _path;
+        private T _fileLoaded;
+        private string _path;
 
-    public ResourceHelper(string path)
-    {
-        _path = path;
-        LoadFile();
-    }
+        public ResourceHelper(string path)
+        {
+            _path = path;
+            LoadFile();
+        }
 
-    private void LoadFile()
-    {
-        _fileLoaded = Resources.Load<T>(_path);
+        private void LoadFile()
+        {
+            _fileLoaded = Resources.Load<T>(_path);
+        }
     }
 }
