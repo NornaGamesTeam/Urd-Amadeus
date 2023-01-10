@@ -18,13 +18,13 @@ namespace Urd.Services.Navigation
                 return false;
             }
             
-            var popupType = popupModel.PopupTypes;
+            var popupType = popupModel.PopupType;
             return _popupList.Exists( popupInfo => popupInfo.PopupType == popupType);
         }
         
         public bool TryGetPopupView(PopupModel navigable, out IPopupView popupView)
         {
-            popupView = _popupList.Find( popupInfo => popupInfo.PopupType == navigable.PopupTypes)?.PopupView;
+            popupView = _popupList.Find( popupInfo => popupInfo.PopupType == navigable.PopupType)?.PopupView;
             return popupView != null;
         }
     }

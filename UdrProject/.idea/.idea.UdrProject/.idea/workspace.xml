@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="925376bf-a809-42a9-b0c3-7a10036cf7e1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UdrProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UdrProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Scripts/Services/LocalizationService/EditorLocalizationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Scripts/Services/LocalizationService/EditorLocalizationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LoadingScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LoadingScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/AssetService/IAssetService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/AssetService/IAssetService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/NavigationPopupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/NavigationPopupManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupModel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupTypes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupType.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupTypes.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupModels/PopupModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupModels/PopupModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupTypesConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupTypesConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/Resources/PopupTypesConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/Resources/PopupTypesConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/ResourceHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/ResourceHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationPopupManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/EditorMode/Services/TestNavigationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupViews/IPopupView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/NavigationService/Managers/Popups/PopupViews/IPopupView.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +105,7 @@
       <option name="presentableId" value="Default" />
       <updated>1673297634013</updated>
       <workItem from="1673297636726" duration="8446000" />
-      <workItem from="1673386241577" duration="3691000" />
+      <workItem from="1673386241577" duration="4736000" />
     </task>
     <servers />
   </component>

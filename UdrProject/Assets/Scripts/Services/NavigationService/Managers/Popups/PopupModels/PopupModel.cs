@@ -4,13 +4,13 @@ namespace Urd.Popup
 {
     public class PopupModel : Navigable
     {
-        public override string Id => PopupTypes.ToString();
+        public override string Id => PopupType.ToString();
 
-        public PopupTypes PopupTypes { get; protected set; }
+        public PopupTypes PopupType { get; protected set; }
         
-        public PopupModel(PopupTypes popupTypes)
+        public PopupModel(PopupTypes popupType)
         {
-            PopupTypes = popupTypes;
+            PopupType = popupType;
         }
     }
 }
