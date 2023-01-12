@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using Urd.Error;
@@ -16,7 +17,9 @@ namespace Urd.Services.Navigation
         private Transform _popupParent;
         
         private IAssetService _assetService;
-        
+
+        private List<IPopupView> _popupsOpened = new List<IPopupView>();
+            
         public NavigationPopupManager()
         {
             _assetService = StaticServiceLocator.Get<IAssetService>();
@@ -69,8 +72,6 @@ namespace Urd.Services.Navigation
             }
             
             _assetService.Instantiate(popupViewPrefab.GameObject, _popupParent, (popupView) => OnInstantiatePopup(popupView, popupModel, onOpenNavigable));
-            
-            onOpenNavigable?.Invoke(true);
         }
 
         private void OnInstantiatePopup(GameObject popupViewGameObject, PopupModel popupModel, Action<bool> onOpenNavigable)
@@ -87,7 +88,9 @@ namespace Urd.Services.Navigation
             }
 
             var popupView = popupViewGameObject.GetComponent<IPopupView>();
+            _popupsOpened.Add(popupView);
             popupView.SetPopupModel(popupModel);
+            onOpenNavigable?.Invoke(true);
         }
 
         public bool CanOpen(INavigable navigable)
@@ -97,6 +100,16 @@ namespace Urd.Services.Navigation
 
         public void Close(INavigable navigable, Action<bool> onCloseNavigable)
         {
+            var popupToClose = _popupsOpened.Find(
+                popupView => popupView.PopupModel.Id == navigable.Id);
+            if (popupToClose == null)
+            {
+                return;
+            }
+            
+            _popupsOpened.Remove(popupToClose);
+            _assetService.Destroy(popupToClose.GameObject);
+            
             onCloseNavigable?.Invoke(true);
         }
     }

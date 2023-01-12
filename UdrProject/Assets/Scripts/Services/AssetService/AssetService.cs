@@ -127,6 +127,11 @@ namespace Urd.Services
             instantiateCallback.Invoke(newGameObject);
         }
 
+        public void Destroy(GameObject gameObject)
+        {
+            GameObject.Destroy(gameObject);
+        }
+
         private void InstantiateInternal(string addressName, Transform parent, Action<GameObject> instantiateCallback)
         {
             Addressables.InstantiateAsync(addressName, parent).Completed += (task) => OnInstantiate(task, addressName, instantiateCallback);
