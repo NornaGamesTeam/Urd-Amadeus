@@ -1,8 +1,6 @@
 using System;
-using NSubstitute.Extensions;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
 using Urd.Error;
 using Urd.Popup;
 using Urd.Utils;
@@ -70,7 +68,7 @@ namespace Urd.Services.Navigation
                 return;
             }
             
-            _assetService.Instantiate(popupViewPrefab, _popupParent, (popupView) => OnInstantiatePopup(popupView, popupModel, onOpenNavigable));
+            _assetService.Instantiate(popupViewPrefab.GameObject, _popupParent, (popupView) => OnInstantiatePopup(popupView, popupModel, onOpenNavigable));
             
             onOpenNavigable?.Invoke(true);
         }

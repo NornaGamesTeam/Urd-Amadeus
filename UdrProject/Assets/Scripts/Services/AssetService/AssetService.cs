@@ -121,6 +121,12 @@ namespace Urd.Services
             InstantiateInternal(addressName, parent, instantiateCallback);
         }
 
+        public void Instantiate(GameObject prefab, Transform parent, Action<GameObject> instantiateCallback)
+        {
+            var newGameObject = GameObject.Instantiate(prefab, parent);
+            instantiateCallback.Invoke(newGameObject);
+        }
+
         private void InstantiateInternal(string addressName, Transform parent, Action<GameObject> instantiateCallback)
         {
             Addressables.InstantiateAsync(addressName, parent).Completed += (task) => OnInstantiate(task, addressName, instantiateCallback);

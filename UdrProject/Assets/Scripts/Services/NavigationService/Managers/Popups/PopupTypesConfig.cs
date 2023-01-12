@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Castle.Components.DictionaryAdapter;
 using UnityEngine;
 using Urd.Popup;
 using Urd.View.Popup;
@@ -24,7 +25,8 @@ namespace Urd.Services.Navigation
         
         public bool TryGetPopupView(PopupModel navigable, out IPopupView popupView)
         {
-            popupView = _popupList.Find( popupInfo => popupInfo.PopupType == navigable.PopupType)?.PopupView;
+            var rawPopupView = _popupList.Find( popupInfo => popupInfo.PopupType == navigable.PopupType)?.PopupView;
+            popupView = rawPopupView as IPopupView;
             return popupView != null;
         }
     }
