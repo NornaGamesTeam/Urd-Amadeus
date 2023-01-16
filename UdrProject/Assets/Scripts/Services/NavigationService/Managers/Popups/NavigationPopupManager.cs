@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PlasticGui.WorkspaceWindow.QueryViews.Changesets;
 using UnityEngine;
 using UnityEngine.Networking;
 using Urd.Error;
@@ -18,7 +19,7 @@ namespace Urd.Services.Navigation
         
         private IAssetService _assetService;
 
-        private List<IPopupView> _popupsOpened = new List<IPopupView>();
+        private List<PopupBodyView> _popupsOpened = new List<PopupBodyView>();
             
         public NavigationPopupManager()
         {
@@ -59,7 +60,7 @@ namespace Urd.Services.Navigation
         public void Open(INavigable navigable, Action<bool> onOpenNavigable)
         {
             var popupModel = navigable as PopupModel;
-            
+
             if(!_popupTypesConfig.TryGetPopupView(popupModel, out var popupViewPrefab))
             {
                 var error = new ErrorModel(
@@ -71,10 +72,20 @@ namespace Urd.Services.Navigation
                 return;
             }
             
-            _assetService.Instantiate(popupViewPrefab.GameObject, _popupParent, (popupView) => OnInstantiatePopup(popupView, popupModel, onOpenNavigable));
+            _assetService.Instantiate(_popupTypesConfig.PopupBodyPrefab.gameObject, _popupParent,
+                (popupBody) => OnInstantiatePopupBody(popupBody,popupViewPrefab, popupModel, onOpenNavigable));
+
         }
 
-        private void OnInstantiatePopup(GameObject popupViewGameObject, PopupModel popupModel, Action<bool> onOpenNavigable)
+        private void OnInstantiatePopupBody(GameObject popupBodyGameObject, IPopupView popupViewPrefab, PopupModel popupModel,
+            Action<bool> onOpenNavigable)
+        {
+            var popupBody = popupBodyGameObject.GetComponent<PopupBodyView>();
+            _assetService.Instantiate(popupViewPrefab.GameObject, popupBody.Container, (popupView) => OnInstantiatePopupView(popupBody, popupView, popupModel, onOpenNavigable));
+        }
+
+        private void OnInstantiatePopupView(PopupBodyView popupBody, GameObject popupViewGameObject,
+            PopupModel popupModel, Action<bool> onOpenNavigable)
         {
             if (popupViewGameObject == null)
             {
@@ -86,11 +97,15 @@ namespace Urd.Services.Navigation
                 onOpenNavigable?.Invoke(false);
                 return;
             }
-
+            
             var popupView = popupViewGameObject.GetComponent<IPopupView>();
-            _popupsOpened.Add(popupView);
             popupView.SetPopupModel(popupModel);
+            popupBody.SetPopupView(popupView);
+            _popupsOpened.Add(popupBody);
             onOpenNavigable?.Invoke(true);
+            
+            popupBody.PopupModel.ChangeStatus(NavigableStatus.Opening);
+            popupBody.Open();
         }
 
         public bool CanOpen(INavigable navigable)
@@ -101,16 +116,27 @@ namespace Urd.Services.Navigation
         public void Close(INavigable navigable, Action<bool> onCloseNavigable)
         {
             var popupToClose = _popupsOpened.Find(
-                popupView => popupView.PopupModel.Id == navigable.Id);
+                popupBody => popupBody.PopupModel.Id == navigable.Id 
+                && !popupBody.PopupModel.IsClosingOrDestroyed);
             if (popupToClose == null)
             {
                 return;
             }
             
-            _popupsOpened.Remove(popupToClose);
-            _assetService.Destroy(popupToClose.GameObject);
+            popupToClose.PopupModel.ChangeStatus(NavigableStatus.Closing);
+            popupToClose.PopupModel.OnStatusChanged += (statusFrom, statusTo) => OnPopupModelToCloseChangeStatus(popupToClose, statusFrom, statusTo, onCloseNavigable);
             
-            onCloseNavigable?.Invoke(true);
+            popupToClose.Close();
+        }
+
+        private void OnPopupModelToCloseChangeStatus(PopupBodyView popupToClose, NavigableStatus statusFrom, NavigableStatus statusTo, Action<bool> onCloseNavigable)
+        {
+            if (statusTo == NavigableStatus.Closed)
+            {
+                _popupsOpened.Remove(popupToClose);
+                _assetService.Destroy(popupToClose.gameObject);
+                onCloseNavigable?.Invoke(true);
+            }
         }
     }
 }

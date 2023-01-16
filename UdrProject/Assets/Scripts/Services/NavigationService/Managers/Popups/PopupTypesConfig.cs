@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Castle.Components.DictionaryAdapter;
 using UnityEngine;
 using Urd.Popup;
 using Urd.View.Popup;
@@ -8,6 +7,9 @@ namespace Urd.Services.Navigation
 {
     public class PopupTypesConfig : ScriptableObject
     {
+        [field: SerializeField]
+        public PopupBodyView PopupBodyPrefab { get; private set; }
+
         [SerializeField]
         private List<PopupTypesConfigInfo> _popupList = new List<PopupTypesConfigInfo>();
 

@@ -7,7 +7,7 @@ namespace Urd.Popup
         public override string Id => PopupType.ToString();
 
         public PopupTypes PopupType { get; protected set; }
-        
+
         public PopupModel(PopupTypes popupType)
         {
             PopupType = popupType;

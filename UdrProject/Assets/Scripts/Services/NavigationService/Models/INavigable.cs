@@ -6,7 +6,9 @@ namespace Urd.Services.Navigation
     {
         string Id { get; }
         NavigableStatus Status { get; }
-        Action<NavigableStatus, NavigableStatus> OnStatusChanged { get; }
+        event Action<NavigableStatus, NavigableStatus> OnStatusChanged;
+
+        public bool IsClosingOrDestroyed { get; }
 
         void ChangeStatus(NavigableStatus newNavigableStatus);
     }

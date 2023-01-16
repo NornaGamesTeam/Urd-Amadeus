@@ -1,5 +1,4 @@
 using UnityEngine;
-using Urd.Popup;
 
 namespace Urd.View.Popup
 {

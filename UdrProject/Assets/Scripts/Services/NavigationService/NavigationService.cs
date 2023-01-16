@@ -79,8 +79,13 @@ namespace Urd.Services
             _navigableHistory.Add(navigable);
         }
 
-        public void Close(INavigable navigable, Action<bool> onCloseNavigableCallback)
+        public void Close(INavigable navigable, Action<bool> onCloseNavigableCallback = null)
         {
+            if (navigable.IsClosingOrDestroyed)
+            {
+                return;
+            }
+            
             var navigationManager = GetNavigationManager(navigable);
             if (navigationManager == null)
             {
@@ -102,7 +107,7 @@ namespace Urd.Services
             if (success)
             {
                 _navigableOpened.Remove(navigable);
-                navigable.ChangeStatus(NavigableStatus.Closed);
+                navigable.ChangeStatus(NavigableStatus.Destroyed);
             }
 
             onCloseNavigable?.Invoke(success);

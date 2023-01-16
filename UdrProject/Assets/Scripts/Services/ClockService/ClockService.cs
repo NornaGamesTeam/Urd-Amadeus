@@ -14,7 +14,7 @@ namespace Urd.Services
 
         private ICoroutineService _coroutineService;
 
-        private bool _update;
+        private bool _update = true;
 
         public override void Init()
         {

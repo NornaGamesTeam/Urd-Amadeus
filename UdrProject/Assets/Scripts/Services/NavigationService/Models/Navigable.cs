@@ -6,7 +6,11 @@ namespace Urd.Services.Navigation
     {
         public abstract string Id { get; }
         public NavigableStatus Status { get; private set; }
-        public Action<NavigableStatus, NavigableStatus> OnStatusChanged { get; }
+        public event Action<NavigableStatus, NavigableStatus> OnStatusChanged;
+        
+        public bool IsClosingOrDestroyed => Status == NavigableStatus.Closing ||
+                                            Status == NavigableStatus.Closed ||
+                                            Status == NavigableStatus.Destroyed;
 
         public void ChangeStatus(NavigableStatus newNavigableStatus)
         {
@@ -14,7 +18,7 @@ namespace Urd.Services.Navigation
             {
                 var lastStatus = Status;
                 Status = newNavigableStatus;
-                OnStatusChanged?.Invoke(lastStatus, lastStatus);
+                OnStatusChanged?.Invoke(lastStatus, Status);
             }
         }
     }

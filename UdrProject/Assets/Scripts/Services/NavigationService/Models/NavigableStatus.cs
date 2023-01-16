@@ -3,8 +3,10 @@ namespace Urd.Services.Navigation
     public enum NavigableStatus
     {
         None,
-        Open,
+        Opening,
         Idle,
+        Closing,
         Closed,
+        Destroyed,
     }
 }
