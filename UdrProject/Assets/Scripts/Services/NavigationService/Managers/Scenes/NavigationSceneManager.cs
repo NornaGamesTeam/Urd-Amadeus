@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.SceneManagement;
+using Urd.Error;
+using Urd.Scene;
+using Urd.Utils;
+
+namespace Urd.Services.Navigation
+{
+    public class NavigationSceneManager : INavigationManager
+    {
+        private IAssetService _assetService;
+
+        private List<SceneModel> _scenesOpened = new List<SceneModel>();
+            
+        public NavigationSceneManager()
+        {
+            _assetService = StaticServiceLocator.Get<IAssetService>();
+        }
+
+        public bool CanHandle(INavigable navigable)
+        {
+            return navigable is SceneModel;
+        }
+
+        public void Open(INavigable navigable, Action<bool> onOpenNavigable)
+        {
+            var sceneModel = navigable as SceneModel;
+
+            // iterate for the scnees looking for mine
+            var scene = SceneManager.sceneCountInBuildSettings;
+            
+            if(!scene.IsValid())
+            {
+                var error = new ErrorModel(
+                    $"[NavigationSceneManager] Error when try to get the Scene from the index, scene type {sceneModel.SceneType}",
+                    ErrorCode.Error_404_Not_Found, UnityWebRequest.Result.DataProcessingError);
+                Debug.LogWarning(error.ToString());
+                
+                onOpenNavigable?.Invoke(false);
+                return;
+            }
+            
+            _assetService.LoadScene(sceneModel.Id, (sceneInstance) => OnLoadScene(sceneInstance, sceneModel, onOpenNavigable));
+
+        }
+
+        private void OnLoadScene(SceneInstance sceneInstance, SceneModel sceneModel, Action<bool> onOpenNavigable)
+        {
+            if (!sceneInstance.Scene.IsValid())
+            {
+                var error = new ErrorModel(
+                    $"[NavigationPopupManager] Error when try to load the scene, scene type {sceneModel.SceneType}",
+                    ErrorCode.Error_404_Not_Found, UnityWebRequest.Result.DataProcessingError);
+                Debug.LogWarning(error.ToString());
+                
+                onOpenNavigable?.Invoke(false);
+                return;
+            }
+
+            sceneModel.SetSceneInstance(sceneInstance);
+            _scenesOpened.Add(sceneModel);
+            onOpenNavigable?.Invoke(true);
+        }
+
+        public bool CanOpen(INavigable navigable)
+        {
+            return true;
+        }
+
+        public void Close(INavigable navigable, Action<bool> onCloseNavigable)
+        {
+            var sceneToClose = _scenesOpened.Find(
+                scene => scene.Id == navigable.Id);
+            if (sceneToClose != null)
+            {
+                return;
+            }
+            
+            sceneToClose.ChangeStatus(NavigableStatus.Closing);
+            
+            _assetService.UnLoadScene(sceneToClose.SceneInstance, success => OnSceneModelToCloseChangeStatus(success, sceneToClose, onCloseNavigable));
+        }
+
+        private void OnSceneModelToCloseChangeStatus(bool success, SceneModel sceneToClose,
+            Action<bool> onCloseNavigable)
+        {
+            _scenesOpened.Remove(sceneToClose);
+            onCloseNavigable?.Invoke(success);
+        }
+    }
+}

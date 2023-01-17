@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using Urd.Error;
+using Urd.Scene;
 using Urd.Services.Navigation;
 
 namespace Urd.Services
@@ -18,6 +19,7 @@ namespace Urd.Services
         {
             _navigationManagers.Add(new NavigationPopupManager());
             _navigationManagers.Add(new NavigationBoomerangManager());
+            _navigationManagers.Add(new NavigationSceneManager());
         }
 
         public void Open(INavigable navigable, Action<bool> onOpenNavigableCallback)

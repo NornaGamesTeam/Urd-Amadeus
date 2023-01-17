@@ -83,7 +83,7 @@ namespace Urd.Services
 
             LoadSceneInternal(sceneName, onLoadSceneCallback);
         }
-
+        
         private void LoadSceneInternal(IResourceLocation resourceLocation, Action<SceneInstance> onLoadSceneCallback)
         {
             Addressables.LoadSceneAsync(resourceLocation, UnityEngine.SceneManagement.LoadSceneMode.Additive).Completed += (task) => OnLoadScene(task, resourceLocation.PrimaryKey, onLoadSceneCallback);
@@ -103,6 +103,27 @@ namespace Urd.Services
                 return;
             }
             onLoadSceneCallback?.Invoke(task.Result);
+        }
+
+        public void UnLoadScene(SceneInstance sceneInstance, Action<bool> onUnloadSceneCallback)
+        {
+            UnloadSceneInternal(sceneInstance, onUnloadSceneCallback);
+        }
+        
+        private void UnloadSceneInternal(SceneInstance sceneInstance, Action<bool> onLoadSceneCallback)
+        {
+            Addressables.UnloadSceneAsync(sceneInstance).Completed += (task) => OnUnloadScene(task, sceneInstance, onLoadSceneCallback);
+        }
+
+        private void OnUnloadScene(AsyncOperationHandle<SceneInstance> task, SceneInstance sceneInstance, Action<bool> onLoadSceneCallback)
+        {
+            if (task.Status == AsyncOperationStatus.Failed)
+            {
+                Debug.LogWarning($"[AssetService] OnLoadScene {sceneInstance.Scene.name} cannot unload");
+                onLoadSceneCallback?.Invoke(false);
+                return;
+            }
+            onLoadSceneCallback?.Invoke(true);
         }
 
         public void Instantiate(string addressName, Transform parent, Action<GameObject> instantiateCallback)

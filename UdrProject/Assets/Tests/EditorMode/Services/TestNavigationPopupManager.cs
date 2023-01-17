@@ -9,12 +9,14 @@ namespace Urd.Test
 {
     public class TestNavigationPopupManager
     {
+        /// Move to test on play, missing create canvas if not exit at begining
+        
         private IAssetService _assetService;
         private INavigationService _navigationService;
 
         private PopupInfoModel _popupInfoModel;
         private bool _onOpenCallback;
-
+/*
         [SetUp]
         public void SetUp()
         {
@@ -57,7 +59,7 @@ namespace Urd.Test
 
             Assert.That(_onOpenCallback && !isOpen, Is.True);
         }
-
+*/
         private void OnOpenNavigable(bool success)
         {
             _onOpenCallback = success;

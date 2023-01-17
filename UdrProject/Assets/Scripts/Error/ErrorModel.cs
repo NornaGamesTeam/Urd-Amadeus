@@ -24,5 +24,9 @@ namespace Urd.Error
             ConectionResult = conectionResult;
         }
 
+        public override string ToString()
+        {
+            return $"Error: {Message}. ErrorCode: {ErrorCode}";
+        }
     }
 }
