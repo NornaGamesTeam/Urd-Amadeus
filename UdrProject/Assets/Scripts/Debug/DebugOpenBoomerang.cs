@@ -1,9 +1,9 @@
 using UnityEngine;
-using Urd.Popup;
+using Urd.Boomerang;
 using Urd.Services;
 using Urd.Utils;
 
-public class DebugOpenPopup : MonoBehaviour
+public class DebugOpenBoomerang : MonoBehaviour
 {
     [SerializeField] 
     private bool _enabled;
@@ -20,13 +20,13 @@ public class DebugOpenPopup : MonoBehaviour
         
         if (Input.GetKeyDown(_keyCode))
         {
-            dynamic popupInfoModel = new PopupInfoModel();
+            var popupInfoModel = new BoomerangInfoModel();
             StaticServiceLocator.Get<INavigationService>().Open(popupInfoModel, null);
         }
     }
 
-    private void OnOpenPopup(bool success)
+    private void OnOpenBoomerang(bool success)
     {
-        Debug.Log($"Popup Opened {success}");
+        Debug.Log($"Boomerang Opened {success}");
     }
 }

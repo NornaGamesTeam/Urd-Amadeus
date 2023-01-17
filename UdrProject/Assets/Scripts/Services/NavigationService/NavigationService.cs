@@ -17,6 +17,7 @@ namespace Urd.Services
         public override void Init()
         {
             _navigationManagers.Add(new NavigationPopupManager());
+            _navigationManagers.Add(new NavigationBoomerangManager());
         }
 
         public void Open(INavigable navigable, Action<bool> onOpenNavigableCallback)

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using PlasticGui.WorkspaceWindow.QueryViews.Changesets;
 using UnityEngine;
 using UnityEngine.Networking;
 using Urd.Error;
@@ -30,11 +29,11 @@ namespace Urd.Services.Navigation
 
         private void LoadParent()
         {
-            _popupParent = GameObject.FindWithTag(CanvasNames.PopupCanvas.ToString())?.transform;
+            _popupParent = GameObject.FindWithTag(CanvasTagNames.PopupCanvas.ToString())?.transform;
             if (_popupParent == null)
             {
                 var error = new ErrorModel(
-                    $"[NavigationPopupManager] Error when try to get the popup Canvas with Tag {CanvasNames.PopupCanvas}",
+                    $"[NavigationPopupManager] Error when try to get the popup Canvas with Tag {CanvasTagNames.PopupCanvas}",
                     ErrorCode.Error_404_Not_Found, UnityWebRequest.Result.DataProcessingError);
                 Debug.LogWarning(error.ToString());
             }
