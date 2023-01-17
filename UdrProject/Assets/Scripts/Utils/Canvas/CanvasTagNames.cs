@@ -1,7 +1,8 @@
 namespace Urd.Utils
 {
-    public enum CanvasNames
+    public enum CanvasTagNames
     {
         PopupCanvas,
+        BoomerangCanvas
     }
 }

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8457022142200454235}
   - component: {fileID: 6689099720961535558}
   - component: {fileID: 7049886798147483797}
+  - component: {fileID: 1657948217779527205}
   m_Layer: 0
   m_Name: PopupCanvas
-  m_TagString: Untagged
+  m_TagString: PopupCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,8 +58,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -874685957
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &6689099720961535558
 MonoBehaviour:
@@ -100,3 +101,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1657948217779527205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3178136800796118182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0caf5cbb2f9d2c45bdf857aeb406d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasesGamesConfig: {fileID: 11400000, guid: d1dbb79db3009eb42a1eaddd16286041, type: 2}
+  _canvasTagName: 0
