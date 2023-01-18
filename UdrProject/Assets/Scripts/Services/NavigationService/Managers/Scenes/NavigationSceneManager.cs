@@ -30,22 +30,30 @@ namespace Urd.Services.Navigation
         {
             var sceneModel = navigable as SceneModel;
 
-            // iterate for the scnees looking for mine
-            var scene = SceneManager.sceneCountInBuildSettings;
-            
-            if(!scene.IsValid())
+            if(TryGetBuildSceneBuildIndex(sceneModel.Id, out int buildIndex))
             {
-                var error = new ErrorModel(
-                    $"[NavigationSceneManager] Error when try to get the Scene from the index, scene type {sceneModel.SceneType}",
-                    ErrorCode.Error_404_Not_Found, UnityWebRequest.Result.DataProcessingError);
-                Debug.LogWarning(error.ToString());
-                
-                onOpenNavigable?.Invoke(false);
-                return;
+                sceneModel.SetBuildIndex(buildIndex);
             }
             
-            _assetService.LoadScene(sceneModel.Id, (sceneInstance) => OnLoadScene(sceneInstance, sceneModel, onOpenNavigable));
+            _assetService.LoadScene(sceneModel, (sceneInstance) 
+                => OnLoadScene(sceneInstance, sceneModel, onOpenNavigable));
 
+        }
+
+        private bool TryGetBuildSceneBuildIndex(string sceneModelId, out int buildIndex)
+        {
+            buildIndex = 0;
+            for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+            {
+                var sceneTemp = SceneUtility.GetScenePathByBuildIndex(i);
+                var sceneName = sceneTemp.Substring(sceneTemp.LastIndexOf("/"), sceneModelId.Length);
+                if (sceneName == sceneModelId)
+                {
+                    buildIndex = i;
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void OnLoadScene(SceneInstance sceneInstance, SceneModel sceneModel, Action<bool> onOpenNavigable)

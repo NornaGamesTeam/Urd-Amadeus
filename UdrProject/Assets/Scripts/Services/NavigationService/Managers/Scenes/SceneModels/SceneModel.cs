@@ -10,6 +10,8 @@ namespace Urd.Scene
         public SceneTypes SceneType { get; protected set; }
 
         public SceneInstance SceneInstance { get; protected set; }
+        public int BuildIndex { get; protected set; } = -1;
+        public bool IsInBuildIndex => BuildIndex >= 0; 
 
         public SceneModel(SceneTypes sceneType)
         {
@@ -19,6 +21,11 @@ namespace Urd.Scene
         public void SetSceneInstance(SceneInstance sceneInstance)
         {
             SceneInstance = sceneInstance;
+        }
+
+        public void SetBuildIndex(int buildIndex)
+        {
+            BuildIndex = buildIndex;
         }
     }
 }

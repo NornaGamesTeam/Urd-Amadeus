@@ -6,6 +6,8 @@ using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.SceneManagement;
+using Urd.Scene;
 
 namespace Urd.Services
 {
@@ -68,33 +70,66 @@ namespace Urd.Services
             assetCallback?.Invoke(task.Result);
         }
 
-        public void LoadScene(string sceneName, Action<SceneInstance> onLoadSceneCallback)
+        public void LoadScene(SceneModel sceneModel, Action<SceneInstance> onLoadSceneCallback)
         {
-            _resourceLocator.Locate(sceneName, typeof(SceneInstance), out var location);
+            if (sceneModel.IsInBuildIndex)
+            {
+                LoadSceneFromBuildIndex(sceneModel, onLoadSceneCallback);
+            }
+            else
+            {
+                LoadSceneFromAddressable(sceneModel, onLoadSceneCallback);
+            }
+        }
+
+        private void LoadSceneFromBuildIndex(SceneModel sceneModel, Action<SceneInstance> onLoadSceneCallback)
+        {
+            SceneManager.LoadSceneAsync(sceneModel.BuildIndex, LoadSceneMode.Additive)
+                .completed += (task) => OnLoadSceneFromBuildIndex(sceneModel, task, onLoadSceneCallback); 
+        }
+
+        private void OnLoadSceneFromBuildIndex(SceneModel sceneModel, AsyncOperation task,
+            Action<SceneInstance> onLoadSceneCallback)
+        {
+            if (!task.isDone)
+            {
+                Debug.LogWarning($"[AssetService] OnLoadScene {sceneModel.Id} cannot Instantiate");
+                onLoadSceneCallback?.Invoke(default(SceneInstance));
+                return;
+            }
+            var temp = new SceneInstance();
+            onLoadSceneCallback.Invoke();
+        }
+
+        private void LoadSceneFromAddressable(SceneModel sceneModel, Action<SceneInstance> onLoadSceneCallback)
+        {
+            _resourceLocator.Locate(sceneModel, typeof(SceneInstance), out var location);
 
             if (location != null && location.Count > 0)
             {
                 if (location.Count > 1)
                 {
-                    Debug.LogWarning($"[AssetService] LoadScene {sceneName}, more than 1 asset with this name");
+                    Debug.LogWarning($"[AssetService] LoadScene {sceneModel}, more than 1 asset with this name");
                 }
                 LoadSceneInternal(location[0], onLoadSceneCallback);
             }
 
-            LoadSceneInternal(sceneName, onLoadSceneCallback);
+            LoadSceneInternal(sceneModel.Id, onLoadSceneCallback);
         }
         
         private void LoadSceneInternal(IResourceLocation resourceLocation, Action<SceneInstance> onLoadSceneCallback)
         {
-            Addressables.LoadSceneAsync(resourceLocation, UnityEngine.SceneManagement.LoadSceneMode.Additive).Completed += (task) => OnLoadScene(task, resourceLocation.PrimaryKey, onLoadSceneCallback);
+            Addressables.LoadSceneAsync(resourceLocation, UnityEngine.SceneManagement.LoadSceneMode.Additive)
+                .Completed += (task) => OnLoadScene(task, resourceLocation.PrimaryKey, onLoadSceneCallback);
         }
 
         private void LoadSceneInternal(string sceneName, Action<SceneInstance> onLoadSceneCallback)
         {
-            Addressables.LoadSceneAsync(sceneName, UnityEngine.SceneManagement.LoadSceneMode.Additive).Completed += (task) => OnLoadScene(task, sceneName, onLoadSceneCallback);
+            Addressables.LoadSceneAsync(sceneName, UnityEngine.SceneManagement.LoadSceneMode.Additive)
+                .Completed += (task) => OnLoadScene(task, sceneName, onLoadSceneCallback);
         }
 
-        private void OnLoadScene(AsyncOperationHandle<UnityEngine.ResourceManagement.ResourceProviders.SceneInstance> task, string sceneName, Action<SceneInstance> onLoadSceneCallback)
+        private void OnLoadScene(AsyncOperationHandle<SceneInstance> task, string sceneName, Action<SceneInstance> onLoadSceneCallback)
         {
             if (task.Status == AsyncOperationStatus.Failed)
             {
@@ -112,7 +147,8 @@ namespace Urd.Services
         
         private void UnloadSceneInternal(SceneInstance sceneInstance, Action<bool> onLoadSceneCallback)
         {
-            Addressables.UnloadSceneAsync(sceneInstance).Completed += (task) => OnUnloadScene(task, sceneInstance, onLoadSceneCallback);
+            Addressables.UnloadSceneAsync(sceneInstance).Completed += (task)
+                => OnUnloadScene(task, sceneInstance, onLoadSceneCallback);
         }
 
         private void OnUnloadScene(AsyncOperationHandle<SceneInstance> task, SceneInstance sceneInstance, Action<bool> onLoadSceneCallback)
@@ -155,12 +191,14 @@ namespace Urd.Services
 
         private void InstantiateInternal(string addressName, Transform parent, Action<GameObject> instantiateCallback)
         {
-            Addressables.InstantiateAsync(addressName, parent).Completed += (task) => OnInstantiate(task, addressName, instantiateCallback);
+            Addressables.InstantiateAsync(addressName, parent).Completed += (task) 
+                => OnInstantiate(task, addressName, instantiateCallback);
         }
 
         private void InstantiateInternal(IResourceLocation resourceLocation, Transform parent, Action<GameObject> instantiateCallback)
         {
-            Addressables.InstantiateAsync(resourceLocation, parent).Completed += (task) => OnInstantiate(task, resourceLocation.InternalId, instantiateCallback);
+            Addressables.InstantiateAsync(resourceLocation, parent).Completed += (task) 
+                => OnInstantiate(task, resourceLocation.InternalId, instantiateCallback);
         }
 
         private void OnInstantiate(AsyncOperationHandle<GameObject> task, string addressableName, Action<GameObject> instantiateCallback)

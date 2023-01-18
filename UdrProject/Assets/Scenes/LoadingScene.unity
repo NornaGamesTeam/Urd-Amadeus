@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29de9b785b6f33548b8572f8a60d4550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enabled: 0
+  _enabled: 1
   _keyCode: 52
 --- !u!114 &1129641014
 MonoBehaviour:
