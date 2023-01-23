@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.TestTools;
 using Urd.Error;
+using Urd.Scene;
 using Urd.Services;
 using Urd.Services.Network;
 
@@ -20,7 +21,7 @@ namespace Urd.Test
         public const string TEST_PNG = TEST_FOLDER +"TestPNG.png";
         public const string TEST_MP3 = TEST_FOLDER + "TestMP3.mp3";
         public const string TEST_GameObject = TEST_FOLDER + "TestGameObject.prefab";
-        public const string TEST_Scene = TEST_FOLDER + "TestScene.unity";
+        public const string TEST_Scene = TEST_FOLDER + "Test.unity";
 
         private IAssetService _assetService;
 
@@ -29,13 +30,15 @@ namespace Urd.Test
         private Sprite _loadSprite;
         private AudioClip _loadAudio;
         private GameObject _loadGameObject;
-        private SceneInstance _loadSceneInstance;
+        private SceneModel _loadSceneInstance;
+        private SceneModel _sceneModel;
 
         [SetUp]
         public void SetUp()
         {
             _assetService = new AssetService();
             _assetService.Init();
+            _sceneModel = new SceneModel(SceneTypes.Test);
         }
 
         [UnityTest]
@@ -91,16 +94,19 @@ namespace Urd.Test
         {
             yield return new WaitUntil(() => _assetService.IsInitialized);
 
-            _assetService.LoadScene(TEST_Scene, OnSceneCallback);
+            _assetService.LoadScene(_sceneModel, OnSceneCallback);
 
             yield return new WaitUntil(() => _onLoadCallback);
 
             Assert.That(_loadSceneInstance, Is.Not.Null);
         }
-        private void OnSceneCallback(SceneInstance sceneInstance)
+        private void OnSceneCallback(SceneModel sceneModel)
         {
             _onLoadCallback = true;
-            _loadSceneInstance = sceneInstance;
+            if (sceneModel.HasScene)
+            {
+                _loadSceneInstance = sceneModel;
+            }
         } 
 
         private void OnLoadGameObject(GameObject gameObject)

@@ -36,7 +36,7 @@ namespace Urd.Services.Navigation
             }
             
             _assetService.LoadScene(sceneModel, (sceneInstance) 
-                => OnLoadScene(sceneInstance, sceneModel, onOpenNavigable));
+                => OnLoadScene(sceneModel, onOpenNavigable));
 
         }
 
@@ -56,9 +56,9 @@ namespace Urd.Services.Navigation
             return false;
         }
 
-        private void OnLoadScene(SceneInstance sceneInstance, SceneModel sceneModel, Action<bool> onOpenNavigable)
+        private void OnLoadScene(SceneModel sceneModel, Action<bool> onOpenNavigable)
         {
-            if (!sceneInstance.Scene.IsValid())
+            if (sceneModel.HasScene)
             {
                 var error = new ErrorModel(
                     $"[NavigationPopupManager] Error when try to load the scene, scene type {sceneModel.SceneType}",
@@ -68,8 +68,7 @@ namespace Urd.Services.Navigation
                 onOpenNavigable?.Invoke(false);
                 return;
             }
-
-            sceneModel.SetSceneInstance(sceneInstance);
+            
             _scenesOpened.Add(sceneModel);
             onOpenNavigable?.Invoke(true);
         }
@@ -90,7 +89,7 @@ namespace Urd.Services.Navigation
             
             sceneToClose.ChangeStatus(NavigableStatus.Closing);
             
-            _assetService.UnLoadScene(sceneToClose.SceneInstance, success => OnSceneModelToCloseChangeStatus(success, sceneToClose, onCloseNavigable));
+            _assetService.UnLoadScene(sceneToClose, success => OnSceneModelToCloseChangeStatus(success, sceneToClose, onCloseNavigable));
         }
 
         private void OnSceneModelToCloseChangeStatus(bool success, SceneModel sceneToClose,
