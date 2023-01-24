@@ -11,7 +11,7 @@ namespace Urd.Services.Navigation
 {
     public class NavigationBoomerangManager : INavigationManager
     {
-        private const string POPUP_TYPES_CONFIG_PATH = "BoomerangTypesConfig";
+        private const string POPUP_TYPES_CONFIG_PATH = "Navigation/BoomerangTypesConfig";
         
         private BoomerangTypesConfig _boomerangTypesConfig;
         private Transform _boomerangParent;

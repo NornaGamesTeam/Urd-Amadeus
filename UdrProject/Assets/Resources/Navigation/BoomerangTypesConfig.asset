@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62573e2dde99c98488ac7b5471e8b683, type: 3}
   m_Name: BoomerangTypesConfig
   m_EditorClassIdentifier: 
+  <BoomerangCanvas>k__BackingField: {fileID: 8457022142200454235, guid: 7dab5e17bbfc9bd4b95362f5ade38d33, type: 3}
   <BoomerangDefaultDuration>k__BackingField: 0.5
   <BoomerangBodyPrefab>k__BackingField: {fileID: -2802510768603615166, guid: f6191f46f8e85614b82a703d96bc5b46, type: 3}
   _boomerangList:

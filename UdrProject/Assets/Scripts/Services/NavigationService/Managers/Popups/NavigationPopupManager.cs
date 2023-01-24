@@ -11,7 +11,7 @@ namespace Urd.Services.Navigation
 {
     public class NavigationPopupManager : INavigationManager
     {
-        private const string POPUP_TYPES_CONFIG_PATH = "PopupTypesConfig";
+        private const string POPUP_TYPES_CONFIG_PATH = "Navigation/PopupTypesConfig";
         
         private PopupTypesConfig _popupTypesConfig;
         private Transform _popupParent;

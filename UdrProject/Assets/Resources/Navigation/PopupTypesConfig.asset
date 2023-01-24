@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3352b5a352f55c2468a60aaabd3ae721, type: 3}
   m_Name: PopupTypesConfig
   m_EditorClassIdentifier: 
+  <PopupCanvas>k__BackingField: {fileID: 8457022142200454235, guid: 83c6cbfebca608140ad22559c5314c04, type: 3}
   <PopupBodyPrefab>k__BackingField: {fileID: 2880849120491472155, guid: 8df070e4d65f3d2498f499fcda0fcdee, type: 3}
   _popupList:
   - <PopupType>k__BackingField: 1
