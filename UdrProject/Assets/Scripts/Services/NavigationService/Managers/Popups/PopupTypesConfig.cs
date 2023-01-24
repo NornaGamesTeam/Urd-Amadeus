@@ -8,6 +8,9 @@ namespace Urd.Services.Navigation
     public class PopupTypesConfig : ScriptableObject
     {
         [field: SerializeField]
+        public Canvas PopupCanvas { get; private set; }
+        
+        [field: SerializeField]
         public PopupBodyView PopupBodyPrefab { get; private set; }
 
         [SerializeField]

@@ -8,6 +8,9 @@ namespace Urd.Services.Navigation
     public class BoomerangTypesConfig : ScriptableObject
     {
         [field: SerializeField]
+        public Canvas BoomerangCanvas { get; private set; }
+        
+        [field: SerializeField]
         public float BoomerangDefaultDuration { get; private set; }
         
         [field: SerializeField]

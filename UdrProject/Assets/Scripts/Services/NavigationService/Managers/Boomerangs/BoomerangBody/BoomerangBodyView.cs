@@ -24,6 +24,7 @@ namespace Urd.View.Boomerang
 
         public void Open()
         {
+            BoomerangModel.ChangeStatus(NavigableStatus.Opening);
             OnBeginOpen();
         }
         
@@ -44,6 +45,7 @@ namespace Urd.View.Boomerang
         {
             if (!BoomerangModel.IsClosingOrDestroyed)
             {
+                BoomerangModel.ChangeStatus(NavigableStatus.Closing);
                 StaticServiceLocator.Get<INavigationService>().Close(BoomerangModel);
                 OnBeginClose();
             }

@@ -46,7 +46,7 @@ namespace Urd.Services.Navigation
             for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
             {
                 var sceneTemp = SceneUtility.GetScenePathByBuildIndex(i);
-                var sceneName = sceneTemp.Substring(sceneTemp.LastIndexOf("/"), sceneModelId.Length);
+                var sceneName = sceneTemp.Substring(sceneTemp.LastIndexOf("/")+1, sceneModelId.Length);
                 if (sceneName == sceneModelId)
                 {
                     buildIndex = i;
@@ -58,7 +58,7 @@ namespace Urd.Services.Navigation
 
         private void OnLoadScene(SceneModel sceneModel, Action<bool> onOpenNavigable)
         {
-            if (sceneModel.HasScene)
+            if (!sceneModel.HasScene)
             {
                 var error = new ErrorModel(
                     $"[NavigationPopupManager] Error when try to load the scene, scene type {sceneModel.SceneType}",
@@ -82,7 +82,7 @@ namespace Urd.Services.Navigation
         {
             var sceneToClose = _scenesOpened.Find(
                 scene => scene.Id == navigable.Id);
-            if (sceneToClose != null)
+            if (sceneToClose == null)
             {
                 return;
             }

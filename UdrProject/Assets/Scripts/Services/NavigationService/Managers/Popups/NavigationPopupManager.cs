@@ -23,8 +23,8 @@ namespace Urd.Services.Navigation
         public NavigationPopupManager()
         {
             _assetService = StaticServiceLocator.Get<IAssetService>();
-            LoadParent();
             LoadPopupTypesConfig();
+            LoadParent();
         }
 
         private void LoadParent()
@@ -32,11 +32,14 @@ namespace Urd.Services.Navigation
             _popupParent = GameObject.FindWithTag(CanvasTagNames.PopupCanvas.ToString())?.transform;
             if (_popupParent == null)
             {
-                var error = new ErrorModel(
-                    $"[NavigationPopupManager] Error when try to get the popup Canvas with Tag {CanvasTagNames.PopupCanvas}",
-                    ErrorCode.Error_404_Not_Found, UnityWebRequest.Result.DataProcessingError);
-                Debug.LogWarning(error.ToString());
+                CreatePopupParent();
             }
+        }
+
+        private void CreatePopupParent()
+        {
+            _assetService.Instantiate(_popupTypesConfig.PopupCanvas.gameObject, null, 
+                newPopupCanvas => _popupParent = newPopupCanvas.transform );
         }
 
         private void LoadPopupTypesConfig()
@@ -103,7 +106,6 @@ namespace Urd.Services.Navigation
             _popupsOpened.Add(popupBody);
             onOpenNavigable?.Invoke(true);
             
-            popupBody.PopupModel.ChangeStatus(NavigableStatus.Opening);
             popupBody.Open();
         }
 
@@ -115,14 +117,15 @@ namespace Urd.Services.Navigation
         public void Close(INavigable navigable, Action<bool> onCloseNavigable)
         {
             var popupToClose = _popupsOpened.Find(
-                popupBody => popupBody.PopupModel.Id == navigable.Id 
-                && !popupBody.PopupModel.IsClosingOrDestroyed);
+                popupBody => 
+                    popupBody.PopupModel.Id == navigable.Id &&
+                    !popupBody.PopupModel.IsClosingOrDestroyed);
+            
             if (popupToClose == null)
             {
                 return;
             }
             
-            popupToClose.PopupModel.ChangeStatus(NavigableStatus.Closing);
             popupToClose.PopupModel.OnStatusChanged += (statusFrom, statusTo) => OnPopupModelToCloseChangeStatus(popupToClose, statusFrom, statusTo, onCloseNavigable);
             
             popupToClose.Close();

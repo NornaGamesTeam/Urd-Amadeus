@@ -5,13 +5,15 @@ namespace Urd.Scene
 {
     public class SceneModel : Navigable
     {
+        private const int EMPTY_BUILD_INDEX = -1; 
+        
         public override string Id => SceneType.ToString();
 
         public SceneTypes SceneType { get; protected set; }
 
         public SceneInstance SceneInstance { get; protected set; }
         public UnityEngine.SceneManagement.Scene Scene { get; protected set; }
-        public int BuildIndex { get; protected set; } = -1;
+        public int BuildIndex { get; protected set; } = EMPTY_BUILD_INDEX;
         public bool IsInBuildIndex => BuildIndex >= 0;
         public bool HasScene => SceneInstance.Scene.IsValid() || Scene.IsValid();
 
@@ -24,7 +26,7 @@ namespace Urd.Scene
         {
             SceneInstance = sceneInstance;
         }
-
+        
         public void SetBuildIndex(int buildIndex)
         {
             BuildIndex = buildIndex;
@@ -32,7 +34,14 @@ namespace Urd.Scene
 
         public void SetScene(UnityEngine.SceneManagement.Scene scene)
         {
-            
+            Scene = scene;
+        }
+        
+        public void CleanScene()
+        {
+            BuildIndex = EMPTY_BUILD_INDEX;
+            Scene = new UnityEngine.SceneManagement.Scene();
+            SceneInstance = new SceneInstance();
         }
     }
 }

@@ -24,6 +24,8 @@ namespace Urd.View.Popup
 
         public void Open()
         {
+            PopupModel.ChangeStatus(NavigableStatus.Opening);
+
             OnBeginOpen();
         }
         
@@ -42,6 +44,7 @@ namespace Urd.View.Popup
         {
             if (!PopupModel.IsClosingOrDestroyed)
             {
+                PopupModel.ChangeStatus(NavigableStatus.Closing);
                 StaticServiceLocator.Get<INavigationService>().Close(PopupModel);
                 OnBeginClose();
             }

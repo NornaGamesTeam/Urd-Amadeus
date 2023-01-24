@@ -178,8 +178,8 @@ namespace Urd.Services
                 onUnloadSceneCallback?.Invoke(false);
                 return;
             }
-            
-            sceneModel.SetScene(new UnityEngine.SceneManagement.Scene());
+
+            sceneModel.CleanScene();
             onUnloadSceneCallback.Invoke(true);
         }
 
@@ -198,7 +198,7 @@ namespace Urd.Services
                 onLoadSceneCallback?.Invoke(false);
                 return;
             }
-            sceneModel.SetSceneInstance(new SceneInstance());
+            sceneModel.CleanScene();
             onLoadSceneCallback?.Invoke(true);
         }
 
