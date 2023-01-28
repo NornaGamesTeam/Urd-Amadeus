@@ -1,0 +1,34 @@
+{
+    "name": "TestInputDefinition",
+    "maps": [
+        {
+            "name": "Editor",
+            "id": "8e7f7c04-8229-43a7-8b8d-dfcbd4f6cb7f",
+            "actions": [
+                {
+                    "name": "TestActionSpace",
+                    "type": "Button",
+                    "id": "d9409475-4b15-4a0b-9eb5-7e4434dfb604",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a1ebdcb9-beef-4015-ac32-084ae131abdd",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestActionSpace",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

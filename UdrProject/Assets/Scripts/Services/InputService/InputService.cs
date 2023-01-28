@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Urd.Utils;
 
 namespace Urd.Services
 {
     public class InputService : BaseService, IInputService
     {
+        private List<InputAction> _actions = new List<InputAction>();
+        
         public override void Init()
         {
             base.Init();
@@ -17,28 +20,40 @@ namespace Urd.Services
 
         private void LoadAllInputs()
         {
-            /*
-            var list = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes())
-                                .Where(x => typeof(IInputActionCollection2).IsAssignableFrom(x) && !x.IsInterface &&
-                                            !x.IsAbstract)
-                                .Select(x => x.Name).ToList();
-            Debug.Log("list");
-            */
+            var types = AssemblyHelper.GetTypesThatImplement<IInputActionCollection2>();
+            for (int i = types.Count - 1; i >= 0; i--)
+            {
+                var newInputDefinition = Activator.CreateInstance(types[i]) as IInputActionCollection2;
+
+                SaveActions(newInputDefinition);
+            }
         }
 
-        private List<Type> GetTypesThatImplement<T>()
+        private void SaveActions(IInputActionCollection2 newInputDefinition)
         {
-            var list = new List<Type>();
-            var typeT = typeof(T);
-            foreach (var type in Assembly.GetExecutingAssembly().GetTypes())
+            foreach (var inputAction in newInputDefinition)
             {
-                if (typeT.IsAssignableFrom(type) && !type.IsInterface)
-                {
-                    list.Add(type);
-                }
+                inputAction.Enable();
+                _actions.Add(inputAction);
             }
+        }
 
-            return list;
+        public void SubscribeToAction(string actionName, Action<InputAction.CallbackContext> onPerformMethod)
+        {
+            var allActions = _actions.FindAll(action => action.name == actionName);
+            for (int i = allActions.Count - 1; i >= 0; i--)
+            {
+                allActions[i].performed += onPerformMethod;
+            }
+        }
+
+        public void UnsubscribeToAction(string actionName, Action<InputAction.CallbackContext> onPerformMethod)
+        {
+            var allActions = _actions.FindAll(action => action.name == actionName);
+            for (int i = allActions.Count - 1; i >= 0; i--)
+            {
+                allActions[i].performed -= onPerformMethod;
+            }
         }
     }
 }

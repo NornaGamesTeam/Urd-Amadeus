@@ -11,6 +11,7 @@ namespace Urd.Services
             ServiceLocatorService.Register<IAssetService>(new AssetService());
             
             ServiceLocatorService.Register<INavigationService>(new NavigationService());
+            ServiceLocatorService.Register<IInputService>(new InputService());
         }
     }
 }

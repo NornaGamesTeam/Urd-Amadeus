@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d1305b0abc456794eadb1104c5dcc39e
+guid: c2cc6415aed2b7c49a1af13a53e85c2d
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: 
   wrapperClassName: 
-  wrapperCodeNamespace: 
+  wrapperCodeNamespace: Urd.Test

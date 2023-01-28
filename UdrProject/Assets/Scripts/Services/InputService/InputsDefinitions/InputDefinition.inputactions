@@ -6,7 +6,7 @@
             "id": "6572a774-e8b9-45e5-a680-31a9e4f47a11",
             "actions": [
                 {
-                    "name": "Touch",
+                    "name": "TestActionA",
                     "type": "Button",
                     "id": "126ff951-9f66-419a-93c7-638b8909f173",
                     "expectedControlType": "Button",
@@ -19,11 +19,11 @@
                 {
                     "name": "",
                     "id": "53c247f1-ebb1-4a5e-9daf-a6454107a827",
-                    "path": "<Touchscreen>/Press",
+                    "path": "<Keyboard>/anyKey",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Touch",
+                    "action": "TestActionA",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
