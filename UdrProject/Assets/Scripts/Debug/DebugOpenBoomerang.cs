@@ -3,30 +3,19 @@ using Urd.Boomerang;
 using Urd.Services;
 using Urd.Utils;
 
-public class DebugOpenBoomerang : MonoBehaviour
+namespace Urd.DebugTools
 {
-    [SerializeField] 
-    private bool _enabled;
-
-    [SerializeField] 
-    private KeyCode _keyCode;
-    
-    void Update()
+    public class DebugOpenBoomerang : DebugAbstract
     {
-        if (!_enabled)
-        {
-            return;
-        }
-        
-        if (Input.GetKeyDown(_keyCode))
+        public override void OnInputGetDown()
         {
             var popupInfoModel = new BoomerangInfoModel();
             StaticServiceLocator.Get<INavigationService>().Open(popupInfoModel, null);
         }
-    }
 
-    private void OnOpenBoomerang(bool success)
-    {
-        Debug.Log($"Boomerang Opened {success}");
+        private void OnOpenBoomerang(bool success)
+        {
+            Debug.Log($"Boomerang Opened {success}");
+        }
     }
 }

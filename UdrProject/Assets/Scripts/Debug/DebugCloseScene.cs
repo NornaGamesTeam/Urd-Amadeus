@@ -1,24 +1,12 @@
-using UnityEngine;
 using Urd.Scene;
 using Urd.Services;
 using Urd.Utils;
 
-public class DebugCloseScene : MonoBehaviour
+namespace Urd.DebugTools
 {
-    [SerializeField] 
-    private bool _enabled;
-
-    [SerializeField] 
-    private KeyCode _keyCode;
-    
-    void Update()
+    public class DebugCloseScene : DebugAbstract
     {
-        if (!_enabled)
-        {
-            return;
-        }
-        
-        if (Input.GetKeyDown(_keyCode))
+        public override void OnInputGetDown()
         {
             var sceneModel = new SceneModel(SceneTypes.Info);
             StaticServiceLocator.Get<INavigationService>().Close(sceneModel, null);

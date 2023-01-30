@@ -3,30 +3,19 @@ using Urd.Popup;
 using Urd.Services;
 using Urd.Utils;
 
-public class DebugOpenPopup : MonoBehaviour
+namespace Urd.DebugTools
 {
-    [SerializeField] 
-    private bool _enabled;
-
-    [SerializeField] 
-    private KeyCode _keyCode;
-    
-    void Update()
+    public class DebugOpenPopup : DebugAbstract
     {
-        if (!_enabled)
+        public override void OnInputGetDown()
         {
-            return;
-        }
-        
-        if (Input.GetKeyDown(_keyCode))
-        {
-            dynamic popupInfoModel = new PopupInfoModel();
+            var popupInfoModel = new PopupInfoModel();
             StaticServiceLocator.Get<INavigationService>().Open(popupInfoModel, null);
         }
-    }
 
-    private void OnOpenPopup(bool success)
-    {
-        Debug.Log($"Popup Opened {success}");
+        private void OnOpenPopup(bool success)
+        {
+            Debug.Log($"Popup Opened {success}");
+        }
     }
 }
