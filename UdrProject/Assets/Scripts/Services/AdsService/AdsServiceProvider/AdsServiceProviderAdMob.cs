@@ -12,6 +12,7 @@ namespace Urd.Services.Ads
         private const string ADMOB_CONFIG_FILE_PATH = "GoogleMobileAdsSettings"; 
         
         private BannerView _banner;
+        private InterstitialAd _interstitialAd;
 
         public GoogleMobileAdsSettings _adMobSettings;
         public bool IsInitialized { get; private set; }
@@ -49,7 +50,24 @@ namespace Urd.Services.Ads
         {
             _banner?.Destroy();
         }
-        
+
+        public override void ShowInterstitial()
+        {
+            var request = new AdRequest.Builder().Build();
+            InterstitialAd.Load(GetAdUnitId(), request, OnLoadInterstitial );
+        }
+
+        private void OnLoadInterstitial(InterstitialAd newInsterstitialAd, LoadAdError loadAdError)
+        {
+            _interstitialAd = newInsterstitialAd;
+            _interstitialAd.Show();
+        }
+
+        public override void HideInterstitial()
+        {
+            _interstitialAd.Destroy();
+        }
+
         private string GetAdUnitId()
         {
             switch (Application.platform)

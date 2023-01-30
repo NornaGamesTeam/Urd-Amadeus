@@ -4,7 +4,7 @@ using Urd.Utils;
 
 namespace Urd.DebugTools
 {
-    public class DebugHideBanner : DebugAbstract
+    public class DebugAdsBannerHide : DebugAbstract
     {
         public override void OnInputGetDown()
         {

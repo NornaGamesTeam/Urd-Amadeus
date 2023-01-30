@@ -6,5 +6,8 @@ namespace Urd.Services
     {
         void ShowBanner(AdsBannerModel adsBannerModel);
         void HideBanner();
+
+        void ShowInterstitial();
+        void HideInterstitial();
     }
 }
