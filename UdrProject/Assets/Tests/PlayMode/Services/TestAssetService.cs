@@ -1,16 +1,9 @@
 using NUnit.Framework;
-using System;
 using System.Collections;
-using System.Drawing.Text;
-using System.Security.Policy;
 using UnityEngine;
-using UnityEngine.Networking;
-using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.TestTools;
-using Urd.Error;
 using Urd.Scene;
 using Urd.Services;
-using Urd.Services.Network;
 
 namespace Urd.Test
 {
