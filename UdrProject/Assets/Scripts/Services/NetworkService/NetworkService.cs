@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Drawing.Drawing2D;
-using UnityEngine.Assertions.Must;
 using UnityEngine.Networking;
 using Urd.Error;
 using Urd.Services.Network;
