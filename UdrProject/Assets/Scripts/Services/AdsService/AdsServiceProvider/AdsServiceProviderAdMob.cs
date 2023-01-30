@@ -1,7 +1,5 @@
-using System;
 using GoogleMobileAds.Api;
 using GoogleMobileAds.Editor;
-using Mono.Cecil;
 using UnityEngine;
 using Urd.Ads;
 
@@ -13,6 +11,7 @@ namespace Urd.Services.Ads
         
         private BannerView _banner;
         private InterstitialAd _interstitialAd;
+        private RewardedAd _rewardedVideo;
 
         public GoogleMobileAdsSettings _adMobSettings;
         public bool IsInitialized { get; private set; }
@@ -54,18 +53,48 @@ namespace Urd.Services.Ads
         public override void ShowInterstitial()
         {
             var request = new AdRequest.Builder().Build();
-            InterstitialAd.Load(GetAdUnitId(), request, OnLoadInterstitial );
+            InterstitialAd.Load(GetAdUnitId(), request, OnInterstitialLoaded );
         }
 
-        private void OnLoadInterstitial(InterstitialAd newInsterstitialAd, LoadAdError loadAdError)
+        private void OnInterstitialLoaded(InterstitialAd interstitial, LoadAdError loadAdError)
         {
-            _interstitialAd = newInsterstitialAd;
-            _interstitialAd.Show();
+            _interstitialAd = interstitial;
+            if (_interstitialAd.CanShowAd())
+            {
+                _interstitialAd.Show();
+            }
         }
 
         public override void HideInterstitial()
         {
             _interstitialAd.Destroy();
+        }
+
+        public override void ShowRewardedVideo()
+        {
+            var request = new AdRequest.Builder().Build();
+            RewardedAd.Load(GetAdUnitId(), request, OnRewardedVideoLoaded); 
+        }
+
+        private void OnRewardedVideoLoaded(RewardedAd rewardedVideo, LoadAdError loadAdError)
+        {
+            _rewardedVideo = rewardedVideo;
+            if (_rewardedVideo.CanShowAd())
+            {
+                var reward = _rewardedVideo.GetRewardItem();
+                reward.Type = "temp";
+                reward.Amount = 11;
+                _rewardedVideo.Show(OnRewardedVideoShowed);
+            }
+        }
+
+        private void OnRewardedVideoShowed(Reward reward)
+        {
+        }
+
+        public override void HideRewardedVideo()
+        {
+            throw new System.NotImplementedException();
         }
 
         private string GetAdUnitId()

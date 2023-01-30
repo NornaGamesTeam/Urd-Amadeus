@@ -9,5 +9,7 @@ namespace Urd.Services.Ads
         void HideBanner();
         void ShowInterstitial();
         void HideInterstitial();
+        void ShowRewardedVideo();
+        void HideRewardedVideo();
     }
 }

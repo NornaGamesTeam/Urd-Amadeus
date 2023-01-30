@@ -25,5 +25,7 @@ namespace Urd.Services
         public void HideBanner() => _adsServiceProvider.HideBanner();
         public void ShowInterstitial() => _adsServiceProvider.ShowInterstitial();
         public void HideInterstitial() => _adsServiceProvider.HideInterstitial();
+        public void ShowRewardedVideo() => _adsServiceProvider.ShowRewardedVideo();
+        public void HideRewardedVideo() => _adsServiceProvider.HideRewardedVideo();
     }
 }

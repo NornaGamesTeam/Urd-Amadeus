@@ -9,5 +9,8 @@ namespace Urd.Services
 
         void ShowInterstitial();
         void HideInterstitial();
+
+        void ShowRewardedVideo();
+        void HideRewardedVideo();
     }
 }

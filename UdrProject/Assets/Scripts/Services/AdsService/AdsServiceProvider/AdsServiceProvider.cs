@@ -11,5 +11,7 @@ namespace Urd.Services.Ads
         public abstract void HideBanner();
         public abstract void ShowInterstitial();
         public abstract void HideInterstitial();
+        public abstract void ShowRewardedVideo();
+        public abstract void HideRewardedVideo();
     }
 }
