@@ -49,7 +49,7 @@ namespace Urd.View.Localization
             _key = newKey;
         }
 
-        public void SeValueFromKey()
+        public void SetValueFromKey()
         {
             _value = GetValueFromKey();
         }
@@ -71,7 +71,7 @@ namespace Urd.View.Localization
 
         private string GetValueFromKey()
         {
-            return _localizationService.Locate(Key);
+            return _localizationService?.Locate(Key);
         }
     }
 }

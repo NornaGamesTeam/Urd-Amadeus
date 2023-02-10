@@ -12,7 +12,8 @@ namespace Urd.UrdEditor
         private const string LOCALIZATION_CONFIG_FILE_PATH = "LocalizationConfig";
         private const string LOCALIZATION_FOLDER_PATH = "Localization";
 
-        private static ResourceHelper<LocalizationConfig> _resourceHelper = new ResourceHelper<LocalizationConfig>(LOCALIZATION_CONFIG_FILE_PATH);
+        private static ResourceHelper<LocalizationConfig> _resourceHelper = 
+            new ResourceHelper<LocalizationConfig>(LOCALIZATION_FOLDER_PATH+"/"+LOCALIZATION_CONFIG_FILE_PATH);
 
         private static IEditorLocalizationServiceProvider _editorLocalizationServiceProvider = new EditorRemoteConfigLocalizationServiceProvider();
 
@@ -67,7 +68,9 @@ namespace Urd.UrdEditor
             return key;
         }
 
-        public static Dictionary<string, string> GetKeysValues() => _resourceHelper.FileLoaded.GetLanguageForLanguage(LocalizationLanguages.English);
+        public static Dictionary<string, string> GetKeysValues() => 
+            _resourceHelper.FileLoaded?.GetLanguageForLanguage(LocalizationLanguages.English)
+            ?? new Dictionary<string, string>();
 
     }
 }
