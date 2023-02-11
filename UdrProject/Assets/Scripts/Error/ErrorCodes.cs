@@ -67,5 +67,7 @@ public enum ErrorCode
     Error_700_File_Save_Error = 700,
     Error_701_File_Load_Error = 701,
 
+    Error_999_Unknown_Error = 999,
     Error_1000_Exception_Error = 1000,
+    
 }
