@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using NSubstitute;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using Urd.Error;
@@ -14,20 +14,31 @@ namespace Urd.Services
         private IInAppPurchaseProvider _provider;
 
         private IInAppPurchaseStoreListener _storeListener;
+        private IInAppPurchaseCommunication _storeCommunication;
         
         private ConfigurationBuilder _storeBuilder;
         private IStoreController _storeController;
+        private IExtensionProvider _storeExtensions;
+        
+        private Action<bool> _onPurchaseCallback;
+
         public override void Init()
         {
             base.Init();
 
             _provider = GetProvider();
+            _storeCommunication = GetCommunication();
             LoadProducts();
         }
-
+        
         private IInAppPurchaseProvider GetProvider()
         {
             return new InAppPurchaseProviderRemoteConfig();
+        }
+        
+        private IInAppPurchaseCommunication GetCommunication()
+        {
+            return new InAppPurchaseNoReceiptCommunication();
         }
 
         private void LoadProducts()
@@ -65,27 +76,71 @@ namespace Urd.Services
             return listener;
         }
 
-        public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
+        private void OnInitialized(IStoreController controller, IExtensionProvider extensions)
         {
             _storeController = controller;
+            _storeExtensions = extensions;
         }
         
-        public void OnInitializeFailed(InitializationFailureReason error)
+        private void OnInitializeFailed(InitializationFailureReason error)
         {
             var errorModel = new ErrorModel($"[InAppPurchaseService] Error when try to initialize the store: {error}",
                                        ErrorCode.Error_999_Unknown_Error);
             Debug.LogWarning(errorModel.ToString());
         }
 
-        public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs purchaseEvent)
+        public void Purchase(string productId, Action<bool> onPurchaseCallback)
         {
-            throw new System.NotImplementedException();
+            _onPurchaseCallback = onPurchaseCallback;
+            
+            _storeController.InitiatePurchase(productId);
+        }
+        
+        private PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs purchaseEvent)
+        {
+            CallPurchaseCallback(true);
+
+            _storeCommunication.SendReceipt(purchaseEvent, OnReceiptCompleted);
+            return PurchaseProcessingResult.Pending;
+        }
+        
+        private void OnReceiptCompleted(Product product)
+        {
+            if (product == null)
+            {
+                CallPurchaseCallback(false);
+                return;
+            }
+            
+            _storeController.ConfirmPendingPurchase(product);
+            CallPurchaseCallback(true);
         }
 
-        public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
+        private void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
         {
-            throw new System.NotImplementedException();
+            ErrorModel errorModel = new ErrorModel($"[InAppPruchaseService] Error when try to purchase the " +
+                                                   $"product with id: {product}: {failureReason}",
+                                                   ErrorCode.Error_999_Unknown_Error);
+            Debug.LogWarning(errorModel.ToString());
+
+            CallPurchaseCallback(false);
         }
 
+        private void CallPurchaseCallback(bool success)
+        {
+            _onPurchaseCallback?.Invoke(success);
+            _onPurchaseCallback = null;
+        }
+        
+        public void RestoreTransactions(Action<bool> onRestoreTransaction)
+        {
+            var appleExtensions = _storeExtensions.GetExtension<IAppleExtensions>();
+            if (appleExtensions == null)
+            {
+                return;
+            }
+            
+            appleExtensions.RestoreTransactions(onRestoreTransaction);
+        }
     }
 }

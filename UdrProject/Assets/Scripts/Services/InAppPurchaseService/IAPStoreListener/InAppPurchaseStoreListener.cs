@@ -19,7 +19,7 @@ namespace Urd.Services.InAppPurchase
         {
             OnInitializeFailedEvent?.Invoke(error);
         }
-
+        
         public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs purchaseEvent)
         {
             if (ProcessPurchaseEvent != null)
@@ -27,7 +27,7 @@ namespace Urd.Services.InAppPurchase
                 return ProcessPurchaseEvent.Invoke(purchaseEvent);
             }
 
-            return PurchaseProcessingResult.Complete;
+            return PurchaseProcessingResult.Pending;
         }
 
         public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
