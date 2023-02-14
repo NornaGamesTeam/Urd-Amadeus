@@ -42,6 +42,7 @@ namespace Urd.Test
         [UnityTest]
         public IEnumerator RemoteConfigurationService_FetchData_Success()
         {
+            
             _remoteConfigurationService.FetchData(OnFetchData);
             
             yield return new WaitUntil(() => _dataFetched);
@@ -112,6 +113,8 @@ namespace Urd.Test
                 OnGetRemoteConfigurationData?.Invoke(dictionary);
                 onFetchData?.Invoke();
             }
+
+            public void SetEnvironment(RemoteConfigurationEnvironmentType environment) { }
         }
     }
 }

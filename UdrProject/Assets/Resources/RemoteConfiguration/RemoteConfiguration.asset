@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd40d579a2594d544af0d10ad6e4f669, type: 3}
+  m_Name: RemoteConfiguration
+  m_EditorClassIdentifier: 
+  <Environments>k__BackingField:
+  - <EnvironmentType>k__BackingField: 0
+    <EnvironmentId>k__BackingField: ea54be02-1514-45a6-90ab-6c4776055023
+  - <EnvironmentType>k__BackingField: 1
+    <EnvironmentId>k__BackingField: 871b790e-277d-421c-a88e-96ccbbd75219

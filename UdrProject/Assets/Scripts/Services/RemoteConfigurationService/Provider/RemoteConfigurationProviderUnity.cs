@@ -1,11 +1,17 @@
 using System;
 using System.Collections.Generic;
 using Unity.Services.RemoteConfig;
+using UnityEngine;
 
 namespace Urd.Services.RemoteConfiguration
 {
     public class RemoteConfigurationProviderUnity : IRemoteConfigurationProvider
     {
+        private string REMOTE_CONFIGURATION_PATH = "RemoteConfiguration";
+        private string REMOTE_CONFIGURATION_CONFIG = "RemoteConfiguration";
+
+        private RemoteConfigurationEnvironmentsConfig _remoteConfigurationConfig;
+        
         private Action _onFetchDataCallback;
 
         private struct DummyStruct
@@ -18,12 +24,34 @@ namespace Urd.Services.RemoteConfiguration
         public RemoteConfigurationProviderUnity()
         {
             RemoteConfigService.Instance.FetchCompleted += OnFetchCompleted;
+            LoadResourceData();
+        }
+
+        void LoadResourceData()
+        {
+            var fullPath = REMOTE_CONFIGURATION_PATH + "/" +
+                           REMOTE_CONFIGURATION_CONFIG; 
+            _remoteConfigurationConfig = Resources.Load<RemoteConfigurationEnvironmentsConfig>(fullPath);
+
+            if (_remoteConfigurationConfig == null)
+            {
+                Debug.LogWarning($"[RemoteConfigurationProviderUnity] Error when try to get the config in path: {fullPath}");
+            }
         }
 
         public void FetchData(Action onFetchData)
         {
             RemoteConfigService.Instance.FetchConfigs(new DummyStruct(), new DummyStruct());
             _onFetchDataCallback = onFetchData;
+        }
+
+        public void SetEnvironment(RemoteConfigurationEnvironmentType environmentType)
+        {
+            string environmentId = string.Empty;
+            if (_remoteConfigurationConfig?.TryGetEnvironment(environmentType, out environmentId) == true)
+            {
+                RemoteConfigService.Instance.SetEnvironmentID(environmentId);
+            }
         }
 
         private void OnFetchCompleted(ConfigResponse configResponse)

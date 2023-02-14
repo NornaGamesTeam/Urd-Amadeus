@@ -12,35 +12,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"6ea51e19-5274-4f69-9187-17b76f9a6376\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"LocalizationKeyValues\",\r\n      \"type\":
-    \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"testKey\":
-    \"testValue\"\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"a89833dc-f59f-4a0b-86ec-fb04746c6230\"\r\n    },\r\n    \"rs\":
-    {\r\n      \"key\": \"TestInt\",\r\n      \"type\": \"int\",\r\n      \"value\":
-    1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"61fb6fd3-77c3-411b-b2c7-2d379587a74e\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestBool\",\r\n      \"type\": \"bool\",\r\n     
-    \"value\": true\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"74162b3a-e406-405b-bda3-74d85b089fe0\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"TestFloat\",\r\n      \"type\": \"float\",\r\n      \"value\": 1.1\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"a44fdb71-6b8c-4176-aeeb-f4fe04451b4c\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestString\",\r\n      \"type\": \"string\",\r\n     
-    \"value\": \"\\\"TestString\\\"\"\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"6ea51e19-5274-4f69-9187-17b76f9a6376\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"LocalizationKeyValues\",\r\n      \"type\":
-    \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"testKey\":
-    \"testValue\"\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"a89833dc-f59f-4a0b-86ec-fb04746c6230\"\r\n    },\r\n    \"rs\":
-    {\r\n      \"key\": \"TestInt\",\r\n      \"type\": \"int\",\r\n      \"value\":
-    1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"61fb6fd3-77c3-411b-b2c7-2d379587a74e\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestBool\",\r\n      \"type\": \"bool\",\r\n     
-    \"value\": true\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"74162b3a-e406-405b-bda3-74d85b089fe0\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"TestFloat\",\r\n      \"type\": \"float\",\r\n      \"value\": 1.1\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"a44fdb71-6b8c-4176-aeeb-f4fe04451b4c\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestString\",\r\n      \"type\": \"string\",\r\n     
-    \"value\": \"\\\"TestString\\\"\"\r\n    }\r\n  }\r\n]"
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"839b0fa5-4aea-4187-ae99-5feabbcac4fd\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestInt\",\r\n      \"type\": \"int\",\r\n     
+    \"value\": 1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"85f4d872-2f7a-48ef-bbc5-672e14c5f296\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"TestBool\",\r\n      \"type\": \"bool\",\r\n      \"value\": true\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"e5d4f594-7f1a-4971-aa85-a6b1a6fab338\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestFloat\",\r\n      \"type\": \"float\",\r\n     
+    \"value\": 1.1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"ca9680aa-3d59-4420-969a-a42b8478d8a3\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"TestString\",\r\n      \"type\": \"string\",\r\n      \"value\": \"TestString\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"7aaebaad-012a-490e-93e6-73a30b15d3aa\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestJson\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"TestBool\": true,\r\n       
+    \"TestFloat\": 1.1,\r\n        \"TestInt\": 1,\r\n        \"TestString\": \"TestString\"\r\n     
+    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"8237c190-d1e4-46e0-a0bb-e397304b0245\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestDictionary\",\r\n      \"type\":
+    \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"Ok\":
+    \"Ok\"\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"468b6132-d7e0-4cd1-a65f-42e5e1775a8b\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"LocalizationKeyValuesEnglish\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"OK_KEY\": \"OK\"\r\n     
+    }\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"839b0fa5-4aea-4187-ae99-5feabbcac4fd\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestInt\",\r\n      \"type\": \"int\",\r\n     
+    \"value\": 1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"85f4d872-2f7a-48ef-bbc5-672e14c5f296\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"TestBool\",\r\n      \"type\": \"bool\",\r\n      \"value\": true\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"e5d4f594-7f1a-4971-aa85-a6b1a6fab338\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestFloat\",\r\n      \"type\": \"float\",\r\n     
+    \"value\": 1.1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"ca9680aa-3d59-4420-969a-a42b8478d8a3\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"TestString\",\r\n      \"type\": \"string\",\r\n      \"value\": \"TestString\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"7aaebaad-012a-490e-93e6-73a30b15d3aa\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestJson\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"TestBool\": true,\r\n       
+    \"TestFloat\": 1.1,\r\n        \"TestInt\": 1,\r\n        \"TestString\": \"TestString\"\r\n     
+    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"8237c190-d1e4-46e0-a0bb-e397304b0245\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestDictionary\",\r\n      \"type\":
+    \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"Ok\":
+    \"Ok\"\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"468b6132-d7e0-4cd1-a65f-42e5e1775a8b\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"LocalizationKeyValuesEnglish\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"OK_KEY\": \"OK\"\r\n     
+    }\r\n    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"d40aef10-4b9e-4825-a726-178262d7da78\",\r\n   
-    \"name\": \"production\",\r\n    \"id\": \"ea54be02-1514-45a6-90ab-6c4776055023\",\r\n   
-    \"isDefault\": true,\r\n    \"createdAt\": \"2022-10-21T22:45:36Z\",\r\n    \"updatedAt\":
-    \"2022-10-21T22:45:36Z\"\r\n  }\r\n]"
+    \"name\": \"test\",\r\n    \"id\": \"871b790e-277d-421c-a88e-96ccbbd75219\",\r\n   
+    \"isDefault\": false,\r\n    \"createdAt\": \"2023-02-14T21:52:16Z\",\r\n   
+    \"updatedAt\": \"2023-02-14T21:52:16Z\"\r\n  },\r\n  {\r\n    \"projectId\":
+    \"d40aef10-4b9e-4825-a726-178262d7da78\",\r\n    \"name\": \"production\",\r\n   
+    \"id\": \"ea54be02-1514-45a6-90ab-6c4776055023\",\r\n    \"isDefault\": true,\r\n   
+    \"createdAt\": \"2022-10-21T22:45:36Z\",\r\n    \"updatedAt\": \"2022-10-21T22:45:36Z\"\r\n 
+    }\r\n]"

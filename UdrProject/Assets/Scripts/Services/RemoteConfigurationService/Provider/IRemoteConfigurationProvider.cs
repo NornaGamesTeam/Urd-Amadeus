@@ -9,5 +9,6 @@ namespace Urd.Services.RemoteConfiguration
         event OnGetRemoteConfigurationDataDelegate OnGetRemoteConfigurationData;
 
         void FetchData(Action onFetchData);
+        void SetEnvironment(RemoteConfigurationEnvironmentType environment);
     }
 }

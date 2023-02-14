@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Urd.Services.RemoteConfiguration;
 
@@ -10,8 +9,11 @@ namespace Urd.Services
     {
         private IRemoteConfigurationProvider _provider;
 
-        Dictionary<string, string> _keyValues = new Dictionary<string, string>();
+        private Dictionary<string, string> _keyValues = new();
 
+        public RemoteConfigurationEnvironmentType Environment { get; private set; } =
+            RemoteConfigurationEnvironmentType.production;
+        
         public override void Init()
         {
             base.Init();
@@ -19,14 +21,18 @@ namespace Urd.Services
             UnityServices.InitializeAsync();
 
             SetProvider(new RemoteConfigurationProviderUnity());
-
-            //FetchData(null);
         }
 
         public void SetProvider(IRemoteConfigurationProvider newProvider)
         {
             _provider = newProvider;
             _provider.OnGetRemoteConfigurationData += OnGetRemoteConfigurationData;
+        }
+        
+        public void SetEnvironment(RemoteConfigurationEnvironmentType environmentType)
+        {
+            Environment = environmentType;
+            _provider.SetEnvironment(Environment);
         }
 
         public void FetchData(Action onFetchData)
