@@ -17,6 +17,8 @@ namespace Urd.Test
         private const int TestIntValue = 1;
         private const string TestFloatKey = "TestFloat";
         private const float TestFloatValue = 1.1f;
+        private const string TestStringKey = "TestString";
+        private const string TestStringValue = "TestString";
         private const string TestDictionaryKey = "TestDictionary";
         private Dictionary<string, string> TestDictionaryValue = new Dictionary<string, string>()
         {
@@ -81,6 +83,17 @@ namespace Urd.Test
 
             Assert.That(floatValue, Is.EqualTo(TestFloatValue));
         }
+        
+        [UnityTest]
+        public IEnumerator RemoteConfigurationService_GetDataString_Success()
+        {
+            _remoteConfigurationService.FetchData(OnFetchData);
+
+            yield return new WaitUntil(() => _dataFetched);
+            _remoteConfigurationService.TryGetDataAs(TestStringKey, out string stringValue);
+
+            Assert.That(stringValue, Is.EqualTo(TestStringValue));
+        }
 
         [UnityTest]
         public IEnumerator RemoteConfigurationService_GetDataDictionary_Success()
@@ -107,6 +120,7 @@ namespace Urd.Test
                 dictionary.Add(TestBoolKey, TestBoolValue.ToString().ToLower());
                 dictionary.Add(TestIntKey, TestIntValue.ToString());
                 dictionary.Add(TestFloatKey, TestFloatValue.ToString());
+                dictionary.Add(TestStringKey, TestStringValue);
                 dictionary.Add(TestDictionaryKey, "{\"Ok\":\"Ok\"}");
 
                 OnGetRemoteConfigurationData?.Invoke(dictionary);

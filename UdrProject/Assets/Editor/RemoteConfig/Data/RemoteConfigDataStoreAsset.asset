@@ -12,56 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"c6b381b6-6ac1-46d4-805c-6abdb195d83e\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestInt\",\r\n      \"type\": \"int\",\r\n     
-    \"value\": 1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"5a014ac7-8d47-4e2f-90aa-e10a2197b095\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"TestBool\",\r\n      \"type\": \"bool\",\r\n      \"value\": true\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"603dbf05-5b03-4004-a10a-4b1996299d7d\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestFloat\",\r\n      \"type\": \"float\",\r\n     
-    \"value\": 1.1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"cf8657bf-75e9-4d51-8b05-2b438b2cebf7\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"TestString\",\r\n      \"type\": \"string\",\r\n      \"value\": \"TestString\"\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"9fe726ac-9dc1-418b-bd8a-10e62a044f2f\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestJson\",\r\n      \"type\": \"json\",\r\n     
-    \"schemaId\": null,\r\n      \"value\": {\r\n        \"TestBool\": true,\r\n       
-    \"TestFloat\": 1.1,\r\n        \"TestInt\": 1,\r\n        \"TestString\": \"TestString\"\r\n     
-    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"4cf2b85e-32d7-4b1d-a2e8-b64bfe5b115a\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestDictionary\",\r\n      \"type\":
-    \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"Ok\":
-    \"Ok\"\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"0d0432bf-d455-4cbd-a646-4245da063649\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"LocalizationKeyValuesEnglish\",\r\n      \"type\": \"json\",\r\n     
-    \"schemaId\": null,\r\n      \"value\": {\r\n        \"OK_KEY\": \"OK\"\r\n     
-    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"8ab6302c-401d-45f2-a01f-d8d98735e664\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"OnTestRemoteConfigLiveOps\",\r\n     
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"05c02c02-e905-4cbb-99a4-f745ae082a37\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"LocalizationKeyValuesEnglish\",\r\n     
     \"type\": \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n       
-    \"PopupType\": \"Info\"\r\n      }\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"c6b381b6-6ac1-46d4-805c-6abdb195d83e\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestInt\",\r\n      \"type\": \"int\",\r\n     
-    \"value\": 1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"5a014ac7-8d47-4e2f-90aa-e10a2197b095\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"TestBool\",\r\n      \"type\": \"bool\",\r\n      \"value\": true\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"603dbf05-5b03-4004-a10a-4b1996299d7d\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestFloat\",\r\n      \"type\": \"float\",\r\n     
-    \"value\": 1.1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"cf8657bf-75e9-4d51-8b05-2b438b2cebf7\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"TestString\",\r\n      \"type\": \"string\",\r\n      \"value\": \"TestString\"\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"9fe726ac-9dc1-418b-bd8a-10e62a044f2f\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestJson\",\r\n      \"type\": \"json\",\r\n     
-    \"schemaId\": null,\r\n      \"value\": {\r\n        \"TestBool\": true,\r\n       
-    \"TestFloat\": 1.1,\r\n        \"TestInt\": 1,\r\n        \"TestString\": \"TestString\"\r\n     
-    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"4cf2b85e-32d7-4b1d-a2e8-b64bfe5b115a\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestDictionary\",\r\n      \"type\":
-    \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"Ok\":
-    \"Ok\"\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"0d0432bf-d455-4cbd-a646-4245da063649\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"LocalizationKeyValuesEnglish\",\r\n      \"type\": \"json\",\r\n     
-    \"schemaId\": null,\r\n      \"value\": {\r\n        \"OK_KEY\": \"OK\"\r\n     
-    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"8ab6302c-401d-45f2-a01f-d8d98735e664\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"OnTestRemoteConfigLiveOps\",\r\n     
+    \"OK_KEY\": \"OK\"\r\n      }\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"05c02c02-e905-4cbb-99a4-f745ae082a37\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"LocalizationKeyValuesEnglish\",\r\n     
     \"type\": \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n       
-    \"PopupType\": \"Info\"\r\n      }\r\n    }\r\n  }\r\n]"
+    \"OK_KEY\": \"OK\"\r\n      }\r\n    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"d40aef10-4b9e-4825-a726-178262d7da78\",\r\n   
     \"name\": \"test\",\r\n    \"id\": \"871b790e-277d-421c-a88e-96ccbbd75219\",\r\n   
     \"isDefault\": false,\r\n    \"createdAt\": \"2023-02-14T21:52:16Z\",\r\n   

@@ -440,11 +440,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1129641011}
   - component: {fileID: 1129641010}
+  - component: {fileID: 1129641018}
   - component: {fileID: 1129641012}
   - component: {fileID: 1129641014}
   - component: {fileID: 1129641013}
   - component: {fileID: 1129641015}
   - component: {fileID: 1129641016}
+  - component: {fileID: 1129641017}
   m_Layer: 0
   m_Name: Debug
   m_TagString: Untagged
@@ -464,7 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab3c6d3c6637c44e9be873d59afd045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enabled: 0
+  _enabled: 1
   _keyCode: 49
 --- !u!4 &1129641011
 Transform:
@@ -549,9 +551,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec664b43663fb7d469d7cf3750f797fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enabled: 1
+  _enabled: 0
   _keyCode: 256
   _remoteConfigToOpen: OnTestRemoteConfigLiveOps
+--- !u!114 &1129641017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129641009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902b799b5ffcba84fa0bd99bec56c119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _keyCode: 256
+  _remoteConfigToOpen: OnTestInfoPopup
+--- !u!114 &1129641018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129641009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b432965f46cbc4e8638711607b12a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _keyCode: 50
 --- !u!1 &1728867729
 GameObject:
   m_ObjectHideFlags: 0

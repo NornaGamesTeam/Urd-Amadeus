@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Urd.LiveOps;
 using Urd.Services.Navigation;
 
@@ -8,7 +9,7 @@ namespace Urd.Popup
     {
         public override string Id => PopupType.ToString();
 
-        [JsonProperty]
+        [JsonProperty][JsonConverter(typeof(StringEnumConverter))]
         public PopupTypes PopupType { get; protected set; }
 
         public PopupModel(PopupTypes popupType)

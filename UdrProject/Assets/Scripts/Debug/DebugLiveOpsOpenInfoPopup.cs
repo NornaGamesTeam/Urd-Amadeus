@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using Urd.LiveOps;
 using Urd.Popup;
 using Urd.Scene;
 using Urd.Services;
@@ -7,7 +9,7 @@ using Urd.Utils;
 
 namespace Urd.DebugTools
 {
-    public class DebugRemoteConfiguration : DebugAbstract
+    public class DebugLiveOpsOpenInfoPopup : DebugAbstract
     {
         [SerializeField] 
         private string _remoteConfigToOpen;
@@ -22,8 +24,19 @@ namespace Urd.DebugTools
 
         private void OnDataFetched()
         {
-            _remoteConfig.TryGetDataAs<PopupInfoModel>(_remoteConfigToOpen, out var data);
-            Debug.Log($"[DebugRemoteConfiguration]: {data.ToJson()}");
+            StaticServiceLocator.Get<ILiveOpsService>().
+                                 GetLiveOps<PopupInfoModel>(LiveOpsTriggers.OnTestInfoPopup, OnGetLiveOps);
+        }
+
+        private void OnGetLiveOps(bool success, List<PopupInfoModel> elementList)
+        {
+            if (!success)
+            {
+                Debug.LogWarning($"OnInputGetDown: {success}, elementList: {elementList.ToJson()}");
+                return;
+            }
+            
+            StaticServiceLocator.Get<INavigationService>().Open(elementList[0]);
         }
     }
 }

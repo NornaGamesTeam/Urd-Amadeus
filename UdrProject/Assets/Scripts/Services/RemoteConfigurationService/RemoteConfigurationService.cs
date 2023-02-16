@@ -57,6 +57,7 @@ namespace Urd.Services
         public bool TryGetDataAs<T>(string key, out T value)
         {
             value = default(T);
+
             if(!_keyValues.TryGetValue(key, out string rawValue))
             {
                 UnityEngine.Debug.LogWarning($"[RemoteConfigurationService] Doesn't contains the key {key}");

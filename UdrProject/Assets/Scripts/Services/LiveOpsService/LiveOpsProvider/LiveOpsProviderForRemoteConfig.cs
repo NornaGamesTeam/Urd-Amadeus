@@ -14,7 +14,8 @@ namespace Urd.LiveOps
         }
         public void GetAllLiveOpsRaw(LiveOpsTriggers trigger, Action<List<string>> callback)
         {
-            _remoteConfigService.TryGetDataAs<string>(trigger.ToString(), out var rawData);
+            _remoteConfigService.TryGetDataAs(trigger.ToString(), out var rawData);
+            callback?.Invoke(new List<string>(){ rawData });
         }
     }
 }
