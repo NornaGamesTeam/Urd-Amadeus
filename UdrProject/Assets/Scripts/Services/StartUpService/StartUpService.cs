@@ -13,6 +13,9 @@ namespace Urd.Services
             ServiceLocatorService.Register<INavigationService>(new NavigationService());
             ServiceLocatorService.Register<IInputService>(new InputService());
             ServiceLocatorService.Register<IAdsService>(new AdsService());
+            
+            ServiceLocatorService.Register<IRemoteConfigurationService>(new RemoteConfigurationService());
+            ServiceLocatorService.Register<ILiveOpsService>(new LiveOpsService());
         }
     }
 }

@@ -8,6 +8,8 @@ namespace Urd.Services
     {
         RemoteConfigurationEnvironmentType Environment { get; }
         void FetchData(Action onFetchData);
+        bool TryGetDataAs(string key, out string value);
         bool TryGetDataAs<T>(string key, out T value);
+        void SetEnvironment(RemoteConfigurationEnvironmentType environmentType);
     }
 }

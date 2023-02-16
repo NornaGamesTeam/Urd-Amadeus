@@ -444,6 +444,7 @@ GameObject:
   - component: {fileID: 1129641014}
   - component: {fileID: 1129641013}
   - component: {fileID: 1129641015}
+  - component: {fileID: 1129641016}
   m_Layer: 0
   m_Name: Debug
   m_TagString: Untagged
@@ -534,8 +535,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9cb13bb91909c46b56579a8c7436b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enabled: 1
+  _enabled: 0
   _keyCode: 49
+--- !u!114 &1129641016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129641009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec664b43663fb7d469d7cf3750f797fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _keyCode: 256
+  _remoteConfigToOpen: OnTestRemoteConfigLiveOps
 --- !u!1 &1728867729
 GameObject:
   m_ObjectHideFlags: 0

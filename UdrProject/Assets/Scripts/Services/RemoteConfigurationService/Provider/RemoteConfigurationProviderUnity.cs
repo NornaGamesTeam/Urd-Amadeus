@@ -11,8 +11,10 @@ namespace Urd.Services.RemoteConfiguration
         private string REMOTE_CONFIGURATION_CONFIG = "RemoteConfiguration";
 
         private RemoteConfigurationEnvironmentsConfig _remoteConfigurationConfig;
+
+        public bool IsFetching => _onFetchDataCallback?.Target != null;
         
-        private Action _onFetchDataCallback;
+        private event Action _onFetchDataCallback;
 
         private struct DummyStruct
         {
@@ -41,8 +43,11 @@ namespace Urd.Services.RemoteConfiguration
 
         public void FetchData(Action onFetchData)
         {
-            RemoteConfigService.Instance.FetchConfigs(new DummyStruct(), new DummyStruct());
-            _onFetchDataCallback = onFetchData;
+            _onFetchDataCallback += onFetchData;
+            if (!IsFetching)
+            {
+                RemoteConfigService.Instance.FetchConfigs(new DummyStruct(), new DummyStruct());
+            }
         }
 
         public void SetEnvironment(RemoteConfigurationEnvironmentType environmentType)
@@ -72,9 +77,9 @@ namespace Urd.Services.RemoteConfiguration
                 }
             }
 
+            OnGetRemoteConfigurationData?.Invoke(newKeys);
             _onFetchDataCallback?.Invoke();
             _onFetchDataCallback = null;
-            OnGetRemoteConfigurationData?.Invoke(newKeys);
         }
     }
 }

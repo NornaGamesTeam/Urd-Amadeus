@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.Services.Core;
+using Unity.Services.RemoteConfig;
 using Urd.Services.RemoteConfiguration;
 
 namespace Urd.Services
@@ -18,9 +20,13 @@ namespace Urd.Services
         {
             base.Init();
 
-            UnityServices.InitializeAsync();
-
             SetProvider(new RemoteConfigurationProviderUnity());
+            UnityServices.InitializeAsync(); 
+        }
+
+        private void OnInitializeRemoteConfig()
+        {
+            FetchData(null);
         }
 
         public void SetProvider(IRemoteConfigurationProvider newProvider)
@@ -33,6 +39,7 @@ namespace Urd.Services
         {
             Environment = environmentType;
             _provider.SetEnvironment(Environment);
+            FetchData(null);
         }
 
         public void FetchData(Action onFetchData)
@@ -45,15 +52,17 @@ namespace Urd.Services
             _keyValues = keyValues;
         }
 
+        public bool TryGetDataAs(string key, out string value) => _keyValues.TryGetValue(key, out value);
+
         public bool TryGetDataAs<T>(string key, out T value)
         {
             value = default(T);
             if(!_keyValues.TryGetValue(key, out string rawValue))
             {
-                UnityEngine.Debug.LogWarning($"[RemoteConfigurationService] Cannot contains the key {key}");
+                UnityEngine.Debug.LogWarning($"[RemoteConfigurationService] Doesn't contains the key {key}");
                 return false;
             }
-
+            
             try
             {
                 value = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(rawValue);
