@@ -1,13 +1,20 @@
 using UnityEngine;
-using Urd.Services;
+using UnityEngine.UI;
 
-public class StartUpServiceView : MonoBehaviour
+namespace Urd.Services
 {
-    void Awake()
+    public class StartUpServiceView : MonoBehaviour
     {
-        var serviceLocator = new ServiceLocator();
-        var startUpService = new StartUpService();
-
-        serviceLocator.Register<IStartUpService>(startUpService);
+        [Header("LogoImage")] 
+        private UIImage _logoImage;
+        
+        [Header("LogoImage")] 
+        private UIProgressBar _logoImage;
+        
+        void Awake()
+        {
+            var serviceLocator = new ServiceLocator();
+            serviceLocator.Register<IStartUpService>(new StartUpService());
+        }
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PopupCanvas
   - BoomerangCanvas
+  - StartUpCanvas
   layers:
   - Default
   - TransparentFX

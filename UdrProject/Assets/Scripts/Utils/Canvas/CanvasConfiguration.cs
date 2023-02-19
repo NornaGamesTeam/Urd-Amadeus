@@ -13,11 +13,19 @@ public class CanvasConfiguration : MonoBehaviour
 
     private void Awake()
     {
+        SetTag();
+        SetResolution();
+    }
+
+    private void SetTag()
+    {
         if (!string.Equals(_canvasTagName.ToString(), tag))
         {
             tag = _canvasTagName.ToString();
         }
-
+    }
+    private void SetResolution()
+    {
         if (_canvasesGamesConfig != null)
         {
             GetComponent<CanvasScaler>().referenceResolution = _canvasesGamesConfig.CanvasResolution;

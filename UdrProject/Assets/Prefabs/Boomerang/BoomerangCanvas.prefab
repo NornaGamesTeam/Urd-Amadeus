@@ -59,7 +59,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: -960172645
-  m_SortingOrder: 100
+  m_SortingOrder: 1000
   m_TargetDisplay: 0
 --- !u!114 &6689099720961535558
 MonoBehaviour:
@@ -114,4 +114,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasesGamesConfig: {fileID: 11400000, guid: d1dbb79db3009eb42a1eaddd16286041, type: 2}
-  _canvasTagName: 1
+  _canvasTagName: 3

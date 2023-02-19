@@ -17,10 +17,10 @@ namespace Urd.UrdEditor
 
         private static IEditorLocalizationServiceProvider _editorLocalizationServiceProvider = new EditorRemoteConfigLocalizationServiceProvider();
 
-        [MenuItem("Urd/Localization/SelectConfigFile")]
+        [MenuItem("Urd/Localization/SelectConfigFile", false, 100)]
         public static void OpenConfigFile() => UrdEditorUtils.GetConfigFile(LOCALIZATION_CONFIG_FILE_PATH);
 
-        [MenuItem("Urd/Localization/UpdateLocalization")]
+        [MenuItem("Urd/Localization/UpdateLocalization", false, 100)]
         public static void UpdateLocalizationFiles()
         {
             for (LocalizationLanguages language = LocalizationLanguages.None+1; language < LocalizationLanguages.Size; language++)
