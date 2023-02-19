@@ -123,6 +123,7 @@ namespace Urd.Services.Navigation
             
             if (popupToClose == null)
             {
+                onCloseNavigable?.Invoke(false);
                 return;
             }
             

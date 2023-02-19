@@ -209,9 +209,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Urd.View.Popup.PopupBodyView, Udr
-        m_MethodName: Close
+      - m_Target: {fileID: -2802510768603615166}
+        m_TargetAssemblyTypeName: Urd.View.Boomerang.BoomerangBodyView, Udr
+        m_MethodName: CloseFromUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

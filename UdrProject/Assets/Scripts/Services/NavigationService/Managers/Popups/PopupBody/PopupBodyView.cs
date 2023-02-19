@@ -19,7 +19,7 @@ namespace Urd.View.Popup
         {
             PopupView = popupView;
 
-            popupView.OnClickOnClose += Close;
+            popupView.OnClickOnClose += CloseFromUI;
         }
 
         public void Open()
@@ -40,16 +40,17 @@ namespace Urd.View.Popup
             PopupModel.ChangeStatus(NavigableStatus.Idle);
         }
         
+        public void CloseFromUI()
+        {
+            StaticServiceLocator.Get<INavigationService>().Close(PopupModel);
+        }
+
         public void Close()
         {
-            if (!PopupModel.IsClosingOrDestroyed)
-            {
-                PopupModel.ChangeStatus(NavigableStatus.Closing);
-                StaticServiceLocator.Get<INavigationService>().Close(PopupModel);
-                OnBeginClose();
-            }
+            PopupModel.ChangeStatus(NavigableStatus.Closing);
+            OnBeginClose();
         }
-        
+
         public virtual void OnBeginClose()
         {
             // TODO  close Animation
@@ -65,7 +66,7 @@ namespace Urd.View.Popup
         {
             if (PopupView != null)
             {
-                PopupView.OnClickOnClose -= Close;
+                PopupView.OnClickOnClose -= CloseFromUI;
             }
         }
     }

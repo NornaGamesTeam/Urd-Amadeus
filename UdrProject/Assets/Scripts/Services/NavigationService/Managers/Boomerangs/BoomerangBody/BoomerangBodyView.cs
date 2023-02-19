@@ -40,17 +40,18 @@ namespace Urd.View.Boomerang
             
             StaticServiceLocator.Get<IClockService>().AddDelayCall(BoomerangModel.Duration, Close);
         }
-        
+
+        public void CloseFromUI()
+        {
+            StaticServiceLocator.Get<INavigationService>().Close(BoomerangModel);
+        }
+
         public void Close()
         {
-            if (!BoomerangModel.IsClosingOrDestroyed)
-            {
-                BoomerangModel.ChangeStatus(NavigableStatus.Closing);
-                StaticServiceLocator.Get<INavigationService>().Close(BoomerangModel);
-                OnBeginClose();
-            }
+            BoomerangModel.ChangeStatus(NavigableStatus.Closing);
+            OnBeginClose();
         }
-        
+
         public virtual void OnBeginClose()
         {
             // TODO  close Animation

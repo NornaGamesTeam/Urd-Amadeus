@@ -211,7 +211,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2880849120491472155}
         m_TargetAssemblyTypeName: Urd.View.Popup.PopupBodyView, Udr
-        m_MethodName: Close
+        m_MethodName: CloseFromUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -219,5 +219,5 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
