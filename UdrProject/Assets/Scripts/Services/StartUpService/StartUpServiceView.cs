@@ -8,8 +8,8 @@ namespace Urd.Services
         [Header("LogoImage")] 
         private UIImage _logoImage;
         
-        [Header("LogoImage")] 
-        private UIProgressBar _logoImage;
+        [Header("ProgressBar")] 
+        private UIProgressBar _progressBar;
         
         void Awake()
         {
