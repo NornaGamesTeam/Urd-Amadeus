@@ -12,14 +12,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"05c02c02-e905-4cbb-99a4-f745ae082a37\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"LocalizationKeyValuesEnglish\",\r\n     
-    \"type\": \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n       
-    \"OK_KEY\": \"OK\"\r\n      }\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"05c02c02-e905-4cbb-99a4-f745ae082a37\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"LocalizationKeyValuesEnglish\",\r\n     
-    \"type\": \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n       
-    \"OK_KEY\": \"OK\"\r\n      }\r\n    }\r\n  }\r\n]"
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"da6a675b-448a-4e47-b715-e1361e804051\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestInt\",\r\n      \"type\": \"int\",\r\n     
+    \"value\": 1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"8ea71242-063b-4f65-87cd-ea05c5f6f5c7\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"TestBool\",\r\n      \"type\": \"bool\",\r\n      \"value\": true\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"1ddc7763-4281-4cf6-9615-022abe318651\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestFloat\",\r\n      \"type\": \"float\",\r\n     
+    \"value\": 1.1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"8d743000-ee0e-4a04-bb68-53cd42de26a3\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"TestString\",\r\n      \"type\": \"string\",\r\n      \"value\": \"TestString\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"86497d06-a502-4e6a-b9c5-ac775043847f\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestJson\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"TestBool\": true,\r\n       
+    \"TestFloat\": 1.1,\r\n        \"TestInt\": 1,\r\n        \"TestString\": \"TestString\"\r\n     
+    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"98e11c46-6f10-46b5-9e32-38ce8166ebea\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestDictionary\",\r\n      \"type\":
+    \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"Ok\":
+    \"Ok\"\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"3d00b28a-43e0-4da5-9c19-abe84a019fa4\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"LocalizationKeyValuesEnglish\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"OK_KEY\": \"OK\"\r\n     
+    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"c376321f-f1cf-4b2b-b560-5683c631cd31\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"OnTestInfoPopup\",\r\n      \"type\":
+    \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"PopupType\":
+    \"Info\"\r\n      }\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"da6a675b-448a-4e47-b715-e1361e804051\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestInt\",\r\n      \"type\": \"int\",\r\n     
+    \"value\": 1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"8ea71242-063b-4f65-87cd-ea05c5f6f5c7\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"TestBool\",\r\n      \"type\": \"bool\",\r\n      \"value\": true\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"1ddc7763-4281-4cf6-9615-022abe318651\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestFloat\",\r\n      \"type\": \"float\",\r\n     
+    \"value\": 1.1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"8d743000-ee0e-4a04-bb68-53cd42de26a3\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"TestString\",\r\n      \"type\": \"string\",\r\n      \"value\": \"TestString\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"86497d06-a502-4e6a-b9c5-ac775043847f\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestJson\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"TestBool\": true,\r\n       
+    \"TestFloat\": 1.1,\r\n        \"TestInt\": 1,\r\n        \"TestString\": \"TestString\"\r\n     
+    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"98e11c46-6f10-46b5-9e32-38ce8166ebea\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"TestDictionary\",\r\n      \"type\":
+    \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"Ok\":
+    \"Ok\"\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"3d00b28a-43e0-4da5-9c19-abe84a019fa4\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"LocalizationKeyValuesEnglish\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"OK_KEY\": \"OK\"\r\n     
+    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"c376321f-f1cf-4b2b-b560-5683c631cd31\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"OnTestInfoPopup\",\r\n      \"type\":
+    \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"PopupType\":
+    \"Info\"\r\n      }\r\n    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"d40aef10-4b9e-4825-a726-178262d7da78\",\r\n   
     \"name\": \"test\",\r\n    \"id\": \"871b790e-277d-421c-a88e-96ccbbd75219\",\r\n   
     \"isDefault\": false,\r\n    \"createdAt\": \"2023-02-14T21:52:16Z\",\r\n   
