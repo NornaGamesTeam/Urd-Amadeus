@@ -2,6 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
+/UdrProject/.idea/
 /UdrProject/[Ll]ibrary/
 /UdrProject/[Tt]emp/
 /UdrProject/[Oo]bj/
