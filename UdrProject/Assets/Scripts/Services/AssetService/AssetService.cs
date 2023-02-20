@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PlasticGui.WebApi.Responses;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
@@ -17,6 +18,8 @@ namespace Urd.Services
         
         public bool IsInitialized { get; private set; }
 
+        public event Action _callWhenInit;
+        
         public override void Init()
         {
             base.Init();
@@ -31,6 +34,9 @@ namespace Urd.Services
             UnityEngine.Debug.Log($"[AssetService] OnAddressableInitialize {resourceLocator.Status}");
 
             IsInitialized = true;
+            
+            _callWhenInit?.Invoke();
+            _callWhenInit = null;
         }
 
         public void LoadAsset<T>(string addressName, Action<T> assetCallback)
@@ -204,6 +210,12 @@ namespace Urd.Services
 
         public void Instantiate(string addressName, Transform parent, Action<GameObject> instantiateCallback)
         {
+            if (!IsInitialized)
+            {
+                CallWhenInit(() => Instantiate(addressName, parent, instantiateCallback));
+                return;
+            }
+            
             _resourceLocator.Locate(addressName, typeof(GameObject), out var location);
 
             if(location != null && location.Count > 0)
@@ -213,14 +225,26 @@ namespace Urd.Services
                     Debug.LogWarning($"[AssetService] Instantiate {addressName}, more than 1 asset with this name");
                 }
                 InstantiateInternal(location[0], parent, instantiateCallback);
+                return;
             }
 
             InstantiateInternal(addressName, parent, instantiateCallback);
         }
 
+        private void CallWhenInit(Action action)
+        {
+            _callWhenInit += action;
+        }
+
         public void Instantiate(GameObject prefab, Transform parent, Action<GameObject> instantiateCallback)
         {
             var newGameObject = GameObject.Instantiate(prefab, parent);
+            instantiateCallback.Invoke(newGameObject);
+        }
+        
+        public void Instantiate<T>(T prefab, Transform parent, Action<T> instantiateCallback) where T : Behaviour
+        {
+            var newGameObject = GameObject.Instantiate<T>(prefab, parent);
             instantiateCallback.Invoke(newGameObject);
         }
 

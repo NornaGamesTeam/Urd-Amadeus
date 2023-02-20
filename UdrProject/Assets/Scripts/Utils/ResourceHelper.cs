@@ -20,10 +20,14 @@ namespace Urd.Utils
         private T _fileLoaded;
         private string _path;
 
-        public ResourceHelper(string path)
+        public ResourceHelper(string path, bool loadOnAwake = false)
         {
             _path = path;
-            LoadFile();
+
+            if (loadOnAwake)
+            {
+                LoadFile();
+            }
         }
 
         private void LoadFile()
