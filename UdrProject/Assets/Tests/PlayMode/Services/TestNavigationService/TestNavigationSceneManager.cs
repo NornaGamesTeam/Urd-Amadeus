@@ -36,7 +36,7 @@ namespace Urd.Test
             _navigationService = new NavigationService();
             serviceLocator.Register<INavigationService>(_navigationService);
 
-            _sceneInfoModel = new SceneModel(SceneTypes.Info);
+            _sceneInfoModel = new SceneModel(SceneTypes.Test);
         }
 
         [UnityTest]

@@ -12,53 +12,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"fc39300b-b5ac-42b2-a362-21c1b16adef7\"\r\n   
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"38529fb2-26a4-41a2-942d-07fa5db1cec9\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"TestInt\",\r\n      \"type\": \"int\",\r\n     
     \"value\": 1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"deb0c1e2-87b0-401b-aa31-758b606f2cd5\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"37b43969-8b75-416e-a2fb-c7ac61619cf6\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"TestBool\",\r\n      \"type\": \"bool\",\r\n      \"value\": true\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"9030cdce-cfcc-49ad-8d31-3e597aad08b5\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"af0570e3-7f0a-430f-8ab3-2431292eb26c\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"TestFloat\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 1.1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"bce008fc-e0dd-442d-8fac-e636ce8c7ee8\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"606b5180-d495-4101-a678-af4299219e67\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"TestString\",\r\n      \"type\": \"string\",\r\n      \"value\": \"TestString\"\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"cc1af655-6d3c-4079-954d-c51bace39763\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"ed0c645b-774f-4897-906a-8f1f8b5879b3\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"TestJson\",\r\n      \"type\": \"json\",\r\n     
     \"schemaId\": null,\r\n      \"value\": {\r\n        \"TestBool\": true,\r\n       
     \"TestFloat\": 1.1,\r\n        \"TestInt\": 1,\r\n        \"TestString\": \"TestString\"\r\n     
-    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"2ceb8950-c953-4555-9ffe-94f7940889ee\"\r\n   
+    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"477ba290-5f1c-4c93-b889-f88f42614116\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"TestDictionary\",\r\n      \"type\":
     \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"Ok\":
     \"Ok\"\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"19b77f89-10ef-4daf-86a2-15f90c886ac2\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"f4aaa79d-a960-4f02-a2d8-e10457c3580d\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"LocalizationKeyValuesEnglish\",\r\n      \"type\": \"json\",\r\n     
     \"schemaId\": null,\r\n      \"value\": {\r\n        \"OK_KEY\": \"OK\"\r\n     
-    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"bc8f5ebd-eb9a-43e9-a1f4-498463ea6bca\"\r\n   
+    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"eedaf510-9b66-4f4f-acce-9881582389b4\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"OnTestInfoPopup\",\r\n      \"type\":
     \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"PopupType\":
     \"Info\"\r\n      }\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"fc39300b-b5ac-42b2-a362-21c1b16adef7\"\r\n   
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"38529fb2-26a4-41a2-942d-07fa5db1cec9\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"TestInt\",\r\n      \"type\": \"int\",\r\n     
     \"value\": 1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"deb0c1e2-87b0-401b-aa31-758b606f2cd5\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"37b43969-8b75-416e-a2fb-c7ac61619cf6\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"TestBool\",\r\n      \"type\": \"bool\",\r\n      \"value\": true\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"9030cdce-cfcc-49ad-8d31-3e597aad08b5\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"af0570e3-7f0a-430f-8ab3-2431292eb26c\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"TestFloat\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 1.1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"bce008fc-e0dd-442d-8fac-e636ce8c7ee8\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"606b5180-d495-4101-a678-af4299219e67\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"TestString\",\r\n      \"type\": \"string\",\r\n      \"value\": \"TestString\"\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"cc1af655-6d3c-4079-954d-c51bace39763\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"ed0c645b-774f-4897-906a-8f1f8b5879b3\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"TestJson\",\r\n      \"type\": \"json\",\r\n     
     \"schemaId\": null,\r\n      \"value\": {\r\n        \"TestBool\": true,\r\n       
     \"TestFloat\": 1.1,\r\n        \"TestInt\": 1,\r\n        \"TestString\": \"TestString\"\r\n     
-    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"2ceb8950-c953-4555-9ffe-94f7940889ee\"\r\n   
+    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"477ba290-5f1c-4c93-b889-f88f42614116\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"TestDictionary\",\r\n      \"type\":
     \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"Ok\":
     \"Ok\"\r\n      }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"19b77f89-10ef-4daf-86a2-15f90c886ac2\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"f4aaa79d-a960-4f02-a2d8-e10457c3580d\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"LocalizationKeyValuesEnglish\",\r\n      \"type\": \"json\",\r\n     
     \"schemaId\": null,\r\n      \"value\": {\r\n        \"OK_KEY\": \"OK\"\r\n     
-    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"bc8f5ebd-eb9a-43e9-a1f4-498463ea6bca\"\r\n   
+    }\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"eedaf510-9b66-4f4f-acce-9881582389b4\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"OnTestInfoPopup\",\r\n      \"type\":
     \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"PopupType\":
     \"Info\"\r\n      }\r\n    }\r\n  }\r\n]"
