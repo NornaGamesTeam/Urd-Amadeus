@@ -2,15 +2,15 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-/UdrProject/.idea/
-/UdrProject/[Ll]ibrary/
-/UdrProject/[Tt]emp/
-/UdrProject/[Oo]bj/
-/UdrProject/[Bb]uild/
-/UdrProject/[Bb]uilds/
-/UdrProject/[Ll]ogs/
-/UdrProject/[Mm]emoryCaptures/
-/UdrProject/Packages/
+UdrProject/.idea/
+UdrProject/[Ll]ibrary/
+UdrProject/[Tt]emp/
+UdrProject/[Oo]bj/
+UdrProject/[Bb]uild/
+UdrProject/[Bb]uilds/
+UdrProject/[Ll]ogs/
+UdrProject/[Mm]emoryCaptures/
+UdrProject/Packages/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/UdrProject/[Aa]ssets/**/*.meta
