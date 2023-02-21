@@ -25,8 +25,9 @@ namespace Urd.Services
         private Transform _progressBarParent;
 
         private ResourceHelper<LogoConfig> _logoConfig = new (LOGO_CONFIG);
-        private ServiceHelper<IAssetService> _iAssetService = new ();
-        private UIImageModel _logoImageModel;
+        
+        private UIImageController _logoImageController;
+        private UIImageController _backgroundImageController;
         
         void Awake()
         {
@@ -55,22 +56,12 @@ namespace Urd.Services
 
         private void LoadBackground()
         {
-            _iAssetService.Service.Instantiate(_logoConfig.FileLoaded.BackgroundModel.Addressable, _backgroundParent, OnBackgroundLoaded);
-        }
-
-        private void OnBackgroundLoaded(GameObject newBackground)
-        {
-            newBackground.GetComponent<UIImageView>().SetModel(_logoConfig.FileLoaded.BackgroundModel);
+            _backgroundImageController = new UIImageController(_logoConfig.FileLoaded.BackgroundModel, _backgroundParent);
         }
 
         private void LoadLogo()
         {
-            _iAssetService.Service.Instantiate(_logoConfig.FileLoaded.LogoModel.Addressable, _logoParent, OnLogoLoaded);
-        }
-
-        private void OnLogoLoaded(GameObject newLogo)
-        {
-            newLogo.GetComponent<UIImageView>().SetModel(_logoConfig.FileLoaded.LogoModel);
+            _logoImageController = new UIImageController(_logoConfig.FileLoaded.LogoModel, _logoParent);
         }
     }
 }

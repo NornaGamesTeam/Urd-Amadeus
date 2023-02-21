@@ -62,3 +62,5 @@ crashlytics-build.properties
 
 *.dwlt
 UdrProject/.idea/.idea.UdrProject/.idea/workspace.xml
+UdrProject/Assets/Editor/RemoteConfig/Data/RemoteConfigDataStoreAsset.asset
+UdrProject/UserSettings/EditorUserSettings.asset

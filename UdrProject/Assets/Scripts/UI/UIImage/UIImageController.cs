@@ -1,18 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using Urd.Services;
+using Urd.Utils;
 
-public class UIImageController : MonoBehaviour
+namespace Urd.UI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class UIImageController
     {
+        public UIImageModel Model { get; private set; }
+        public UIImageView View { get; private set; }
+        public Transform Parent { get; private set; }
         
-    }
+        private ServiceHelper<IAssetService> _iAssetService = new ();
+        
+        public UIImageController(UIImageModel model) : this(model, null, true) { } 
+        public UIImageController(UIImageModel model, Transform parent) : this(model, parent, true) { }
+        public UIImageController(UIImageModel model, Transform parent, bool createViewOnAwake)
+        {
+            Model = model;
+            Parent = parent;
 
-    // Update is called once per frame
-    void Update()
-    {
+            if (createViewOnAwake)
+            {
+                CreateView();
+            }
+        }
+
+        public void CreateView()
+        {
+            _iAssetService.Service.Instantiate(Model.Addressable, Parent, OnBackgroundLoaded);
+        }
         
+        private void OnBackgroundLoaded(GameObject newBackground)
+        {
+            View =newBackground.GetComponent<UIImageView>();
+            View.SetModel(Model);
+        }
+
+        public void SetSprite(Sprite newSprite)
+        {
+            Model.SetSprite(newSprite);
+        }
     }
 }

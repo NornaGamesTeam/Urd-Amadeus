@@ -9,5 +9,8 @@ namespace Urd.UI
         
         [field: SerializeField]
         public UIImageModel LogoModel { get; private set; }
+        
+        [field: SerializeField]
+        public UIProgressBarModel LoadingBar { get; private set; }
     }
 }

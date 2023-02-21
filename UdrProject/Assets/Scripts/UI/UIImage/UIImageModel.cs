@@ -8,10 +8,13 @@ namespace Urd.UI
     public class UIImageModel : IShoweable
     {
         private const string DEFAULT_ADDRESSABLE = "DefaultUIImage";
-        [field: SerializeField, PreviewSprite] public Sprite Sprite { get; private set; }
 
-        [SerializeField] public string _addressable;
+        [SerializeField] 
+        private string _addressable;
         public string Addressable => !string.IsNullOrEmpty(_addressable) ? _addressable : DEFAULT_ADDRESSABLE;
+        
+        [field: SerializeField, PreviewSprite] 
+        public Sprite Sprite { get; private set; }
 
         public event System.Action OnSpriteSet;
 
