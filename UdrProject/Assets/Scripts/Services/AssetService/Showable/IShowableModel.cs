@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Urd.Services.Asset
+namespace Urd.Asset
 {
-    public interface IShoweable
+    public interface IShowableModel
     {
         string Addressable { get; }
+        
+        event System.Action OnChanged;
     }
 }
