@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using PlasticGui.WebApi.Responses;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;

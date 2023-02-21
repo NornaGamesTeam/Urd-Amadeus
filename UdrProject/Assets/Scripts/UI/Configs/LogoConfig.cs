@@ -11,6 +11,6 @@ namespace Urd.UI
         public UIImageModel LogoModel { get; private set; }
         
         [field: SerializeField]
-        public UIProgressBarModel LoadingBar { get; private set; }
+        public UIProgressBarModel LoadingBarModel { get; private set; }
     }
 }

@@ -1,15 +1,13 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Urd.Asset;
 
 namespace Urd.UI
 {
     [RequireComponent(typeof(Image))]
-    public class UIImageView : MonoBehaviour
+    public class UIImageView : ShowableView<UIImageModel>
     {
-        [SerializeField]
-        private UIImageModel _model;
-        
         private Image _image;
 
         private void Awake()
@@ -17,25 +15,19 @@ namespace Urd.UI
             _image = GetComponent<Image>();
         }
 
-        public void SetModel(UIImageModel model)
+        protected override void OnModelSet()
         {
-            _model = model;
-            OnSpriteSet();
-            
-            _model.OnSpriteSet += OnSpriteSet;
+            SetImage();
         }
 
-        private void OnDestroy()
+        protected override void OnModelChanged()
         {
-            if (_model != null)
-            {
-                _model.OnSpriteSet -= OnSpriteSet;
-            }
+            SetImage();
         }
 
-        private void OnSpriteSet()
+        private void SetImage()
         {
-            _image.sprite = _model.Sprite;
+            _image.sprite = Model.Sprite;
         }
     }
 }
