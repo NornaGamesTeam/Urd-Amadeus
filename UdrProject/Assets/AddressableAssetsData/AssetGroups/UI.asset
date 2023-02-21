@@ -22,6 +22,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI
+  - m_GUID: e23ae8272682d3f43a1c777484f6c762
+    m_Address: DefaultUIProgressBar
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5913efc3fa26c8149a99e3f2bbd3b2b2, type: 2}
   m_SchemaSet:

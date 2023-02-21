@@ -28,6 +28,7 @@ namespace Urd.Services
         
         private UIImageController _logoImageController;
         private UIImageController _backgroundImageController;
+        private UIProgressBarController _progressBarController;
         
         void Awake()
         {
@@ -52,7 +53,9 @@ namespace Urd.Services
 
             LoadBackground();
             LoadLogo();
+            LoadProgressBar();
         }
+
 
         private void LoadBackground()
         {
@@ -62,6 +65,11 @@ namespace Urd.Services
         private void LoadLogo()
         {
             _logoImageController = new UIImageController(_logoConfig.FileLoaded.LogoModel, _logoParent);
+        }
+        private void LoadProgressBar()
+        {
+            _progressBarController =
+                new UIProgressBarController(_logoConfig.FileLoaded.LoadingBarModel, _progressBarParent);
         }
     }
 }
