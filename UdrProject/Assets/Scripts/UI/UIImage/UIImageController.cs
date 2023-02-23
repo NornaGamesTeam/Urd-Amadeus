@@ -1,10 +1,9 @@
 using UnityEngine;
 using Urd.Asset;
-using Urd.Services;
-using Urd.Utils;
 
 namespace Urd.UI
 {
+    [System.Serializable]
     public class UIImageController : ShowableController<UIImageModel, UIImageView>
     {
         public UIImageController(UIImageModel model) : this(model, null, true) { } 

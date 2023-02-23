@@ -3,6 +3,7 @@ using Urd.Asset;
 
 namespace Urd.UI
 {
+    [System.Serializable]
     public class UIProgressBarController : ShowableController<UIProgressBarModel, UIProgressBarView>
     {
         public UIProgressBarController(UIProgressBarModel model) 
@@ -20,6 +21,11 @@ namespace Urd.UI
         public void SetBarSprite(Sprite newSprite)
         {
             Model.SetBar(newSprite);
+        }
+
+        public void SetFactor(float factor)
+        {
+            Model.SetFactor(factor);
         }
     }
 }

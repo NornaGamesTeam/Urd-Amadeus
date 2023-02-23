@@ -15,11 +15,13 @@ namespace Urd.UI
         
         protected override void OnModelSet()
         {
-            SetImages();
+            OnModelChanged();
+            Model.OnFactorChanged += SetFactor;
         }
-
+        
         protected override void OnModelChanged()
         {
+            SetFactor();
             SetImages();
         }
 
@@ -27,6 +29,11 @@ namespace Urd.UI
         {
             _background.sprite = Model.Background.Sprite;
             _bar.sprite = Model.Bar.Sprite;
+        }
+        
+        private void SetFactor()
+        {
+            _bar.fillAmount = Model.Bar.FillFactor;
         }
     }
 }

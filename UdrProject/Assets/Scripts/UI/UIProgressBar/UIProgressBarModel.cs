@@ -1,3 +1,5 @@
+using System;
+using Unity.Collections;
 using UnityEngine;
 using Urd.Asset;
 
@@ -13,6 +15,11 @@ namespace Urd.UI
         [field: SerializeField] 
         public UIImageModel Bar { get; private set; }
         
+        [field: SerializeField] 
+        public float Factor { get; private set; }
+
+        public event Action OnFactorChanged;
+
         public UIProgressBarModel(UIImageModel backgroundModel, UIImageModel barModel) 
             : this(backgroundModel, barModel, string.Empty) { }
         
@@ -37,6 +44,13 @@ namespace Urd.UI
             Background.SetSprite(newBackgroundSprite);
             Bar.SetSprite(newBarSprite);
             CallOnChanged();
+        }
+
+        public void SetFactor(float factor)
+        {
+            Factor = factor;
+            Bar.SetImageFillFactor(Factor);
+            OnFactorChanged?.Invoke();
         }
     }
 }

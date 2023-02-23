@@ -1,5 +1,6 @@
 using UnityEngine;
 using Urd.Asset;
+using Urd.Utils;
 
 namespace Urd.UI
 {
@@ -13,6 +14,9 @@ namespace Urd.UI
 
         [field: SerializeField]
         public Color Color { get; private set; }
+        
+        [field: SerializeField]
+        public float FillFactor { get; private set; }
 
         public UIImageModel(Sprite sprite) : this(sprite, string.Empty) { }
 
@@ -30,6 +34,12 @@ namespace Urd.UI
         public void SetColor(Color newColor)
         {
             Color = newColor;
+            CallOnChanged();
+        }
+
+        public void SetImageFillFactor(float factor)
+        {
+            FillFactor = factor;
             CallOnChanged();
         }
     }
