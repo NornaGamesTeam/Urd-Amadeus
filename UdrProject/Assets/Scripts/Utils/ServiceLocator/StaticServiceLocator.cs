@@ -11,16 +11,20 @@ namespace Urd.Utils
         private static Dictionary<Type, IBaseService>
             Services = new Dictionary<Type, IBaseService>();
 
-        public static T Register<T>(T serviceInstance) where T : IBaseService
+        public static void Register<T>(T serviceInstance) where T : IBaseService
         {
-            Services[typeof(T)] = serviceInstance;
-
-            return serviceInstance;
+            Register(serviceInstance, typeof(T));
+        }
+        
+        public static void Register(IBaseService serviceInstance, Type type)
+        {
+            Services[type] = serviceInstance;
         }
 
-        public static bool Exist<T>()
+        public static bool Exist<T>() => Exist(typeof(T));
+        public static bool Exist(Type type)
         {
-            return Services.ContainsKey(typeof(T));
+            return Services.ContainsKey(type);
         }
 
         public static T Get<T>() where T : IBaseService

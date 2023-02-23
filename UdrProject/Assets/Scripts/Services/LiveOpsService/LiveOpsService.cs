@@ -11,9 +11,9 @@ namespace Urd.Services
 
         public override void Init()
         {
-            SetDefaultProvider();
-            
             base.Init();
+            
+            SetDefaultProvider();
         }
 
         private void SetDefaultProvider()

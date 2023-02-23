@@ -10,6 +10,8 @@ namespace Urd.Services
 {
     public class StartUpServiceView : MonoBehaviour
     {
+        public float _loadingFactor; 
+        
         private const string LOGO_CONFIG = "StartUp/LogoConfig"; 
         
         [Header("Background")]
@@ -30,12 +32,6 @@ namespace Urd.Services
         private UIImageController _backgroundImageController;
         private UIProgressBarController _progressBarController;
         
-        void Awake()
-        {
-            var serviceLocator = new ServiceLocator();
-            serviceLocator.Register<IStartUpService>(new StartUpService());
-        }
-
         void Start()
         {
             Init();
@@ -51,9 +47,18 @@ namespace Urd.Services
                 return;
             }
 
+            StaticServiceLocator.Get<IStartUpService>().OnLoadingFactorChanged += OnLoadingFactorChanged;
+            
             LoadBackground();
             LoadLogo();
             LoadProgressBar();
+            
+            
+        }
+
+        private void OnLoadingFactorChanged(float loadingFactor)
+        {
+            _loadingFactor = loadingFactor;
         }
 
 

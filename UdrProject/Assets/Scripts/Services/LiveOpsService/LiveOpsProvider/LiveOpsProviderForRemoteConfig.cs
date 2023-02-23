@@ -7,14 +7,15 @@ namespace Urd.LiveOps
 {
     public class LiveOpsProviderForRemoteConfig: ILiveOpsProvider
     {
-        private IRemoteConfigurationService _remoteConfigService;
+        private ServiceHelper<IRemoteConfigurationService> _remoteConfigService =
+            new ServiceHelper<IRemoteConfigurationService>();
         public LiveOpsProviderForRemoteConfig()
         {
-            _remoteConfigService = StaticServiceLocator.Get<IRemoteConfigurationService>();
+
         }
         public void GetAllLiveOpsRaw(LiveOpsTriggers trigger, Action<List<string>> callback)
         {
-            _remoteConfigService.TryGetDataAs(trigger.ToString(), out var rawData);
+            _remoteConfigService.Service.TryGetDataAs(trigger.ToString(), out var rawData);
             callback?.Invoke(new List<string>(){ rawData });
         }
     }

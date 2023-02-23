@@ -9,16 +9,17 @@ namespace Urd.Services.RemoteConfiguration
     public class InAppPurchaseProviderRemoteConfig : IInAppPurchaseProvider
     {
         private const string STORE_KEY = "Store";
-        
-        private IRemoteConfigurationService _remoteConfiService;
+
+        private ServiceHelper<IRemoteConfigurationService> _remoteConfigService =
+            new ServiceHelper<IRemoteConfigurationService>();
         public InAppPurchaseProviderRemoteConfig()
         {
-            _remoteConfiService = StaticServiceLocator.Get<IRemoteConfigurationService>();
+            
         }
         
         public void LoadProducts(Action<List<InAppPurchaseStoreProducts>> onProductsProvided)
         {
-            if (!_remoteConfiService.TryGetDataAs(STORE_KEY, out List<InAppPurchaseStoreProducts> inAppPurchaseStoreProducts))
+            if (!_remoteConfigService.Service.TryGetDataAs(STORE_KEY, out List<InAppPurchaseStoreProducts> inAppPurchaseStoreProducts))
             {
                 Debug.LogWarning($"[InAppPurchaseProviderRemoteConfig] No data for the store in remote config with key: {STORE_KEY}");
                 onProductsProvided?.Invoke(new List<InAppPurchaseStoreProducts>());

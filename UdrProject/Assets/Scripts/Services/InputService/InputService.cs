@@ -20,7 +20,7 @@ namespace Urd.Services
 
         private void LoadAllInputs()
         {
-            var types = AssemblyHelper.GetTypesThatImplement<IInputActionCollection2>();
+            var types = AssemblyHelper.GetClassTypesThatImplement<IInputActionCollection2>();
             for (int i = types.Count - 1; i >= 0; i--)
             {
                 var newInputDefinition = Activator.CreateInstance(types[i]) as IInputActionCollection2;

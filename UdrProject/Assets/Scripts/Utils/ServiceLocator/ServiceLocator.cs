@@ -1,4 +1,5 @@
-﻿using Urd.Utils;
+﻿using System;
+using Urd.Utils;
 
 namespace Urd.Services
 {
@@ -19,12 +20,15 @@ namespace Urd.Services
             return StaticServiceLocator.Get<T>();
         }
 
-        public T Register<T>(T serviceInstance) where T : IBaseService
+        public void Register<T>(T serviceInstance) where T : IBaseService
         {
-            var registeredService = StaticServiceLocator.Register<T>(serviceInstance);
-            registeredService.SetServiceLocatorService(this);
+            Register(serviceInstance, typeof(T));
+        }
+        public void Register(IBaseService serviceInstance, Type type)
+        {
+            StaticServiceLocator.Register(serviceInstance, type);
+            serviceInstance.SetServiceLocatorService(this);
             serviceInstance.Init();
-            return registeredService;
         }
 
         public void Reset()
