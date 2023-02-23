@@ -201,6 +201,12 @@ namespace Urd.Services
 
         public void Instantiate(string addressName, Transform parent, Action<GameObject> instantiateCallback)
         {
+            if (!IsLoaded)
+            {
+                OnFinishLoad += () => Instantiate(addressName, parent, instantiateCallback);
+                return;
+            }
+            
             _resourceLocator.Locate(addressName, typeof(GameObject), out var location);
 
             if(location != null && location.Count > 0)
@@ -218,12 +224,24 @@ namespace Urd.Services
 
         public void Instantiate(GameObject prefab, Transform parent, Action<GameObject> instantiateCallback)
         {
+            if (!IsLoaded)
+            {
+                OnFinishLoad += () => Instantiate(prefab, parent, instantiateCallback);
+                return;
+            }
+            
             var newGameObject = GameObject.Instantiate(prefab, parent);
             instantiateCallback.Invoke(newGameObject);
         }
         
         public void Instantiate<T>(T prefab, Transform parent, Action<T> instantiateCallback) where T : Behaviour
         {
+            if (!IsLoaded)
+            {
+                OnFinishLoad += () => Instantiate(prefab, parent, instantiateCallback);
+                return;
+            }
+            
             var newGameObject = GameObject.Instantiate<T>(prefab, parent);
             instantiateCallback.Invoke(newGameObject);
         }

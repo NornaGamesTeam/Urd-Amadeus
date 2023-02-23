@@ -12,7 +12,7 @@ namespace Urd.Services.RemoteConfiguration
 
         private RemoteConfigurationEnvironmentsConfig _remoteConfigurationConfig;
 
-        public bool IsFetching => _onFetchDataCallback?.Target != null;
+        public bool IsFetching { get; private set; }
         
         private event Action _onFetchDataCallback;
 
@@ -46,6 +46,7 @@ namespace Urd.Services.RemoteConfiguration
             _onFetchDataCallback += onFetchData;
             if (!IsFetching)
             {
+                IsFetching = true;
                 RemoteConfigService.Instance.FetchConfigs(new DummyStruct(), new DummyStruct());
             }
         }
@@ -80,6 +81,7 @@ namespace Urd.Services.RemoteConfiguration
             OnGetRemoteConfigurationData?.Invoke(newKeys);
             _onFetchDataCallback?.Invoke();
             _onFetchDataCallback = null;
+            IsFetching = false;
         }
     }
 }

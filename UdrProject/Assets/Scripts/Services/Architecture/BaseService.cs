@@ -55,6 +55,11 @@ namespace Urd.Services
         
         protected void SetAsLoaded()
         {
+            if (IsLoaded)
+            {
+                return;
+            }
+            
             IsLoaded = true;
             OnFinishLoad?.Invoke();
         }

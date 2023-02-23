@@ -36,7 +36,7 @@ namespace Urd.Utils
 
         public void OnRegister(DelegateHelper.DelegateVoidVoid action)
         {
-            StaticServiceLocator.OnRegister<T>(action);
+            StaticServiceLocator.CallOnRegister<T>(action);
         }
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Urd.Services;
 using Urd.Services.EventBus;
 
 namespace Urd.Services

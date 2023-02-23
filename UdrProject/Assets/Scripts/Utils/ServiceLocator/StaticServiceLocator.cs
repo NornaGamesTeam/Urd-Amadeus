@@ -39,7 +39,7 @@ namespace Urd.Utils
         {
             if (!Services.TryGetValue(typeof(T), out var newInstance))
             {
-                Debug.LogWarning($"Service of type {typeof(T)} not registered");
+                //Debug.LogWarning($"Service of type {typeof(T)} not registered");
             }
 
             return (T)newInstance;
@@ -50,7 +50,7 @@ namespace Urd.Utils
             Services.Clear();
         }
 
-        public static void OnRegister<T>(DelegateHelper.DelegateVoidVoid action) where T : IBaseService
+        public static void CallOnRegister<T>(DelegateHelper.DelegateVoidVoid action) where T : IBaseService
         {
             var type = typeof(T);
             if(_onServiceRegistered.TryGetValue(type, out var actionEvent))

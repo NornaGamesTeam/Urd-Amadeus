@@ -26,12 +26,16 @@ namespace Urd.Services
         {
             base.Init();
 
-            _provider = GetProvider();
             _storeCommunication = GetCommunication();
-            
+            _provider = GetProvider();
+            _provider.Init(OnInitializedCallback);
+        }
+
+        private void OnInitializedCallback()
+        {
             SetAsLoaded();
         }
-        
+
         private IInAppPurchaseProvider GetProvider()
         {
             return new InAppPurchaseProviderRemoteConfig();

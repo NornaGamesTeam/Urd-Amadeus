@@ -14,7 +14,6 @@ namespace Urd.Services
             base.Init();
             
             SetDefaultProvider();
-            SetAsLoaded();
         }
 
         private void SetDefaultProvider()
@@ -25,6 +24,12 @@ namespace Urd.Services
         public void SetProvider(ILiveOpsProvider liveOpsProvider)
         {
             _liveOpsProvider = liveOpsProvider;
+            _liveOpsProvider.Init(OnInitialize);
+        }
+
+        public void OnInitialize()
+        {
+            SetAsLoaded();
         }
 
         public void GetLiveOps<T>(LiveOpsTriggers trigger, OnGetLiveOpsDelegate<T> listElementsCallback) where T : IDeserializable

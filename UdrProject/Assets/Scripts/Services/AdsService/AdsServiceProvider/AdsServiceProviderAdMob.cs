@@ -1,3 +1,4 @@
+using System;
 using GoogleMobileAds.Api;
 using GoogleMobileAds.Editor;
 using UnityEngine;
@@ -15,12 +16,19 @@ namespace Urd.Services.Ads
 
         public GoogleMobileAdsSettings _adMobSettings;
         public bool IsInitialized { get; private set; }
-        public override void Init()
+        public override void Init(Action onInitializeCallback)
         {
-            base.Init();
+            base.Init(onInitializeCallback);
 
             LoadConfig();
-            MobileAds.Initialize(initialized => IsInitialized = true);
+            MobileAds.Initialize(
+                status => OnInitialize(status, onInitializeCallback));
+        }
+
+        private void OnInitialize(InitializationStatus status, Action onInitializeCallback)
+        {
+            IsInitialized = true;
+            onInitializeCallback?.Invoke();
         }
 
         private void LoadConfig()

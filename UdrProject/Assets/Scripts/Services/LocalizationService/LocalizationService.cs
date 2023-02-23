@@ -20,32 +20,30 @@ namespace Urd.Services
             _eventBusService = ServiceLocatorService.Get<IEventBusService>();
 
         //private ILocalizationKeysProvider _localizationKeysProvider = new DummyLocalizationKeysProvider();
-            SetProvider(new RemoteConfigurationLocalizationKeyProvider());
             LoadLanguage();
-            LoadLocalization();
-            SetAsLoaded();
+            SetDefaultProvider();
         }
-
-        public void SetProvider(ILocalizationKeysProvider localizationKeysProvider)
-        {
-            _localizationKeysProvider = localizationKeysProvider;
-            LoadLocalization();
-        }
-
         private void LoadLanguage()
         {
             // TODO load last language and if not, read the device one
             Language = LocalizationLanguages.English;
         }
 
-        private void LoadLocalization()
+        private void SetDefaultProvider()
         {
+            SetProvider(new RemoteConfigurationLocalizationKeyProvider());
+        }
+
+        public void SetProvider(ILocalizationKeysProvider localizationKeysProvider)
+        {
+            _localizationKeysProvider = localizationKeysProvider;
             _localizationKeysProvider.GetLocalization(Language, OnLoadLocalization);
         }
 
         private void OnLoadLocalization(Dictionary<string, string> localizationKeys)
         {
             SetLocalizationKeysValues(localizationKeys);
+            SetAsLoaded();
         }
 
         private void SetLocalizationKeysValues(Dictionary<string, string> localizationKeys)

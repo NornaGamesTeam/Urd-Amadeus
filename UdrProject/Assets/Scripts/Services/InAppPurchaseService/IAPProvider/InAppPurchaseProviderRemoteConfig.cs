@@ -17,6 +17,11 @@ namespace Urd.Services.RemoteConfiguration
             
         }
         
+        public void Init(Action onInitializedCallback)
+        {
+            onInitializedCallback?.Invoke();
+        }
+        
         public void LoadProducts(Action<List<InAppPurchaseStoreProducts>> onProductsProvided)
         {
             if (!_remoteConfigService.Service.TryGetDataAs(STORE_KEY, out List<InAppPurchaseStoreProducts> inAppPurchaseStoreProducts))

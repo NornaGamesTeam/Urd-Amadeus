@@ -13,13 +13,16 @@ namespace Urd.Services
             
             GetProvider();
             
-            _adsServiceProvider.Init();
-            SetAsLoaded();
+            _adsServiceProvider.Init(InInitialize);
         }
-
         private void GetProvider()
         {
             _adsServiceProvider = new AdsServiceProviderAdMob();
+        }
+        
+        private void InInitialize()
+        {
+            SetAsLoaded();
         }
 
         public void ShowBanner(AdsBannerModel adsBannerModel) => _adsServiceProvider.ShowBanner(adsBannerModel);

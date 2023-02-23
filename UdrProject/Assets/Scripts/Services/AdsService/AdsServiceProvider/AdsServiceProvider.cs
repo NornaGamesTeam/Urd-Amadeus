@@ -1,10 +1,11 @@
+using System;
 using Urd.Ads;
 
 namespace Urd.Services.Ads
 {
     public abstract class AdsServiceProvider : IAdsServiceProvider
     {
-        public virtual void Init() { }
+        public virtual void Init(Action onInitializeCallback) { }
 
         public abstract void ShowBanner(AdsBannerModel adsBannerModel);
 

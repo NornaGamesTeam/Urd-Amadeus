@@ -22,18 +22,13 @@ namespace Urd.Services
 
             SetProvider(new RemoteConfigurationProviderUnity());
             UnityServices.InitializeAsync();
-            SetAsLoaded();
         }
-
-        private void OnInitializeRemoteConfig()
-        {
-            FetchData(null);
-        }
-
+        
         public void SetProvider(IRemoteConfigurationProvider newProvider)
         {
             _provider = newProvider;
             _provider.OnGetRemoteConfigurationData += OnGetRemoteConfigurationData;
+            FetchData(null);
         }
         
         public void SetEnvironment(RemoteConfigurationEnvironmentType environmentType)
@@ -43,9 +38,15 @@ namespace Urd.Services
             FetchData(null);
         }
 
-        public void FetchData(Action onFetchData)
+        public void FetchData(Action onFetchDataCallback)
         {
-            _provider.FetchData(onFetchData);
+            _provider.FetchData(() => OnFetchData(onFetchDataCallback));
+        }
+
+        private void OnFetchData(Action onFetchDataCallback)
+        {
+            SetAsLoaded();
+            onFetchDataCallback?.Invoke();
         }
 
         private void OnGetRemoteConfigurationData(Dictionary<string, string> keyValues)

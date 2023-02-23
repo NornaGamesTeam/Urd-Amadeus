@@ -32,9 +32,9 @@ namespace Urd.Services
         }
         public void Register(IBaseService serviceInstance, Type type)
         {
-            StaticServiceLocator.Register(serviceInstance, type);
             serviceInstance.SetServiceLocatorService(this);
             serviceInstance.Init();
+            StaticServiceLocator.Register(serviceInstance, type);
         }
 
         public void Reset()

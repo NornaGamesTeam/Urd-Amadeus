@@ -13,10 +13,17 @@ namespace Urd.LiveOps
         {
 
         }
+        public void Init(Action onInitialize)
+        {
+            onInitialize?.Invoke();
+        }
+        
         public void GetAllLiveOpsRaw(LiveOpsTriggers trigger, Action<List<string>> callback)
         {
             _remoteConfigService.Service.TryGetDataAs(trigger.ToString(), out var rawData);
             callback?.Invoke(new List<string>(){ rawData });
         }
+
+        
     }
 }

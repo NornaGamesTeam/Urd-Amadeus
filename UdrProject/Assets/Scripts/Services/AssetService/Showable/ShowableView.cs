@@ -1,10 +1,12 @@
 using UnityEngine;
+using Urd.Utils;
 
 namespace Urd.Asset
 {
     public class ShowableView<TModel> : MonoBehaviour, IShowableView<TModel>
         where TModel : IShowableModel
     {
+        [field: SerializeField, ReadOnly]
         public TModel Model { get; private set; }
 
         public void SetModel(TModel model)

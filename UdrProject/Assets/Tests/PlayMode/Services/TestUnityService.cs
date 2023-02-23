@@ -48,7 +48,7 @@ namespace Urd.Test
             //Assert.That(_clockService.IsInPause, Is.True);
         }
 
-        private void OnPauseStateChange(PauseState obj)
+        private void OnPauseStateChange(PauseState onPause)
         {
             EditorApplication.isPaused = false;
         }

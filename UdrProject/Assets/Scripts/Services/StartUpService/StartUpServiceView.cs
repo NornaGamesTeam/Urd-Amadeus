@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.PlayerLoop;
-using UnityEngine.UI;
 using Urd.Error;
 using Urd.UI;
 using Urd.Utils;
@@ -10,8 +8,6 @@ namespace Urd.Services
 {
     public class StartUpServiceView : MonoBehaviour
     {
-        public float _loadingFactor; 
-        
         private const string LOGO_CONFIG = "StartUp/LogoConfig"; 
         
         [Header("Background")]
@@ -28,8 +24,12 @@ namespace Urd.Services
 
         private ResourceHelper<LogoConfig> _logoConfig = new (LOGO_CONFIG);
         
+        [Header("Controllers")]
+        [SerializeField]
         private UIImageController _logoImageController;
+        [SerializeField]
         private UIImageController _backgroundImageController;
+        [SerializeField]
         private UIProgressBarController _progressBarController;
         
         void Start()
@@ -58,7 +58,7 @@ namespace Urd.Services
 
         private void OnLoadingFactorChanged(float loadingFactor)
         {
-            _loadingFactor = loadingFactor;
+            _progressBarController?.SetFactor(loadingFactor);
         }
 
 
