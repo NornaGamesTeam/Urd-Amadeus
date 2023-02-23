@@ -14,6 +14,7 @@ namespace Urd.Services
             base.Init();
             
             SetDefaultProvider();
+            SetAsLoaded();
         }
 
         private void SetDefaultProvider()

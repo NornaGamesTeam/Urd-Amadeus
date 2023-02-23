@@ -9,6 +9,12 @@ namespace Urd.Services
     {
         private Dictionary<Type, IEventBusHandler> _observers = new Dictionary<Type, IEventBusHandler>();
 
+        public override void Init()
+        {
+            base.Init();
+            SetAsLoaded();
+        }
+
         public void Subscribe(IEventBusObservableBase observer)
         {
             Subscribe(observer, GetMessageInterfaces(observer));

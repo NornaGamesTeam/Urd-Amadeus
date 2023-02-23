@@ -7,7 +7,13 @@ namespace Urd.Services
     {
         public ServiceLocator()
         {
-            StaticServiceLocator.Register<IServiceLocator>(this);
+            Register<IServiceLocator>(this);
+        }
+
+        public override void Init()
+        {
+            base.Init();
+            SetAsLoaded();
         }
 
         public bool Exist<T>() where T : IBaseService

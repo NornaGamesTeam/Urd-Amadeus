@@ -14,6 +14,7 @@ namespace Urd.Services
             GetProvider();
             
             _adsServiceProvider.Init();
+            SetAsLoaded();
         }
 
         private void GetProvider()

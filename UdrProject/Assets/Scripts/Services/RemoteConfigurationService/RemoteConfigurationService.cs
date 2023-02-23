@@ -21,7 +21,8 @@ namespace Urd.Services
             base.Init();
 
             SetProvider(new RemoteConfigurationProviderUnity());
-            UnityServices.InitializeAsync(); 
+            UnityServices.InitializeAsync();
+            SetAsLoaded();
         }
 
         private void OnInitializeRemoteConfig()

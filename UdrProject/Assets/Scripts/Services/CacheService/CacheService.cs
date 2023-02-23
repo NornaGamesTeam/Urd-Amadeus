@@ -10,6 +10,12 @@ namespace Urd.Services
     {
         private const string PATH = "{0}/{1}";
 
+        public override void Init()
+        {
+            base.Init();
+            SetAsLoaded();
+        }
+
         public void SaveCache(CacheModelRaw cacheModel, Action<CacheModelRaw> onCacheSavedSuccess, Action<ErrorModel> onCacheSavedFailed)
         {
             SaveCacheInternal(cacheModel, onCacheSavedSuccess, onCacheSavedFailed);

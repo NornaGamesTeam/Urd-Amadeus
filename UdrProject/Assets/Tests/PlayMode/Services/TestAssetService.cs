@@ -37,7 +37,7 @@ namespace Urd.Test
         [UnityTest]
         public IEnumerator LoadAsset_SpriteJPG_Success()
         {
-            yield return new WaitUntil(() => _assetService.IsInitialized);
+            yield return new WaitUntil(() => _assetService.IsLoaded);
 
             _assetService.LoadAsset<Sprite>(TEST_JPG, OnLoadAssetSprite);
 
@@ -49,7 +49,7 @@ namespace Urd.Test
         [UnityTest]
         public IEnumerator LoadAsset_SpritePNG_Success()
         {
-            yield return new WaitUntil(() => _assetService.IsInitialized);
+            yield return new WaitUntil(() => _assetService.IsLoaded);
 
             _assetService.LoadAsset<Sprite>(TEST_PNG, OnLoadAssetSprite);
 
@@ -61,7 +61,7 @@ namespace Urd.Test
         [UnityTest]
         public IEnumerator LoadAsset_AudioMP3_Success()
         {
-            yield return new WaitUntil(() => _assetService.IsInitialized);
+            yield return new WaitUntil(() => _assetService.IsLoaded);
 
             _assetService.LoadAsset<AudioClip>(TEST_MP3, OnLoadAssetAudio);
 
@@ -73,7 +73,7 @@ namespace Urd.Test
         [UnityTest]
         public IEnumerator LoadAsset_GameObject_Success()
         {
-            yield return new WaitUntil(() => _assetService.IsInitialized);
+            yield return new WaitUntil(() => _assetService.IsLoaded);
 
             _assetService.LoadAsset<GameObject>(TEST_GameObject, OnLoadGameObject);
 
@@ -85,7 +85,7 @@ namespace Urd.Test
         [UnityTest]
         public IEnumerator LoadScene_Scene_Success()
         {
-            yield return new WaitUntil(() => _assetService.IsInitialized);
+            yield return new WaitUntil(() => _assetService.IsLoaded);
 
             _assetService.LoadScene(_sceneModel, OnSceneCallback);
 

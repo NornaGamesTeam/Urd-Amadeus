@@ -22,6 +22,8 @@ namespace Urd.Services
             _coroutineService = ServiceLocatorService.Get<ICoroutineService>();
 
             _coroutineService.StartCoroutine(UpdateCoroutineCo());
+            
+            SetAsLoaded();
         }
 
         public void SetPause(bool gamePaused)

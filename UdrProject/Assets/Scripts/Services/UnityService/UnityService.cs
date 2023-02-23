@@ -20,6 +20,7 @@ namespace Urd.Services
             _eventBusService = ServiceLocatorService.Get<IEventBusService>();
 
             CreateCoroutineView();
+            SetAsLoaded();
         }
 
         private void CreateCoroutineView()

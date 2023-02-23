@@ -13,10 +13,12 @@ namespace Urd.Services
 
         public override void Init()
         {
+            base.Init();
+            
             _coroutineService = ServiceLocatorService.Get<ICoroutineService>();
             _cacheService = ServiceLocatorService.Get<ICacheService>();
-
-            base.Init();
+            
+            SetAsLoaded();
         }
 
         public void Request(NetworkRequestModel networkRequestModel, Action<NetworkRequestModel> onRequestHttpFinishedSuccess, Action<ErrorModel> onRequestHttpFinishedFailed)

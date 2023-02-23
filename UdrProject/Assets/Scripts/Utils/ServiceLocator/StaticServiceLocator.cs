@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Urd.Services;
 
@@ -11,6 +10,9 @@ namespace Urd.Utils
         private static Dictionary<Type, IBaseService>
             Services = new Dictionary<Type, IBaseService>();
 
+        private static Dictionary<Type, DelegateHelper.DelegateVoidVoid> _onServiceRegistered
+            = new Dictionary<Type, DelegateHelper.DelegateVoidVoid>();
+
         public static void Register<T>(T serviceInstance) where T : IBaseService
         {
             Register(serviceInstance, typeof(T));
@@ -19,6 +21,12 @@ namespace Urd.Utils
         public static void Register(IBaseService serviceInstance, Type type)
         {
             Services[type] = serviceInstance;
+            
+            if(_onServiceRegistered.TryGetValue(type, out var actionEvent))
+            {
+                actionEvent?.Invoke();
+                _onServiceRegistered.Remove(type);
+            }
         }
 
         public static bool Exist<T>() => Exist(typeof(T));
@@ -40,6 +48,19 @@ namespace Urd.Utils
         public static void Reset()
         {
             Services.Clear();
+        }
+
+        public static void OnRegister<T>(DelegateHelper.DelegateVoidVoid action) where T : IBaseService
+        {
+            var type = typeof(T);
+            if(_onServiceRegistered.TryGetValue(type, out var actionEvent))
+            {
+                actionEvent += action;
+            }
+            else
+            {
+                _onServiceRegistered[typeof(T)] = action;
+            }
         }
     }
 }

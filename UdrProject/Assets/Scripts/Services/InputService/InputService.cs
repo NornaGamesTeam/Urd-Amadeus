@@ -16,6 +16,7 @@ namespace Urd.Services
             base.Init();
 
             LoadAllInputs();
+            SetAsLoaded();
         }
 
         private void LoadAllInputs()

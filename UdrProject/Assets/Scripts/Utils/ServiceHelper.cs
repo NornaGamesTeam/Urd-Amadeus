@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Urd.Services;
 
@@ -31,6 +32,11 @@ namespace Urd.Utils
         private void LoadService()
         {
             _service = StaticServiceLocator.Get<T>();
+        }
+
+        public void OnRegister(DelegateHelper.DelegateVoidVoid action)
+        {
+            StaticServiceLocator.OnRegister<T>(action);
         }
     }
 }

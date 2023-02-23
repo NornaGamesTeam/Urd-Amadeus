@@ -34,6 +34,8 @@ namespace Urd.Services
 
         public override void Init()
         {
+            base.Init();
+            
             InstantiateServices();
             StartUpServices();
             ServiceLocatorService.Get<ICoroutineService>().StartCoroutine(CheckRemainingClassesCo());
@@ -44,6 +46,12 @@ namespace Urd.Services
             var servicesTypes = AssemblyHelper.GetClassTypesThatImplement<BaseService>();
             for (int i = servicesTypes.Count - 1; i >= 0; i--)
             {
+                if (servicesTypes[i] == typeof(StartUpService))
+                {
+                    // avoiding to create twice the startup service
+                    continue;
+                }
+                
                 var newService = Activator.CreateInstance(servicesTypes[i]) as BaseService;
                 _allServicesToStartUp.Add(newService);
                 newService.OnFinishLoad += OnFinishLoadService;
@@ -65,17 +73,10 @@ namespace Urd.Services
         
         private IEnumerator CheckRemainingClassesCo()
         {
-            bool keepChecking = true;
-            while(keepChecking)
+            while(_allServicesToStartUp.FindAll(service => !service.IsLoaded).Count > 0)
             {
                 yield return 0;
                 StartUpServices();
-
-                var servicesNotLoaded = _allServicesToStartUp.FindAll(service => !service.IsLoaded);
-                if (servicesNotLoaded.Count == 1 && servicesNotLoaded[0] is IStartUpService)
-                {
-                    keepChecking = false;
-                }
             }
             
             SetAsLoaded();

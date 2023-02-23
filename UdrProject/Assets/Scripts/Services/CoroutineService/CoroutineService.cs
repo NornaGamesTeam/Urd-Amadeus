@@ -15,6 +15,7 @@ namespace Urd.Services
             base.Init();
 
             CreateCoroutineView();
+            SetAsLoaded();
         }
 
         private void CreateCoroutineView()

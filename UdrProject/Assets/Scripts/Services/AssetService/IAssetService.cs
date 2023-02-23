@@ -8,7 +8,6 @@ namespace Urd.Services
 {
     public interface IAssetService : IBaseService
     {
-        bool IsInitialized { get; }
         void LoadAsset<T>(string addressName, Action<T> assetCallback);
         void LoadScene(SceneModel sceneModel, Action<SceneModel> onLoadSceneCallback);
         void UnLoadScene(SceneModel sceneModel, Action<bool> onUnloadSceneCallback);

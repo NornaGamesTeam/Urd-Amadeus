@@ -23,7 +23,7 @@ namespace Urd.Services
             Type iBaseServiceType = typeof(IBaseService);
             for (int i = 0; i < interfaces.Length; i++)
             {
-                if (iBaseServiceType.IsAssignableFrom(interfaces[i]))
+                if (iBaseServiceType.IsAssignableFrom(interfaces[i]) && iBaseServiceType != interfaces[i])
                 {
                     return interfaces[i];
                 }

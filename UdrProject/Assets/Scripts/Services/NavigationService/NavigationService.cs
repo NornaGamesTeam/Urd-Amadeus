@@ -17,9 +17,13 @@ namespace Urd.Services
         
         public override void Init()
         {
+            base.Init();
+            
             _navigationManagers.Add(new NavigationPopupManager());
             _navigationManagers.Add(new NavigationBoomerangManager());
             _navigationManagers.Add(new NavigationSceneManager());
+            
+            SetAsLoaded();
         }
 
         public void Open(INavigable navigable, Action<bool> onOpenNavigableCallback)

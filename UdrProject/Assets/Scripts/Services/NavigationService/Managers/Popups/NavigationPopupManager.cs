@@ -15,14 +15,13 @@ namespace Urd.Services.Navigation
         
         private PopupTypesConfig _popupTypesConfig;
         private Transform _popupParent;
-        
-        private IAssetService _assetService;
+
+        private ServiceHelper<IAssetService> _assetService = new ServiceHelper<IAssetService>();
 
         private List<PopupBodyView> _popupsOpened = new List<PopupBodyView>();
             
         public NavigationPopupManager()
         {
-            _assetService = StaticServiceLocator.Get<IAssetService>();
             LoadPopupTypesConfig();
             LoadParent();
         }
@@ -38,7 +37,13 @@ namespace Urd.Services.Navigation
 
         private void CreatePopupParent()
         {
-            _assetService.Instantiate(_popupTypesConfig.PopupCanvas.gameObject, null, 
+            if (_assetService.Service == null)
+            {
+                _assetService.OnRegister(() => LoadParent());
+                return;
+            }
+            
+            _assetService.Service.Instantiate(_popupTypesConfig.PopupCanvas.gameObject, null, 
                 newPopupCanvas => _popupParent = newPopupCanvas.transform );
         }
 
@@ -74,7 +79,7 @@ namespace Urd.Services.Navigation
                 return;
             }
             
-            _assetService.Instantiate(_popupTypesConfig.PopupBodyPrefab.gameObject, _popupParent,
+            _assetService.Service.Instantiate(_popupTypesConfig.PopupBodyPrefab.gameObject, _popupParent,
                 (popupBody) => OnInstantiatePopupBody(popupBody,popupViewPrefab, popupModel, onOpenNavigable));
 
         }
@@ -83,7 +88,7 @@ namespace Urd.Services.Navigation
             Action<bool> onOpenNavigable)
         {
             var popupBody = popupBodyGameObject.GetComponent<PopupBodyView>();
-            _assetService.Instantiate(popupViewPrefab.GameObject, popupBody.Container, (popupView) => OnInstantiatePopupView(popupBody, popupView, popupModel, onOpenNavigable));
+            _assetService.Service.Instantiate(popupViewPrefab.GameObject, popupBody.Container, (popupView) => OnInstantiatePopupView(popupBody, popupView, popupModel, onOpenNavigable));
         }
 
         private void OnInstantiatePopupView(PopupBodyView popupBody, GameObject popupViewGameObject,
@@ -137,7 +142,7 @@ namespace Urd.Services.Navigation
             if (statusTo == NavigableStatus.Closed)
             {
                 _popupsOpened.Remove(popupToClose);
-                _assetService.Destroy(popupToClose.gameObject);
+                _assetService.Service.Destroy(popupToClose.gameObject);
                 onCloseNavigable?.Invoke(true);
             }
         }

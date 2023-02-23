@@ -28,7 +28,8 @@ namespace Urd.Services
 
             _provider = GetProvider();
             _storeCommunication = GetCommunication();
-            //LoadProducts();
+            
+            SetAsLoaded();
         }
         
         private IInAppPurchaseProvider GetProvider()

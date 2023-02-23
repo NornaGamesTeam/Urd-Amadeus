@@ -23,6 +23,7 @@ namespace Urd.Services
             SetProvider(new RemoteConfigurationLocalizationKeyProvider());
             LoadLanguage();
             LoadLocalization();
+            SetAsLoaded();
         }
 
         public void SetProvider(ILocalizationKeysProvider localizationKeysProvider)
