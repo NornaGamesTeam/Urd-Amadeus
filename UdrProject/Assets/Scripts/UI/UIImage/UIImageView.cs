@@ -28,6 +28,7 @@ namespace Urd.UI
         private void SetImage()
         {
             _image.sprite = Model.Sprite;
+            _image.color = Model.Color;
         }
     }
 }

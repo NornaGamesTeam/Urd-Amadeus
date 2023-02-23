@@ -8,8 +8,11 @@ namespace Urd.UI
     {
         protected override string DEFAULT_ADDRESSABLE => "DefaultUIImage";
         
-        [field: SerializeField, PreviewSprite] 
+        [field: SerializeField, PreviewSprite]
         public Sprite Sprite { get; private set; }
+
+        [field: SerializeField]
+        public Color Color { get; private set; }
 
         public UIImageModel(Sprite sprite) : this(sprite, string.Empty) { }
 
@@ -21,6 +24,12 @@ namespace Urd.UI
         public void SetSprite(Sprite newSprite)
         {
             Sprite = newSprite;
+            CallOnChanged();
+        }
+        
+        public void SetColor(Color newColor)
+        {
+            Color = newColor;
             CallOnChanged();
         }
     }

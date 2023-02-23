@@ -14,15 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BackgroundModel>k__BackingField:
     _addressable: 
-    <Sprite>k__BackingField: {fileID: 21300000, guid: 898f886a39d714db5b90d2c36676c894, type: 3}
+    <Sprite>k__BackingField: {fileID: 0}
+    <Color>k__BackingField: {r: 0.1, g: 0.1, b: 0.1, a: 1}
   <LogoModel>k__BackingField:
     _addressable: 
-    <Sprite>k__BackingField: {fileID: 21300000, guid: 748ae8b33df036b46a86e0387f1602cf, type: 3}
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 3e27936b350385f408713442ffede179, type: 3}
+    <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <LoadingBarModel>k__BackingField:
     _addressable: 
     <Background>k__BackingField:
       _addressable: 
       <Sprite>k__BackingField: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
     <Bar>k__BackingField:
       _addressable: 
       <Sprite>k__BackingField: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
