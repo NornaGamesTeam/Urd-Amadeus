@@ -7,12 +7,16 @@ namespace Urd.Utils
 {
     public static class StaticServiceLocator
     {
-        private static Dictionary<Type, IBaseService>
+        private static Dictionary<Type, IBaseService> Services;
+
+        private static Dictionary<Type, DelegateHelper.DelegateVoidVoid> _onServiceRegistered;
+
+        public static void Init()
+        {
             Services = new Dictionary<Type, IBaseService>();
-
-        private static Dictionary<Type, DelegateHelper.DelegateVoidVoid> _onServiceRegistered
-            = new Dictionary<Type, DelegateHelper.DelegateVoidVoid>();
-
+            _onServiceRegistered = new Dictionary<Type, DelegateHelper.DelegateVoidVoid>();
+        }
+        
         public static void Register<T>(T serviceInstance) where T : IBaseService
         {
             Register(serviceInstance, typeof(T));

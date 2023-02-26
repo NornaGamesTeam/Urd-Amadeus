@@ -7,6 +7,7 @@ namespace Urd.Services
     {
         public ServiceLocator()
         {
+            StaticServiceLocator.Init();
             Register<IServiceLocator>(this);
         }
 
