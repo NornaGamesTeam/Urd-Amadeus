@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Audio
+  m_EditorClassIdentifier: 
+  m_GroupName: Audio
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 675df78db0d08214690dc62d00127490
+  m_SerializeEntries:
+  - m_GUID: 27cb8fefbdf2aae4bb18f0e949988981
+    m_Address: DefaultAudioMixer
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 5913efc3fa26c8149a99e3f2bbd3b2b2, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 853a1c9b21f76384fbada9a2f5c7a667, type: 2}
+    - {fileID: 11400000, guid: 17c3bd1c03a7a5b41a6a9f9beb074041, type: 2}
