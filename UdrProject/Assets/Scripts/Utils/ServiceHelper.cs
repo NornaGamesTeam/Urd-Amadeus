@@ -21,6 +21,19 @@ namespace Urd.Utils
 
         private T _service;
 
+        public bool HasService => Service != null;
+        public event DelegateHelper.DelegateVoidVoid OnInitialize
+        {
+            add
+            {
+                if (!HasService)
+                {
+                    StaticServiceLocator.CallOnRegister<T>(value);
+                }
+            }
+            remove { }
+        }
+
         public ServiceHelper(bool loadOnAwake = false)
         {
             if (loadOnAwake)
@@ -32,11 +45,6 @@ namespace Urd.Utils
         private void LoadService()
         {
             _service = StaticServiceLocator.Get<T>();
-        }
-
-        public void OnRegister(DelegateHelper.DelegateVoidVoid action)
-        {
-            StaticServiceLocator.CallOnRegister<T>(action);
         }
     }
 }

@@ -20,9 +20,9 @@ namespace Urd.Services.Localization
 
         public void GetLocalization(LocalizationLanguages language, Action<Dictionary<string, string>> localizationKeyValuesCallback)
         {
-            if (_remoteConfiguration.Service == null)
+            if (_remoteConfiguration.HasService)
             {
-                _remoteConfiguration.OnRegister(() => GetLocalization(language, localizationKeyValuesCallback));
+                _remoteConfiguration.OnInitialize += () => GetLocalization(language, localizationKeyValuesCallback);
                 return;
             }
             
