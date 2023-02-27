@@ -10,7 +10,7 @@ namespace Urd.Services
 
         AudioModel Play(AudioTypes audioTypes);
         void Play(AudioModel audioModel);
-        void Pause(AudioModel audioModel, Action OnPauseCallback);
-        void Stop(AudioModel audioModel, Action OnStopCallback);
+        void Pause(AudioModel audioModel, Action onPauseCallback);
+        void Stop(AudioModel audioModel, Action onStopCallback);
     }
 }

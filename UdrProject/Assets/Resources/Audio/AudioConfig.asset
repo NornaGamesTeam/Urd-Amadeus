@@ -17,3 +17,10 @@ MonoBehaviour:
   <AudioConfigData>k__BackingField:
   - <AudioType>k__BackingField: 1
     <Clip>k__BackingField: {fileID: 8300000, guid: 556a9601f089a8d4a9fa1a8b036afd8f, type: 3}
+    <Volume>k__BackingField: 0
+    <IsLoopable>k__BackingField: 0
+    <AudioMixerName>k__BackingField: 
+    <FadeIn>k__BackingField: 0
+    <PauseFadeIn>k__BackingField: 0
+    <PauseFadeOut>k__BackingField: 0
+    <FadeOut>k__BackingField: 0
