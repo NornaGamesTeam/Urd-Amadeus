@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
@@ -41,11 +43,12 @@ namespace Urd.Services
                     Debug.LogWarning($"[AssetService] LoadAsset {addressName}, more than 1 asset with this name");
                 }
                 LoadAssetIntenal<T>(location[0], assetCallback);
+                return;
             }
 
             LoadAssetIntenal<T>(addressName, assetCallback);
         }
-
+        
         private void LoadAssetIntenal<T>(IResourceLocation resourceLocation, Action<T> assetCallback)
         {
             Addressables.LoadAssetAsync<T>(resourceLocation).Completed += 
@@ -66,6 +69,42 @@ namespace Urd.Services
                 return;
             }
             assetCallback?.Invoke(task.Result);
+        }
+
+        public void LoadAssetByLabel<T>(string labelName, Action<List<T>> assetsCallback)
+        {
+            _resourceLocator.Locate(labelName, typeof(T), out var location);
+            
+            if (location != null && location.Count > 0)
+            {
+                LoadAssetByLabelInternal<T>(labelName, location, assetsCallback);
+                return;
+            }
+
+            LoadAssetByLabelInternal<T>(labelName, assetsCallback);
+        }
+
+        private void LoadAssetByLabelInternal<T>(string labelName, IList<IResourceLocation> locations, Action<List<T>> assetsCallback)
+        {
+            Addressables.LoadAssetsAsync<T>(locations, null).Completed +=
+                objects => OnLoadAssetByLabelInternal<T>(objects, labelName, assetsCallback);
+        }
+
+        private void LoadAssetByLabelInternal<T>(string labelName, Action<List<T>> assetsCallback)
+        {
+            Addressables.LoadAssetsAsync<T>(labelName, null).Completed +=
+                objects => OnLoadAssetByLabelInternal(objects, labelName, assetsCallback);
+        }
+
+        private void OnLoadAssetByLabelInternal<T>(AsyncOperationHandle<IList<T>> objects, string labelName, Action<List<T>> assetsCallback)
+        {
+            if (objects.Status == AsyncOperationStatus.Failed)
+            {
+                Debug.LogWarning($"[AssetService] OnLoadAsset {labelName} cannot Instantiate");
+                assetsCallback?.Invoke(new List<T>());
+                return;
+            }
+            assetsCallback?.Invoke(new List<T>(objects.Result));
         }
 
         public void LoadScene(SceneModel sceneModel, Action<SceneModel> onLoadSceneCallback)
@@ -112,6 +151,7 @@ namespace Urd.Services
                     Debug.LogWarning($"[AssetService] LoadSceneFromAddressable {sceneModel}, more than 1 asset with this name");
                 }
                 LoadSceneInternal(sceneModel, location[0], onLoadSceneCallback);
+                return;
             }
 
             LoadSceneInternal(sceneModel, onLoadSceneCallback);

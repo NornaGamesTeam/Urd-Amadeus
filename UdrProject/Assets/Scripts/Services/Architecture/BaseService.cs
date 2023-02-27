@@ -44,7 +44,7 @@ namespace Urd.Services
             for (int i = 0; i < fields.Length; i++)
             {
                 var type = fields[i].FieldType;
-                if (iBaseServiceType.IsAssignableFrom(type) && !StaticServiceLocator.Exist(type))
+                if (iBaseServiceType.IsAssignableFrom(type) && (!StaticServiceLocator.Exist(type) || !StaticServiceLocator.Get(type).IsLoaded) )
                 {
                     return false;
                 }
