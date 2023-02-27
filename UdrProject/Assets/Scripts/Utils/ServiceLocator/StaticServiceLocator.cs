@@ -41,12 +41,17 @@ namespace Urd.Utils
 
         public static T Get<T>() where T : IBaseService
         {
-            if (!Services.TryGetValue(typeof(T), out var newInstance))
+            return (T)Get(typeof(T));
+        }
+        
+        public static IBaseService Get(Type type)
+        {
+            if (!Services.TryGetValue(type, out var newInstance))
             {
                 //Debug.LogWarning($"Service of type {typeof(T)} not registered");
             }
 
-            return (T)newInstance;
+            return newInstance;
         }
 
         public static void Reset()

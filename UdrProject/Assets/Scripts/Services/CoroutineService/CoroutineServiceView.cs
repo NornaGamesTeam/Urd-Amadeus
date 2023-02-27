@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CoroutineServiceView : MonoBehaviour
+namespace Urd.Services
 {
-    // Start is called before the first frame update
-    void Start()
+    public class CoroutineServiceView : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

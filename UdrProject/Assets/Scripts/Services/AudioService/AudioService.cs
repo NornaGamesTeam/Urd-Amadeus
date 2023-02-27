@@ -5,11 +5,14 @@ using UnityEngine.Audio;
 using Urd.Audio;
 using Urd.Error;
 using Urd.Services.Audio;
+using Urd.Utils;
 
 namespace Urd.Services
 {
     public class AudioService : BaseService, IAudioService
     {
+        private const string AUDIO_LABEL = "Audio";
+        
         private IAudioProvider _audioProvider;
 
         private List<AudioConfigData> _audioConfigData;
@@ -21,8 +24,10 @@ namespace Urd.Services
         {
             base.Init();
 
+            _assetService = StaticServiceLocator.Get<IAssetService>();
+            
             LoadDefaultProvider();
-            LoadAudioConfigs();
+            LoadAudioMixers();
         }
 
         private void LoadDefaultProvider()
@@ -33,24 +38,41 @@ namespace Urd.Services
         public void SetProvider(IAudioProvider audioProvider)
         {
             _audioProvider = audioProvider;
-        }
-        private void LoadAudioConfigs()
-        {
             _audioProvider.GetAudioConfigData(OnGetAudioData);
+        }
+        private void LoadAudioMixers()
+        {
+            _assetService.LoadAssetByLabel<AudioMixer>(AUDIO_LABEL, OnAudioMixedLoaded);
+        }
+
+        private void OnAudioMixedLoaded(List<AudioMixer> audioMixers)
+        {
+            if (CanSetAsLoaded())
+            {
+                _audioMixers = audioMixers;
+            }
         }
 
         private void OnGetAudioData(List<AudioConfigData> audioConfigData)
         {
             _audioConfigData = audioConfigData;
-            SetAsLoaded();
+            if (CanSetAsLoaded())
+            {
+                SetAsLoaded();
+            }
         }
-        
+
         private bool TryGetAudioData(AudioTypes audioType, out AudioConfigData audioConfigData)
         {
             audioConfigData = _audioConfigData.Find(audioConfig => audioConfig.AudioType == audioType);
             return audioConfigData != null;
         }
 
+        private bool CanSetAsLoaded()
+        {
+            return _audioMixers != null && _audioConfigData != null;
+        }
+        
         public AudioModel Play(AudioTypes audioType)
         {
             if (!TryGetAudioData(audioType, out var audioConfigData))

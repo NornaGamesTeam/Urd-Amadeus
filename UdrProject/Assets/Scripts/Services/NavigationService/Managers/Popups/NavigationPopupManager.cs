@@ -37,7 +37,7 @@ namespace Urd.Services.Navigation
 
         private void CreatePopupParent()
         {
-            if (_assetService.HasService)
+            if (!_assetService.HasService)
             {
                 _assetService.OnInitialize += LoadParent;
                 return;
