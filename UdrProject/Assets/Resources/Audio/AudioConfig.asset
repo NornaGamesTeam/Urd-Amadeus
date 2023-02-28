@@ -29,7 +29,7 @@ MonoBehaviour:
     <Volume>k__BackingField: 1
     <IsLoopable>k__BackingField: 0
     <AudioMixerName>k__BackingField: 
-    <FadeIn>k__BackingField: 1
-    <PauseFadeIn>k__BackingField: 1
-    <PauseFadeOut>k__BackingField: 1
-    <FadeOut>k__BackingField: 1
+    <FadeIn>k__BackingField: 2
+    <PauseFadeIn>k__BackingField: 2
+    <PauseFadeOut>k__BackingField: 2
+    <FadeOut>k__BackingField: 2

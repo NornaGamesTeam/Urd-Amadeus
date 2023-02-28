@@ -447,6 +447,9 @@ GameObject:
   - component: {fileID: 1129641015}
   - component: {fileID: 1129641016}
   - component: {fileID: 1129641017}
+  - component: {fileID: 1129641019}
+  - component: {fileID: 1129641021}
+  - component: {fileID: 1129641020}
   m_Layer: 0
   m_Name: Debug
   m_TagString: Untagged
@@ -466,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab3c6d3c6637c44e9be873d59afd045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enabled: 1
+  _enabled: 0
   _keyCode: 49
 --- !u!4 &1129641011
 Transform:
@@ -481,7 +484,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1129641012
 MonoBehaviour:
@@ -579,6 +582,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57b432965f46cbc4e8638711607b12a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 0
+  _keyCode: 50
+--- !u!114 &1129641019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129641009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c787c796067c4714ca39d0a3b3003399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _keyCode: 49
+  _audioTypes: 2
+--- !u!114 &1129641020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129641009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d528d0512b6d64ebb5caa244d739f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _keyCode: 51
+--- !u!114 &1129641021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129641009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eacf79dc69d0e094aa54b575a95e5bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _enabled: 1
@@ -814,7 +860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9033323656115663561, guid: 06b9b0de42ebbf348b8e6693762b413b, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9033323656115663561, guid: 06b9b0de42ebbf348b8e6693762b413b, type: 3}
       propertyPath: m_AnchorMax.x

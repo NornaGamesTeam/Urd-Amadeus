@@ -6,7 +6,7 @@ namespace Urd.DebugTools
     {
         [SerializeField] private bool _enabled;
 
-        [SerializeField] private KeyCode _keyCode;
+        [SerializeField] private KeyCode _keyCode = KeyCode.Alpha1;
 
         void Update()
         {

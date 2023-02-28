@@ -18,9 +18,7 @@ namespace Urd.Services
                                       /(_totalElements*2.0f);
         public event Action<float> OnLoadingFactorChanged;
         
-        #if !UNITY_INCLUDE_TESTS
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
-        #endif
         private static void OnLoadGame()
         {
             InitStartUpService();
