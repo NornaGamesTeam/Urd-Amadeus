@@ -3,7 +3,8 @@ namespace Urd.Audio
     public enum AudioTypes
     {
         None,
-        Test,
+        TestShort,
+        TestLong,
 
         Size
     }

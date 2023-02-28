@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
 using Urd.Services;
+using Urd.Utils;
 
 namespace Urd.Audio
 {
     public class AudioFadeController : IDisposable
     {
-        private IClockService _clockService;
+        private ServiceHelper<IClockService> _clockService = new ServiceHelper<IClockService>();
         private AudioModel _audioModel;
         
         private float _timeStamp;
@@ -31,15 +32,15 @@ namespace Urd.Audio
         {
             _timeStamp = 0;
             _audioModel.AudioSource.volume = 0;
-            _clockService.SuscribeToUpdate(FadeUpdate);
+            _clockService.Service.SuscribeToUpdate(FadeUpdate);
         }
 
         private void FadeUpdate(float deltaTime)
         {
             float fadeValue = Mathf.Lerp(_fadeFrom, _fadeTo, _timeStamp / _fadeDuration);
             _audioModel.AudioSource.volume = fadeValue;
-            _timeStamp += Time.deltaTime;
-            if (_timeStamp < _fadeDuration)
+            _timeStamp += deltaTime;
+            if (_timeStamp >= _fadeDuration)
             {
                 EndFade();
             }
@@ -48,7 +49,7 @@ namespace Urd.Audio
         private void EndFade()
         {
             OnFinishFade?.Invoke();
-            _clockService.UnSuscribeToUpdate(FadeUpdate);
+            _clockService.Service.UnSuscribeToUpdate(FadeUpdate);
             Dispose();
         }
 

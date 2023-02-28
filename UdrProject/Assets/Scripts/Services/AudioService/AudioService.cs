@@ -25,6 +25,8 @@ namespace Urd.Services
         private IAssetService _assetService;
 
         private Transform _audioServiceView;
+
+        private List<AudioModel> _audioPlaying = new List<AudioModel>();
         
         public override void Init()
         {
@@ -64,9 +66,10 @@ namespace Urd.Services
 
         private void OnAudioMixedLoaded(List<AudioMixer> audioMixers)
         {
+            _audioMixers = audioMixers;
             if (CanSetAsLoaded())
             {
-                _audioMixers = audioMixers;
+                SetAsLoaded();
             }
         }
 
@@ -89,18 +92,22 @@ namespace Urd.Services
         {
             return _audioMixers != null && _audioConfigData != null;
         }
-        
+
         public AudioModel Play(AudioTypes audioType)
         {
             if (!TryGetAudioData(audioType, out var audioConfigData))
             {
-                var error = new ErrorModel($"[AudioService] Error when try to get Audio of type {audioType}", 
+                var error = new ErrorModel($"[AudioService] Error when try to get Audio of type {audioType}",
                                            ErrorCode.Error_404_Not_Found);
                 Debug.LogWarning(error);
                 return null;
             }
-            
-            var audioModel = new AudioModel(audioConfigData);
+
+            if (!TryGetAudioModelIfPaused(audioType, out AudioModel audioModel))
+            {
+                audioModel = new AudioModel(audioConfigData);
+            }
+
             Play(audioModel);
             return audioModel;
         }
@@ -112,6 +119,7 @@ namespace Urd.Services
                 SetOrCreateAudioSource(audioModel);
                 new AudioFadeController(audioModel, 0, audioModel.Volume, audioModel.FadeIn);
                 audioModel.AudioSource.Play();
+                _audioPlaying.Add(audioModel);
             }
             else
             {
@@ -144,6 +152,7 @@ namespace Urd.Services
         {
             audioModel.AudioSource.Stop();
             onStopCallback?.Invoke();
+            _audioPlaying.Remove(audioModel);
         }
 
         private void SetOrCreateAudioSource(AudioModel audioModel)
@@ -154,6 +163,12 @@ namespace Urd.Services
             audioSource.loop = audioModel.IsLoopable;
             audioSource.outputAudioMixerGroup = GetAudioMixer(audioModel);
             audioModel.SetAudioSource(audioSource);
+        }
+        
+        private bool TryGetAudioModelIfPaused(AudioTypes audioType, out AudioModel audioModel)
+        {
+            audioModel = _audioPlaying.Find(audioPlaying => audioPlaying.AudioTypes == audioType && audioPlaying.IsInPause);
+            return audioModel != null;
         }
         
         private AudioMixerGroup GetAudioMixer(AudioModel audioModel)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Urd.Utils;
 
@@ -17,7 +18,9 @@ namespace Urd.Services
                                       /(_totalElements*2.0f);
         public event Action<float> OnLoadingFactorChanged;
         
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+        #if !UNITY_INCLUDE_TESTS
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
+        #endif
         private static void OnLoadGame()
         {
             InitStartUpService();
