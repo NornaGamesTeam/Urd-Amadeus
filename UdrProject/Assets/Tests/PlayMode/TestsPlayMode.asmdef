@@ -2,14 +2,18 @@
     "name": "TestsPlayMode",
     "rootNamespace": "",
     "references": [
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner",
         "Udr",
+        "UnityEditor.TestRunner",
+        "UnityEngine.TestRunner",
+        "TestsEditorMode",
         "Unity.ResourceManager",
         "Unity.InputSystem",
         "Unity.InputSystem.TestFramework"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor",
+        "WindowsStandalone64"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": true,
     "overrideReferences": true,

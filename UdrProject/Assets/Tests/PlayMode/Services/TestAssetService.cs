@@ -26,19 +26,18 @@ namespace Urd.Test
         private SceneModel _loadSceneInstance;
         private SceneModel _sceneModel;
 
-        [SetUp]
-        public void SetUp()
+        [UnitySetUp]
+        public IEnumerator SetUp()
         {
             _assetService = new AssetService();
             _assetService.Init();
             _sceneModel = new SceneModel(SceneTypes.Test);
+            yield return new WaitUntil(() => _assetService.IsLoaded);
         }
 
         [UnityTest]
         public IEnumerator LoadAsset_SpriteJPG_Success()
         {
-            yield return new WaitUntil(() => _assetService.IsLoaded);
-
             _assetService.LoadAsset<Sprite>(TEST_JPG, OnLoadAssetSprite);
 
             yield return new WaitUntil(() => _onLoadCallback);
@@ -49,8 +48,6 @@ namespace Urd.Test
         [UnityTest]
         public IEnumerator LoadAsset_SpritePNG_Success()
         {
-            yield return new WaitUntil(() => _assetService.IsLoaded);
-
             _assetService.LoadAsset<Sprite>(TEST_PNG, OnLoadAssetSprite);
 
             yield return new WaitUntil(() => _onLoadCallback);
@@ -61,8 +58,6 @@ namespace Urd.Test
         [UnityTest]
         public IEnumerator LoadAsset_AudioMP3_Success()
         {
-            yield return new WaitUntil(() => _assetService.IsLoaded);
-
             _assetService.LoadAsset<AudioClip>(TEST_MP3, OnLoadAssetAudio);
 
             yield return new WaitUntil(() => _onLoadCallback);
@@ -73,8 +68,6 @@ namespace Urd.Test
         [UnityTest]
         public IEnumerator LoadAsset_GameObject_Success()
         {
-            yield return new WaitUntil(() => _assetService.IsLoaded);
-
             _assetService.LoadAsset<GameObject>(TEST_GameObject, OnLoadGameObject);
 
             yield return new WaitUntil(() => _onLoadCallback);
@@ -85,8 +78,6 @@ namespace Urd.Test
         [UnityTest]
         public IEnumerator LoadScene_Scene_Success()
         {
-            yield return new WaitUntil(() => _assetService.IsLoaded);
-
             _assetService.LoadScene(_sceneModel, OnSceneCallback);
 
             yield return new WaitUntil(() => _onLoadCallback);
