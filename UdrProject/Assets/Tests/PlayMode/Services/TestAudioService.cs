@@ -130,11 +130,11 @@ namespace Urd.Test
             _clockService.Update(audioModel.PauseFadeOut+0.1f);
             yield return 0;
             
-            Assert.That(audioModel.IsPlaying, Is.EqualTo(false));
+            Assert.That(audioModel.IsPlaying && _audioStopCallbackCalled, Is.EqualTo(false));
         }
         
         [UnityTest]
-        public IEnumerator AudioService_Stop_FailedBecaseuFadeOut()
+        public IEnumerator AudioService_Stop_FailedBecauseFadeOut()
         {
             var audioModel = _audioService.Play(AudioTypes.TestLong);
             _clockService.Update(audioModel.FadeIn+0.1f);
