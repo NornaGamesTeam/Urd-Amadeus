@@ -6,5 +6,6 @@ namespace Urd.Utils
         StartUpCanvas,
         PopupCanvas,
         BoomerangCanvas,
+        PoolCanvas,
     }
 }
