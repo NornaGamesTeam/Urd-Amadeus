@@ -4,6 +4,9 @@
   "displayName" : "Urd Package",
   "description" : "Base and utils for projects",
   "unity": "2021.3",
+  "documentationUrl": "https://github.com/NornaGamesTeam/Urd/tree/develop/UdrProject/Assets/UrdPackage/Documentation~",
+  "changelogUrl": "https://github.com/NornaGamesTeam/Urd/blob/develop/UdrProject/Assets/UrdPackage/changelog.md",
+  "licensesUrl": "https://github.com/NornaGamesTeam/Urd/blob/develop/UdrProject/Assets/UrdPackage/License.md",
   "dependencies": {
 	  "com.unity.addressables": "1.19.19",
 	  "com.unity.editorcoroutines": "1.0.0",
