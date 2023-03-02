@@ -60,7 +60,6 @@ namespace Urd.Services.Pool
         public GameObject GetGameObject(string namePrefab)
         {
             PoolGameObjectInfo poolInfo;
-            int numberElements = 0;
             if (!_elements.TryGetValue(namePrefab, out poolInfo))
             {
                 Debug.LogWarning(

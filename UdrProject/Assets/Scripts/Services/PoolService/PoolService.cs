@@ -21,7 +21,7 @@ namespace Urd.Services
             SetAsLoaded();
         }
 
-        public void PreLoadClass<T>(int initialAmount) where T : class, IPoolable
+        public void PreLoadClassObject<T>(int initialAmount) where T : class, IPoolable
         {
             Assert.IsTrue(initialAmount > 0, "The initial has to be greater than 0");
 
@@ -33,7 +33,7 @@ namespace Urd.Services
             _poolServiceModuleClass.PreLoadClass<T>(initialAmount);
         }
 
-        public T GetObject<T>() where T : class, IPoolable
+        public T GetClassObject<T>() where T : class, IPoolable
         {
             if (IsGameObjectClass(typeof(T)))
             {
@@ -43,9 +43,9 @@ namespace Urd.Services
             return _poolServiceModuleClass.GetObject<T>();
         }
 
-        public void FreeObject<T>(T objectToFree) where T : class, IPoolable
+        public void FreeClassObject<T>(T objectToFree) where T : class, IPoolable
         {
-            Assert.IsNull(objectToFree, "The PrefabId Cannot be null or empty");
+            Assert.IsNotNull(objectToFree, "The Object To free Cannot be null");
 
             if (IsGameObjectClass(typeof(T)))
             {
@@ -57,19 +57,19 @@ namespace Urd.Services
 
         public void PreLoadGameObject(GameObject prefab, string prefabId, int initialAmount, bool replace = false)
         {
-            Assert.IsFalse(string.IsNullOrEmpty(prefabId), "The PrefabId Cannot be null or empty");
+            Assert.IsTrue(string.IsNullOrEmpty(prefabId), "The PrefabId Cannot be null or empty");
             _poolServiceModuleGameObject.PreLoadGameObject(prefab, prefabId, initialAmount, replace);
         }
 
         public GameObject GetGameObject(string prefabId)
         {
-            Assert.IsFalse(string.IsNullOrEmpty(prefabId), "The PrefabId Cannot be null or empty");
+            Assert.IsTrue(string.IsNullOrEmpty(prefabId), "The PrefabId Cannot be null or empty");
             return _poolServiceModuleGameObject.GetGameObject(prefabId);
         }
 
         public void FreeGameObject(string prefabId, GameObject gameObjectToFree)
         {
-            Assert.IsFalse(string.IsNullOrEmpty(prefabId), "The PrefabId Cannot be null or empty");
+            Assert.IsTrue(string.IsNullOrEmpty(prefabId), "The PrefabId Cannot be null or empty");
             _poolServiceModuleGameObject.FreeGameObject(prefabId, gameObjectToFree);
         }
         
