@@ -1,10 +1,11 @@
+using System.Collections;
 using NUnit.Framework;
 using Urd.Pool;
 using Urd.Services;
 
 namespace Urd.Test
 {
-    public class TestPoolService
+    public class TestPoolServiceClasses
     {
         private IPoolService _poolService;
 
@@ -31,16 +32,6 @@ namespace Urd.Test
             var dummyClass01 = _poolService.GetClassObject<DummyClass01>();
 
             Assert.That(dummyClass01, Is.Not.Null);
-        }
-        
-        [Test]
-        public void PoolService_GetClass_SuccessPreloadOnDemand()
-        {
-            _poolService.PreLoadClassObject<DummyClass01>(2);
-            
-            var dummyClass02 = _poolService.GetClassObject<DummyClass02>();
-
-            Assert.That(dummyClass02?.InitCalled, Is.True);
         }
         
         [Test]

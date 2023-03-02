@@ -30,6 +30,7 @@ namespace Urd.Services.Pool
             if (!_elements.TryGetValue(namePrefab, out var poolInfo))
             {
                 poolInfo = new PoolGameObjectInfo(prefab);
+                _elements[namePrefab] = poolInfo;
             }
 
             if (prefab != poolInfo.Prefab)
