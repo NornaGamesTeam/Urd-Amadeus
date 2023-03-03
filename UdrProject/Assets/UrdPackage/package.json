@@ -20,7 +20,7 @@
     {
       "displayName": ":Loading Screen",
       "description": "Contains a loading scene screen",
-      "path": "Samples~/LoadingScreen"
+      "path": "LoadingScreen"
     }
   ],
   "author":{
