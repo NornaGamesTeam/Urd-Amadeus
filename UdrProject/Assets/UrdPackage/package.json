@@ -1,10 +1,10 @@
 {
   "name" : "com.nornagames.urd",
-  "version" : "0.5.0",
+  "version" : "0.5.1",
   "displayName" : "Urd Package",
   "description" : "Base and utils for projects",
   "unity": "2021.3",
-  "documentationUrl": "https://github.com/NornaGamesTeam/Urd/tree/develop/UdrProject/Assets/UrdPackage/Documentation~",
+  "documentationUrl": "https://github.com/NornaGamesTeam/Urd/wiki",
   "changelogUrl": "https://github.com/NornaGamesTeam/Urd/blob/develop/UdrProject/Assets/UrdPackage/changelog.md",
   "licensesUrl": "https://github.com/NornaGamesTeam/Urd/blob/develop/UdrProject/Assets/UrdPackage/License.md",
   "dependencies": {
@@ -16,6 +16,13 @@
 	  "com.unity.textmeshpro": "3.0.6",
 	  "com.unity.timeline": "1.6.4"
   },
+  "samples": [
+    {
+      "displayName": ":Loading Screen",
+      "description": "Contains a loading scene screen",
+      "path": "Samples~/LoadingScreen"
+    }
+  ],
   "author":{
     "name": "Norna Games",
     "url": "https://github.com/NornaGamesTeam/Urd"
