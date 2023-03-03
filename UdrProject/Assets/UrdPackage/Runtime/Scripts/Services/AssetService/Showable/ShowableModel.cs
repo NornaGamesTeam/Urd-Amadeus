@@ -7,6 +7,9 @@ namespace Urd.Asset
     {
         protected virtual string DEFAULT_ADDRESSABLE => string.Empty;
         
+        
+        [SerializeField, HideInInspector] 
+        protected bool _customAddressable;
         [SerializeField] 
         protected string _addressable;
         public virtual string Addressable => !string.IsNullOrEmpty(_addressable) ? _addressable : DEFAULT_ADDRESSABLE;

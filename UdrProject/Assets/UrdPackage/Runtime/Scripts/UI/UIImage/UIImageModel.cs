@@ -9,6 +9,7 @@ namespace Urd.UI
     {
         protected override string DEFAULT_ADDRESSABLE => "DefaultUIImage";
         
+        [SerializeField]
         [field: SerializeField, PreviewSprite]
         public Sprite Sprite { get; private set; }
 
