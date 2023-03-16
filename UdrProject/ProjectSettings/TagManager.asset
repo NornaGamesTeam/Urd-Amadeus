@@ -51,3 +51,9 @@ TagManager:
   - name: Boomerangs
     uniqueID: 3334794651
     locked: 0
+  - name: HexFloor
+    uniqueID: 2373655863
+    locked: 0
+  - name: HexWall
+    uniqueID: 2675178761
+    locked: 0

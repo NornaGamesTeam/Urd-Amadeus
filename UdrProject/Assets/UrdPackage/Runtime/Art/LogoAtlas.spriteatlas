@@ -43,20 +43,13 @@ SpriteAtlas:
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables:
-    - {fileID: 102900000, guid: 7b863153f3540f3479aa27d9ac64008f, type: 3}
+    packables: []
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites:
-  - {fileID: 21300000, guid: 49af50c0f65baff499feb0281df08826, type: 3}
-  - {fileID: 21300000, guid: 25efee01afb11624f9eea612cc58ed84, type: 3}
-  - {fileID: 21300000, guid: 3e27936b350385f408713442ffede179, type: 3}
-  m_PackedSpriteNamesToIndex:
-  - logonornaLookFront
-  - logonornaEyeLook
-  - logonornaNoEye
+  m_PackedSprites: []
+  m_PackedSpriteNamesToIndex: []
   m_RenderDataMap: {}
   m_Tag: LogoAtlas
   m_IsVariant: 0
