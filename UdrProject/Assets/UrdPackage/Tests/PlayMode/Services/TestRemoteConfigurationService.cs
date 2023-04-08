@@ -127,7 +127,17 @@ namespace Urd.Test
                 onFetchData?.Invoke();
             }
 
+            
             public void SetEnvironment(RemoteConfigurationEnvironmentType environment) { }
+            public void Dispose()
+            {
+                
+            }
+
+            public void Init()
+            {
+                
+            }
         }
     }
 }

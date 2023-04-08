@@ -10,6 +10,7 @@ using Urd.Utils;
 
 namespace Urd.Services.Navigation
 {
+    [Serializable]
     public class NavigationSceneManager : INavigationManager
     {
         private IAssetService _assetService;
@@ -17,6 +18,10 @@ namespace Urd.Services.Navigation
         private List<SceneModel> _scenesOpened = new List<SceneModel>();
             
         public NavigationSceneManager()
+        {
+        }
+
+        public void Init()
         {
             _assetService = StaticServiceLocator.Get<IAssetService>();
         }

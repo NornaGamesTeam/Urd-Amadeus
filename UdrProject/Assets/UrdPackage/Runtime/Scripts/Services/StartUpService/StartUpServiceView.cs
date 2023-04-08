@@ -52,8 +52,6 @@ namespace Urd.Services
             LoadBackground();
             LoadLogo();
             LoadProgressBar();
-            
-            
         }
 
         private void OnLoadingFactorChanged(float loadingFactor)

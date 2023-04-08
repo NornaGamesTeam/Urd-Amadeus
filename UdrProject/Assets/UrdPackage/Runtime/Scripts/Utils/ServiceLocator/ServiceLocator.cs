@@ -3,6 +3,7 @@ using Urd.Utils;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class ServiceLocator : BaseService, IServiceLocator
     {
         public ServiceLocator()

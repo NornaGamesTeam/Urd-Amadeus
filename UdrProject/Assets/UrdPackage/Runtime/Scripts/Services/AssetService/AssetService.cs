@@ -12,6 +12,7 @@ using Urd.Scene;
 
 namespace Urd.Services
 {
+    [System.Serializable]
     public class AssetService : BaseService, IAssetService
     {
         private IResourceLocator _resourceLocator;

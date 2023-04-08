@@ -8,20 +8,18 @@ using Urd.Services.Navigation;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class NavigationService : BaseService, INavigationService
     {
         private List<INavigable> _navigableOpened = new List<INavigable>();
         private List<INavigable> _navigableHistory = new List<INavigable>();
 
+        [SerializeReference, SubclassSelector]
         private List<INavigationManager> _navigationManagers = new List<INavigationManager>();
         
         public override void Init()
         {
             base.Init();
-            
-            _navigationManagers.Add(new NavigationPopupManager());
-            _navigationManagers.Add(new NavigationBoomerangManager());
-            _navigationManagers.Add(new NavigationSceneManager());
             
             SetAsLoaded();
         }

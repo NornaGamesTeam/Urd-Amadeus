@@ -6,6 +6,7 @@ using Urd.Services.Pool;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class PoolService : BaseService, IPoolService
     {
         private PoolServiceModuleClass _poolServiceModuleClass;

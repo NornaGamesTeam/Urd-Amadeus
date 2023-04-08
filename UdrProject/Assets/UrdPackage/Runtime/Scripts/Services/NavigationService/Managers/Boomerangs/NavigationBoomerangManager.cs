@@ -9,6 +9,7 @@ using Urd.View.Boomerang;
 
 namespace Urd.Services.Navigation
 {
+    [Serializable]
     public class NavigationBoomerangManager : INavigationManager
     {
         private const string POPUP_TYPES_CONFIG_PATH = "Navigation/BoomerangTypesConfig";
@@ -21,6 +22,10 @@ namespace Urd.Services.Navigation
         private List<BoomerangBodyView> _boomerangsOpened = new List<BoomerangBodyView>();
             
         public NavigationBoomerangManager()
+        {
+        }
+
+        public void Init()
         {
             LoadBoomerangTypesConfig();
             LoadParent();

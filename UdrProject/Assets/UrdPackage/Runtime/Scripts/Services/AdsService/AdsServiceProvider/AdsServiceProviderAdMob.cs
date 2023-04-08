@@ -6,6 +6,7 @@ using Urd.Ads;
 
 namespace Urd.Services.Ads
 {
+    [Serializable]
     public class AdsServiceProviderAdMob : AdsServiceProvider
     {
         private const string ADMOB_CONFIG_FILE_PATH = "GoogleMobileAdsSettings"; 
@@ -14,13 +15,13 @@ namespace Urd.Services.Ads
         private InterstitialAd _interstitialAd;
         private RewardedAd _rewardedVideo;
 
-        public GoogleMobileAdsSettings _adMobSettings;
+        [SerializeField]
+        private GoogleMobileAdsSettings _adMobSettings;
         public bool IsInitialized { get; private set; }
         public override void Init(Action onInitializeCallback)
         {
             base.Init(onInitializeCallback);
-
-            LoadConfig();
+            
             MobileAds.Initialize(
                 status => OnInitialize(status, onInitializeCallback));
         }
@@ -30,12 +31,6 @@ namespace Urd.Services.Ads
             IsInitialized = true;
             onInitializeCallback?.Invoke();
         }
-
-        private void LoadConfig()
-        {
-            _adMobSettings = Resources.Load<GoogleMobileAdsSettings>(ADMOB_CONFIG_FILE_PATH);
-        }
-
 
         public override void ShowBanner(AdsBannerModel adsBannerModel)
         {

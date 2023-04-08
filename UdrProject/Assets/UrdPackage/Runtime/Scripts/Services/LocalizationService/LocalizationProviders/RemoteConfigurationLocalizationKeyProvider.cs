@@ -6,6 +6,7 @@ using Urd.Utils;
 
 namespace Urd.Services.Localization
 {
+    [Serializable]
     public class RemoteConfigurationLocalizationKeyProvider : ILocalizationKeysProvider
     {
         private const string LOCALIZATION_REMOTE_CONFIG_KEY = "LocalizationKeyValues";

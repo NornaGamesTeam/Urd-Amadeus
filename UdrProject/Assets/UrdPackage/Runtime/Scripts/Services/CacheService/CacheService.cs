@@ -6,6 +6,7 @@ using Urd.Services.Cache;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class CacheService : BaseService, ICacheService
     {
         private const string PATH = "{0}/{1}";

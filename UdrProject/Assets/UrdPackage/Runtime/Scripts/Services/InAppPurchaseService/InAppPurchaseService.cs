@@ -9,8 +9,10 @@ using Urd.Utils;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class InAppPurchaseService : BaseService, IInAppPurchaseService
     {
+        [SerializeReference, SubclassSelector]
         private IInAppPurchaseProvider _provider;
 
         private IInAppPurchaseStoreListener _storeListener;
@@ -27,7 +29,6 @@ namespace Urd.Services
             base.Init();
 
             _storeCommunication = GetCommunication();
-            _provider = GetProvider();
             _provider.Init(OnInitializedCallback);
         }
 
@@ -36,11 +37,6 @@ namespace Urd.Services
             SetAsLoaded();
         }
 
-        private IInAppPurchaseProvider GetProvider()
-        {
-            return new InAppPurchaseProviderRemoteConfig();
-        }
-        
         private IInAppPurchaseCommunication GetCommunication()
         {
             return new InAppPurchaseNoReceiptCommunication();

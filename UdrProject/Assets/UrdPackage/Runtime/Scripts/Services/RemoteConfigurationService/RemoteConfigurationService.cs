@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Services.Core;
 using Unity.Services.RemoteConfig;
+using UnityEngine;
 using Urd.Services.RemoteConfiguration;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class RemoteConfigurationService : BaseService, IRemoteConfigurationService
     {
+        [SerializeReference, SubclassSelector]
         private IRemoteConfigurationProvider _provider;
 
         private Dictionary<string, string> _keyValues = new();
@@ -20,7 +23,6 @@ namespace Urd.Services
         {
             base.Init();
 
-            SetProvider(new RemoteConfigurationProviderUnity());
             UnityServices.InitializeAsync();
         }
         

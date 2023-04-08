@@ -11,12 +11,14 @@ using Urd.Utils;
 
 namespace Urd.Services
 {
+    [System.Serializable]
     public class AudioService : BaseService, IAudioService
     {
         private const string AUDIO_GAMEOBJECT_NAME = "AudioServiceView";
         private const string AUDIO_LABEL = "Audio";
         private const string DEFAULT_AUDIO_MIXER_NAME = "Master";
         
+        [SerializeReference, SubclassSelector]
         private IAudioProvider _audioProvider;
 
         private List<AudioConfigData> _audioConfigData;
@@ -35,7 +37,6 @@ namespace Urd.Services
             _assetService = StaticServiceLocator.Get<IAssetService>();
 
             CreateAudioServiceView();
-            LoadDefaultProvider();
             LoadAudioMixers();
         }
 
@@ -49,11 +50,6 @@ namespace Urd.Services
             }
         }
 
-        private void LoadDefaultProvider()
-        {
-            SetProvider(new AudioProviderUnityResources());
-        }
-        
         public void SetProvider(IAudioProvider audioProvider)
         {
             _audioProvider = audioProvider;

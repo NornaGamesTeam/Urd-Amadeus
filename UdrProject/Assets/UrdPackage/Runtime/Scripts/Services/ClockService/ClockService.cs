@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class ClockService : BaseService, IClockService
     {
         public bool IsInPause { get; private set; }

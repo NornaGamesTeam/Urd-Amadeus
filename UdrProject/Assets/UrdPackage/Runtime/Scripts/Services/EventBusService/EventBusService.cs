@@ -4,6 +4,7 @@ using Urd.Services.EventBus;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class EventBusService : BaseService, IEventBusService
     {
         private Dictionary<Type, IEventBusHandler> _observers = new Dictionary<Type, IEventBusHandler>();

@@ -6,6 +6,7 @@ using Urd.Services.Network;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class NetworkService : BaseService, INetworkService
     {
         private ICoroutineService _coroutineService;

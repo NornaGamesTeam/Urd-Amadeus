@@ -5,6 +5,7 @@ using Urd.Utils;
 
 namespace Urd.Services.Audio
 {
+    [Serializable]
     public class AudioProviderRemoteConfig : IAudioProvider
     {
         private ServiceHelper<IRemoteConfigurationService> _remoteConfig;

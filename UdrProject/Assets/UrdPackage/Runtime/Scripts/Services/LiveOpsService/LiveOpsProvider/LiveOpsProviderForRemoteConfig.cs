@@ -5,6 +5,7 @@ using Urd.Utils;
 
 namespace Urd.LiveOps
 {
+    [Serializable]
     public class LiveOpsProviderForRemoteConfig: ILiveOpsProvider
     {
         private ServiceHelper<IRemoteConfigurationService> _remoteConfigService =

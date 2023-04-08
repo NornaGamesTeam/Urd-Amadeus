@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Urd.Services.RemoteConfiguration
 {
+    [Serializable]
     public class RemoteConfigurationProviderUnity : IRemoteConfigurationProvider
     {
         private string REMOTE_CONFIGURATION_PATH = "RemoteConfiguration";
@@ -25,8 +26,17 @@ namespace Urd.Services.RemoteConfiguration
 
         public RemoteConfigurationProviderUnity()
         {
+        }
+
+        public void Init()
+        {
             RemoteConfigService.Instance.FetchCompleted += OnFetchCompleted;
             LoadResourceData();
+        }
+
+        public void Dispose()
+        {
+            
         }
 
         void LoadResourceData()

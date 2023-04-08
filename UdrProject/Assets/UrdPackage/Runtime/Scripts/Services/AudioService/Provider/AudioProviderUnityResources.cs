@@ -5,6 +5,7 @@ using Urd.Audio;
 
 namespace Urd.Services.Audio
 {
+    [Serializable]
     public class AudioProviderUnityResources : IAudioProvider
     {
         public void Init() { }

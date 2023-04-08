@@ -6,6 +6,7 @@ using Urd.Utils;
 
 namespace Urd.Services.RemoteConfiguration
 {
+    [Serializable]
     public class InAppPurchaseProviderRemoteConfig : IInAppPurchaseProvider
     {
         private const string STORE_KEY = "Store";

@@ -1,14 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using Urd.Utils;
 
 namespace Urd.Services
 {
     public class StartUpService : BaseService, IStartUpService
     {
+        private const string STARTUP_CONFIG_FILE_PATH = "Services/StartUpConfig";
+        
         private int _totalElements;
         private List<BaseService> _allServicesToStartUp = new();
         
@@ -44,15 +44,11 @@ namespace Urd.Services
         
         private void InstantiateServices()
         {
+            var startUpServiceConfig = Resources.Load<StartUpServiceConfig>(STARTUP_CONFIG_FILE_PATH);
+            //_allServicesToStartUp = startUpServiceConfig.BaseServices;
             var servicesTypes = AssemblyHelper.GetClassTypesThatImplement<BaseService>();
             for (int i = servicesTypes.Count - 1; i >= 0; i--)
             {
-                if (servicesTypes[i] == typeof(StartUpService))
-                {
-                    // avoiding to create twice the startup service
-                    continue;
-                }
-                
                 var newService = Activator.CreateInstance(servicesTypes[i]) as BaseService;
                 _allServicesToStartUp.Add(newService);
                 newService.OnFinishLoad += OnFinishLoadService;

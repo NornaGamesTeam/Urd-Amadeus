@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class CoroutineService : BaseService, ICoroutineService
     {
         private static string COROUTINE_GAMEOBJECT_NAME = "CoroutineView";

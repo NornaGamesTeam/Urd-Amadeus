@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class InputService : BaseService, IInputService
     {
         private List<InputAction> _actions = new List<InputAction>();

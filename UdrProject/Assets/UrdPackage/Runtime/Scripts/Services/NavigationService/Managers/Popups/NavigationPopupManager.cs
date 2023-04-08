@@ -9,6 +9,7 @@ using Urd.View.Popup;
 
 namespace Urd.Services.Navigation
 {
+    [Serializable]
     public class NavigationPopupManager : INavigationManager
     {
         private const string POPUP_TYPES_CONFIG_PATH = "Navigation/PopupTypesConfig";
@@ -22,10 +23,14 @@ namespace Urd.Services.Navigation
             
         public NavigationPopupManager()
         {
+        }
+
+        public void Init()
+        {
             LoadPopupTypesConfig();
             LoadParent();
         }
-
+        
         private void LoadParent()
         {
             _popupParent = GameObject.FindWithTag(CanvasTagNames.PopupCanvas.ToString())?.transform;

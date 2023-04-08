@@ -1,26 +1,22 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using UnityEngine;
 using Urd.LiveOps;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class LiveOpsService : BaseService, ILiveOpsService
     {
+        [SerializeReference, SubclassSelector]
         private ILiveOpsProvider _liveOpsProvider;
 
         public override void Init()
         {
             base.Init();
-            
-            SetDefaultProvider();
         }
-
-        private void SetDefaultProvider()
-        {
-            SetProvider(new LiveOpsProviderForRemoteConfig());
-        }
-
+        
         public void SetProvider(ILiveOpsProvider liveOpsProvider)
         {
             _liveOpsProvider = liveOpsProvider;

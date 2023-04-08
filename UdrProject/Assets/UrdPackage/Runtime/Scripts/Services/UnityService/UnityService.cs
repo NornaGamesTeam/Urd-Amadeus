@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 using Urd.Services.Unity;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class UnityService : BaseService, IUnityService
     {
         private static string UNITY_VIEW_GAMEOBJECT_NAME = "UnityServiceView";

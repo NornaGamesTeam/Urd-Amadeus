@@ -1,23 +1,20 @@
+using UnityEngine;
 using Urd.Ads;
 using Urd.Services.Ads;
 
 namespace Urd.Services
 {
+    [System.Serializable]
     public class AdsService : BaseService, IAdsService
     {
+        [SerializeReference, SubclassSelector]
         private IAdsServiceProvider _adsServiceProvider;
         
         public override void Init()
         {
             base.Init();
             
-            GetProvider();
-            
             _adsServiceProvider.Init(InInitialize);
-        }
-        private void GetProvider()
-        {
-            _adsServiceProvider = new AdsServiceProviderAdMob();
         }
         
         private void InInitialize()

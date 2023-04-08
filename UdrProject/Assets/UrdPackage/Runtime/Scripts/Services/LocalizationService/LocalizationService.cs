@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Urd.Services.Localization;
 
 namespace Urd.Services
 {
+    [Serializable]
     public class LocalizationService : BaseService, ILocalizationService
     {
         public LocalizationLanguages Language { get; private set; }
@@ -11,7 +13,8 @@ namespace Urd.Services
         private IEventBusService _eventBusService;
 
         private Dictionary<string, string> _localizationKeys = new Dictionary<string, string>();
-        private ILocalizationKeysProvider _localizationKeysProvider = new DummyLocalizationKeysProvider();
+        [SerializeReference, SubclassSelector]
+        private ILocalizationKeysProvider _localizationKeysProvider;
 
         public override void Init()
         {
@@ -19,7 +22,6 @@ namespace Urd.Services
 
             _eventBusService = ServiceLocatorService.Get<IEventBusService>();
 
-        //private ILocalizationKeysProvider _localizationKeysProvider = new DummyLocalizationKeysProvider();
             LoadLanguage();
             SetDefaultProvider();
         }
