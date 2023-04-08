@@ -19,7 +19,7 @@ namespace Urd.Services.Pool
             }
             else
             {
-                Debug.LogWarning($"Object with tag {CanvasTagNames.PoolCanvas.ToString()}");
+                Debug.LogWarning($"Object not found with tag {CanvasTagNames.PoolCanvas.ToString()}");
                 _container = new GameObject(CanvasTagNames.PoolCanvas.ToString()).transform;
                 _container.tag = CanvasTagNames.PoolCanvas.ToString();
             }

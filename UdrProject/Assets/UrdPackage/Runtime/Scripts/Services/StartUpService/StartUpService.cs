@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Urd.Utils;
 
 namespace Urd.Services
 {
@@ -10,7 +11,7 @@ namespace Urd.Services
         private const string STARTUP_CONFIG_FILE_PATH = "Services/StartUpConfig";
         
         private int _totalElements;
-        private List<BaseService> _allServicesToStartUp = new();
+        private List<IBaseService> _allServicesToStartUp = new();
         
         private IStartUpService _startUpService;
         public float LoadingFactor => (_allServicesToStartUp.FindAll(service => service.InitBegins).Count 
@@ -38,22 +39,21 @@ namespace Urd.Services
             base.Init();
             
             InstantiateServices();
-            StartUpServices();
+            InitICoroutine();
             ServiceLocatorService.Get<ICoroutineService>().StartCoroutine(CheckRemainingClassesCo());
         }
-        
+
+        private void InitICoroutine()
+        {
+            ICoroutineService coroutineService = _allServicesToStartUp.Find(service => service.GetType().ToString().Contains("oroutine")) as ICoroutineService;
+            ServiceLocatorService.Register<ICoroutineService>(coroutineService);
+        }
+
         private void InstantiateServices()
         {
             var startUpServiceConfig = Resources.Load<StartUpServiceConfig>(STARTUP_CONFIG_FILE_PATH);
-            //_allServicesToStartUp = startUpServiceConfig.BaseServices;
-            var servicesTypes = AssemblyHelper.GetClassTypesThatImplement<BaseService>();
-            for (int i = servicesTypes.Count - 1; i >= 0; i--)
-            {
-                var newService = Activator.CreateInstance(servicesTypes[i]) as BaseService;
-                _allServicesToStartUp.Add(newService);
-                newService.OnFinishLoad += OnFinishLoadService;
-            }
-            _totalElements = _allServicesToStartUp.Count;
+            _allServicesToStartUp = startUpServiceConfig.BaseServices;
+            _totalElements = startUpServiceConfig.BaseServices.Count;
         }
 
         private void StartUpServices()
@@ -75,21 +75,9 @@ namespace Urd.Services
                 yield return 0;
                 StartUpServices();
             }
-            
-            SetAsLoaded();
-        }
-        
-        private void OnFinishLoadService()
-        {
-            for (int i = 0; i < _allServicesToStartUp.Count; i++)
-            {
-                if (_allServicesToStartUp[i].IsLoaded)
-                {
-                    _allServicesToStartUp[i].OnFinishLoad -= OnFinishLoadService;
-                }
-            }   
-            
+
             CallOnLoadingFactorChanged();
+            SetAsLoaded();
         }
 
         private void CallOnLoadingFactorChanged()

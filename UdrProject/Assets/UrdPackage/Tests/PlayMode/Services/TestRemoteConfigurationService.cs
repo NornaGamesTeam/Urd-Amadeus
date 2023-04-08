@@ -129,15 +129,8 @@ namespace Urd.Test
 
             
             public void SetEnvironment(RemoteConfigurationEnvironmentType environment) { }
-            public void Dispose()
-            {
-                
-            }
-
-            public void Init()
-            {
-                
-            }
+            public void Init(Action onInitialized) { }
+            public void Dispose() { }
         }
     }
 }

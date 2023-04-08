@@ -14,6 +14,12 @@ namespace Urd.Services
         {
             base.Init();
             
+            SetProvider(_adsServiceProvider);
+        }
+        
+        public void SetProvider(IAdsServiceProvider provider)
+        {
+            _adsServiceProvider = provider;
             _adsServiceProvider.Init(InInitialize);
         }
         

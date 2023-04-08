@@ -13,20 +13,30 @@ MonoBehaviour:
   m_Name: LogoConfig
   m_EditorClassIdentifier: 
   <BackgroundModel>k__BackingField:
+    _customAddressable: 0
     _addressable: 
-    <Sprite>k__BackingField: {fileID: 0}
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 4c69db43dbd474a2987be5807129b4cc, type: 3}
     <Color>k__BackingField: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+    <FillFactor>k__BackingField: 0
   <LogoModel>k__BackingField:
+    _customAddressable: 0
     _addressable: 
-    <Sprite>k__BackingField: {fileID: 21300000, guid: 3e27936b350385f408713442ffede179, type: 3}
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 077db141816473b45a12c3907f94a0d8, type: 3}
     <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+    <FillFactor>k__BackingField: 0
   <LoadingBarModel>k__BackingField:
+    _customAddressable: 0
     _addressable: 
     <Background>k__BackingField:
+      _customAddressable: 0
       _addressable: 
       <Sprite>k__BackingField: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
       <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <FillFactor>k__BackingField: 0
     <Bar>k__BackingField:
+      _customAddressable: 0
       _addressable: 
       <Sprite>k__BackingField: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
       <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <FillFactor>k__BackingField: 1
+    <Factor>k__BackingField: 1

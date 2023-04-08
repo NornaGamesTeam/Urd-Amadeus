@@ -17,13 +17,22 @@ namespace Urd.Services.Navigation
 
         private List<SceneModel> _scenesOpened = new List<SceneModel>();
             
+        public bool IsInitialized { get; private set; }
+
         public NavigationSceneManager()
         {
         }
 
-        public void Init()
+        public void Init(Action onInitialized)
         {
             _assetService = StaticServiceLocator.Get<IAssetService>();
+            IsInitialized = true;
+            onInitialized?.Invoke();
+        }
+
+        public void Dispose()
+        {
+            
         }
 
         public bool CanHandle(INavigable navigable)

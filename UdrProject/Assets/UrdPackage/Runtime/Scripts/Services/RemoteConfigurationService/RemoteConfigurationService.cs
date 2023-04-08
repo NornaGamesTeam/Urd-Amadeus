@@ -24,11 +24,14 @@ namespace Urd.Services
             base.Init();
 
             UnityServices.InitializeAsync();
+
+            SetProvider(_provider);
         }
         
         public void SetProvider(IRemoteConfigurationProvider newProvider)
         {
             _provider = newProvider;
+            _provider.Init(null);
             _provider.OnGetRemoteConfigurationData += OnGetRemoteConfigurationData;
             FetchData(null);
         }

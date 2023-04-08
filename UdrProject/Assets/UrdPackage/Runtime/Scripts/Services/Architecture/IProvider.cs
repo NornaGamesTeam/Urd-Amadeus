@@ -4,6 +4,6 @@ namespace Urd.Services
 {
     public interface IProvider : IDisposable
     {
-        void Init();
+        void Init(Action onInitialized);
     }
 }

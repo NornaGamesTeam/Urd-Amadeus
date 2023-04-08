@@ -6,6 +6,7 @@ namespace Urd.Services.Ads
     public abstract class AdsServiceProvider : IAdsServiceProvider
     {
         public virtual void Init(Action onInitializeCallback) { }
+        public virtual void Dispose() { }
 
         public abstract void ShowBanner(AdsBannerModel adsBannerModel);
 

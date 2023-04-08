@@ -20,16 +20,21 @@ namespace Urd.Services.Navigation
         private ServiceHelper<IAssetService> _assetService = new ServiceHelper<IAssetService>();
 
         private List<BoomerangBodyView> _boomerangsOpened = new List<BoomerangBodyView>();
-            
+        
+        public bool IsInitialized { get; private set; }
+
         public NavigationBoomerangManager()
         {
         }
 
-        public void Init()
+        public void Init(Action onInitialized)
         {
             LoadBoomerangTypesConfig();
             LoadParent();
+            IsInitialized = true;
+            onInitialized?.Invoke();
         }
+        public void Dispose() { }
 
         private void LoadParent()
         {
@@ -63,7 +68,7 @@ namespace Urd.Services.Navigation
                 Debug.LogWarning(error.ToString());
             }
         }
-
+        
         public bool CanHandle(INavigable navigable)
         {
             return navigable is BoomerangModel && _boomerangTypesConfig.Contains(navigable);

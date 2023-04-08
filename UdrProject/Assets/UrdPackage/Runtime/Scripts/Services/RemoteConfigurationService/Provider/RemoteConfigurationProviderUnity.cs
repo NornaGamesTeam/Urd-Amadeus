@@ -28,7 +28,7 @@ namespace Urd.Services.RemoteConfiguration
         {
         }
 
-        public void Init()
+        public void Init(Action onInitialized)
         {
             RemoteConfigService.Instance.FetchCompleted += OnFetchCompleted;
             LoadResourceData();
@@ -38,6 +38,7 @@ namespace Urd.Services.RemoteConfiguration
         {
             
         }
+        
 
         void LoadResourceData()
         {

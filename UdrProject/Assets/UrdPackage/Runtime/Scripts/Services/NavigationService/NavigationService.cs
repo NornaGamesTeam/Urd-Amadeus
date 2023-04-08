@@ -16,12 +16,28 @@ namespace Urd.Services
 
         [SerializeReference, SubclassSelector]
         private List<INavigationManager> _navigationManagers = new List<INavigationManager>();
-        
+
         public override void Init()
         {
             base.Init();
-            
-            SetAsLoaded();
+
+            LoadManagers();
+        }
+
+        private void LoadManagers()
+        {
+            for (int i = 0; i < _navigationManagers.Count; i++)
+            {
+                _navigationManagers[i].Init(CheckForInitialized);
+            }
+        }
+
+        private void CheckForInitialized()
+        {
+            if (_navigationManagers.TrueForAll(manager => manager.IsInitialized))
+            {
+                SetAsLoaded();
+            }
         }
 
         public void Open(INavigable navigable, Action<bool> onOpenNavigableCallback)

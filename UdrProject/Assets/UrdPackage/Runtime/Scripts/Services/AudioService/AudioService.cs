@@ -38,6 +38,11 @@ namespace Urd.Services
 
             CreateAudioServiceView();
             LoadAudioMixers();
+
+            if (_audioProvider != null)
+            {
+                SetProvider(_audioProvider);
+            }
         }
 
         private void CreateAudioServiceView()

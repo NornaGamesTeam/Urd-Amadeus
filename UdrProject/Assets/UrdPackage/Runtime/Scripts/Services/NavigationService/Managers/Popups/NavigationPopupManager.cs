@@ -21,14 +21,23 @@ namespace Urd.Services.Navigation
 
         private List<PopupBodyView> _popupsOpened = new List<PopupBodyView>();
             
+        public bool IsInitialized { get; private set; }
+
         public NavigationPopupManager()
         {
         }
 
-        public void Init()
+        public void Init(Action onInitialized)
         {
             LoadPopupTypesConfig();
             LoadParent();
+            IsInitialized = true;
+            onInitialized?.Invoke();
+        }
+        
+        public void Dispose()
+        {
+            
         }
         
         private void LoadParent()
@@ -37,6 +46,10 @@ namespace Urd.Services.Navigation
             if (_popupParent == null)
             {
                 CreatePopupParent();
+            }
+            else
+            {
+                Debug.LogWarning($"Game Object with tag {CanvasTagNames.PopupCanvas} not found");
             }
         }
 

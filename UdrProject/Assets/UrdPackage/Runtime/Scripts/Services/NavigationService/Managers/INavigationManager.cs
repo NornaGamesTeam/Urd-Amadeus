@@ -2,9 +2,9 @@ using System;
 
 namespace Urd.Services.Navigation
 {
-    public interface INavigationManager
+    public interface INavigationManager : IProvider
     {
-        void Init();
+        bool IsInitialized { get; }
         bool CanHandle(INavigable navigable);
         void Open(INavigable navigable, Action<bool> onOpenNavigable);
         bool CanOpen(INavigable navigable);

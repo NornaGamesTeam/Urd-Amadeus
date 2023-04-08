@@ -28,7 +28,7 @@ namespace Urd.Utils
             {
                 if (!HasService)
                 {
-                    StaticServiceLocator.CallOnRegister<T>(value);
+                    StaticServiceLocator.CallOnInitialized<T>(value);
                 }
             }
             remove { }

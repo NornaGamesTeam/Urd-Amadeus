@@ -9,12 +9,12 @@ namespace Urd.Utils
     {
         private static Dictionary<Type, IBaseService> Services;
 
-        private static Dictionary<Type, DelegateHelper.DelegateVoidVoid> _onServiceRegistered;
+        private static Dictionary<Type, DelegateHelper.DelegateVoidVoid> _onServiceInitialized;
 
         public static void Init()
         {
             Services = new Dictionary<Type, IBaseService>();
-            _onServiceRegistered = new Dictionary<Type, DelegateHelper.DelegateVoidVoid>();
+            _onServiceInitialized = new Dictionary<Type, DelegateHelper.DelegateVoidVoid>();
         }
         
         public static void Register<T>(T serviceInstance) where T : IBaseService
@@ -25,11 +25,24 @@ namespace Urd.Utils
         public static void Register(IBaseService serviceInstance, Type type)
         {
             Services[type] = serviceInstance;
-            
-            if(_onServiceRegistered.TryGetValue(type, out var actionEvent))
+            serviceInstance.OnFinishLoad += CheckForCallback;
+        }
+
+        private static void CheckForCallback()
+        {
+            List<Type> toDestroy = new List<Type>();
+            foreach (var serviceInitializationCallback in _onServiceInitialized)
             {
-                actionEvent?.Invoke();
-                _onServiceRegistered.Remove(type);
+                if (Get(serviceInitializationCallback.Key).IsLoaded)
+                {
+                    serviceInitializationCallback.Value?.Invoke();
+                    toDestroy.Add(serviceInitializationCallback.Key);
+                }
+            }
+
+            for (int i = toDestroy.Count - 1; i >= 0; i--)
+            {
+                _onServiceInitialized.Remove(toDestroy[i]);
             }
         }
 
@@ -59,16 +72,17 @@ namespace Urd.Utils
             Services.Clear();
         }
 
-        public static void CallOnRegister<T>(DelegateHelper.DelegateVoidVoid action) where T : IBaseService
+        public static void CallOnInitialized<T>(DelegateHelper.DelegateVoidVoid action) where T : IBaseService
         {
             var type = typeof(T);
-            if(_onServiceRegistered.TryGetValue(type, out var actionEvent))
+            if(_onServiceInitialized.TryGetValue(type, out var actionEvent))
             {
                 actionEvent += action;
+                _onServiceInitialized[typeof(T)] = actionEvent;
             }
             else
             {
-                _onServiceRegistered[typeof(T)] = action;
+                _onServiceInitialized[typeof(T)] = action;
             }
         }
     }

@@ -3,9 +3,8 @@ using Urd.Ads;
 
 namespace Urd.Services.Ads
 {
-    public interface IAdsServiceProvider
+    public interface IAdsServiceProvider : IProvider
     {
-        void Init(Action onInitializeCallback);
         void ShowBanner(AdsBannerModel adsBannerModel);
         void HideBanner();
         void ShowInterstitial();

@@ -15,6 +15,11 @@ namespace Urd.Services
         public override void Init()
         {
             base.Init();
+
+            if (_liveOpsProvider != null)
+            {
+                SetProvider(_liveOpsProvider);
+            }
         }
         
         public void SetProvider(ILiveOpsProvider liveOpsProvider)

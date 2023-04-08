@@ -22,6 +22,11 @@ namespace Urd.Asset
 
             if (createViewOnAwake)
             {
+                if (!_iAssetService.HasService)
+                {
+                    _iAssetService.OnInitialize += CreateView;
+                    return;
+                }
                 CreateView();
             }
         }
