@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
 
 namespace Urd.Game.SkillTrees
@@ -7,12 +8,14 @@ namespace Urd.Game.SkillTrees
     public class SkillTreeColumnConfig
     {
         [field: SerializeField]
+        public string ColumnName { get; private set; } 
+        [field: SerializeField]
         public List<SkillTreeColumnInfo> Levels { get; private set; }
 
         [System.Serializable]
         public class SkillTreeColumnInfo
         {
-            [field: SerializeReference]
+            [field: SerializeField, DisplayInspector]
             public List<BaseSkillConfig> LevelSkills { get; private set; }
         }
     }

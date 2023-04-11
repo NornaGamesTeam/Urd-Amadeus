@@ -6,5 +6,6 @@ namespace Urd.Game.SkillTrees
     public abstract class BaseSkillConfig : ScriptableObject, ISkillConfig
     { 
         public abstract SkillType Type { get; protected set; }
+        public abstract Sprite Image { get; protected set; }
     }
 }

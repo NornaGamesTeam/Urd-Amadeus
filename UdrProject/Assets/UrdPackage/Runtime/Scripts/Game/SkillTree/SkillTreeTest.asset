@@ -12,12 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9efa1f0033a71542a9a0a533059e2e2, type: 3}
   m_Name: SkillTreeTest
   m_EditorClassIdentifier: 
+  <PointPerLevel>k__BackingField: 3
   <Columns>k__BackingField:
-  - <Levels>k__BackingField:
+  - <ColumnName>k__BackingField: HEROE
+    <Levels>k__BackingField:
     - <LevelSkills>k__BackingField:
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
+      - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
+      - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
+      - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
+    - <LevelSkills>k__BackingField:
+      - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
+      - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
+      - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
+  - <ColumnName>k__BackingField: FIRE
+    <Levels>k__BackingField:
+    - <LevelSkills>k__BackingField:
+      - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
+      - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
+      - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
     - <LevelSkills>k__BackingField: []
     - <LevelSkills>k__BackingField: []
     - <LevelSkills>k__BackingField: []
