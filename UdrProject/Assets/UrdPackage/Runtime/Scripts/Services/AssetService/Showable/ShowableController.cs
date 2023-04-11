@@ -8,7 +8,7 @@ namespace Urd.Asset
         where TModel : IShowableModel
         where TView : IShowableView<TModel>
     {
-        [field:SerializeField, ReadOnly]
+        [field:SerializeField, MyBox.ReadOnly]
         public TModel Model { get; private set; }
         public TView View { get; private set; }
         public Transform Parent { get; private set; }

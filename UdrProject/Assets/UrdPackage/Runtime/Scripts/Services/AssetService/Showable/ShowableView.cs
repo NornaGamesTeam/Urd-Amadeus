@@ -6,7 +6,7 @@ namespace Urd.Asset
     public class ShowableView<TModel> : MonoBehaviour, IShowableView<TModel>
         where TModel : IShowableModel
     {
-        [field: SerializeField, ReadOnly]
+        [field: SerializeField, MyBox.ReadOnly]
         public TModel Model { get; private set; }
 
         public void SetModel(TModel model)

@@ -11,7 +11,7 @@ namespace Urd.DebugTools
         [SerializeField] 
         private AudioTypes _audioTypes;
 
-        [field: SerializeField, ReadOnly]
+        [field: SerializeField, MyBox.ReadOnly]
         public AudioModel AudioModel { get; set; }
 
         public override void OnInputGetDown()
