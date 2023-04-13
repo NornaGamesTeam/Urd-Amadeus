@@ -23,6 +23,8 @@ MonoBehaviour:
     - <LevelSkills>k__BackingField:
       - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
       - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
+    - <LevelSkills>k__BackingField:
+      - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
       - {fileID: 11400000, guid: 53eb50d4595e0d34da6247163cf2e525, type: 2}
   - <ColumnName>k__BackingField: FIRE
     <Levels>k__BackingField:

@@ -4,6 +4,7 @@ namespace Urd.Popup
     {
         None,
         Info,
+        SkillTree,
         Size,
     }
 }
