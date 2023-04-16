@@ -17,7 +17,7 @@
 	  "com.unity.timeline": "1.6.4",
 	  "com.browar.editor-toolbox": "https://github.com/arimger/Unity-Editor-Toolbox.git#upm",
 	  "com.coffee.upm-git-extension": "https://github.com/mob-sakai/UpmGitExtension.git",
-	  "com.domybest.mybox": "https://github.com/Deadcows/MyBox.git",
+	  "com.domybest.mybox": "https://github.com/Deadcows/MyBox.git"
   },
   "samples": [
     {
