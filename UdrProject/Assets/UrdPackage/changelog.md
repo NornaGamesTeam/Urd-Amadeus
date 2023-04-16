@@ -1,3 +1,8 @@
+## [0.5.2] - 2023-03-03
+
+### Added
+ - Adding dependencies
+
 ## [0.5.1] - 2023-03-03
 
 ### Added

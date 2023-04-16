@@ -1,5 +1,21 @@
 {
   "dependencies": {
+    "com.browar.editor-toolbox": {
+      "version": "https://github.com/arimger/Unity-Editor-Toolbox.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.editorcoroutines": "1.0.0"
+      },
+      "hash": "92f113bf397df0fad88533918577abc325745bfe"
+    },
+    "com.coffee.upm-git-extension": {
+      "version": "https://github.com/mob-sakai/UpmGitExtension.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d0c1cbb5415f5accf6a1d49d1dc91cf7d4fb11b9"
+    },
     "com.domybest.mybox": {
       "version": "https://github.com/Deadcows/MyBox.git",
       "depth": 0,
