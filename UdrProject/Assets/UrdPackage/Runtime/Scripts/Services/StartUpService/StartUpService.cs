@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Urd.Scene;
 using Urd.Utils;
 
 namespace Urd.Services
@@ -18,7 +19,9 @@ namespace Urd.Services
                                       + _allServicesToStartUp.FindAll(service => service.IsLoaded).Count)
                                       /(_totalElements*2.0f);
         public event Action<float> OnLoadingFactorChanged;
-        
+
+        private ServiceHelper<INavigationService> _navigationService = new ServiceHelper<INavigationService>();
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
         private static void OnLoadGame()
         {
@@ -41,6 +44,7 @@ namespace Urd.Services
             InstantiateServices();
             InitICoroutine();
             ServiceLocatorService.Get<ICoroutineService>().StartCoroutine(CheckRemainingClassesCo());
+            _navigationService.OnInitialize += OnInitializeNavigationService;
         }
 
         private void InitICoroutine()
@@ -83,6 +87,11 @@ namespace Urd.Services
         private void CallOnLoadingFactorChanged()
         {
             OnLoadingFactorChanged?.Invoke(LoadingFactor);
+        }
+        
+        private void OnInitializeNavigationService()
+        {
+            _navigationService.Service.Open(new SceneModel(SceneTypes.LoadingGame));
         }
     }
 }

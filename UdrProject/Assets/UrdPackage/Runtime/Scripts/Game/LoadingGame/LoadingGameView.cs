@@ -6,7 +6,7 @@ using Urd.Utils;
 
 namespace Urd.Services
 {
-    public class StartUpServiceView : MonoBehaviour
+    public class LoadingGameView : MonoBehaviour
     {
         private const string LOGO_CONFIG = "StartUp/LogoConfig"; 
         

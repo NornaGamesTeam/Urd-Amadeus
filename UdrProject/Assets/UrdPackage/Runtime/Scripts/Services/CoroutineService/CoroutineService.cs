@@ -22,11 +22,6 @@ namespace Urd.Services
         private void CreateCoroutineView()
         {
             _coroutineView = new GameObject(COROUTINE_GAMEOBJECT_NAME).AddComponent<CoroutineServiceView>();
-
-            if (Application.isPlaying)
-            {
-                GameObject.DontDestroyOnLoad(_coroutineView);
-            }
         }
 
         public Coroutine StartCoroutine(IEnumerator coroutine)

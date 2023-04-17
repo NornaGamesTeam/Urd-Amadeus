@@ -3,7 +3,7 @@ namespace Urd.Utils
     public enum CanvasTagNames
     {
         NoneCanvas,
-        StartUpCanvas,
+        LoadingGameCanvas,
         PopupCanvas,
         BoomerangCanvas,
         PoolCanvas,

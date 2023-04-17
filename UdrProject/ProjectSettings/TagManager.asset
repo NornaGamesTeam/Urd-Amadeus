@@ -6,7 +6,7 @@ TagManager:
   tags:
   - PopupCanvas
   - BoomerangCanvas
-  - StartUpCanvas
+  - LoadingGameCanvas
   - PoolCanvas
   layers:
   - Default

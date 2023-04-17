@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4077661164495649527}
   - component: {fileID: 5179005688022128712}
   m_Layer: 5
-  m_Name: StartUpView
+  m_Name: LoadingGameView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,6 +55,37 @@ MonoBehaviour:
   _backgroundParent: {fileID: 408041398759625314}
   _logoParent: {fileID: 9033323656098355978}
   _progressBarParent: {fileID: 4330902484824686767}
+  _logoImageController:
+    <Model>k__BackingField:
+      _customAddressable: 0
+      _addressable: 
+      <Sprite>k__BackingField: {fileID: 0}
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <FillFactor>k__BackingField: 0
+  _backgroundImageController:
+    <Model>k__BackingField:
+      _customAddressable: 0
+      _addressable: 
+      <Sprite>k__BackingField: {fileID: 0}
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <FillFactor>k__BackingField: 0
+  _progressBarController:
+    <Model>k__BackingField:
+      _customAddressable: 0
+      _addressable: 
+      <Background>k__BackingField:
+        _customAddressable: 0
+        _addressable: 
+        <Sprite>k__BackingField: {fileID: 0}
+        <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+        <FillFactor>k__BackingField: 0
+      <Bar>k__BackingField:
+        _customAddressable: 0
+        _addressable: 
+        <Sprite>k__BackingField: {fileID: 0}
+        <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+        <FillFactor>k__BackingField: 0
+      <Factor>k__BackingField: 0
 --- !u!1 &8392549223335733019
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +208,7 @@ GameObject:
   - component: {fileID: 9033323656115663562}
   - component: {fileID: 9033323656115663669}
   m_Layer: 5
-  m_Name: StartUpCanvas
+  m_Name: LoadingGameCanvas
   m_TagString: StartUpCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

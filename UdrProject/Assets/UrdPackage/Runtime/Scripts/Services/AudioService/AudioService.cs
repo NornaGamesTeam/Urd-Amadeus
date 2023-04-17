@@ -48,11 +48,6 @@ namespace Urd.Services
         private void CreateAudioServiceView()
         {
             _audioServiceView = new GameObject(AUDIO_GAMEOBJECT_NAME).AddComponent<AudioServiceView>().transform;
-
-            if (Application.isPlaying)
-            {
-                GameObject.DontDestroyOnLoad(_audioServiceView.gameObject);
-            }
         }
 
         public void SetProvider(IAudioProvider audioProvider)

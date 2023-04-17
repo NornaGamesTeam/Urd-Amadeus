@@ -5,6 +5,7 @@ namespace Urd.Scene
         None,
         Test,
         Info,
+        LoadingGame,
         Size,
     }
 }

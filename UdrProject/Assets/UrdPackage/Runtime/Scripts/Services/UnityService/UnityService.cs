@@ -28,11 +28,6 @@ namespace Urd.Services
         private void CreateCoroutineView()
         {
             _unityServiceView = new GameObject(UNITY_VIEW_GAMEOBJECT_NAME).AddComponent<UnityServiceView>();
-
-            if (Application.isPlaying)
-            {
-                GameObject.DontDestroyOnLoad(_unityServiceView);
-            }
         }
 
         public void OnChangeGameFocus(bool focus)

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2f1bdc16295d04d860e5afcb581b3a, type: 3}
+  m_Name: SceneTypesConfig
+  m_EditorClassIdentifier: 
+  _sceneList:
+  - <SceneType>k__BackingField: 3
+    <Scene>k__BackingField:
+      Scene: {fileID: 102900000, guid: 211f25b3f66751d49bb040fe388620d7, type: 3}
+      SceneName: LoadingScene
+      sceneIndex: 1
+      sceneEnabled: 1

@@ -13,7 +13,7 @@ namespace Urd.Services.Navigation
     [Serializable]
     public class NavigationSceneManager : INavigationManager
     {
-        private IAssetService _assetService;
+        private ServiceHelper<IAssetService> _assetService = new ServiceHelper<IAssetService>();
 
         private List<SceneModel> _scenesOpened = new List<SceneModel>();
             
@@ -25,7 +25,6 @@ namespace Urd.Services.Navigation
 
         public void Init(Action onInitialized)
         {
-            _assetService = StaticServiceLocator.Get<IAssetService>();
             IsInitialized = true;
             onInitialized?.Invoke();
         }
@@ -44,14 +43,32 @@ namespace Urd.Services.Navigation
         {
             var sceneModel = navigable as SceneModel;
 
-            if(TryGetBuildSceneBuildIndex(sceneModel.Id, out int buildIndex))
+            if (!TryGetBuildSceneBuildIndex(sceneModel.Id, out int buildIndex))
             {
-                sceneModel.SetBuildIndex(buildIndex);
-            }
-            
-            _assetService.LoadScene(sceneModel, (sceneInstance) 
-                => OnLoadScene(sceneModel, onOpenNavigable));
+                var error = new ErrorModel(
+                    $"[NavigationPopupManager] Error when try to get the scene, scene type {sceneModel.SceneType}",
+                    ErrorCode.Error_404_Not_Found, UnityWebRequest.Result.DataProcessingError);
+                Debug.LogWarning(error.ToString());
 
+                onOpenNavigable?.Invoke(false);
+                return;
+            }
+
+            sceneModel.SetBuildIndex(buildIndex);
+
+            if (!_assetService.HasService)
+            {
+                _assetService.OnInitialize += () => LoadScene(sceneModel, onOpenNavigable);
+                return;
+            }
+
+            LoadScene(sceneModel, onOpenNavigable);
+        }
+
+        private void LoadScene(SceneModel sceneModel, Action<bool> onOpenNavigable)
+        {
+            _assetService.Service.LoadScene(sceneModel, (sceneInstance) 
+                => OnLoadScene(sceneModel, onOpenNavigable));
         }
 
         private bool TryGetBuildSceneBuildIndex(string sceneModelId, out int buildIndex)
@@ -103,7 +120,7 @@ namespace Urd.Services.Navigation
             
             sceneToClose.ChangeStatus(NavigableStatus.Closing);
             
-            _assetService.UnLoadScene(sceneToClose, success => OnSceneModelToCloseChangeStatus(success, sceneToClose, onCloseNavigable));
+            _assetService.Service.UnLoadScene(sceneToClose, success => OnSceneModelToCloseChangeStatus(success, sceneToClose, onCloseNavigable));
         }
 
         private void OnSceneModelToCloseChangeStatus(bool success, SceneModel sceneToClose,

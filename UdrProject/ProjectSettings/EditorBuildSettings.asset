@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/UrdPackage/Samples/LoadingScreen/LoadingScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/UrdPackage/Runtime/Scenes/PersistentScene.unity
+    guid: d06c01721b5ac3849841f0498164d290
   - enabled: 1
+    path: Assets/UrdPackage/Runtime/Scenes/LoadingGame.unity
+    guid: 211f25b3f66751d49bb040fe388620d7
+  - enabled: 0
     path: Assets/UrdPackage/Tests/PlayMode/TestAssetObjects/Test.unity
     guid: acb25800c6541684097f7c7e805c7685
   m_configObjects:
