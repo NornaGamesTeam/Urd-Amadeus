@@ -130,18 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2363808024396241867, guid: 06b9b0de42ebbf348b8e6693762b413b, type: 3}
-      propertyPath: m_Name
-      value: LoadingGameView
-      objectReference: {fileID: 0}
-    - target: {fileID: 5179005688022128712, guid: 06b9b0de42ebbf348b8e6693762b413b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9033323656115663560, guid: 06b9b0de42ebbf348b8e6693762b413b, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 9033323656115663561, guid: 06b9b0de42ebbf348b8e6693762b413b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -176,18 +164,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9033323656115663561, guid: 06b9b0de42ebbf348b8e6693762b413b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9033323656115663561, guid: 06b9b0de42ebbf348b8e6693762b413b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9033323656115663561, guid: 06b9b0de42ebbf348b8e6693762b413b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9033323656115663561, guid: 06b9b0de42ebbf348b8e6693762b413b, type: 3}
-      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9033323656115663561, guid: 06b9b0de42ebbf348b8e6693762b413b, type: 3}

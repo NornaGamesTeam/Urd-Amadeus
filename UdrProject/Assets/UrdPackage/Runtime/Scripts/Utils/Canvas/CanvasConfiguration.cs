@@ -1,4 +1,6 @@
+using MyBox;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Urd.Utils;
 
@@ -8,8 +10,8 @@ public class CanvasConfiguration : MonoBehaviour
     [SerializeField] 
     private CanvasesGamesConfig _canvasesGamesConfig;
     
-    [SerializeField] 
-    private CanvasTagNames _canvasTagName;
+    [SerializeField, Tag] 
+    private string _canvasTag;
 
     private void Awake()
     {
@@ -19,9 +21,9 @@ public class CanvasConfiguration : MonoBehaviour
 
     private void SetTag()
     {
-        if (!string.Equals(_canvasTagName.ToString(), tag))
+        if (!string.Equals(_canvasTag, tag))
         {
-            tag = _canvasTagName.ToString();
+            tag = _canvasTag;
         }
     }
     private void SetResolution()

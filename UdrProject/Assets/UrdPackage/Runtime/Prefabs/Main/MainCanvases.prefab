@@ -41,6 +41,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6033004868438649026}
     m_Modifications:
+    - target: {fileID: 1372524041954439669, guid: 7dab5e17bbfc9bd4b95362f5ade38d33, type: 3}
+      propertyPath: _canvasTag
+      value: BoomerangCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 3178136800796118182, guid: 7dab5e17bbfc9bd4b95362f5ade38d33, type: 3}
       propertyPath: m_Name
       value: BoomerangCanvas
@@ -135,7 +139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8457022142200454235, guid: 7dab5e17bbfc9bd4b95362f5ade38d33, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dab5e17bbfc9bd4b95362f5ade38d33, type: 3}
@@ -151,6 +155,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6033004868438649026}
     m_Modifications:
+    - target: {fileID: 1657948217779527205, guid: 83c6cbfebca608140ad22559c5314c04, type: 3}
+      propertyPath: _canvasTag
+      value: PopupCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 3178136800796118182, guid: 83c6cbfebca608140ad22559c5314c04, type: 3}
       propertyPath: m_Name
       value: PopupCanvas
@@ -257,6 +265,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6033004868438649026}
     m_Modifications:
+    - target: {fileID: 1657948217779527205, guid: a6221e5397d660f46b09e3b07a47bcaf, type: 3}
+      propertyPath: _canvasTag
+      value: PoolCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 3178136800796118182, guid: a6221e5397d660f46b09e3b07a47bcaf, type: 3}
       propertyPath: m_Name
       value: PoolCanvas
@@ -343,6 +355,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7507205595779917240, guid: a6221e5397d660f46b09e3b07a47bcaf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457022142200454235, guid: a6221e5397d660f46b09e3b07a47bcaf, type: 3}
+      propertyPath: m_SortingLayerID
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
