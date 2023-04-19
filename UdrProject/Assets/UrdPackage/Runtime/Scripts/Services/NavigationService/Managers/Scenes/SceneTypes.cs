@@ -6,6 +6,7 @@ namespace Urd.Scene
         Test,
         Info,
         LoadingGame,
+        MainMenu,
         Size,
     }
 }

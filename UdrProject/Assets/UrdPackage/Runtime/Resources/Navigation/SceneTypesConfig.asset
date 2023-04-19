@@ -16,6 +16,12 @@ MonoBehaviour:
   - <SceneType>k__BackingField: 3
     <Scene>k__BackingField:
       Scene: {fileID: 102900000, guid: 211f25b3f66751d49bb040fe388620d7, type: 3}
-      SceneName: LoadingScene
+      SceneName: LoadingGame
       sceneIndex: 1
+      sceneEnabled: 1
+  - <SceneType>k__BackingField: 4
+    <Scene>k__BackingField:
+      Scene: {fileID: 102900000, guid: 23824c80e714a9e47b220e8b0c0117dd, type: 3}
+      SceneName: MainMenu
+      sceneIndex: 3
       sceneEnabled: 1

@@ -20,7 +20,7 @@ namespace Urd.Services
                                       /(_totalElements*2.0f);
         public event Action<float> OnLoadingFactorChanged;
 
-        private ServiceHelper<INavigationService> _navigationService = new ServiceHelper<INavigationService>();
+        private readonly ServiceHelper<INavigationService> _navigationService = new ServiceHelper<INavigationService>();
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
         private static void OnLoadGame()
@@ -80,8 +80,21 @@ namespace Urd.Services
                 StartUpServices();
             }
 
+            OnFinishLoadServices();
+            
+        }
+
+        private void OnFinishLoadServices()
+        {
             CallOnLoadingFactorChanged();
             SetAsLoaded();
+            
+            _navigationService.Service.Close(new SceneModel(SceneTypes.LoadingGame), OnCloseLoadingScene);
+        }
+
+        private void OnCloseLoadingScene(bool obj)
+        {
+            _navigationService.Service.Open(new SceneModel(SceneTypes.MainMenu));
         }
 
         private void CallOnLoadingFactorChanged()
