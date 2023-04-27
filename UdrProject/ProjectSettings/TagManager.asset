@@ -8,6 +8,8 @@ TagManager:
   - BoomerangCanvas
   - LoadingGameCanvas
   - PoolCanvas
+  - StartUpCanvas
+  - MainMenuCanvas
   layers:
   - Default
   - TransparentFX
