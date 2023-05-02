@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: StartUpConfig
   m_EditorClassIdentifier: 
   <BaseServices>k__BackingField:
-  - rid: 1248381299958480921
   - rid: 1248381299958480903
   - rid: 1248381299958480902
   - rid: 1248381299958480896
@@ -106,7 +105,5 @@ MonoBehaviour:
           rid: 1248381299958480920
     - rid: 1248381299958480920
       type: {class: RemoteConfigurationProviderUnity, ns: Urd.Services.RemoteConfiguration, asm: Udr}
-    - rid: 1248381299958480921
-      type: {class: ServiceLocator, ns: Urd.Services, asm: Udr}
     - rid: 1248381299958480922
       type: {class: UnityService, ns: Urd.Services, asm: Udr}

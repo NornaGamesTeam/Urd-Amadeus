@@ -8,7 +8,7 @@ namespace Urd.Services
 {
     public class LoadingGameView : MonoBehaviour
     {
-        private const string LOGO_CONFIG = "StartUp/LogoConfig"; 
+        private const string LOGO_CONFIG = "LoadingGame/LogoConfig"; 
         
         [Header("Background")]
         [SerializeField]
@@ -41,7 +41,7 @@ namespace Urd.Services
         {
             if (_logoConfig.FileLoaded == null)
             {
-                var error = new ErrorModel("[StartUpServiceView] Logo Config not available",
+                var error = new ErrorModel($"[StartUpServiceView] Logo Config not available in path Resources/{LOGO_CONFIG}",
                                            ErrorCode.Error_100_Continue, UnityWebRequest.Result.DataProcessingError);
                 Debug.LogWarning(error);
                 return;

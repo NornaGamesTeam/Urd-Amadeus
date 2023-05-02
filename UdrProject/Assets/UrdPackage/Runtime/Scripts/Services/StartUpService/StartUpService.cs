@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Urd.Scene;
 using Urd.Utils;
 
@@ -22,10 +23,24 @@ namespace Urd.Services
 
         private readonly ServiceHelper<INavigationService> _navigationService = new ServiceHelper<INavigationService>();
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void OnLoadGame()
         {
+            if (SceneManager.GetActiveScene().buildIndex != 0)
+            {
+                SceneManager.sceneLoaded += OnSceneLoaded;
+                return;
+            }
             InitStartUpService();
+        }
+
+        private static void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode sceneMode)
+        {
+            if (scene.buildIndex == 0)
+            {
+                SceneManager.sceneLoaded -= OnSceneLoaded;
+                InitStartUpService();
+            }
         }
 
         private static void InitStartUpService()
