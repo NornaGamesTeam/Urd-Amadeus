@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UrdPackage/Runtime/Scenes/MainMenu.unity
     guid: 23824c80e714a9e47b220e8b0c0117dd
+  - enabled: 1
+    path: Assets/UrdPackage/Runtime/Scenes/Game.unity
+    guid: bfdd5b7c5376c544083737d231314bba
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 1017bc10323bce045b7b6393994bb22a, type: 2}

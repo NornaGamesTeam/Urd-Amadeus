@@ -1,6 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using Urd.Error;
+using Urd.Scene;
 using Urd.UI;
 using Urd.Utils;
 
@@ -54,6 +57,12 @@ namespace Urd.Services
         private void LoadLogo()
         {
             _logoImageController = new UIImageController(_logoConfig.FileLoaded.LogoModel, _logoParent);
+        }
+        
+        public void ClickOnPlayGame()
+        {
+            var sceneModel = new SceneModel(SceneTypes.Game);
+            StaticServiceLocator.Get<INavigationService>().Open(sceneModel);
         }
     }
 }
