@@ -59,3 +59,6 @@ TagManager:
   - name: HexWall
     uniqueID: 2675178761
     locked: 0
+  - name: Character
+    uniqueID: 514754175
+    locked: 0
