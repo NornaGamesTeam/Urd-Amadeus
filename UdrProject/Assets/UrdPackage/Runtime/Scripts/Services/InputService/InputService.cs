@@ -37,7 +37,7 @@ namespace Urd.Services
             }
         }
 
-        public void SubscribeToAction(string actionName, Action<InputAction.CallbackContext> onPerformMethod)
+        public void SubscribeToActionOnPerformed(string actionName, Action<InputAction.CallbackContext> onPerformMethod)
         {
             var allActions = _actions.FindAll(action => action.name == actionName);
             for (int i = allActions.Count - 1; i >= 0; i--)
@@ -45,13 +45,30 @@ namespace Urd.Services
                 allActions[i].performed += onPerformMethod;
             }
         }
-
-        public void UnsubscribeToAction(string actionName, Action<InputAction.CallbackContext> onPerformMethod)
+        
+        public void UnsubscribeToActionOnPerformed(string actionName, Action<InputAction.CallbackContext> onPerformMethod)
         {
             var allActions = _actions.FindAll(action => action.name == actionName);
             for (int i = allActions.Count - 1; i >= 0; i--)
             {
                 allActions[i].performed -= onPerformMethod;
+            }
+        }
+        public void SubscribeToActionOnCancel(string actionName, Action<InputAction.CallbackContext> onPerformMethod)
+        {
+            var allActions = _actions.FindAll(action => action.name == actionName);
+            for (int i = allActions.Count - 1; i >= 0; i--)
+            {
+                allActions[i].canceled += onPerformMethod;
+            }
+        }
+        
+        public void UnsubscribeToActionOnCancel(string actionName, Action<InputAction.CallbackContext> onPerformMethod)
+        {
+            var allActions = _actions.FindAll(action => action.name == actionName);
+            for (int i = allActions.Count - 1; i >= 0; i--)
+            {
+                allActions[i].canceled -= onPerformMethod;
             }
         }
     }

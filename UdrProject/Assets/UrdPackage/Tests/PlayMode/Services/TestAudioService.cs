@@ -63,7 +63,7 @@ namespace Urd.Test
             var audioModel = _audioService.Play(AudioTypes.TestLong);
             
             _audioService.Pause(audioModel, OnPauseCallback);
-            _clockService.Update(audioModel.PauseFadeOut-0.1f);
+            _clockService.__TestUpdate(audioModel.PauseFadeOut-0.1f);
             yield return 0; 
             
             Assert.That(!audioModel.IsInPause && !_audioPausedCallbackCalled, Is.EqualTo(true));
@@ -73,11 +73,11 @@ namespace Urd.Test
         public IEnumerator AudioService_Pause_Success()
         {
             var audioModel = _audioService.Play(AudioTypes.TestLong);
-            _clockService.Update(audioModel.FadeIn+0.1f);
+            _clockService.__TestUpdate(audioModel.FadeIn+0.1f);
             yield return 0; 
             
             _audioService.Pause(audioModel, OnPauseCallback);
-            _clockService.Update(audioModel.PauseFadeOut+0.1f);
+            _clockService.__TestUpdate(audioModel.PauseFadeOut+0.1f);
             yield return 0; 
             
             Assert.That(audioModel.IsInPause && _audioPausedCallbackCalled, Is.EqualTo(true));
@@ -87,15 +87,15 @@ namespace Urd.Test
         public IEnumerator AudioService_UnPause_Success()
         {
             var audioModel = _audioService.Play(AudioTypes.TestLong);
-            _clockService.Update(audioModel.FadeIn+0.1f);
+            _clockService.__TestUpdate(audioModel.FadeIn+0.1f);
             yield return 0; 
             
             _audioService.Pause(audioModel, OnPauseCallback);
-            _clockService.Update(audioModel.PauseFadeOut+0.1f);
+            _clockService.__TestUpdate(audioModel.PauseFadeOut+0.1f);
             yield return 0;
             
             _audioService.Play(audioModel);
-            _clockService.Update(audioModel.PauseFadeIn+0.1f);
+            _clockService.__TestUpdate(audioModel.PauseFadeIn+0.1f);
             yield return 0; 
             
             Assert.That(audioModel.IsInPause, Is.EqualTo(false));
@@ -105,15 +105,15 @@ namespace Urd.Test
         public IEnumerator AudioService_UnPause_FailedBecauseFadeOut()
         {
             var audioModel = _audioService.Play(AudioTypes.TestLong);
-            _clockService.Update(audioModel.FadeIn+0.1f);
+            _clockService.__TestUpdate(audioModel.FadeIn+0.1f);
             yield return 0; 
             
             _audioService.Pause(audioModel, OnPauseCallback);
-            _clockService.Update(audioModel.PauseFadeOut+0.1f);
+            _clockService.__TestUpdate(audioModel.PauseFadeOut+0.1f);
             yield return 0;
             
             _audioService.Play(audioModel);
-            _clockService.Update(audioModel.PauseFadeIn-0.1f);
+            _clockService.__TestUpdate(audioModel.PauseFadeIn-0.1f);
             yield return 0; 
             
             Assert.That(!audioModel.IsInPause, Is.EqualTo(true));
@@ -123,11 +123,11 @@ namespace Urd.Test
         public IEnumerator AudioService_Stop_Success()
         {
             var audioModel = _audioService.Play(AudioTypes.TestLong);
-            _clockService.Update(audioModel.FadeIn+0.1f);
+            _clockService.__TestUpdate(audioModel.FadeIn+0.1f);
             yield return 0; 
             
             _audioService.Stop(audioModel, OnStopCallback);
-            _clockService.Update(audioModel.PauseFadeOut+0.1f);
+            _clockService.__TestUpdate(audioModel.PauseFadeOut+0.1f);
             yield return 0;
             
             Assert.That(audioModel.IsPlaying && _audioStopCallbackCalled, Is.EqualTo(false));
@@ -137,11 +137,11 @@ namespace Urd.Test
         public IEnumerator AudioService_Stop_FailedBecauseFadeOut()
         {
             var audioModel = _audioService.Play(AudioTypes.TestLong);
-            _clockService.Update(audioModel.FadeIn+0.1f);
+            _clockService.__TestUpdate(audioModel.FadeIn+0.1f);
             yield return 0; 
             
             _audioService.Stop(audioModel, OnStopCallback);
-            _clockService.Update(audioModel.PauseFadeOut-0.1f);
+            _clockService.__TestUpdate(audioModel.PauseFadeOut-0.1f);
             yield return 0;
             
             Assert.That(audioModel.IsPlaying, Is.EqualTo(true));

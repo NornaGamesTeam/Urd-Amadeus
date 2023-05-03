@@ -30,7 +30,7 @@ namespace Urd.Test
         [UnityTest]
         public IEnumerator InputService_SubscribeToAction_Success()
         {
-            _inputService.SubscribeToAction(_actionName, OnPerformMethod);
+            _inputService.SubscribeToActionOnPerformed(_actionName, OnPerformMethod);
 
             SimulateSpacePress();
             yield return new WaitUntil(() => _onPerfomedCallback);

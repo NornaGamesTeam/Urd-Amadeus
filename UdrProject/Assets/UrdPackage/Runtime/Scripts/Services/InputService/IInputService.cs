@@ -5,7 +5,10 @@ namespace Urd.Services
 {
     public interface IInputService : IBaseService
     {
-        void SubscribeToAction(string actionName, Action<InputAction.CallbackContext> onPerformMethod);
-        void UnsubscribeToAction(string actionName, Action<InputAction.CallbackContext> onPerformMethod);
+        void SubscribeToActionOnPerformed(string actionName, Action<InputAction.CallbackContext> onPerformMethod);
+        void UnsubscribeToActionOnPerformed(string actionName, Action<InputAction.CallbackContext> onPerformMethod);
+        
+        void SubscribeToActionOnCancel(string actionName, Action<InputAction.CallbackContext> onPerformMethod);
+        void UnsubscribeToActionOnCancel(string actionName, Action<InputAction.CallbackContext> onPerformMethod);
     }
 }

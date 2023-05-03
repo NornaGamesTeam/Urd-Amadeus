@@ -32,7 +32,7 @@ namespace Urd.Audio
         {
             _timeStamp = 0;
             _audioModel.AudioSource.volume = 0;
-            _clockService.Service.SuscribeToUpdate(FadeUpdate);
+            _clockService.Service.SubscribeToUpdate(FadeUpdate);
         }
 
         private void FadeUpdate(float deltaTime)
@@ -49,7 +49,7 @@ namespace Urd.Audio
         private void EndFade()
         {
             OnFinishFade?.Invoke();
-            _clockService.Service.UnSuscribeToUpdate(FadeUpdate);
+            _clockService.Service.UnSubscribeToUpdate(FadeUpdate);
             Dispose();
         }
 

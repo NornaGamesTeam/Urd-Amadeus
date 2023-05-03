@@ -5,9 +5,9 @@ namespace Urd.Services
     public interface IClockService : IBaseService
     {
         public bool IsInPause { get; }
-        void SuscribeToUpdate(Action<float> listener, bool pausable = true);
+        void SubscribeToUpdate(Action<float> listener, bool pausable = true);
 
-        void UnSuscribeToUpdate(Action<float> listener);
+        void UnSubscribeToUpdate(Action<float> listener);
 
         void SetPause(bool gamePaused);
 
@@ -16,6 +16,6 @@ namespace Urd.Services
         /// <summary>
         /// Method for Test propose, do not use!!
         /// </summary>
-        void Update(float deltaTime);
+        void __TestUpdate(float deltaTime);
     }
 }

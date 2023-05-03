@@ -27,10 +27,10 @@ namespace Urd.Test
         [Test]
         public void ClockService_SuscribeToUpdate_Success()
         {
-            _clockService.SuscribeToUpdate(DummyUpdate);
+            _clockService.SubscribeToUpdate(DummyUpdate);
             float deltaTime = 0.1f;
 
-            _clockService.Update(deltaTime);
+            _clockService.__TestUpdate(deltaTime);
 
             Assert.That(_timeStamp, Is.EqualTo(deltaTime));
         }
@@ -38,11 +38,11 @@ namespace Urd.Test
         [Test]
         public void ClockService_UnsuscribeToUpdate_Success()
         {
-            _clockService.SuscribeToUpdate(DummyUpdate);
-            _clockService.UnSuscribeToUpdate(DummyUpdate);
+            _clockService.SubscribeToUpdate(DummyUpdate);
+            _clockService.UnSubscribeToUpdate(DummyUpdate);
             float deltaTime = 0.1f;
 
-            _clockService.Update(deltaTime);
+            _clockService.__TestUpdate(deltaTime);
 
             Assert.That(_timeStamp, Is.Not.EqualTo(deltaTime));
         }
@@ -50,11 +50,11 @@ namespace Urd.Test
         [Test]
         public void ClockService_SuscribeToUpdateButPause_Success()
         {
-            _clockService.SuscribeToUpdate(DummyUpdate, true);
+            _clockService.SubscribeToUpdate(DummyUpdate, true);
             float deltaTime = 0.1f;
 
             _clockService.SetPause(true);
-            _clockService.Update(deltaTime);
+            _clockService.__TestUpdate(deltaTime);
 
             Assert.That(_timeStamp, Is.EqualTo(0));
         }
@@ -62,13 +62,13 @@ namespace Urd.Test
         [Test]
         public void ClockService_SuscribeToUpdateButUnPause_Success()
         {
-            _clockService.SuscribeToUpdate(DummyUpdate, true);
+            _clockService.SubscribeToUpdate(DummyUpdate, true);
             float deltaTime = 0.1f;
 
             _clockService.SetPause(true);
-            _clockService.Update(deltaTime);
+            _clockService.__TestUpdate(deltaTime);
             _clockService.SetPause(false);
-            _clockService.Update(deltaTime);
+            _clockService.__TestUpdate(deltaTime);
 
             Assert.That(_timeStamp, Is.EqualTo(deltaTime));
         }
@@ -80,7 +80,7 @@ namespace Urd.Test
         {
             _clockService.AddDelayCall(delayCall, DelayCallDummy);
 
-            _clockService.Update(deltaTime);
+            _clockService.__TestUpdate(deltaTime);
 
             Assert.That(_delayCallCalled, Is.EqualTo(called));
         }

@@ -32,12 +32,12 @@ namespace Urd.Services
             IsInPause = gamePaused;
         }
 
-        public void SuscribeToUpdate(Action<float> listener, bool pausable = true)
+        public void SubscribeToUpdate(Action<float> listener, bool pausable = true)
         {
             _updateListeners.Add(new ClockServiceUpdateModel(listener, pausable));
         }
 
-        public void UnSuscribeToUpdate(Action<float> listenerToDelete)
+        public void UnSubscribeToUpdate(Action<float> listenerToDelete)
         {
             var model = _updateListeners.Find(listener => listener.Listener == listenerToDelete);
             if(model != null)
@@ -56,12 +56,12 @@ namespace Urd.Services
             while (_update)
             {
                 float deltaTime = Time.deltaTime;
-                Update(deltaTime);
+                __TestUpdate(deltaTime);
                 yield return 0;
             }
         }
 
-        public void Update(float deltaTime)
+        public void __TestUpdate(float deltaTime)
         {
             UpdateUpdates(deltaTime);
             UpdateDelayedCalls(deltaTime);
