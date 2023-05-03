@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.Compilation;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.ResourceManagement.ResourceProviders;
@@ -15,6 +16,7 @@ namespace Urd.Services.Navigation
     {
         private ServiceHelper<IAssetService> _assetService = new ServiceHelper<IAssetService>();
 
+        private List<SceneModel> _scenesBeingOpened = new List<SceneModel>();
         private List<SceneModel> _scenesOpened = new List<SceneModel>();
             
         public bool IsInitialized { get; private set; }
@@ -67,6 +69,8 @@ namespace Urd.Services.Navigation
 
         private void LoadScene(SceneModel sceneModel, Action<bool> onOpenNavigable)
         {
+            sceneModel.ChangeStatus(NavigableStatus.Opening);
+            _scenesBeingOpened.Add(sceneModel);
             _assetService.Service.LoadScene(sceneModel, (sceneInstance) 
                 => OnLoadScene(sceneModel, onOpenNavigable));
         }
@@ -100,7 +104,9 @@ namespace Urd.Services.Navigation
                 return;
             }
             
+            _scenesBeingOpened.Remove(sceneModel);
             _scenesOpened.Add(sceneModel);
+            sceneModel.ChangeStatus(NavigableStatus.Idle);
             onOpenNavigable?.Invoke(true);
         }
 
@@ -115,6 +121,13 @@ namespace Urd.Services.Navigation
                 scene => scene.Id == navigable.Id);
             if (sceneToClose == null)
             {
+                var sceneBeingOpened = _scenesBeingOpened.Find(scene => scene.Id == navigable.Id);
+                if (sceneBeingOpened == null)
+                {
+                    onCloseNavigable?.Invoke(false);
+                    return;
+                }
+                sceneBeingOpened.OnStatusChanged += (statusBefore, statusAfter) => CloseSceneWhenOpen(navigable, statusBefore, statusAfter, onCloseNavigable);
                 return;
             }
             
@@ -123,9 +136,19 @@ namespace Urd.Services.Navigation
             _assetService.Service.UnLoadScene(sceneToClose, success => OnSceneModelToCloseChangeStatus(success, sceneToClose, onCloseNavigable));
         }
 
+        private void CloseSceneWhenOpen(INavigable navigable, NavigableStatus statusBefore, NavigableStatus statusAfter,
+            Action<bool> onCloseNavigable)
+        {
+            if (statusAfter == NavigableStatus.Idle)
+            {
+                Close(navigable, onCloseNavigable);
+            }
+        }
+
         private void OnSceneModelToCloseChangeStatus(bool success, SceneModel sceneToClose,
             Action<bool> onCloseNavigable)
         {
+            sceneToClose.ChangeStatus(NavigableStatus.Closed);
             _scenesOpened.Remove(sceneToClose);
             onCloseNavigable?.Invoke(success);
         }
