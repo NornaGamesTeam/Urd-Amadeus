@@ -1,6 +1,6 @@
 {
   "name" : "com.nornagames.urd",
-  "version" : "0.5.2",
+  "version" : "0.5.3",
   "displayName" : "Urd Package",
   "description" : "Base and utils for projects",
   "unity": "2021.3",
