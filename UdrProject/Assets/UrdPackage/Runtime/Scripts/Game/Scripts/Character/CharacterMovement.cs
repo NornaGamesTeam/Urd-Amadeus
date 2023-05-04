@@ -30,7 +30,15 @@ namespace Urd.Character
 
         private void OnUpdate(float deltaTime)
         {
-            _characterModel.ModifyPosition(_characterInput.Movement * _characterModel.Speed * deltaTime);
+            if (_characterInput.Movement.sqrMagnitude > 0)
+            {
+                _characterModel.Movement.ModifyPosition(_characterInput.Movement * _characterModel.Speed * deltaTime);
+                _characterModel.Movement.SetIsMoving(true);
+            }
+            else
+            {
+                _characterModel.Movement.SetIsMoving(false);
+            }
         }
     }
 }

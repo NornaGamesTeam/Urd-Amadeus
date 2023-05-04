@@ -1,8 +1,6 @@
 using System;
-using MyBox;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.PlayerLoop;
 using Urd.Services;
 using Urd.Utils;
 
@@ -45,25 +43,21 @@ namespace Urd.Character
         private void OnHorizontalMovementDown(InputAction.CallbackContext inputAction)
         {
             _movement.x = inputAction.ReadValue<Single>();
-            Debug.Log($"OnHorizontalMovementDown: {_movement.x}");
         }
         
         private void OnHorizontalMovementUp(InputAction.CallbackContext inputAction)
         {
             _movement.x = inputAction.ReadValue<Single>();
-            Debug.Log($"OnHorizontalMovementUp: {_movement.x}");
         }
         
         private void OnVerticalMovementDown(InputAction.CallbackContext inputAction)
         {
             _movement.y = inputAction.ReadValue<Single>();
-            Debug.Log($"OnVerticalMovementDown: {_movement.y}");
         }
         
         private void OnVerticalMovementUp(InputAction.CallbackContext inputAction)
         {
             _movement.y = inputAction.ReadValue<Single>();
-            Debug.Log($"OnVerticalMovementUp: {_movement.y}");
         }
     }
 }
