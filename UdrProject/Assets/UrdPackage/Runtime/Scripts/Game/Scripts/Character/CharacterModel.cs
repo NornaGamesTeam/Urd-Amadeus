@@ -9,7 +9,7 @@ namespace Urd.Character
     {
         public float Speed => _characterConfig.Speed;
 
-        public MovementModel Movement { get; private set; } = new ();
+        public CharacterMovementModel CharacterMovement { get; private set; } = new ();
         
         private CharacterConfig _characterConfig;
 
