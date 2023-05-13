@@ -8,7 +8,7 @@ namespace Urd.Character
         [SerializeField] 
         private CharacterConfig _characterConfig;
 
-        private MainCharacterMovement _mainCharacterMovement;
+        protected CharacterMovementController _characterMovementController;
         
         [field: SerializeField, MyBox.ReadOnly]
         public CharacterModel CharacterModel { get; private set; }
@@ -18,10 +18,11 @@ namespace Urd.Character
             Init();
         }
 
-        private void Init()
+        protected virtual void Init()
         {
             CharacterModel = new CharacterModel(_characterConfig);
-            _mainCharacterMovement = new MainCharacterMovement(CharacterModel);
+            
+            _characterMovementController = new CharacterMovementController(CharacterModel);
         }
     }
 }

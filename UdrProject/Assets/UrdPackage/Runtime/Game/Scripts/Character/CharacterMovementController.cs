@@ -3,13 +3,13 @@ using Urd.Utils;
 
 namespace Urd.Character
 {
-    public class MainCharacterMovement
+    public class CharacterMovementController
     {
-        private MainCharacterInput _mainCharacterInput;
+        private ICharacterInput _input;
 
         private CharacterModel _characterModel;
         
-        public MainCharacterMovement(CharacterModel characterModel)
+        public CharacterMovementController(CharacterModel characterModel)
         {
             _characterModel = characterModel;
             
@@ -18,9 +18,14 @@ namespace Urd.Character
 
         public void Init()
         {
-            _mainCharacterInput = new MainCharacterInput(_characterModel);
+            _input = new MainCharacterInput(_characterModel);
             
             SubscribeToUpdate();
+        }
+
+        public void SetInput(ICharacterInput newInput)
+        {
+            _input = newInput;
         }
 
         private void SubscribeToUpdate()
@@ -30,10 +35,10 @@ namespace Urd.Character
 
         private void OnUpdate(float deltaTime)
         {
-            if (_mainCharacterInput.Movement.sqrMagnitude > 0)
+            if (_input.Movement.sqrMagnitude > 0)
             {
-                _characterModel.CharacterMovement.SetRawNormalizedMovement(_mainCharacterInput.Movement);
-                _characterModel.CharacterMovement.ModifyPosition(_mainCharacterInput.Movement * _characterModel.Speed * deltaTime);
+                _characterModel.CharacterMovement.SetRawNormalizedMovement(_input.Movement);
+                _characterModel.CharacterMovement.ModifyPosition(_input.Movement * _characterModel.Speed * deltaTime);
                 _characterModel.CharacterMovement.SetIsMoving(true);
             }
             else

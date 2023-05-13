@@ -6,7 +6,7 @@ using Urd.Utils;
 
 namespace Urd.Character
 {
-    public class MainCharacterInput
+    public class MainCharacterInput : ICharacterInput
     {
         private const string HORIZONTAL_MOVEMENT = "HorizontalMovement";
         private const string VERTICAL_MOVEMENT = "VerticalMovement";
