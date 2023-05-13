@@ -31,6 +31,15 @@ namespace Urd.Character
             SetInput();
         }
         
+        public void Dispose()
+        {
+            _inputService.UnsubscribeToActionOnPerformed(HORIZONTAL_MOVEMENT, OnHorizontalMovementDown);
+            _inputService.UnsubscribeToActionOnCancel(HORIZONTAL_MOVEMENT, OnHorizontalMovementUp);
+            
+            _inputService.UnsubscribeToActionOnPerformed(VERTICAL_MOVEMENT, OnVerticalMovementDown);
+            _inputService.UnsubscribeToActionOnCancel(VERTICAL_MOVEMENT, OnVerticalMovementUp);
+        }
+        
         private void SetInput()
         {
             _inputService.SubscribeToActionOnPerformed(HORIZONTAL_MOVEMENT, OnHorizontalMovementDown);

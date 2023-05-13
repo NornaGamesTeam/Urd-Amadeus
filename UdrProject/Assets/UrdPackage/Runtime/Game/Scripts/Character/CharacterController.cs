@@ -1,14 +1,16 @@
+using System;
 using UnityEngine;
 
 namespace Urd.Character
 {
     // TODO create from the level manager
-    public class CharacterController : MonoBehaviour
+    public class CharacterController : MonoBehaviour, IDisposable
     {
         [SerializeField] 
         private CharacterConfig _characterConfig;
 
-        protected CharacterMovementController _characterMovementController;
+        protected CharacterMovementController _movementController;
+        protected SkillSetController SkillSetController;
         
         [field: SerializeField, MyBox.ReadOnly]
         public CharacterModel CharacterModel { get; private set; }
@@ -22,7 +24,14 @@ namespace Urd.Character
         {
             CharacterModel = new CharacterModel(_characterConfig);
             
-            _characterMovementController = new CharacterMovementController(CharacterModel);
+            _movementController = new CharacterMovementController(CharacterModel);
+            SkillSetController = new SkillSetController(CharacterModel);
         }
+        public void Dispose()
+        {
+            _movementController?.Dispose();
+            SkillSetController?.Dispose();
+        }
+
     }
 }

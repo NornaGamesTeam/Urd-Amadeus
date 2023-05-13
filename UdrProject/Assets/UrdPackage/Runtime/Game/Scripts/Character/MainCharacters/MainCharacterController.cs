@@ -6,7 +6,7 @@ namespace Urd.Character
         {
             base.Init();
 
-            _characterMovementController.SetInput(new MainCharacterInput(CharacterModel));
+            _movementController.SetInput(new MainCharacterInput(CharacterModel));
         }
     }
 }

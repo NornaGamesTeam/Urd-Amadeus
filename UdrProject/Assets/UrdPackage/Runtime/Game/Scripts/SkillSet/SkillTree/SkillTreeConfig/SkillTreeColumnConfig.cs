@@ -16,7 +16,7 @@ namespace Urd.Game.SkillTrees
         public class SkillTreeColumnInfo
         {
             [field: SerializeField, DisplayInspector]
-            public List<BaseSkillConfig> LevelSkills { get; private set; }
+            public List<SkillConfig> LevelSkills { get; private set; }
         }
     }
 }

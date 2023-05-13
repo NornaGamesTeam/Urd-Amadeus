@@ -1,9 +1,10 @@
+using System;
 using Urd.Services;
 using Urd.Utils;
 
 namespace Urd.Character
 {
-    public class CharacterMovementController
+    public class CharacterMovementController : IDisposable
     {
         private ICharacterInput _input;
 
@@ -21,6 +22,11 @@ namespace Urd.Character
             _input = new MainCharacterInput(_characterModel);
             
             SubscribeToUpdate();
+        }
+        
+        public void Dispose()
+        {
+            _input?.Dispose();
         }
 
         public void SetInput(ICharacterInput newInput)
