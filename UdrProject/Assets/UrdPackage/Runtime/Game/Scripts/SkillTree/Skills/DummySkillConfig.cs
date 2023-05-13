@@ -7,9 +7,5 @@ namespace Urd.Game.SkillTrees
     [System.Serializable]
     public class DummySkillConfig : BaseSkillConfig
     {
-        [field: SerializeField] 
-        public override SkillType Type { get; protected set; }
-        [field: SerializeField, PreviewSprite]
-        public override Sprite Image { get; protected set; }
     }
 }
