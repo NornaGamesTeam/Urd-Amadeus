@@ -66,13 +66,13 @@ namespace Urd.Character
         private void OnHorizontalMovementDown(InputAction.CallbackContext inputAction)
         {
             Debug.Log($"OnHorizontalMovementDown:{Movement}");
-            Movement.SetX(inputAction.ReadValue<Single>());
+            Movement.Set(inputAction.ReadValue<Single>(), Movement.y);
             OnMovementChanged?.Invoke(Movement);
         }
 
         private void OnHorizontalMovementUp(InputAction.CallbackContext inputAction)
         {
-            Movement.SetX(inputAction.ReadValue<Single>());
+            Movement.Set(inputAction.ReadValue<Single>(), Movement.y);
             OnMovementChanged?.Invoke(Movement);
         }
 
@@ -80,13 +80,13 @@ namespace Urd.Character
         {
             Debug.Log($"OnVerticalMovementDown:{Movement}");
 
-            Movement.SetY(inputAction.ReadValue<Single>());
+            Movement.Set(Movement.x, inputAction.ReadValue<Single>());
             OnMovementChanged?.Invoke(Movement);
         }
 
         private void OnVerticalMovementUp(InputAction.CallbackContext inputAction)
         {
-            Movement.SetY(inputAction.ReadValue<Single>());
+            Movement.Set(Movement.x, inputAction.ReadValue<Single>());
             OnMovementChanged?.Invoke(Movement);
         }
         
