@@ -41,10 +41,10 @@ namespace Urd.Character
 
         private void SetInput()
         {
-            _inputService.SubscribeToActionOnStarted(HORIZONTAL_MOVEMENT, OnHorizontalMovementDown);
+            _inputService.SubscribeToActionOnPerformed(HORIZONTAL_MOVEMENT, OnHorizontalMovementDown);
             _inputService.SubscribeToActionOnCancel(HORIZONTAL_MOVEMENT, OnHorizontalMovementUp);
 
-            _inputService.SubscribeToActionOnStarted(VERTICAL_MOVEMENT, OnVerticalMovementDown);
+            _inputService.SubscribeToActionOnPerformed(VERTICAL_MOVEMENT, OnVerticalMovementDown);
             _inputService.SubscribeToActionOnCancel(VERTICAL_MOVEMENT, OnVerticalMovementUp);
             
             _inputService.SubscribeToActionOnPerformed(DODGE_SKILL, OnDodgeSkillDown);
