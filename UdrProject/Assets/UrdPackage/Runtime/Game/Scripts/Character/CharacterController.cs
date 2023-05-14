@@ -12,7 +12,7 @@ namespace Urd.Character
         private ICharacterInput _input;
 
         protected CharacterMovementController _movementController;
-        protected SkillSetController SkillSetController;
+        protected SkillSetController _skillSetController;
         
         [field: SerializeField, MyBox.ReadOnly]
         public CharacterModel CharacterModel { get; private set; }
@@ -32,12 +32,12 @@ namespace Urd.Character
             // TODO move this to other place
             _input = characterInput;
             _movementController = new CharacterMovementController(CharacterModel, _input);
-            SkillSetController = new SkillSetController(CharacterModel, _input);
+            _skillSetController = new SkillSetController(CharacterModel, _input);
         }
         public void Dispose()
         {
             _movementController?.Dispose();
-            SkillSetController?.Dispose();
+            _skillSetController?.Dispose();
         }
 
     }

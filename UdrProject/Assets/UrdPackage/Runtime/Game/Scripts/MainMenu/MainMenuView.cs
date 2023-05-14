@@ -47,6 +47,9 @@ namespace Urd.Services
             
             LoadBackground();
             LoadLogo();
+            
+            // TODO temporal click in ok
+            ClickOnPlayGame();
         }
 
         private void LoadBackground()

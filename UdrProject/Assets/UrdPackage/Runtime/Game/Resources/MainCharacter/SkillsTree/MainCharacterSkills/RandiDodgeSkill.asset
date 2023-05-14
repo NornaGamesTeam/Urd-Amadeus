@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: RandiDodgeSkill
   m_EditorClassIdentifier: 
   <Name>k__BackingField: DodgeSkill
+  <Model>k__BackingField:
+    rid: 4760200670054711296
   <Controller>k__BackingField:
     rid: 4760200657423302656
   <LevelToUnlock>k__BackingField: 0
@@ -25,3 +27,5 @@ MonoBehaviour:
     RefIds:
     - rid: 4760200657423302656
       type: {class: DodgeSkillController, ns: Urd.Character.Skill, asm: Udr}
+    - rid: 4760200670054711296
+      type: {class: DodgeSkillModel, ns: Urd.Character.Skill, asm: Udr}

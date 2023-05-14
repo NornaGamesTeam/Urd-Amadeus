@@ -128,12 +128,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8703236166929520026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50587eeec1c54f24389a9c1a7e80075b, type: 3}
+  m_Script: {fileID: 11500000, guid: 421690c91e0f49d4891e33035f613336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _characterConfig: {fileID: 11400000, guid: 3434379cd4cb8334e90d1100f0d81188, type: 2}
   <CharacterModel>k__BackingField:
-    <Position>k__BackingField: {x: 0, y: 0}
+    <CharacterMovement>k__BackingField:
+      <RawNormalizedMovement>k__BackingField: {x: 0, y: 0}
+      <Position>k__BackingField: {x: 0, y: 0}
+      <IsMoving>k__BackingField: 0
+    <SkillSetModel>k__BackingField: {}
 --- !u!114 &9046163178879299791
 MonoBehaviour:
   m_ObjectHideFlags: 0

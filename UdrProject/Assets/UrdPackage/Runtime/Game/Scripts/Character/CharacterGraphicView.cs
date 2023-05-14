@@ -33,7 +33,7 @@ namespace Urd.Character
             _characterModel.SkillSetModel.OnSkillAction += OnSkillAction;
         }
 
-        private void OnSkillAction(SkillModel skillModel)
+        private void OnSkillAction(ISkillModel skillModel)
         {
             _animator.SetBool(skillModel.AnimParameter.ToString(), true);
             _lastAnimParameter = skillModel.AnimParameter;

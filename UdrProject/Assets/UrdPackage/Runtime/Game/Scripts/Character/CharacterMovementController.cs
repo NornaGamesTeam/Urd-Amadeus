@@ -46,12 +46,13 @@ namespace Urd.Character
             {
                 return;
             }
-            
+
             _characterModel.CharacterMovement.SetIsMoving(_characterInput.Movement.sqrMagnitude > 0);
             if (!_characterModel.SkillSetModel.IsSkill && _characterModel.CharacterMovement.IsMoving)
             {
                 _characterModel.CharacterMovement.SetRawNormalizedMovement(_characterInput.Movement);
-                _characterModel.CharacterMovement.ModifyPosition(_characterInput.Movement * _characterModel.Speed * _clockService.DeltaTime);
+                _characterModel.CharacterMovement.ModifyPosition(
+                    _characterInput.Movement * _characterModel.Speed * _clockService.DeltaTime);
             }
         }
 

@@ -40,7 +40,7 @@ namespace Urd.Character
             _skillSetModel.OnSkillAction -= OnSkillAction;
         }
         
-        private void OnSkillAction(SkillModel skillModel)
+        private void OnSkillAction(ISkillModel skillModel)
         {
             Debug.Log(skillModel.Name);
         }

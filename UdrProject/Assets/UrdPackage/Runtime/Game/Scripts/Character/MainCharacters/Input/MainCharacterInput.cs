@@ -65,6 +65,7 @@ namespace Urd.Character
 
         private void OnHorizontalMovementDown(InputAction.CallbackContext inputAction)
         {
+            Debug.Log($"OnHorizontalMovementDown:{Movement}");
             Movement.SetX(inputAction.ReadValue<Single>());
             OnMovementChanged?.Invoke(Movement);
         }
@@ -77,6 +78,8 @@ namespace Urd.Character
 
         private void OnVerticalMovementDown(InputAction.CallbackContext inputAction)
         {
+            Debug.Log($"OnVerticalMovementDown:{Movement}");
+
             Movement.SetY(inputAction.ReadValue<Single>());
             OnMovementChanged?.Invoke(Movement);
         }

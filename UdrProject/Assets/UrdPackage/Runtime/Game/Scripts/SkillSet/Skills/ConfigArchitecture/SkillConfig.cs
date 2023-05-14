@@ -9,7 +9,9 @@ namespace Urd.Game.SkillTrees
         [field: SerializeField]
         public string Name { get; protected set; }
         
-        [field: Header("Logic Class"), SerializeReference, SubclassSelector]
+        [field:  Header("Logic Class"), SerializeReference, SubclassSelector]
+        public ISkillModel Model { get; protected set; }
+        [field:SerializeReference, SubclassSelector]
         public ISkillController Controller { get; protected set; }
         
         [field: Header("Lock Properties"), SerializeField]
