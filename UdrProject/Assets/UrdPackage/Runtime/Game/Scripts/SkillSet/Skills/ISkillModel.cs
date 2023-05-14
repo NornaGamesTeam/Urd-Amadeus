@@ -3,12 +3,9 @@ using Urd.Game.SkillTrees;
 
 namespace Urd.Character.Skill
 {
-    [Serializable]
-    public class SkillModel<TSkill> where TSkill : SkillConfig
+    public interface ISkillModel
     {
-        protected TSkill _skillConfig;
-
-        public string Name => _skillConfig.Name;
+        public string Name { get; }
         public int LevelToUnlock => _skillConfig.LevelToUnlock;
         public SkillType Type => _skillConfig.Type;
         public ISkillController Controller => _skillConfig.Controller;

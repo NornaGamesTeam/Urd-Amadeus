@@ -18,8 +18,10 @@ namespace Urd.Game.SkillTrees
         [field: SerializeField]
         public virtual SkillType Type { get; protected set; }
         
+        [field: Header("Skill Graphic"), SerializeField]
+        public CharacterAnimParameters AnimParameter { get; protected set; }
+        
         [field: Header("Skill Properties"), SerializeField]
         public float Duration { get; protected set; }
-        
     }
 }

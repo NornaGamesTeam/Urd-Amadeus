@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.Compilation;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 using Urd.Error;
 using Urd.Scene;

@@ -13,8 +13,13 @@ namespace Urd.Character.Skill
         [field: SerializeField]
         public SkillTreeModel SkillTreeModel { get; private set; }
 
+        public bool IsSkill { get; private set; }
+        public SkillModel DodgeSkill => DefaultSkills.Find(skill => skill.AnimParameter == CharacterAnimParameters.IS_DODGE);
+
         public event Action<SkillModel> OnSkillAction;
-        
+        public event Action<bool> OnIsSkill;
+
+
         public SkillSetModel(List<SkillConfig> defaultSkillConfigs, SkillTreeConfig skillTreeConfig)
         {
             DefaultSkills = new List<SkillModel>();
@@ -24,6 +29,24 @@ namespace Urd.Character.Skill
             }
             
             SkillTreeModel = new SkillTreeModel(skillTreeConfig);
+        }
+
+        public void SetIsDodging(bool inputIsDodging)
+        {
+            var skillModel = DefaultSkills.Find(skill => skill.AnimParameter == CharacterAnimParameters.IS_DODGE);
+            if (skillModel == null)
+            {
+                return;
+            }
+
+            SetIsSkill(inputIsDodging);
+            OnSkillAction?.Invoke(skillModel);
+        }
+
+        private void SetIsSkill(bool isSkill)
+        {
+            IsSkill = isSkill;
+            OnIsSkill?.Invoke(IsSkill);
         }
     }
 }

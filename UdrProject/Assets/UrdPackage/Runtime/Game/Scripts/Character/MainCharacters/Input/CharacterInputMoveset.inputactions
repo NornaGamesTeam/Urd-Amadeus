@@ -2,7 +2,7 @@
     "name": "CharacterInputMoveset",
     "maps": [
         {
-            "name": "Movement",
+            "name": "Character",
             "id": "de9a815e-a7d5-4ec3-9785-9ba02ed76050",
             "actions": [
                 {
@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "DodgeSkill",
+                    "type": "Button",
+                    "id": "c0e2a7dd-ef9f-482c-8ecf-46e7fbc9642b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -134,6 +143,17 @@
                     "action": "VerticalMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "6e0748fd-e85f-4cda-897f-d20577123633",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DodgeSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

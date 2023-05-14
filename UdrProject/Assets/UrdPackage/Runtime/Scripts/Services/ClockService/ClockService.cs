@@ -9,6 +9,7 @@ namespace Urd.Services
     public class ClockService : BaseService, IClockService
     {
         public bool IsInPause { get; private set; }
+        public float DeltaTime => Time.deltaTime;
 
         List<ClockServiceUpdateModel> _updateListeners = new List<ClockServiceUpdateModel>();
         List<ClockServiceDelayedCallModel> _delayedCalls = new List<ClockServiceDelayedCallModel>();

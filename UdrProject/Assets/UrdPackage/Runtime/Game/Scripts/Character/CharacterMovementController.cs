@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using Urd.Services;
 using Urd.Utils;
 
@@ -6,51 +7,58 @@ namespace Urd.Character
 {
     public class CharacterMovementController : IDisposable
     {
-        private ICharacterInput _input;
-
+        private ICharacterInput _characterInput;
         private CharacterModel _characterModel;
+
+        private IClockService _clockService;
         
-        public CharacterMovementController(CharacterModel characterModel)
+        public CharacterMovementController(CharacterModel characterModel, ICharacterInput characterInput)
         {
             _characterModel = characterModel;
-            
+            SetInput(characterInput);
             Init();
         }
 
         public void Init()
         {
-            _input = new MainCharacterInput(_characterModel);
-            
+            _clockService = StaticServiceLocator.Get<IClockService>();
+
             SubscribeToUpdate();
-        }
-        
-        public void Dispose()
-        {
-            _input?.Dispose();
         }
 
         public void SetInput(ICharacterInput newInput)
         {
-            _input = newInput;
+            _characterInput = newInput;
+
+            _characterInput.OnMovementChanged += OnMovementChanged;
         }
+        
+        public void Dispose()
+        {
+            _characterInput.OnMovementChanged -= OnMovementChanged;
+            
+            _characterInput?.Dispose();
+        }
+
+        private void OnMovementChanged(Vector2 obj)
+        {
+            if (_characterModel.SkillSetModel.IsSkill)
+            {
+                return;
+            }
+            
+            _characterModel.CharacterMovement.SetIsMoving(_characterInput.Movement.sqrMagnitude > 0);
+            if (!_characterModel.SkillSetModel.IsSkill && _characterModel.CharacterMovement.IsMoving)
+            {
+                _characterModel.CharacterMovement.SetRawNormalizedMovement(_characterInput.Movement);
+                _characterModel.CharacterMovement.ModifyPosition(_characterInput.Movement * _characterModel.Speed * _clockService.DeltaTime);
+            }
+        }
+
 
         private void SubscribeToUpdate()
         {
-            StaticServiceLocator.Get<IClockService>().SubscribeToUpdate(OnUpdate);
-        }
-
-        private void OnUpdate(float deltaTime)
-        {
-            if (_input.Movement.sqrMagnitude > 0)
-            {
-                _characterModel.CharacterMovement.SetRawNormalizedMovement(_input.Movement);
-                _characterModel.CharacterMovement.ModifyPosition(_input.Movement * _characterModel.Speed * deltaTime);
-                _characterModel.CharacterMovement.SetIsMoving(true);
-            }
-            else
-            {
-                _characterModel.CharacterMovement.SetIsMoving(false);
-            }
+            //StaticServiceLocator.Get<IClockService>().SubscribeToUpdate(OnUpdate);
         }
     }
 }

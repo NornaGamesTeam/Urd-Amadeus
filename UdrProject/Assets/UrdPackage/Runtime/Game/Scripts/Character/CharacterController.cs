@@ -9,6 +9,8 @@ namespace Urd.Character
         [SerializeField] 
         private CharacterConfig _characterConfig;
 
+        private ICharacterInput _input;
+
         protected CharacterMovementController _movementController;
         protected SkillSetController SkillSetController;
         
@@ -23,9 +25,14 @@ namespace Urd.Character
         protected virtual void Init()
         {
             CharacterModel = new CharacterModel(_characterConfig);
-            
-            _movementController = new CharacterMovementController(CharacterModel);
-            SkillSetController = new SkillSetController(CharacterModel);
+        }
+        
+        public void SetInput(ICharacterInput characterInput)
+        {
+            // TODO move this to other place
+            _input = characterInput;
+            _movementController = new CharacterMovementController(CharacterModel, _input);
+            SkillSetController = new SkillSetController(CharacterModel, _input);
         }
         public void Dispose()
         {

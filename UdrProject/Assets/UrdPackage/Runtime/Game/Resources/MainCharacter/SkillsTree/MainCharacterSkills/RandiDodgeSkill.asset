@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c2a987d8e0e6d4086229d1bcdde5cf, type: 3}
   m_Name: RandiDodgeSkill
   m_EditorClassIdentifier: 
+  <Name>k__BackingField: DodgeSkill
+  <Controller>k__BackingField:
+    rid: 4760200657423302656
   <LevelToUnlock>k__BackingField: 0
   <Type>k__BackingField: 1
+  <AnimParameter>k__BackingField: 1
   <Duration>k__BackingField: 1
   <Distance>k__BackingField: 3
+  references:
+    version: 2
+    RefIds:
+    - rid: 4760200657423302656
+      type: {class: DodgeSkillController, ns: Urd.Character.Skill, asm: Udr}

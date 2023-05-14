@@ -15,7 +15,7 @@ MonoBehaviour:
   <BaseServices>k__BackingField:
   - rid: 1248381299958480903
   - rid: 1248381299958480902
-  - rid: 1248381299958480896
+  - rid: 4760200663389962241
   - rid: 1248381299958480898
   - rid: 1248381299958480899
   - rid: 1248381299958480901
@@ -32,15 +32,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 1248381299958480896
-      type: {class: AdsService, ns: Urd.Services, asm: Udr}
-      data:
-        _adsServiceProvider:
-          rid: 1248381299958480897
-    - rid: 1248381299958480897
-      type: {class: AdsServiceProviderAdMob, ns: Urd.Services.Ads, asm: Udr}
-      data:
-        _adMobSettings: {fileID: 11400000, guid: 51849b33b277ab34a85ce1ff8c674526, type: 2}
     - rid: 1248381299958480898
       type: {class: AssetService, ns: Urd.Services, asm: Udr}
     - rid: 1248381299958480899
@@ -107,3 +98,12 @@ MonoBehaviour:
       type: {class: RemoteConfigurationProviderUnity, ns: Urd.Services.RemoteConfiguration, asm: Udr}
     - rid: 1248381299958480922
       type: {class: UnityService, ns: Urd.Services, asm: Udr}
+    - rid: 4760200663389962241
+      type: {class: AdsService, ns: Urd.Services, asm: Udr}
+      data:
+        _adsServiceProvider:
+          rid: 4760200663389962242
+    - rid: 4760200663389962242
+      type: {class: AdsServiceProviderAdMob, ns: Urd.Services.Ads, asm: Udr}
+      data:
+        _adMobSettings: {fileID: 11400000, guid: 51849b33b277ab34a85ce1ff8c674526, type: 2}
