@@ -1,4 +1,5 @@
 using System;
+using System.Dynamic;
 using MyBox;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -33,7 +34,8 @@ namespace Urd.Character
         {
             _inputService = StaticServiceLocator.Get<IInputService>();
 
-            SetInput();
+            StaticServiceLocator.Get<IClockService>().AddDelayCall(2f, SetInput);
+            //SetInput();
         }
 
         private void SetInput()

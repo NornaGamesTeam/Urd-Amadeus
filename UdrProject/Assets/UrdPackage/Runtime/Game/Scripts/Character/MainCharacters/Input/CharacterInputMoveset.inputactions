@@ -2,7 +2,7 @@
     "name": "CharacterInputMoveset",
     "maps": [
         {
-            "name": "Character",
+            "name": "Movement",
             "id": "de9a815e-a7d5-4ec3-9785-9ba02ed76050",
             "actions": [
                 {
@@ -26,7 +26,7 @@
                 {
                     "name": "DodgeSkill",
                     "type": "Button",
-                    "id": "c0e2a7dd-ef9f-482c-8ecf-46e7fbc9642b",
+                    "id": "bb31088a-5e07-445e-b7d0-47b7ee2924d6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -146,7 +146,7 @@
                 },
                 {
                     "name": "",
-                    "id": "6e0748fd-e85f-4cda-897f-d20577123633",
+                    "id": "99908d3c-72ca-4026-acf7-3cad3c20b315",
                     "path": "<Keyboard>/leftCtrl",
                     "interactions": "",
                     "processors": "",

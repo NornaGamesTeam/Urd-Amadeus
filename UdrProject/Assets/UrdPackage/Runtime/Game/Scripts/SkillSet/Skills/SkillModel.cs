@@ -16,9 +16,16 @@ namespace Urd.Character.Skill
         public float Duration => _skillConfig?.Duration ?? 0f;
         public CharacterAnimParameters AnimParameter => _skillConfig?.AnimParameter ?? CharacterAnimParameters.None;
         
+        public bool IsActive { get; private set; }
+        
         public void SetConfig(SkillConfig skillConfig)
         {
             _skillConfig = skillConfig as TSkill;
+        }
+
+        public void SetIsActive(bool isActive)
+        {
+            IsActive = isActive;
         }
     }
 }

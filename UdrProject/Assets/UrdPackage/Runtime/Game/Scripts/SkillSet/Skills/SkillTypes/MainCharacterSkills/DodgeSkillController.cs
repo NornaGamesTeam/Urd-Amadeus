@@ -26,19 +26,17 @@ namespace Urd.Character.Skill
         {
             if (isDodging)
             {
-                Debug.Log("isDodging:{isDodging}");
+                Debug.Log($"isDodging:{isDodging}");
             }
-            
-            SetIsDodging(isDodging);
+
+            if (isDodging)
+            {
+                SetIsDodging(isDodging);
+            }
         }
 
         private void SetIsDodging(bool isDodging)
         {
-            if (_isDodging == isDodging)
-            {
-                return;
-            }
-
             _isDodging = isDodging;
             _characterModel.SkillSetModel.SetIsDodging(_isDodging);
 

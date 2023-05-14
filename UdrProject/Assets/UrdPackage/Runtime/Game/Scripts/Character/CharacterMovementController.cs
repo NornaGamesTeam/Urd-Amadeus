@@ -21,22 +21,18 @@ namespace Urd.Character
 
         public void Init()
         {
-            _clockService = StaticServiceLocator.Get<IClockService>();
 
-            SubscribeToUpdate();
         }
 
         public void SetInput(ICharacterInput newInput)
         {
             _characterInput = newInput;
-
             _characterInput.OnMovementChanged += OnMovementChanged;
         }
         
         public void Dispose()
         {
             _characterInput.OnMovementChanged -= OnMovementChanged;
-            
             _characterInput?.Dispose();
         }
 
@@ -54,12 +50,6 @@ namespace Urd.Character
                 _characterModel.CharacterMovement.ModifyPosition(
                     _characterInput.Movement * _characterModel.Speed * _clockService.DeltaTime);
             }
-        }
-
-
-        private void SubscribeToUpdate()
-        {
-            //StaticServiceLocator.Get<IClockService>().SubscribeToUpdate(OnUpdate);
         }
     }
 }

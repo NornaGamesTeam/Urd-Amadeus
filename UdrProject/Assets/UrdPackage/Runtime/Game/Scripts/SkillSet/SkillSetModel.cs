@@ -33,7 +33,7 @@ namespace Urd.Character.Skill
             SkillTreeModel = new SkillTreeModel(skillTreeConfig);
         }
 
-        public void SetIsDodging(bool inputIsDodging)
+        public void SetIsDodging(bool isDodging)
         {
             var skillModel = DefaultSkills.Find(skill => skill.AnimParameter == CharacterAnimParameters.IS_DODGE);
             if (skillModel == null)
@@ -41,8 +41,12 @@ namespace Urd.Character.Skill
                 return;
             }
 
-            SetIsSkill(inputIsDodging);
-            OnSkillAction?.Invoke(skillModel);
+            skillModel.SetIsActive(isDodging);
+            SetIsSkill(isDodging);
+            if (isDodging)
+            {
+                OnSkillAction?.Invoke(skillModel);
+            }
         }
 
         private void SetIsSkill(bool isSkill)

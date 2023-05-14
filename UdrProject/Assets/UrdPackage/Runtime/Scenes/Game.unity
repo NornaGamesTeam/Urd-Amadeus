@@ -2742,29 +2742,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &780843958036472185
+--- !u!1001 &2128940553
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4150704527871269290, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4150704527871269290, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
-      propertyPath: m_Size.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4150704527871269290, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
-      propertyPath: m_Size.y
-      value: 1.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 4150704527871269290, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7744823324971503468, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
       propertyPath: m_RootOrder
       value: 2

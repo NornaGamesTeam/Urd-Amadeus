@@ -24,7 +24,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
     ""name"": ""CharacterInputMoveset"",
     ""maps"": [
         {
-            ""name"": ""Character"",
+            ""name"": ""Movement"",
             ""id"": ""de9a815e-a7d5-4ec3-9785-9ba02ed76050"",
             ""actions"": [
                 {
@@ -48,7 +48,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                 {
                     ""name"": ""DodgeSkill"",
                     ""type"": ""Button"",
-                    ""id"": ""c0e2a7dd-ef9f-482c-8ecf-46e7fbc9642b"",
+                    ""id"": ""bb31088a-5e07-445e-b7d0-47b7ee2924d6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -168,7 +168,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6e0748fd-e85f-4cda-897f-d20577123633"",
+                    ""id"": ""99908d3c-72ca-4026-acf7-3cad3c20b315"",
                     ""path"": ""<Keyboard>/leftCtrl"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -182,11 +182,11 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
     ],
     ""controlSchemes"": []
 }");
-        // Character
-        m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
-        m_Character_HorizontalMovement = m_Character.FindAction("HorizontalMovement", throwIfNotFound: true);
-        m_Character_VerticalMovement = m_Character.FindAction("VerticalMovement", throwIfNotFound: true);
-        m_Character_DodgeSkill = m_Character.FindAction("DodgeSkill", throwIfNotFound: true);
+        // Movement
+        m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
+        m_Movement_HorizontalMovement = m_Movement.FindAction("HorizontalMovement", throwIfNotFound: true);
+        m_Movement_VerticalMovement = m_Movement.FindAction("VerticalMovement", throwIfNotFound: true);
+        m_Movement_DodgeSkill = m_Movement.FindAction("DodgeSkill", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -245,28 +245,28 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Character
-    private readonly InputActionMap m_Character;
-    private List<ICharacterActions> m_CharacterActionsCallbackInterfaces = new List<ICharacterActions>();
-    private readonly InputAction m_Character_HorizontalMovement;
-    private readonly InputAction m_Character_VerticalMovement;
-    private readonly InputAction m_Character_DodgeSkill;
-    public struct CharacterActions
+    // Movement
+    private readonly InputActionMap m_Movement;
+    private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
+    private readonly InputAction m_Movement_HorizontalMovement;
+    private readonly InputAction m_Movement_VerticalMovement;
+    private readonly InputAction m_Movement_DodgeSkill;
+    public struct MovementActions
     {
         private @CharacterInputMoveset m_Wrapper;
-        public CharacterActions(@CharacterInputMoveset wrapper) { m_Wrapper = wrapper; }
-        public InputAction @HorizontalMovement => m_Wrapper.m_Character_HorizontalMovement;
-        public InputAction @VerticalMovement => m_Wrapper.m_Character_VerticalMovement;
-        public InputAction @DodgeSkill => m_Wrapper.m_Character_DodgeSkill;
-        public InputActionMap Get() { return m_Wrapper.m_Character; }
+        public MovementActions(@CharacterInputMoveset wrapper) { m_Wrapper = wrapper; }
+        public InputAction @HorizontalMovement => m_Wrapper.m_Movement_HorizontalMovement;
+        public InputAction @VerticalMovement => m_Wrapper.m_Movement_VerticalMovement;
+        public InputAction @DodgeSkill => m_Wrapper.m_Movement_DodgeSkill;
+        public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CharacterActions set) { return set.Get(); }
-        public void AddCallbacks(ICharacterActions instance)
+        public static implicit operator InputActionMap(MovementActions set) { return set.Get(); }
+        public void AddCallbacks(IMovementActions instance)
         {
-            if (instance == null || m_Wrapper.m_CharacterActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_CharacterActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_MovementActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MovementActionsCallbackInterfaces.Add(instance);
             @HorizontalMovement.started += instance.OnHorizontalMovement;
             @HorizontalMovement.performed += instance.OnHorizontalMovement;
             @HorizontalMovement.canceled += instance.OnHorizontalMovement;
@@ -278,7 +278,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
             @DodgeSkill.canceled += instance.OnDodgeSkill;
         }
 
-        private void UnregisterCallbacks(ICharacterActions instance)
+        private void UnregisterCallbacks(IMovementActions instance)
         {
             @HorizontalMovement.started -= instance.OnHorizontalMovement;
             @HorizontalMovement.performed -= instance.OnHorizontalMovement;
@@ -291,22 +291,22 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
             @DodgeSkill.canceled -= instance.OnDodgeSkill;
         }
 
-        public void RemoveCallbacks(ICharacterActions instance)
+        public void RemoveCallbacks(IMovementActions instance)
         {
-            if (m_Wrapper.m_CharacterActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_MovementActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(ICharacterActions instance)
+        public void SetCallbacks(IMovementActions instance)
         {
-            foreach (var item in m_Wrapper.m_CharacterActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_MovementActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_CharacterActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_MovementActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public CharacterActions @Character => new CharacterActions(this);
-    public interface ICharacterActions
+    public MovementActions @Movement => new MovementActions(this);
+    public interface IMovementActions
     {
         void OnHorizontalMovement(InputAction.CallbackContext context);
         void OnVerticalMovement(InputAction.CallbackContext context);
