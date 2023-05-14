@@ -16,7 +16,7 @@ namespace Urd.Character
         private Animator _animator;
 
         private CharacterModel _characterModel;
-        private CharacterAnimParameters _lastAnimParameter = CharacterAnimParameters.None;
+        private string _lastAnimation;
         
         public void SetModel(CharacterModel characterModel)
         {
@@ -35,17 +35,16 @@ namespace Urd.Character
 
         private void OnSkillAction(ISkillModel skillModel)
         {
-            _animator.SetBool(skillModel.AnimParameter.ToString(), true);
-            _lastAnimParameter = skillModel.AnimParameter;
+            _animator.Play(skillModel.AnimatorName);
         }
 
         private void OnIsSkill(bool onIsSkill)
         {
             _animator.SetBool(ANIMATION_KEY_IS_SKILL, onIsSkill);
-            if (!onIsSkill && _lastAnimParameter != CharacterAnimParameters.None)
+            if (!onIsSkill && !string.IsNullOrEmpty(_lastAnimation))
             {
-                _animator.SetBool(_lastAnimParameter.ToString(), false);
-                _lastAnimParameter = CharacterAnimParameters.None;
+                _animator.SetBool(_lastAnimation, false);
+                _lastAnimation = null;
             }
         }
 

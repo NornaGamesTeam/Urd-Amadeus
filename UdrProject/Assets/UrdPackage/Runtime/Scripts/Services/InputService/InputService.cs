@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using Urd.Utils;
 
 namespace Urd.Services
 {
@@ -8,13 +9,28 @@ namespace Urd.Services
     public class InputService : BaseService, IInputService
     {
         private List<InputAction> _actions = new List<InputAction>();
-        
+        private List<InputActionHold> _holdActions = new ();
+
+        private IClockService _clockService;
         public override void Init()
         {
             base.Init();
 
+            _clockService = StaticServiceLocator.Get<IClockService>();
+            _clockService.SubscribeToUpdate(CustomUpdate);
+            
+            LoadAllCustomInteractions();
             LoadAllInputs();
             SetAsLoaded();
+        }
+
+        private void LoadAllCustomInteractions()
+        {
+            var types = AssemblyHelper.GetClassTypesThatImplement<IInputInteraction>();
+            for (int i = types.Count - 1; i >= 0; i--)
+            {
+                InputSystem.RegisterInteraction(types[i]);
+            }
         }
 
         private void LoadAllInputs()
@@ -37,22 +53,51 @@ namespace Urd.Services
             }
         }
 
-        public void SubscribeToActionOnStarted(string actionName, Action<InputAction.CallbackContext> onStartMethod)
+        public void SubscribeToActionOnHold(string actionName, Action<InputAction.CallbackContext> onHoldMethod)
         {
             var allActions = _actions.FindAll(action => action.name == actionName);
             for (int i = allActions.Count - 1; i >= 0; i--)
             {
-                allActions[i].started += onStartMethod;
+                allActions[i].performed += OnHoldBegin;
+                allActions[i].canceled += OnHoldEnd;
+                _holdActions.Add(new InputActionHold(allActions[i], onHoldMethod));
+            }
+        }
+
+
+        public void UnsubscribeToActionOnHold(string actionName, Action<InputAction.CallbackContext> onHoldMethod)
+        {
+            var allActions = _actions.FindAll(action => action.name == actionName);
+            for (int i = allActions.Count - 1; i >= 0; i--)
+            {
+                allActions[i].performed -= OnHoldBegin;
+                allActions[i].canceled -= OnHoldEnd;
+                _holdActions.RemoveAll(action => action.InputAction == allActions[i]);
+            }
+        }
+
+
+        private void OnHoldBegin(InputAction.CallbackContext context)
+        {
+            var holdAction = _holdActions.Find(action => action.InputAction == context.action);
+            holdAction.SetIsHolding(true, context);
+        }
+
+        void CustomUpdate(float deltaTime)
+        {
+            for (int i = 0; i < _holdActions.Count; i++)
+            {
+                if (_holdActions[i].IsHolding)
+                {
+                    _holdActions[i].CallBack?.Invoke(_holdActions[i].Context);
+                }
             }
         }
         
-        public void UnsubscribeToActionOnStarted(string actionName, Action<InputAction.CallbackContext> onStartMethod)
+        private void OnHoldEnd(InputAction.CallbackContext context)
         {
-            var allActions = _actions.FindAll(action => action.name == actionName);
-            for (int i = allActions.Count - 1; i >= 0; i--)
-            {
-                allActions[i].started -= onStartMethod;
-            }
+            var holdAction = _holdActions.Find(action => action.InputAction == context.action);
+            holdAction.SetIsHolding(false, context);
         }
         
         public void SubscribeToActionOnPerformed(string actionName, Action<InputAction.CallbackContext> onPerformMethod)
@@ -88,6 +133,26 @@ namespace Urd.Services
             {
                 allActions[i].canceled -= onPerformMethod;
             }
+        }
+    }
+
+    internal class InputActionHold
+    {
+        public InputAction InputAction { get; private set; }
+        public Action<InputAction.CallbackContext> CallBack { get; private set; }
+        public bool IsHolding { get; private set; }
+        public InputAction.CallbackContext Context { get; private set; }
+
+        public InputActionHold(InputAction inputAction, Action<InputAction.CallbackContext> callBack)
+        {
+            InputAction = inputAction;
+            CallBack = callBack;
+        }
+
+        public void SetIsHolding(bool isHolding, InputAction.CallbackContext context = default)
+        {
+            IsHolding = isHolding;
+            Context = context;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Urd.Character.Skill
         public SkillTreeModel SkillTreeModel { get; private set; }
 
         public bool IsSkill { get; private set; }
-        public ISkillModel DodgeSkill => DefaultSkills.Find(skill => skill.AnimParameter == CharacterAnimParameters.IS_DODGE);
+        public ISkillModel DodgeSkill => DefaultSkills.Find(skill => skill is DodgeSkillModel);
 
         public event Action<ISkillModel> OnSkillAction;
         public event Action<bool> OnIsSkill;
@@ -35,17 +35,17 @@ namespace Urd.Character.Skill
 
         public void SetIsDodging(bool isDodging)
         {
-            var skillModel = DefaultSkills.Find(skill => skill.AnimParameter == CharacterAnimParameters.IS_DODGE);
-            if (skillModel == null)
+            var dodgeSkill = DodgeSkill;
+            if (dodgeSkill == null)
             {
                 return;
             }
 
-            skillModel.SetIsActive(isDodging);
+            dodgeSkill.SetIsActive(isDodging);
             SetIsSkill(isDodging);
             if (isDodging)
             {
-                OnSkillAction?.Invoke(skillModel);
+                OnSkillAction?.Invoke(dodgeSkill);
             }
         }
 

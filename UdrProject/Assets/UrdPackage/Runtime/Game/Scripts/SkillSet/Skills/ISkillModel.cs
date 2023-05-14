@@ -10,7 +10,7 @@ namespace Urd.Character.Skill
         public ISkillController Controller { get; }
         public bool IsActive { get; }
         public float Duration { get; }
-        public CharacterAnimParameters AnimParameter { get; }
+        public string AnimatorName { get; }
         void SetConfig(SkillConfig defaultSkillConfig);
         void SetIsActive(bool isActive);
     }

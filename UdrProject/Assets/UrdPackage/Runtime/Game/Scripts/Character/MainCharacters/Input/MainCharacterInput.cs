@@ -35,28 +35,32 @@ namespace Urd.Character
         {
             _inputService = StaticServiceLocator.Get<IInputService>();
 
-            StaticServiceLocator.Get<IClockService>().AddDelayCall(2f, SetInput);
-            //SetInput();
+            SubscribeToInput();
         }
 
-        private void SetInput()
+        private void SubscribeToInput()
         {
-            _inputService.SubscribeToActionOnPerformed(HORIZONTAL_MOVEMENT, OnHorizontalMovementDown);
+            _inputService.SubscribeToActionOnHold(HORIZONTAL_MOVEMENT, OnHorizontalMovementDown);
             _inputService.SubscribeToActionOnCancel(HORIZONTAL_MOVEMENT, OnHorizontalMovementUp);
 
-            _inputService.SubscribeToActionOnPerformed(VERTICAL_MOVEMENT, OnVerticalMovementDown);
+            _inputService.SubscribeToActionOnHold(VERTICAL_MOVEMENT, OnVerticalMovementDown);
             _inputService.SubscribeToActionOnCancel(VERTICAL_MOVEMENT, OnVerticalMovementUp);
             
             _inputService.SubscribeToActionOnPerformed(DODGE_SKILL, OnDodgeSkillDown);
             _inputService.SubscribeToActionOnCancel(DODGE_SKILL, OnDodgeSkillUp);
         }
-        
+
         public void Dispose()
         {
-            _inputService.UnsubscribeToActionOnPerformed(HORIZONTAL_MOVEMENT, OnHorizontalMovementDown);
+            UnsubscribeToInput();
+        }
+
+        private void UnsubscribeToInput()
+        {
+            _inputService.UnsubscribeToActionOnHold(HORIZONTAL_MOVEMENT, OnHorizontalMovementDown);
             _inputService.UnsubscribeToActionOnCancel(HORIZONTAL_MOVEMENT, OnHorizontalMovementUp);
 
-            _inputService.UnsubscribeToActionOnPerformed(VERTICAL_MOVEMENT, OnVerticalMovementDown);
+            _inputService.UnsubscribeToActionOnHold(VERTICAL_MOVEMENT, OnVerticalMovementDown);
             _inputService.UnsubscribeToActionOnCancel(VERTICAL_MOVEMENT, OnVerticalMovementUp);
             
             _inputService.UnsubscribeToActionOnPerformed(DODGE_SKILL, OnDodgeSkillDown);

@@ -14,7 +14,7 @@ namespace Urd.Character.Skill
         public SkillType Type => _skillConfig?.Type ?? SkillType.None;
         public ISkillController Controller => _skillConfig?.Controller;
         public float Duration => _skillConfig?.Duration ?? 0f;
-        public CharacterAnimParameters AnimParameter => _skillConfig?.AnimParameter ?? CharacterAnimParameters.None;
+        public string AnimatorName => _skillConfig?.AnimatorName ?? string.Empty;
         
         public bool IsActive { get; private set; }
         
