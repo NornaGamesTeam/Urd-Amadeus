@@ -44,6 +44,5 @@ namespace Urd.Character
         {
             Debug.Log(skillModel.Name);
         }
-
     }
 }

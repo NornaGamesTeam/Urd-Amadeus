@@ -14,7 +14,7 @@ namespace Urd.Character.Skill
         public SkillTreeModel SkillTreeModel { get; private set; }
 
         public bool IsSkill { get; private set; }
-        public ISkillModel DodgeSkill => DefaultSkills.Find(skill => skill is DodgeSkillModel);
+        public DodgeSkillModel DodgeSkill => DefaultSkills.Find(skill => skill is DodgeSkillModel) as DodgeSkillModel;
 
         public event Action<ISkillModel> OnSkillAction;
         public event Action<bool> OnIsSkill;

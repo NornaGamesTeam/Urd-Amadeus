@@ -356,25 +356,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: MOVEMENT_Y
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IS_MOVING
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IS_SKILL
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -482,7 +482,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: b3a5a3ab4b25ee34fb6214732a4936b2, type: 2}
+    m_Motion: {fileID: 7400000, guid: ef31206d86124664285d5b5fd1dd9ac0, type: 2}
     m_Threshold: 0
     m_Position: {x: -1, y: 0.26}
     m_TimeScale: 1
@@ -490,7 +490,7 @@ BlendTree:
     m_DirectBlendParameter: MOVEMENT_X
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 90f9fd3a3f63a6e48be4eceea1f32d53, type: 2}
+    m_Motion: {fileID: 7400000, guid: 352c14985fc66964993f69abd81803aa, type: 2}
     m_Threshold: 0.33333334
     m_Position: {x: 0.03, y: 0.5}
     m_TimeScale: 1
@@ -498,7 +498,7 @@ BlendTree:
     m_DirectBlendParameter: MOVEMENT_X
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: a4374fb43cd708346aae55184e19f57a, type: 2}
+    m_Motion: {fileID: 7400000, guid: 1f3846ccac1b37146a054e8dfe8c27ea, type: 2}
     m_Threshold: 0.6666667
     m_Position: {x: 1, y: 0.26}
     m_TimeScale: 1
@@ -506,7 +506,7 @@ BlendTree:
     m_DirectBlendParameter: MOVEMENT_X
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 1563ebc02eb48064c822beee2bd36f85, type: 2}
+    m_Motion: {fileID: 7400000, guid: b5f156fc6673cc94180896b2b958eef7, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: -0.5}
     m_TimeScale: 1
