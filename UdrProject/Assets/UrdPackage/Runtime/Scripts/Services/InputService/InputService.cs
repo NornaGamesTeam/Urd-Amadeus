@@ -37,6 +37,24 @@ namespace Urd.Services
             }
         }
 
+        public void SubscribeToActionOnStarted(string actionName, Action<InputAction.CallbackContext> onStartMethod)
+        {
+            var allActions = _actions.FindAll(action => action.name == actionName);
+            for (int i = allActions.Count - 1; i >= 0; i--)
+            {
+                allActions[i].started += onStartMethod;
+            }
+        }
+        
+        public void UnsubscribeToActionOnStarted(string actionName, Action<InputAction.CallbackContext> onStartMethod)
+        {
+            var allActions = _actions.FindAll(action => action.name == actionName);
+            for (int i = allActions.Count - 1; i >= 0; i--)
+            {
+                allActions[i].started -= onStartMethod;
+            }
+        }
+        
         public void SubscribeToActionOnPerformed(string actionName, Action<InputAction.CallbackContext> onPerformMethod)
         {
             var allActions = _actions.FindAll(action => action.name == actionName);

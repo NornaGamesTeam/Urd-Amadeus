@@ -14,7 +14,8 @@ namespace Urd.Character
         private const string VERTICAL_MOVEMENT = "VerticalMovement";
         private const string DODGE_SKILL = "DodgeSkill";
 
-        public Vector2 Movement { get; private set; }
+        public Vector2 Movement => _movement;
+        public Vector2 _movement;
         public bool IsDodging { get; private set; }
 
         private IInputService _inputService;
@@ -40,10 +41,10 @@ namespace Urd.Character
 
         private void SetInput()
         {
-            _inputService.SubscribeToActionOnPerformed(HORIZONTAL_MOVEMENT, OnHorizontalMovementDown);
+            _inputService.SubscribeToActionOnStarted(HORIZONTAL_MOVEMENT, OnHorizontalMovementDown);
             _inputService.SubscribeToActionOnCancel(HORIZONTAL_MOVEMENT, OnHorizontalMovementUp);
 
-            _inputService.SubscribeToActionOnPerformed(VERTICAL_MOVEMENT, OnVerticalMovementDown);
+            _inputService.SubscribeToActionOnStarted(VERTICAL_MOVEMENT, OnVerticalMovementDown);
             _inputService.SubscribeToActionOnCancel(VERTICAL_MOVEMENT, OnVerticalMovementUp);
             
             _inputService.SubscribeToActionOnPerformed(DODGE_SKILL, OnDodgeSkillDown);
@@ -67,28 +68,27 @@ namespace Urd.Character
 
         private void OnHorizontalMovementDown(InputAction.CallbackContext inputAction)
         {
-            Debug.Log($"OnHorizontalMovementDown:{Movement}");
-            Movement.Set(inputAction.ReadValue<Single>(), Movement.y);
+            _movement.x = inputAction.ReadValue<Single>();
             OnMovementChanged?.Invoke(Movement);
+            Debug.Log($"OnHorizontalMovementDown:{Movement}");
         }
 
         private void OnHorizontalMovementUp(InputAction.CallbackContext inputAction)
         {
-            Movement.Set(inputAction.ReadValue<Single>(), Movement.y);
+            _movement.x = inputAction.ReadValue<Single>();
             OnMovementChanged?.Invoke(Movement);
         }
 
         private void OnVerticalMovementDown(InputAction.CallbackContext inputAction)
         {
-            Debug.Log($"OnVerticalMovementDown:{Movement}");
-
-            Movement.Set(Movement.x, inputAction.ReadValue<Single>());
+            _movement.y = inputAction.ReadValue<Single>();
             OnMovementChanged?.Invoke(Movement);
+            Debug.Log($"OnVerticalMovementDown:{Movement}");
         }
 
         private void OnVerticalMovementUp(InputAction.CallbackContext inputAction)
         {
-            Movement.Set(Movement.x, inputAction.ReadValue<Single>());
+            _movement.y = inputAction.ReadValue<Single>();
             OnMovementChanged?.Invoke(Movement);
         }
         

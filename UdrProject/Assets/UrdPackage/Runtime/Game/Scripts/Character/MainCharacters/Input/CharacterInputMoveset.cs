@@ -48,7 +48,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                 {
                     ""name"": ""DodgeSkill"",
                     ""type"": ""Button"",
-                    ""id"": ""bb31088a-5e07-445e-b7d0-47b7ee2924d6"",
+                    ""id"": ""16ecae63-a809-479c-b985-645682116723"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -168,7 +168,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": """",
-                    ""id"": ""99908d3c-72ca-4026-acf7-3cad3c20b315"",
+                    ""id"": ""5cd0c8de-0e88-49d8-9631-7a59a0303071"",
                     ""path"": ""<Keyboard>/leftCtrl"",
                     ""interactions"": """",
                     ""processors"": """",

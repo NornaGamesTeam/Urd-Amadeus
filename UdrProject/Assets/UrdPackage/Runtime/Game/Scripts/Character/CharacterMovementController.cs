@@ -21,7 +21,7 @@ namespace Urd.Character
 
         public void Init()
         {
-
+            _clockService = StaticServiceLocator.Get<IClockService>();
         }
 
         public void SetInput(ICharacterInput newInput)
