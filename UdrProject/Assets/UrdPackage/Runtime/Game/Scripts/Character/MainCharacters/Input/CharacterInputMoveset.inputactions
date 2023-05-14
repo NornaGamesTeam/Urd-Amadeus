@@ -90,6 +90,28 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Negative",
+                    "id": "d13ce183-ad65-43b5-9a57-8ecff55928bc",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HorizontalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "fb53ba90-a688-464b-b237-99d7d92e472a",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HorizontalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "VerticalAxis",
                     "id": "419f62ef-39b6-4567-b21e-ad704b8f3ad8",
                     "path": "1DAxis",
@@ -145,9 +167,42 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "negative",
+                    "id": "13f8639b-01f8-4498-aa9e-876a4943d5eb",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerticalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "106810dc-8dd4-454c-ae7b-bad914136865",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerticalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "5cd0c8de-0e88-49d8-9631-7a59a0303071",
                     "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DodgeSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4fbef1ab-8685-4dbe-a226-c763723d2ad7",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Dynamic;
 using MyBox;
 using UnityEngine;
@@ -15,11 +16,15 @@ namespace Urd.Character
         private const string DODGE_SKILL = "DodgeSkill";
 
         public Vector2 Movement => _movement;
-        public Vector2 _movement;
+        private Vector2 _movement;
         public bool IsDodging { get; private set; }
 
         private IInputService _inputService;
+        private ICoroutineService _coroutineService;
         private CharacterModel _characterModel;
+        private Coroutine _oneMovementCoroutine;
+        private Vector2 _lastMovement;
+        
         
         public event Action<Vector2> OnMovementChanged;
         public event Action<bool> OnIsDodgingChanged;
@@ -34,6 +39,7 @@ namespace Urd.Character
         public void Init()
         {
             _inputService = StaticServiceLocator.Get<IInputService>();
+            _coroutineService = StaticServiceLocator.Get<ICoroutineService>();
 
             SubscribeToInput();
         }
@@ -48,6 +54,18 @@ namespace Urd.Character
             
             _inputService.SubscribeToActionOnPerformed(DODGE_SKILL, OnDodgeSkillDown);
             _inputService.SubscribeToActionOnCancel(DODGE_SKILL, OnDodgeSkillUp);
+
+            _oneMovementCoroutine = _coroutineService.StartCoroutine(OneMovementCo());
+        }
+
+        private IEnumerator OneMovementCo()
+        {
+            while (true)
+            {
+                yield return new WaitForEndOfFrame();
+                    OnMovementChanged?.Invoke(Movement);
+                    _lastMovement = Movement;
+            }
         }
 
         public void Dispose()
@@ -68,33 +86,14 @@ namespace Urd.Character
 
             OnIsDodgingChanged = null;
             OnMovementChanged = null;
+            
+            _coroutineService.StopCoroutine(_oneMovementCoroutine);
         }
 
-        private void OnHorizontalMovementDown(InputAction.CallbackContext inputAction)
-        {
-            _movement.x = inputAction.ReadValue<Single>();
-            OnMovementChanged?.Invoke(Movement);
-            Debug.Log($"OnHorizontalMovementDown:{Movement}");
-        }
-
-        private void OnHorizontalMovementUp(InputAction.CallbackContext inputAction)
-        {
-            _movement.x = inputAction.ReadValue<Single>();
-            OnMovementChanged?.Invoke(Movement);
-        }
-
-        private void OnVerticalMovementDown(InputAction.CallbackContext inputAction)
-        {
-            _movement.y = inputAction.ReadValue<Single>();
-            OnMovementChanged?.Invoke(Movement);
-            Debug.Log($"OnVerticalMovementDown:{Movement}");
-        }
-
-        private void OnVerticalMovementUp(InputAction.CallbackContext inputAction)
-        {
-            _movement.y = inputAction.ReadValue<Single>();
-            OnMovementChanged?.Invoke(Movement);
-        }
+        private void OnHorizontalMovementDown(InputAction.CallbackContext inputAction) => _movement.x = inputAction.ReadValue<Single>();
+        private void OnHorizontalMovementUp(InputAction.CallbackContext inputAction) => _movement.x = inputAction.ReadValue<Single>();
+        private void OnVerticalMovementDown(InputAction.CallbackContext inputAction) => _movement.y = inputAction.ReadValue<Single>();
+        private void OnVerticalMovementUp(InputAction.CallbackContext inputAction) => _movement.y = inputAction.ReadValue<Single>();
         
         private void OnDodgeSkillDown(InputAction.CallbackContext inputAction)
         {
