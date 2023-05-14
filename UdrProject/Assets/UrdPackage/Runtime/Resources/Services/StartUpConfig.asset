@@ -29,6 +29,7 @@ MonoBehaviour:
   - rid: 1248381299958480918
   - rid: 1248381299958480919
   - rid: 1248381299958480922
+  - rid: 4760200691194265600
   references:
     version: 2
     RefIds:
@@ -107,3 +108,5 @@ MonoBehaviour:
       type: {class: AdsServiceProviderAdMob, ns: Urd.Services.Ads, asm: Udr}
       data:
         _adMobSettings: {fileID: 11400000, guid: 51849b33b277ab34a85ce1ff8c674526, type: 2}
+    - rid: 4760200691194265600
+      type: {class: GameManagerService, ns: Urd.Game, asm: Udr}

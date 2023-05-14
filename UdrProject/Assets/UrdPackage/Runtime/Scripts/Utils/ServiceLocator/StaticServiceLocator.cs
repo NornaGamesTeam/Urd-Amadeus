@@ -25,7 +25,7 @@ namespace Urd.Utils
         public static void Register(IBaseService serviceInstance, Type type)
         {
             Services[type] = serviceInstance;
-            serviceInstance.OnFinishLoad += CheckForCallback;
+            serviceInstance.OnServiceFinishLoad += CheckForCallback;
         }
 
         private static void CheckForCallback()

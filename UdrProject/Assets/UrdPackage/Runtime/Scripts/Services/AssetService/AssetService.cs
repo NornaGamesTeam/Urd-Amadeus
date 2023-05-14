@@ -244,7 +244,7 @@ namespace Urd.Services
         {
             if (!IsLoaded)
             {
-                OnFinishLoad += () => Instantiate(addressName, parent, instantiateCallback);
+                OnServiceFinishLoad += () => Instantiate(addressName, parent, instantiateCallback);
                 return;
             }
             
@@ -267,7 +267,7 @@ namespace Urd.Services
         {
             if (!IsLoaded)
             {
-                OnFinishLoad += () => Instantiate(prefab, parent, instantiateCallback);
+                OnServiceFinishLoad += () => Instantiate(prefab, parent, instantiateCallback);
                 return;
             }
             
@@ -279,7 +279,7 @@ namespace Urd.Services
         {
             if (!IsLoaded)
             {
-                OnFinishLoad += () => Instantiate(prefab, parent, instantiateCallback);
+                OnServiceFinishLoad += () => Instantiate(prefab, parent, instantiateCallback);
                 return;
             }
             

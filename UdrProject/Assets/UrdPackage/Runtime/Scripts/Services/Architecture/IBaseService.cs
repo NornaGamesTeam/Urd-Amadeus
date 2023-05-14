@@ -9,6 +9,6 @@ namespace Urd.Services
         IServiceLocator ServiceLocatorService { get; }
         void SetServiceLocatorService(IServiceLocator serviceLocatorService);
         void Init();
-        event Action OnFinishLoad;
+        event Action OnServiceFinishLoad;
     }
 }

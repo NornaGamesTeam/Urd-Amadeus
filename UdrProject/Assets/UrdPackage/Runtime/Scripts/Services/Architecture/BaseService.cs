@@ -8,7 +8,7 @@ namespace Urd.Services
     {
         public bool InitBegins { get; protected set; }
         public bool IsLoaded { get; protected set; }
-        public event Action OnFinishLoad;
+        public event Action OnServiceFinishLoad;
         
         public IServiceLocator ServiceLocatorService { get; private set; }
 
@@ -61,7 +61,7 @@ namespace Urd.Services
             }
             
             IsLoaded = true;
-            OnFinishLoad?.Invoke();
+            OnServiceFinishLoad?.Invoke();
         }
         
         public void SetServiceLocatorService(IServiceLocator serviceLocatorService)

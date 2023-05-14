@@ -16,6 +16,8 @@ namespace Urd.Services
 
         [SerializeReference, SubclassSelector]
         private List<INavigationManager> _navigationManagers = new List<INavigationManager>();
+        
+        public event Action<INavigable> OnFinishLoadNavigable;
 
         public override void Init()
         {
@@ -72,6 +74,7 @@ namespace Urd.Services
             {
                 _navigableOpened.Add(navigable);
                 AddToHistory(navigable);
+                OnFinishLoadNavigable?.Invoke(navigable);
             }
 
             onOpenNavigableCallback?.Invoke(success);
