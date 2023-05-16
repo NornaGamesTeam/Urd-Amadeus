@@ -1,3 +1,4 @@
+using MyBox;
 using UnityEngine;
 using Urd.Character.Skill;
 
@@ -12,8 +13,15 @@ namespace Urd.Character
         
         [SerializeField]
         private SpriteRenderer _mainImage;
+        
         [SerializeField]
         private Animator _animator;
+        
+        [Header("AIM")]
+        [SerializeField]
+        private SpriteRenderer _aimImage;
+        [SerializeField]
+        private float _aimOffset;
 
         private CharacterModel _characterModel;
         private string _lastAnimation;
@@ -29,10 +37,11 @@ namespace Urd.Character
         {
             _characterModel.CharacterMovement.OnRawNormalizedMovementChanged += OnRawNormalizedPositionChanged;
             _characterModel.CharacterMovement.OnIsMovingChanged += OnMovingChanged;
+            _characterModel.CharacterMovement.OnAimDirectionChanged += OnAimDirectionChanged;
             _characterModel.SkillSetModel.OnIsSkill += OnIsSkill;
             _characterModel.SkillSetModel.OnSkillAction += OnSkillAction;
         }
-
+        
         private void OnSkillAction(ISkillModel skillModel)
         {
             _animator.Play(skillModel.AnimatorName);
@@ -51,6 +60,13 @@ namespace Urd.Character
         private void OnMovingChanged(bool isMoving)
         {
             _animator.SetBool(ANIMATION_KEY_IS_MOVING, isMoving);
+        }
+        
+        private void OnAimDirectionChanged(Vector2 aimDirection)
+        {
+            _aimImage.transform.SetXY(
+                transform.position.x + aimDirection.x * _aimOffset,
+                transform.position.y + aimDirection.y * _aimOffset);
         }
 
         private void OnRawNormalizedPositionChanged(Vector2 newRawNormalizedPosition)

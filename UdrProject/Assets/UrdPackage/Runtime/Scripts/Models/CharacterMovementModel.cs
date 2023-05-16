@@ -7,6 +7,9 @@ namespace Urd.Models
     public class CharacterMovementModel
     {
         [field: SerializeField, MyBox.ReadOnly]
+        public Vector2 AimDirection { get; private set; }
+        
+        [field: SerializeField, MyBox.ReadOnly]
         public Vector2 RawNormalizedMovement { get; private set; }
         
         [field: SerializeField, MyBox.ReadOnly]
@@ -17,6 +20,7 @@ namespace Urd.Models
         
         public event Action<Vector2> OnRawNormalizedMovementChanged;
         public event Action<Vector2> OnPositionChanged;
+        public event Action<Vector2> OnAimDirectionChanged;
         public event Action<bool> OnIsMovingChanged;
 
         public void SetRawNormalizedMovement(Vector2 rawNormalizedMovement)
@@ -51,6 +55,16 @@ namespace Urd.Models
             
             IsMoving = isMoving;
             OnIsMovingChanged?.Invoke(IsMoving);
+        }
+
+        public void SetAimDirection(Vector2 aimDirection)
+        {
+            if (AimDirection == aimDirection)
+            {
+                return;
+            }
+            AimDirection = aimDirection;
+            OnAimDirectionChanged?.Invoke(aimDirection);
         }
     }
 }

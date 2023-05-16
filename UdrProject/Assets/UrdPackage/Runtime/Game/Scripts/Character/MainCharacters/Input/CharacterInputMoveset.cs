@@ -24,7 +24,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
     ""name"": ""CharacterInputMoveset"",
     ""maps"": [
         {
-            ""name"": ""Movement"",
+            ""name"": ""Character"",
             ""id"": ""de9a815e-a7d5-4ec3-9785-9ba02ed76050"",
             ""actions"": [
                 {
@@ -53,6 +53,33 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""78e1d9c4-0e3c-4a11-bd9a-afc17fd0b130"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GamePadMovement"",
+                    ""type"": ""Value"",
+                    ""id"": ""102ae8b9-dea8-4e27-a589-2b392e382b33"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GamePadAim"",
+                    ""type"": ""Value"",
+                    ""id"": ""8bd87d38-52a9-45e4-9606-73752aa14955"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -104,28 +131,6 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                     ""name"": ""Positive"",
                     ""id"": ""44865f40-4ee8-4210-96f6-108320b48af1"",
                     ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HorizontalMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Negative"",
-                    ""id"": ""d13ce183-ad65-43b5-9a57-8ecff55928bc"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HorizontalMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""fb53ba90-a688-464b-b237-99d7d92e472a"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -189,28 +194,6 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""13f8639b-01f8-4498-aa9e-876a4943d5eb"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""VerticalMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""106810dc-8dd4-454c-ae7b-bad914136865"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""VerticalMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""5cd0c8de-0e88-49d8-9631-7a59a0303071"",
                     ""path"": ""<Keyboard>/leftCtrl"",
@@ -231,17 +214,53 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                     ""action"": ""DodgeSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""966a5507-dd53-43b5-9cab-b181c5b28ef5"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14e6c86a-8ca6-48ab-89a9-4a62a23be57e"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone"",
+                    ""groups"": """",
+                    ""action"": ""GamePadMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a531c1ef-f341-4149-a89c-a70f3785d527"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone,NormalizeVector2"",
+                    ""groups"": """",
+                    ""action"": ""GamePadAim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Movement
-        m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
-        m_Movement_HorizontalMovement = m_Movement.FindAction("HorizontalMovement", throwIfNotFound: true);
-        m_Movement_VerticalMovement = m_Movement.FindAction("VerticalMovement", throwIfNotFound: true);
-        m_Movement_DodgeSkill = m_Movement.FindAction("DodgeSkill", throwIfNotFound: true);
+        // Character
+        m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
+        m_Character_HorizontalMovement = m_Character.FindAction("HorizontalMovement", throwIfNotFound: true);
+        m_Character_VerticalMovement = m_Character.FindAction("VerticalMovement", throwIfNotFound: true);
+        m_Character_DodgeSkill = m_Character.FindAction("DodgeSkill", throwIfNotFound: true);
+        m_Character_MousePosition = m_Character.FindAction("MousePosition", throwIfNotFound: true);
+        m_Character_GamePadMovement = m_Character.FindAction("GamePadMovement", throwIfNotFound: true);
+        m_Character_GamePadAim = m_Character.FindAction("GamePadAim", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -300,28 +319,34 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Movement
-    private readonly InputActionMap m_Movement;
-    private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
-    private readonly InputAction m_Movement_HorizontalMovement;
-    private readonly InputAction m_Movement_VerticalMovement;
-    private readonly InputAction m_Movement_DodgeSkill;
-    public struct MovementActions
+    // Character
+    private readonly InputActionMap m_Character;
+    private List<ICharacterActions> m_CharacterActionsCallbackInterfaces = new List<ICharacterActions>();
+    private readonly InputAction m_Character_HorizontalMovement;
+    private readonly InputAction m_Character_VerticalMovement;
+    private readonly InputAction m_Character_DodgeSkill;
+    private readonly InputAction m_Character_MousePosition;
+    private readonly InputAction m_Character_GamePadMovement;
+    private readonly InputAction m_Character_GamePadAim;
+    public struct CharacterActions
     {
         private @CharacterInputMoveset m_Wrapper;
-        public MovementActions(@CharacterInputMoveset wrapper) { m_Wrapper = wrapper; }
-        public InputAction @HorizontalMovement => m_Wrapper.m_Movement_HorizontalMovement;
-        public InputAction @VerticalMovement => m_Wrapper.m_Movement_VerticalMovement;
-        public InputAction @DodgeSkill => m_Wrapper.m_Movement_DodgeSkill;
-        public InputActionMap Get() { return m_Wrapper.m_Movement; }
+        public CharacterActions(@CharacterInputMoveset wrapper) { m_Wrapper = wrapper; }
+        public InputAction @HorizontalMovement => m_Wrapper.m_Character_HorizontalMovement;
+        public InputAction @VerticalMovement => m_Wrapper.m_Character_VerticalMovement;
+        public InputAction @DodgeSkill => m_Wrapper.m_Character_DodgeSkill;
+        public InputAction @MousePosition => m_Wrapper.m_Character_MousePosition;
+        public InputAction @GamePadMovement => m_Wrapper.m_Character_GamePadMovement;
+        public InputAction @GamePadAim => m_Wrapper.m_Character_GamePadAim;
+        public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MovementActions set) { return set.Get(); }
-        public void AddCallbacks(IMovementActions instance)
+        public static implicit operator InputActionMap(CharacterActions set) { return set.Get(); }
+        public void AddCallbacks(ICharacterActions instance)
         {
-            if (instance == null || m_Wrapper.m_MovementActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MovementActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_CharacterActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CharacterActionsCallbackInterfaces.Add(instance);
             @HorizontalMovement.started += instance.OnHorizontalMovement;
             @HorizontalMovement.performed += instance.OnHorizontalMovement;
             @HorizontalMovement.canceled += instance.OnHorizontalMovement;
@@ -331,9 +356,18 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
             @DodgeSkill.started += instance.OnDodgeSkill;
             @DodgeSkill.performed += instance.OnDodgeSkill;
             @DodgeSkill.canceled += instance.OnDodgeSkill;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
+            @GamePadMovement.started += instance.OnGamePadMovement;
+            @GamePadMovement.performed += instance.OnGamePadMovement;
+            @GamePadMovement.canceled += instance.OnGamePadMovement;
+            @GamePadAim.started += instance.OnGamePadAim;
+            @GamePadAim.performed += instance.OnGamePadAim;
+            @GamePadAim.canceled += instance.OnGamePadAim;
         }
 
-        private void UnregisterCallbacks(IMovementActions instance)
+        private void UnregisterCallbacks(ICharacterActions instance)
         {
             @HorizontalMovement.started -= instance.OnHorizontalMovement;
             @HorizontalMovement.performed -= instance.OnHorizontalMovement;
@@ -344,27 +378,39 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
             @DodgeSkill.started -= instance.OnDodgeSkill;
             @DodgeSkill.performed -= instance.OnDodgeSkill;
             @DodgeSkill.canceled -= instance.OnDodgeSkill;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
+            @GamePadMovement.started -= instance.OnGamePadMovement;
+            @GamePadMovement.performed -= instance.OnGamePadMovement;
+            @GamePadMovement.canceled -= instance.OnGamePadMovement;
+            @GamePadAim.started -= instance.OnGamePadAim;
+            @GamePadAim.performed -= instance.OnGamePadAim;
+            @GamePadAim.canceled -= instance.OnGamePadAim;
         }
 
-        public void RemoveCallbacks(IMovementActions instance)
+        public void RemoveCallbacks(ICharacterActions instance)
         {
-            if (m_Wrapper.m_MovementActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_CharacterActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IMovementActions instance)
+        public void SetCallbacks(ICharacterActions instance)
         {
-            foreach (var item in m_Wrapper.m_MovementActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_CharacterActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_MovementActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_CharacterActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public MovementActions @Movement => new MovementActions(this);
-    public interface IMovementActions
+    public CharacterActions @Character => new CharacterActions(this);
+    public interface ICharacterActions
     {
         void OnHorizontalMovement(InputAction.CallbackContext context);
         void OnVerticalMovement(InputAction.CallbackContext context);
         void OnDodgeSkill(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
+        void OnGamePadMovement(InputAction.CallbackContext context);
+        void OnGamePadAim(InputAction.CallbackContext context);
     }
 }

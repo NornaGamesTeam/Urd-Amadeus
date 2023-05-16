@@ -2,7 +2,7 @@
     "name": "CharacterInputMoveset",
     "maps": [
         {
-            "name": "Movement",
+            "name": "Character",
             "id": "de9a815e-a7d5-4ec3-9785-9ba02ed76050",
             "actions": [
                 {
@@ -31,6 +31,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "78e1d9c4-0e3c-4a11-bd9a-afc17fd0b130",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "GamePadMovement",
+                    "type": "Value",
+                    "id": "102ae8b9-dea8-4e27-a589-2b392e382b33",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "GamePadAim",
+                    "type": "Value",
+                    "id": "8bd87d38-52a9-45e4-9606-73752aa14955",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -82,28 +109,6 @@
                     "name": "Positive",
                     "id": "44865f40-4ee8-4210-96f6-108320b48af1",
                     "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HorizontalMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Negative",
-                    "id": "d13ce183-ad65-43b5-9a57-8ecff55928bc",
-                    "path": "<Gamepad>/leftStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HorizontalMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "fb53ba90-a688-464b-b237-99d7d92e472a",
-                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -167,28 +172,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "negative",
-                    "id": "13f8639b-01f8-4498-aa9e-876a4943d5eb",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "VerticalMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "106810dc-8dd4-454c-ae7b-bad914136865",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "VerticalMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "5cd0c8de-0e88-49d8-9631-7a59a0303071",
                     "path": "<Keyboard>/leftCtrl",
@@ -207,6 +190,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "DodgeSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "966a5507-dd53-43b5-9cab-b181c5b28ef5",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14e6c86a-8ca6-48ab-89a9-4a62a23be57e",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
+                    "groups": "",
+                    "action": "GamePadMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a531c1ef-f341-4149-a89c-a70f3785d527",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone,NormalizeVector2",
+                    "groups": "",
+                    "action": "GamePadAim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

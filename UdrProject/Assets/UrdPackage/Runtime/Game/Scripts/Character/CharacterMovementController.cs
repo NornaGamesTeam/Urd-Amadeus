@@ -28,28 +28,40 @@ namespace Urd.Character
         {
             _characterInput = newInput;
             _characterInput.OnMovementChanged += OnMovementChanged;
+            _characterInput.OnAimDirectionChanged += OnAimChanged;
         }
         
         public void Dispose()
         {
             _characterInput.OnMovementChanged -= OnMovementChanged;
+            _characterInput.OnAimDirectionChanged -= OnAimChanged;
             _characterInput?.Dispose();
         }
 
-        private void OnMovementChanged(Vector2 obj)
+        private void OnMovementChanged(Vector2 movement)
         {
             if (_characterModel.SkillSetModel.IsSkill)
             {
                 return;
             }
 
-            _characterModel.CharacterMovement.SetIsMoving(_characterInput.Movement.sqrMagnitude > 0);
-            if (!_characterModel.SkillSetModel.IsSkill && _characterModel.CharacterMovement.IsMoving)
+            _characterModel.CharacterMovement.SetIsMoving(movement.sqrMagnitude > 0);
+            if (_characterModel.CharacterMovement.IsMoving)
             {
-                _characterModel.CharacterMovement.SetRawNormalizedMovement(_characterInput.Movement);
+                _characterModel.CharacterMovement.SetRawNormalizedMovement(movement);
                 _characterModel.CharacterMovement.ModifyPosition(
-                    _characterInput.Movement * _characterModel.Speed * _clockService.DeltaTime);
+                    movement * _characterModel.Speed * _clockService.DeltaTime);
             }
+        }
+
+        private void OnAimChanged(Vector2 aimDirection)
+        {
+            if (_characterModel.SkillSetModel.IsSkill)
+            {
+                return;
+            }
+
+            _characterModel.CharacterMovement.SetAimDirection(aimDirection);
         }
     }
 }
