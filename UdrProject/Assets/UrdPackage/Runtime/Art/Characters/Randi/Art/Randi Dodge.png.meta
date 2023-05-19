@@ -157,11 +157,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 7
+        y: 0
         width: 16
-        height: 24
+        height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: Randi Dodge_Down_02
       rect:
         serializedVersion: 2
-        x: 21
-        y: 7
+        x: 20
+        y: 0
         width: 16
-        height: 24
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,12 +198,12 @@ TextureImporter:
       name: Randi Dodge_Down_03
       rect:
         serializedVersion: 2
-        x: 42
-        y: 7
+        x: 40
+        y: 0
         width: 16
-        height: 24
+        height: 19
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,12 +219,12 @@ TextureImporter:
       name: Randi Dodge_Down_04
       rect:
         serializedVersion: 2
-        x: 62
-        y: 7
+        x: 61
+        y: 0
         width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,12 +240,12 @@ TextureImporter:
       name: Randi Dodge_Up_01
       rect:
         serializedVersion: 2
-        x: 83
-        y: 7
+        x: 187
+        y: 0
         width: 16
-        height: 24
+        height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,12 +261,12 @@ TextureImporter:
       name: Randi Dodge_Up_02
       rect:
         serializedVersion: 2
-        x: 105
-        y: 7
-        width: 15
-        height: 24
+        x: 207
+        y: 0
+        width: 16
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -282,12 +282,12 @@ TextureImporter:
       name: Randi Dodge_Up_03
       rect:
         serializedVersion: 2
-        x: 125
-        y: 7
+        x: 228
+        y: 0
         width: 16
-        height: 24
+        height: 19
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -303,12 +303,12 @@ TextureImporter:
       name: Randi Dodge_Up_04
       rect:
         serializedVersion: 2
-        x: 145
-        y: 7
-        width: 15
+        x: 248
+        y: 0
+        width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -324,12 +324,12 @@ TextureImporter:
       name: Randi Dodge_Side_01
       rect:
         serializedVersion: 2
-        x: 165
-        y: 7
-        width: 32
-        height: 15
+        x: 81
+        y: 0
+        width: 24
+        height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -345,12 +345,12 @@ TextureImporter:
       name: Randi Dodge_Side_02
       rect:
         serializedVersion: 2
-        x: 202
-        y: 7
-        width: 32
-        height: 16
+        x: 109
+        y: 0
+        width: 20
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -366,12 +366,12 @@ TextureImporter:
       name: Randi Dodge_Side_03
       rect:
         serializedVersion: 2
-        x: 238
+        x: 133
         y: 0
-        width: 32
-        height: 15
+        width: 24
+        height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -387,18 +387,18 @@ TextureImporter:
       name: Randi Dodge_Side_04
       rect:
         serializedVersion: 2
-        x: 275
-        y: 7
-        width: 32
-        height: 15
+        x: 162
+        y: 0
+        width: 20
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34f58d09aae71aa4ea472e9c9a6c5f2d
+      spriteID: 260909ca0c0297045882885cbab1e275
       internalID: 1909752114
       vertices: []
       indices: 
@@ -417,6 +417,7 @@ TextureImporter:
     nameFileIdTable:
       Randi Dodge_Down_04: 1600237262
       Randi Dodge_Up_03: -595549408
+      Randi Dodge_1: -1605602452
       Randi Dodge_Up_02: 165355805
       Randi Dodge_Side_03: 1945929558
       Randi Dodge_Side_01: 1530507968

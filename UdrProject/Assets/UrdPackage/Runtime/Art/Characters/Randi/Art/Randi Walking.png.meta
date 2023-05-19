@@ -153,7 +153,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Randi Walking_Down01
+      name: Randi Walking_Down_01
       rect:
         serializedVersion: 2
         x: 0
@@ -174,7 +174,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Randi Walking_Down02
+      name: Randi Walking_Down_02
       rect:
         serializedVersion: 2
         x: 22
@@ -195,7 +195,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Randi Walking_Down03
+      name: Randi Walking_Down_03
       rect:
         serializedVersion: 2
         x: 44
@@ -216,7 +216,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Randi Walking_Down04
+      name: Randi Walking_Down_04
       rect:
         serializedVersion: 2
         x: 67
@@ -237,7 +237,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Randi Walking_Down05
+      name: Randi Walking_Down_05
       rect:
         serializedVersion: 2
         x: 88
@@ -258,7 +258,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Randi Walking_Down06
+      name: Randi Walking_Down_06
       rect:
         serializedVersion: 2
         x: 110
@@ -542,23 +542,23 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Randi Walking_Up_02: 1916715248
-      Randi Walking_Down05: -623421433
       Randi Walking_Up_04: -889513905
+      Randi Walking_Down_01: -1620368191
       Randi Walking_Side_03: -163130476
       Randi Walking_Up_03: -1277009041
-      Randi Walking_Down04: 579795301
       Randi Walking_Up_05: 353415095
       Randi Walking_Side_01: 702499476
+      Randi Walking_Down_05: -623421433
       Randi Walking_Side_05: 1953361267
-      Randi Walking_Down01: -1620368191
       Randi Walking_Side_06: 1878418459
-      Randi Walking_Down02: 1012903242
-      Randi Walking_Down03: -499353215
+      Randi Walking_Down_06: 200196380
+      Randi Walking_Down_02: 1012903242
       Randi Walking_Up_01: 302900984
+      Randi Walking_Down_03: -499353215
       Randi Walking_Side_04: -2093907639
       Randi Walking_Side_02: -426262756
-      Randi Walking_Down06: 200196380
       Randi Walking_Up_06: -1747578261
+      Randi Walking_Down_04: 579795301
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
