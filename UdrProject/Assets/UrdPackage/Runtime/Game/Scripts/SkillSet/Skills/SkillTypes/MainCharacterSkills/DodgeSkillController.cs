@@ -23,36 +23,38 @@ namespace Urd.Character.Skill
             _clockService = StaticServiceLocator.Get<IClockService>();
         }
 
+
+
         public override void Dispose()
         {
             base.Dispose();
             _characterInput.OnIsDodgingChanged -= OnIsDodgingChanged;
         }
 
-        private void OnIsDodgingChanged(bool isDodging)
+        private void OnIsDodgingChanged(bool isDodging, Vector2 dodgeDirection)
         {
             if (!_isDodging)
             {
-                SetIsDodging(isDodging);
+                SetIsDodging(isDodging, dodgeDirection);
             }
         }
 
-        private void SetIsDodging(bool isDodging)
+        private void SetIsDodging(bool isDodging, Vector2 dodgeDirection = default)
         {
             _isDodging = isDodging;
             _characterModel.SkillSetModel.SetIsDodging(_isDodging);
 
             if (isDodging)
             {
-                BeginDodge();
+                BeginDodge(dodgeDirection);
             }
         }
 
-        private void BeginDodge()
+        private void BeginDodge(Vector2 dodgeDirection)
         {
             _clockService.AddDelayCall(_dodgeSkill.Duration, OnFinishDodge);
             _clockService.SubscribeToUpdate(DodgeUpdate);
-            _direction = _characterInput.Movement.normalized;
+            _direction = dodgeDirection.normalized;
         }
 
         private void DodgeUpdate(float deltaTime)

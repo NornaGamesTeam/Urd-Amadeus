@@ -32,7 +32,7 @@ namespace Urd.Character
 
         public event Action<Vector2> OnMovementChanged;
         public event Action<Vector2> OnAimDirectionChanged;
-        public event Action<bool> OnIsDodgingChanged;
+        public event ICharacterInput.DodgeDelegate OnIsDodgingChanged;
 
         public MainCharacterInput(CharacterModel characterModel)
         {
@@ -134,8 +134,8 @@ namespace Urd.Character
         private void OnGamePadAimUp(InputAction.CallbackContext inputAction) => _aimDirection = Vector2.zero;
 
         private void OnDodgeSkillDown(InputAction.CallbackContext inputAction) =>
-            OnIsDodgingChanged?.Invoke(inputAction.performed);
+            OnIsDodgingChanged?.Invoke(inputAction.performed, _movement);
         private void OnDodgeSkillUp(InputAction.CallbackContext inputAction) =>
-            OnIsDodgingChanged?.Invoke(false);
+            OnIsDodgingChanged?.Invoke(false, _movement);
     }
 }
