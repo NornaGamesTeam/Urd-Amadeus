@@ -1,5 +1,6 @@
 using System;
 using Urd.Game.SkillTrees;
+using Urd.Timer;
 
 namespace Urd.Character.Skill
 {
@@ -17,31 +18,24 @@ namespace Urd.Character.Skill
         public float CoolDown => _skillConfig?.CoolDown ?? 0f;
         public string AnimatorName => _skillConfig?.AnimatorName ?? string.Empty;
         public bool IsActive { get; private set; }
-        public bool IsInCoolDown => _timeStamp >= 0;
-        public float _timeStamp;
+        public TimerModel TimerModel { get; private set; }
+
+        public SkillModel() { }
         
         public void SetConfig(SkillConfig skillConfig)
         {
             _skillConfig = skillConfig as TSkill;
+            Init();
+        }
+
+        private void Init()
+        {
+            TimerModel = new TimerModel(CoolDown);
         }
 
         public void SetIsActive(bool isActive)
         {
             IsActive = isActive;
-            if (!isActive)
-            {
-                InitCoolDown();
-            }
-        }
-
-        private void InitCoolDown()
-        {
-            _timeStamp = CoolDown;
-        }
-
-        private void UpdateCoolDown(float deductTime)
-        {
-            _timeStamp -= deductTime;
         }
     }
 }

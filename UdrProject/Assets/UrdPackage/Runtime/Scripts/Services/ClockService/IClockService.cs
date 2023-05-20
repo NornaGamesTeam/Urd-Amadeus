@@ -13,7 +13,7 @@ namespace Urd.Services
 
         void SetPause(bool gamePaused);
 
-        void AddDelayCall(float delayTime, Action methodWhenFinish, bool pausable = true);
+        void AddDelayCall(float duration, Action finishCallback, bool pausable = true);
 
         /// <summary>
         /// Method for Test propose, do not use!!

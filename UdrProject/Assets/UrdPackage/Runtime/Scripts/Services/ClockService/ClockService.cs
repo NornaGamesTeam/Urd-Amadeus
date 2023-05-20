@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Urd.Timer;
 
 namespace Urd.Services
 {
@@ -12,7 +13,7 @@ namespace Urd.Services
         public float DeltaTime => Time.deltaTime;
 
         List<ClockServiceUpdateModel> _updateListeners = new List<ClockServiceUpdateModel>();
-        List<ClockServiceDelayedCallModel> _delayedCalls = new List<ClockServiceDelayedCallModel>();
+        List<TimerModel> _delayedCalls = new List<TimerModel>();
 
         private ICoroutineService _coroutineService;
 
@@ -47,9 +48,11 @@ namespace Urd.Services
             }
         }
 
-        public void AddDelayCall(float delayTime, Action methodWhenFinish, bool pausable = true)
+        public void AddDelayCall(float duration, Action finishCallback, bool pausable = true)
         {
-            _delayedCalls.Add(new ClockServiceDelayedCallModel(delayTime, methodWhenFinish, pausable));
+            var timerModel = new TimerModel(duration, finishCallback, pausable);
+            _delayedCalls.Add(timerModel);
+            timerModel.BeginTimer(finishCallback);
         }
 
         private IEnumerator UpdateCoroutineCo()
@@ -87,43 +90,14 @@ namespace Urd.Services
                 {
                     _delayedCalls[i].DeductTime(deltaTime);
 
-                    if (_delayedCalls[i].IsExpired)
+                    if (!_delayedCalls[i].IsInCooldown)
                     {
-                        _delayedCalls[i].CallFinishCallback();
                         _delayedCalls.RemoveAt(i);
                     }
                 }
             }
         }
-
-        protected class ClockServiceDelayedCallModel
-        {
-            public bool IsPausable { get; private set; }
-            public float DelayTime { get; private set; }
-            public float RemainingTime { get; private set; }
-            public Action FinishCallback { get; private set;  }
-
-            public bool IsExpired => RemainingTime <= 0;
-
-            public ClockServiceDelayedCallModel(float delayTime, Action finishCallback, bool pausable)
-            {
-                DelayTime = delayTime;
-                RemainingTime = DelayTime;
-                FinishCallback = finishCallback;
-                IsPausable = pausable;
-            }
-
-            public void CallFinishCallback()
-            {
-                FinishCallback?.Invoke();
-            }
-
-            public void DeductTime(float deltaTime)
-            {
-                RemainingTime -= deltaTime;
-            }
-        }
-
+        
         protected class ClockServiceUpdateModel
         {
             public bool IsPausable { get; private set; }

@@ -9,7 +9,7 @@ namespace Urd.Character.Skill
     [System.Serializable]
     public class SkillSetModel
     {
-        [field: SerializeField]
+        [field: SerializeReference]
         public List<ISkillModel> DefaultSkills { get; private set; }
         [field: SerializeField]
         public SkillTreeModel SkillTreeModel { get; private set; }

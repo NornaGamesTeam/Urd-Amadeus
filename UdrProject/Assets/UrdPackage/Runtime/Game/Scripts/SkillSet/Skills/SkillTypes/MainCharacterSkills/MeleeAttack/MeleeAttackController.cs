@@ -59,6 +59,8 @@ namespace Urd.Character.Skill
 
         protected override void OnFinishSkill()
         {
+            base.OnFinishSkill();
+            
             SetIsAttacking(false);
         }
     }

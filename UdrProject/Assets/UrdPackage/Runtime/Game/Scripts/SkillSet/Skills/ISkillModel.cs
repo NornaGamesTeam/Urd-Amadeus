@@ -1,4 +1,5 @@
 using Urd.Game.SkillTrees;
+using Urd.Timer;
 
 namespace Urd.Character.Skill
 {
@@ -11,9 +12,7 @@ namespace Urd.Character.Skill
         bool IsActive { get; }
         float Duration { get; }
         string AnimatorName { get; }
-
-        bool IsInCoolDown { get; }
-
+        public TimerModel TimerModel { get; }
         void SetConfig(SkillConfig defaultSkillConfig);
         void SetIsActive(bool isActive);
     }

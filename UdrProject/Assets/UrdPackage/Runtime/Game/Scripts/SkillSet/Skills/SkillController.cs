@@ -44,16 +44,40 @@ namespace Urd.Character.Skill
         }
 
         protected virtual void SkillUpdate(float deltaTime) { }
+        
+        protected virtual void CoolDownUpdate(float deltaTime)
+        {
+            if (_skillModel.TimerModel.IsInCooldown)
+            {
+                _skillModel.TimerModel.DeductTime(deltaTime);
+            }
+        }
 
         protected virtual void OnFinishSkill()
         {
             _clockService.UnSubscribeToUpdate(SkillUpdate);
+            BeginCoolDown();
+        }
+
+        private void BeginCoolDown()
+        {
+            if (!_skillModel.TimerModel.HasCooldown)
+            {
+                return;
+            }
+            _skillModel.TimerModel.BeginTimer(OnFinishCoolDown);
+            _clockService.SubscribeToUpdate(CoolDownUpdate);
+        }
+
+        private void OnFinishCoolDown()
+        {
+            _clockService.UnSubscribeToUpdate(CoolDownUpdate);
         }
 
         protected virtual bool CanDoSkill()
         {
-            return _characterModel.SkillSetModel.IsSkill
-                   || _skillModel.IsInCoolDown;
+            return !_characterModel.SkillSetModel.IsSkill
+                   && !_skillModel.TimerModel.IsInCooldown;
         }
     }
 }

@@ -60,12 +60,16 @@ namespace Urd.Character.Skill
         
         protected override void SkillUpdate(float deltaTime)
         {
+            base.SkillUpdate(deltaTime);
+            
             var movement = _direction * _dodgeSkillModel.Distance/_dodgeSkillModel.Duration * deltaTime;
             _characterModel.CharacterMovement.ModifyPosition(movement);
         }
 
         protected override void OnFinishSkill()
         {
+            base.OnFinishSkill();
+            
             SetIsDodging(false);
         }
     }
