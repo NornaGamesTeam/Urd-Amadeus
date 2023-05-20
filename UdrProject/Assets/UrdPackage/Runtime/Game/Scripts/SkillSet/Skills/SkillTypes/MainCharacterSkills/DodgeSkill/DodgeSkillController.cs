@@ -9,30 +9,28 @@ namespace Urd.Character.Skill
     public class DodgeSkillController : SkillController
     {
         private bool _isDodging;
-        private IClockService _clockService;
-        private DodgeSkillModel _dodgeSkill;
         private Vector2 _direction;
         
+        private DodgeSkillModel _dodgeSkillModel => _skillModel as DodgeSkillModel;
+
         public override void Init(CharacterModel characterModel, ICharacterInput characterInput)
         {
             base.Init(characterModel, characterInput);
 
-            _dodgeSkill = _characterModel.SkillSetModel.DodgeSkillModel;
+            SetModel(_characterModel.SkillSetModel.DodgeSkillModel);
             
             characterInput.OnIsDodgingChanged += OnIsDodgingChanged;
-            _clockService = StaticServiceLocator.Get<IClockService>();
         }
-
 
         public override void Dispose()
         {
-            base.Dispose();
             _characterInput.OnIsDodgingChanged -= OnIsDodgingChanged;
+            base.Dispose();
         }
 
         private void OnIsDodgingChanged(bool isDodging, Vector2 dodgeDirection)
         {
-            if (_characterModel.SkillSetModel.IsSkill)
+            if(!CanDoSkill())
             {
                 return;
             }
@@ -42,7 +40,7 @@ namespace Urd.Character.Skill
                 SetIsDodging(isDodging, dodgeDirection);
             }
         }
-
+        
         private void SetIsDodging(bool isDodging, Vector2 dodgeDirection = default)
         {
             _isDodging = isDodging;
@@ -56,20 +54,18 @@ namespace Urd.Character.Skill
 
         private void BeginDodge(Vector2 dodgeDirection)
         {
-            _clockService.AddDelayCall(_dodgeSkill.Duration, OnFinishDodge);
-            _clockService.SubscribeToUpdate(DodgeUpdate);
+            BeginSkill();
             _direction = dodgeDirection.normalized;
         }
-
-        private void DodgeUpdate(float deltaTime)
+        
+        protected override void SkillUpdate(float deltaTime)
         {
-            var movement = _direction * _dodgeSkill.Distance/_dodgeSkill.Duration * deltaTime;
+            var movement = _direction * _dodgeSkillModel.Distance/_dodgeSkillModel.Duration * deltaTime;
             _characterModel.CharacterMovement.ModifyPosition(movement);
         }
 
-        private void OnFinishDodge()
+        protected override void OnFinishSkill()
         {
-            _clockService.UnSubscribeToUpdate(DodgeUpdate);
             SetIsDodging(false);
         }
     }

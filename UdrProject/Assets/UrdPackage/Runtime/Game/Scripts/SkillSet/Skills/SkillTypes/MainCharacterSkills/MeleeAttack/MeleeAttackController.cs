@@ -9,20 +9,18 @@ namespace Urd.Character.Skill
     public class MeleeAttackController : SkillController
     {
         private bool _isAttacking;
-        private IClockService _clockService;
-        private MeleeAttackModel _meleeAttackModel;
+        private MeleeAttackModel _meleeAttackModel => _skillModel as MeleeAttackModel;
         private Vector2 _direction;
         
         public override void Init(CharacterModel characterModel, ICharacterInput characterInput)
         {
             base.Init(characterModel, characterInput);
 
-            _meleeAttackModel = _characterModel.SkillSetModel.MeleeAttackModel;
+            SetModel(_characterModel.SkillSetModel.MeleeAttackModel);
             
             _characterInput.OnAttackingChanged += OnIsAttackingChanged;
-            _clockService = StaticServiceLocator.Get<IClockService>();
         }
-
+        
         public override void Dispose()
         {
             _characterInput.OnAttackingChanged -= OnIsAttackingChanged;
@@ -31,7 +29,7 @@ namespace Urd.Character.Skill
 
         private void OnIsAttackingChanged(bool isAttacking, Vector2 attackDirection)
         {
-            if (_characterModel.SkillSetModel.IsSkill)
+            if(!CanDoSkill())
             {
                 return;
             }
@@ -55,18 +53,12 @@ namespace Urd.Character.Skill
 
         private void BeginMeleeAttack(Vector2 attackDirection)
         {
-            _clockService.AddDelayCall(_meleeAttackModel.Duration, OnFinishAttack);
-            _clockService.SubscribeToUpdate(AttackUpdate);
+            BeginSkill();
             _direction = attackDirection.normalized;
         }
 
-        private void AttackUpdate(float deltaTime)
+        protected override void OnFinishSkill()
         {
-        }
-
-        private void OnFinishAttack()
-        {
-            _clockService.UnSubscribeToUpdate(AttackUpdate);
             SetIsAttacking(false);
         }
     }

@@ -89,7 +89,7 @@ namespace Urd.Services
 
                     if (_delayedCalls[i].IsExpired)
                     {
-                        _delayedCalls[i].CallMethodWhenFinish();
+                        _delayedCalls[i].CallFinishCallback();
                         _delayedCalls.RemoveAt(i);
                     }
                 }
@@ -101,21 +101,21 @@ namespace Urd.Services
             public bool IsPausable { get; private set; }
             public float DelayTime { get; private set; }
             public float RemainingTime { get; private set; }
-            public Action MethodWhenFinish { get; private set;  }
+            public Action FinishCallback { get; private set;  }
 
             public bool IsExpired => RemainingTime <= 0;
 
-            public ClockServiceDelayedCallModel(float delayTime, Action methodWhenFinish, bool pausable)
+            public ClockServiceDelayedCallModel(float delayTime, Action finishCallback, bool pausable)
             {
                 DelayTime = delayTime;
                 RemainingTime = DelayTime;
-                MethodWhenFinish = methodWhenFinish;
+                FinishCallback = finishCallback;
                 IsPausable = pausable;
             }
 
-            public void CallMethodWhenFinish()
+            public void CallFinishCallback()
             {
-                MethodWhenFinish?.Invoke();
+                FinishCallback?.Invoke();
             }
 
             public void DeductTime(float deltaTime)

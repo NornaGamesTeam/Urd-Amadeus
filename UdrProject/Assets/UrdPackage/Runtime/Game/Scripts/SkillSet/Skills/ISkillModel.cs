@@ -4,13 +4,16 @@ namespace Urd.Character.Skill
 {
     public interface ISkillModel
     {
-        public string Name { get; }
-        public int LevelToUnlock { get; }
-        public SkillType Type { get; }
-        public ISkillController Controller { get; }
-        public bool IsActive { get; }
-        public float Duration { get; }
-        public string AnimatorName { get; }
+        string Name { get; }
+        int LevelToUnlock { get; }
+        SkillType Type { get; }
+        ISkillController Controller { get; }
+        bool IsActive { get; }
+        float Duration { get; }
+        string AnimatorName { get; }
+
+        bool IsInCoolDown { get; }
+
         void SetConfig(SkillConfig defaultSkillConfig);
         void SetIsActive(bool isActive);
     }
