@@ -7,8 +7,9 @@ namespace Urd.Character.Skill
     {
         protected CharacterModel _characterModel;
         protected ICharacterInput _characterInput;
-
-        public virtual void Init(CharacterModel characterModel, ICharacterInput characterInput)
+        
+        public virtual void Init(CharacterModel characterModel,
+            ICharacterInput characterInput)
         {
             _characterModel = characterModel;
             SetInput(characterInput);

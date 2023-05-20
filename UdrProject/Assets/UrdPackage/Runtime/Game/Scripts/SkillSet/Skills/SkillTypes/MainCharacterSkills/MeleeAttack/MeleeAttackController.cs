@@ -31,6 +31,11 @@ namespace Urd.Character.Skill
 
         private void OnIsAttackingChanged(bool isAttacking, Vector2 attackDirection)
         {
+            if (_characterModel.SkillSetModel.IsSkill)
+            {
+                return;
+            }
+            
             if (!_isAttacking)
             {
                 SetIsAttacking(isAttacking, attackDirection);

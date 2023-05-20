@@ -60,7 +60,7 @@ namespace Urd.Character
             _inputService.SubscribeToActionOnHold(VERTICAL_MOVEMENT, OnVerticalMovementDown);
             _inputService.SubscribeToActionOnCancel(VERTICAL_MOVEMENT, OnVerticalMovementUp);
 
-            _inputService.SubscribeToActionOnPerformed(DODGE_SKILL, OnDodgeSkillDown);
+            _inputService.SubscribeToActionOnHold(DODGE_SKILL, OnDodgeSkillDown);
             _inputService.SubscribeToActionOnCancel(DODGE_SKILL, OnDodgeSkillUp);
 
             _inputService.SubscribeToActionOnHold(GAMEPAD_MOVEMENT, OnGamePadMovementDown);
@@ -137,8 +137,12 @@ namespace Urd.Character
 
         private void OnGamePadAimDown(InputAction.CallbackContext inputAction)
         {
-            _aimDirection = inputAction.ReadValue<Vector2>();
-            _isAttacking = true;
+            var aimDirection = inputAction.ReadValue<Vector2>();
+            if (aimDirection != Vector2.zero)
+            {
+                _aimDirection = aimDirection;
+                _isAttacking = true;
+            }
         }
 
         private void OnGamePadAimUp(InputAction.CallbackContext inputAction)

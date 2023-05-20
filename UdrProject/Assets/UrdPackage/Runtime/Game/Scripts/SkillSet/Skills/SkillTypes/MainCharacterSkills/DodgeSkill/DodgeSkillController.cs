@@ -24,7 +24,6 @@ namespace Urd.Character.Skill
         }
 
 
-
         public override void Dispose()
         {
             base.Dispose();
@@ -33,6 +32,11 @@ namespace Urd.Character.Skill
 
         private void OnIsDodgingChanged(bool isDodging, Vector2 dodgeDirection)
         {
+            if (_characterModel.SkillSetModel.IsSkill)
+            {
+                return;
+            }
+            
             if (!_isDodging)
             {
                 SetIsDodging(isDodging, dodgeDirection);

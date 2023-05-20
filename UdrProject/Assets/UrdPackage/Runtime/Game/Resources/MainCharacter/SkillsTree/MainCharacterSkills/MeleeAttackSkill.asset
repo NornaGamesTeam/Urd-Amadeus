@@ -20,8 +20,9 @@ MonoBehaviour:
   <LevelToUnlock>k__BackingField: 0
   <Type>k__BackingField: 1
   <AnimatorName>k__BackingField: MeleeAttackTree
+  <AnimationLoops>k__BackingField: 1
   <CoolDown>k__BackingField: 0
-  <Duration>k__BackingField: 1
+  <Duration>k__BackingField: 0.3
   <Distance>k__BackingField: 0.5
   <HitAngle>k__BackingField: 15
   references:

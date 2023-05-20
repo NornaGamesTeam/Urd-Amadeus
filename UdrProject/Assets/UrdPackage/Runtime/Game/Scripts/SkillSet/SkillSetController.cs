@@ -26,6 +26,7 @@ namespace Urd.Character
             _skillSetModel.OnSkillAction += OnSkillAction;
         }
 
+
         private void LoadUsableSkills()
         {
             for (int i = 0; i < _skillSetModel.DefaultSkills.Count; i++)

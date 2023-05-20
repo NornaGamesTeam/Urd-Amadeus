@@ -20,7 +20,9 @@ MonoBehaviour:
   <LevelToUnlock>k__BackingField: 0
   <Type>k__BackingField: 1
   <AnimatorName>k__BackingField: DodgeTree
-  <Duration>k__BackingField: 0.3
+  <AnimationLoops>k__BackingField: 1
+  <CoolDown>k__BackingField: 0
+  <Duration>k__BackingField: 0.2
   <Distance>k__BackingField: 3
   references:
     version: 2
