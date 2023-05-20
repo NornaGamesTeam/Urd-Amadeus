@@ -9,5 +9,7 @@ namespace Urd.Character
         event Action<Vector2> OnAimDirectionChanged;
         delegate void DodgeDelegate(bool isDodging, Vector2 dodgeDirection);
         event DodgeDelegate OnIsDodgingChanged;
+        delegate void AttackDelegate(bool isDodging, Vector2 attackDirection);
+        event AttackDelegate OnAttackingChanged;
     }
 }

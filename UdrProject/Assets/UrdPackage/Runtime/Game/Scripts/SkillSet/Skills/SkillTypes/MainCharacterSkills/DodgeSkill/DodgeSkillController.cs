@@ -17,7 +17,7 @@ namespace Urd.Character.Skill
         {
             base.Init(characterModel, characterInput);
 
-            _dodgeSkill = _characterModel.SkillSetModel.DodgeSkill;
+            _dodgeSkill = _characterModel.SkillSetModel.DodgeSkillModel;
             
             characterInput.OnIsDodgingChanged += OnIsDodgingChanged;
             _clockService = StaticServiceLocator.Get<IClockService>();

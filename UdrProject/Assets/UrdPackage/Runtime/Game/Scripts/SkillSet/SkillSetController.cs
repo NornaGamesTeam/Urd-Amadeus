@@ -9,6 +9,7 @@ namespace Urd.Character
     public class SkillSetController : IDisposable
     {
         private CharacterModel _characterModel;
+        [SerializeField]
         private SkillSetModel _skillSetModel;
         
         private ICharacterInput _characterInput;

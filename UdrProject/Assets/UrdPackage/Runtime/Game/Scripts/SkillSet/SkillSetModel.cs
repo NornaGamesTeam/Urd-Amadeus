@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using Urd.Game.SkillTrees;
 
@@ -14,11 +15,11 @@ namespace Urd.Character.Skill
         public SkillTreeModel SkillTreeModel { get; private set; }
 
         public bool IsSkill { get; private set; }
-        public DodgeSkillModel DodgeSkill => DefaultSkills.Find(skill => skill is DodgeSkillModel) as DodgeSkillModel;
+        public MeleeAttackModel MeleeAttackModel => DefaultSkills.Find(skill => skill is MeleeAttackModel) as MeleeAttackModel;
+        public DodgeSkillModel DodgeSkillModel => DefaultSkills.Find(skill => skill is DodgeSkillModel) as DodgeSkillModel;
 
         public event Action<ISkillModel> OnSkillAction;
         public event Action<bool> OnIsSkill;
-
 
         public SkillSetModel(List<SkillConfig> defaultSkillConfigs, SkillTreeConfig skillTreeConfig)
         {
@@ -33,9 +34,25 @@ namespace Urd.Character.Skill
             SkillTreeModel = new SkillTreeModel(skillTreeConfig);
         }
 
+        public void SetIsMeleeAttack(bool isMeleeAttack)
+        {
+            var meleeAttack = MeleeAttackModel;
+            if (meleeAttack == null)
+            {
+                return;
+            }
+
+            meleeAttack.SetIsActive(isMeleeAttack);
+            SetIsSkill(isMeleeAttack);
+            if (isMeleeAttack)
+            {
+                OnSkillAction?.Invoke(meleeAttack);
+            }
+        }
+        
         public void SetIsDodging(bool isDodging)
         {
-            var dodgeSkill = DodgeSkill;
+            var dodgeSkill = DodgeSkillModel;
             if (dodgeSkill == null)
             {
                 return;

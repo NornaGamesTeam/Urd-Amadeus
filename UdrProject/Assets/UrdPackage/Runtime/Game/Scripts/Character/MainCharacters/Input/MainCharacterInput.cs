@@ -29,10 +29,13 @@ namespace Urd.Character
 
         private bool IsMoving => _movement != Vector2.zero;
         private bool IsAiming => _aimDirection != Vector2.zero;
+        private bool _isAttacking;
+        private Vector2 _finalAimDirection;
 
         public event Action<Vector2> OnMovementChanged;
         public event Action<Vector2> OnAimDirectionChanged;
         public event ICharacterInput.DodgeDelegate OnIsDodgingChanged;
+        public event ICharacterInput.AttackDelegate OnAttackingChanged;
 
         public MainCharacterInput(CharacterModel characterModel)
         {
@@ -77,12 +80,16 @@ namespace Urd.Character
 
                 if (IsAiming)
                 {
-                    OnAimDirectionChanged?.Invoke(AimDirection);
+                    _finalAimDirection = AimDirection;
                 }
-                else if (!IsAiming && IsMoving)
+
+                if (!IsAiming && IsMoving)
                 {
-                    OnAimDirectionChanged?.Invoke(Movement.normalized);
+                    _finalAimDirection = Movement.normalized;
                 }
+
+                OnAimDirectionChanged?.Invoke(_finalAimDirection);
+                OnAttackingChanged?.Invoke(_isAttacking, _finalAimDirection);
             }
         }
 
@@ -128,10 +135,17 @@ namespace Urd.Character
 
         private void OnGamePadMovementUp(InputAction.CallbackContext inputAction) => _movement = Vector2.zero;
 
-        private void OnGamePadAimDown(InputAction.CallbackContext inputAction) =>
+        private void OnGamePadAimDown(InputAction.CallbackContext inputAction)
+        {
             _aimDirection = inputAction.ReadValue<Vector2>();
+            _isAttacking = true;
+        }
 
-        private void OnGamePadAimUp(InputAction.CallbackContext inputAction) => _aimDirection = Vector2.zero;
+        private void OnGamePadAimUp(InputAction.CallbackContext inputAction)
+        {
+            _aimDirection = Vector2.zero;
+            _isAttacking = false;
+        }
 
         private void OnDodgeSkillDown(InputAction.CallbackContext inputAction) =>
             OnIsDodgingChanged?.Invoke(inputAction.performed, _movement);

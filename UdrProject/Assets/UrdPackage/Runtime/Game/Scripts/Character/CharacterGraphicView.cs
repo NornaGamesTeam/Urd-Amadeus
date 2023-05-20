@@ -8,6 +8,8 @@ namespace Urd.Character
     {
         private const string ANIMATION_KEY_MOVEMENT_X = "MOVEMENT_X";
         private const string ANIMATION_KEY_MOVEMENT_Y = "MOVEMENT_Y";
+        private const string ANIMATION_KEY_AIM_X = "AIM_X";
+        private const string ANIMATION_KEY_AIM_Y = "AIM_Y";
         private const string ANIMATION_KEY_IS_MOVING = "IS_MOVING";
         private const string ANIMATION_KEY_IS_SKILL = "IS_SKILL";
         
@@ -67,6 +69,9 @@ namespace Urd.Character
             _aimImage.transform.SetXY(
                 transform.position.x + aimDirection.x * _aimOffset,
                 transform.position.y + aimDirection.y * _aimOffset);
+            
+            _animator.SetFloat(ANIMATION_KEY_AIM_X, aimDirection.x);
+            _animator.SetFloat(ANIMATION_KEY_AIM_Y, aimDirection.y);
         }
 
         private void OnRawNormalizedPositionChanged(Vector2 newRawNormalizedPosition)

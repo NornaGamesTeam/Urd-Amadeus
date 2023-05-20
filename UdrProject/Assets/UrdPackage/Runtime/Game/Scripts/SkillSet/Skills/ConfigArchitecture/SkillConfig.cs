@@ -24,6 +24,8 @@ namespace Urd.Game.SkillTrees
         public string AnimatorName { get; protected set; }
         
         [field: Header("Skill Properties"), SerializeField]
+        public float CoolDown { get; protected set; }
+        [field: SerializeField]
         public float Duration { get; protected set; }
     }
 }
