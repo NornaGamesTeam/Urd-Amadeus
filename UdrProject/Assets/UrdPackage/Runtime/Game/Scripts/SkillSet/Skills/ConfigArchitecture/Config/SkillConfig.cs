@@ -23,7 +23,7 @@ namespace Urd.Game.SkillTrees
         [field: Header("Skill Graphic"), SerializeReference, SubclassSelector]
         public ISkillAnimationModel SkillAnimationModel { get; protected set; }
         
-        [field: Header("Skill Properties"), SerializeField]
+        [field: Header("Skill Properties"), Header("Generic Properties"), SerializeField]
         public float CoolDown { get; protected set; }
         [field: SerializeField]
         public float Duration { get; protected set; }

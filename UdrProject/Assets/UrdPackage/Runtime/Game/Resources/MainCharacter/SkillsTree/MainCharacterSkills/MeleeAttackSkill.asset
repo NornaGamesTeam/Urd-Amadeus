@@ -24,7 +24,18 @@ MonoBehaviour:
   <CoolDown>k__BackingField: 0.2
   <Duration>k__BackingField: 0.3
   <Distance>k__BackingField: 0.5
-  <HitAngle>k__BackingField: 15
+  <HitAngle>k__BackingField: 0
+  <Damage>k__BackingField: 0
+  <DamageOverTime>k__BackingField:
+  - <Direction>k__BackingField: 0
+    <HitArea>k__BackingField: []
+  - <Direction>k__BackingField: 1
+    <HitArea>k__BackingField:
+    - rid: 4760200848147742747
+  - <Direction>k__BackingField: 2
+    <HitArea>k__BackingField: []
+  - <Direction>k__BackingField: 3
+    <HitArea>k__BackingField: []
   references:
     version: 2
     RefIds:
@@ -37,3 +48,11 @@ MonoBehaviour:
       data:
         <AnimationName>k__BackingField: 3
         <AnimationLoops>k__BackingField: 1
+    - rid: 4760200848147742747
+      type: {class: HitAreaCone, ns: Urd.Game.SkillTrees, asm: Udr}
+      data:
+        <BeginTime>k__BackingField: 0.12
+        <EndTime>k__BackingField: 0.3
+        <DamagePercentage>k__BackingField: 1
+        <RotationDegreesClockWise>k__BackingField: -45
+        <AngleDegreesClockWise>k__BackingField: 180
