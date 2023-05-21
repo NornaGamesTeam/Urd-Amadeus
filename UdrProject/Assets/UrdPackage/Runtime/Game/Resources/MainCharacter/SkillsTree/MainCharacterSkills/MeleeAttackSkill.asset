@@ -19,8 +19,8 @@ MonoBehaviour:
     rid: 4760200803881058305
   <LevelToUnlock>k__BackingField: 0
   <Type>k__BackingField: 1
-  <AnimatorName>k__BackingField: MeleeAttackTree
-  <AnimationLoops>k__BackingField: 1
+  <SkillAnimationModel>k__BackingField:
+    rid: 4760200848147742724
   <CoolDown>k__BackingField: 0.2
   <Duration>k__BackingField: 0.3
   <Distance>k__BackingField: 0.5
@@ -32,3 +32,8 @@ MonoBehaviour:
       type: {class: MeleeAttackController, ns: Urd.Character.Skill, asm: Udr}
     - rid: 4760200803881058306
       type: {class: MeleeAttackModel, ns: Urd.Character.Skill, asm: Udr}
+    - rid: 4760200848147742724
+      type: {class: MeleeSkillAnimationModel, ns: Urd.Game.SkillTrees, asm: Udr}
+      data:
+        <AnimationName>k__BackingField: 3
+        <AnimationLoops>k__BackingField: 1

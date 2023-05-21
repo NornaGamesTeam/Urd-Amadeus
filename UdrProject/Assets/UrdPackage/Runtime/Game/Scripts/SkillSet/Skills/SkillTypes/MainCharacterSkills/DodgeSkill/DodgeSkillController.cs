@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using Urd.Services;
-using Urd.Utils;
 
 namespace Urd.Character.Skill
 {

@@ -20,10 +20,8 @@ namespace Urd.Game.SkillTrees
         [field: SerializeField]
         public virtual SkillType Type { get; protected set; }
         
-        [field: Header("Skill Graphic"), SerializeField]
-        public string AnimatorName { get; protected set; }
-        [field: SerializeField]
-        public int AnimationLoops { get; protected set; } = 1;
+        [field: Header("Skill Graphic"), SerializeReference, SubclassSelector]
+        public ISkillAnimationModel SkillAnimationModel { get; protected set; }
         
         [field: Header("Skill Properties"), SerializeField]
         public float CoolDown { get; protected set; }

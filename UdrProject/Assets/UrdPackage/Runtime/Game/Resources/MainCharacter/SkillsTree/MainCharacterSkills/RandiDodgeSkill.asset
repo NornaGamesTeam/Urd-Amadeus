@@ -19,8 +19,8 @@ MonoBehaviour:
     rid: 4760200657423302656
   <LevelToUnlock>k__BackingField: 0
   <Type>k__BackingField: 1
-  <AnimatorName>k__BackingField: DodgeTree
-  <AnimationLoops>k__BackingField: 1
+  <SkillAnimationModel>k__BackingField:
+    rid: 4760200848147742725
   <CoolDown>k__BackingField: 3
   <Duration>k__BackingField: 0.2
   <Distance>k__BackingField: 3
@@ -31,3 +31,8 @@ MonoBehaviour:
       type: {class: DodgeSkillController, ns: Urd.Character.Skill, asm: Udr}
     - rid: 4760200803881058307
       type: {class: DodgeSkillModel, ns: Urd.Character.Skill, asm: Udr}
+    - rid: 4760200848147742725
+      type: {class: DodgeSkillAnimationModel, ns: Urd.Game.SkillTrees, asm: Udr}
+      data:
+        <AnimationName>k__BackingField: 2
+        <AnimationLoops>k__BackingField: 1

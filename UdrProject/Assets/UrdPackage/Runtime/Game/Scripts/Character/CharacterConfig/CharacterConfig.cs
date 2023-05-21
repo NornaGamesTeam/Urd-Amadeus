@@ -6,7 +6,8 @@ namespace Urd.Character
 {
     public class CharacterConfig : ScriptableObject
     {
-        [field: Header("Movement"), SerializeField] public float Speed { get; private set; }
+        [field: Header("Movement"), SerializeField] 
+        public float Speed { get; private set; }
 
         [field: Header("Skills"),SerializeField] 
         public List<SkillConfig> DefaultSkillConfigs { get; private set; }

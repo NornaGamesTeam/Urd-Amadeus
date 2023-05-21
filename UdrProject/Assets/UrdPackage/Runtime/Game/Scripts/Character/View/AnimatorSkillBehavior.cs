@@ -12,7 +12,7 @@ public class AnimatorSkillBehavior : StateMachineBehaviour
         base.OnStateEnter(animator, stateInfo, layerIndex);
         
         var speed = stateInfo.length / (_skillConfig.Duration);
-        speed *= (float)_skillConfig.AnimationLoops;
+        speed *= (float)_skillConfig.SkillAnimationModel.AnimationLoops;
         animator.speed = speed;
     }
 

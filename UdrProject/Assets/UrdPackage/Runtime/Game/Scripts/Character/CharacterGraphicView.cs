@@ -46,7 +46,7 @@ namespace Urd.Character
         
         private void OnSkillAction(ISkillModel skillModel)
         {
-            _animator.Play(skillModel.AnimatorName);
+            _animator.Play(skillModel.SkillAnimationModel.AnimationName.ToString());
         }
 
         private void OnIsSkill(bool onIsSkill)
