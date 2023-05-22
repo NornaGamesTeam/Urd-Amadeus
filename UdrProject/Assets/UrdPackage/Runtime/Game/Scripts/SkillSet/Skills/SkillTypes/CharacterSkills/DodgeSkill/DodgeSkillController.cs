@@ -6,9 +6,6 @@ namespace Urd.Character.Skill
     [Serializable] 
     public class DodgeSkillController : SkillController
     {
-        private bool _isDodging;
-        private Vector2 _direction;
-        
         private DodgeSkillModel _dodgeSkillModel => _skillModel as DodgeSkillModel;
 
         public override void Init(CharacterModel characterModel, ICharacterInput characterInput)
@@ -17,43 +14,19 @@ namespace Urd.Character.Skill
 
             SetModel(_characterModel.SkillSetModel.DodgeSkillModel);
             
-            characterInput.OnIsDodgingChanged += OnIsDodgingChanged;
+            characterInput.OnIsDodgingChanged += OnSkillStatusChanged;
         }
 
         public override void Dispose()
         {
-            _characterInput.OnIsDodgingChanged -= OnIsDodgingChanged;
+            _characterInput.OnIsDodgingChanged -= OnSkillStatusChanged;
             base.Dispose();
         }
-
-        private void OnIsDodgingChanged(bool isDodging, Vector2 dodgeDirection)
-        {
-            if(!CanDoSkill())
-            {
-                return;
-            }
-            
-            if (!_isDodging)
-            {
-                SetIsDodging(isDodging, dodgeDirection);
-            }
-        }
         
-        private void SetIsDodging(bool isDodging, Vector2 dodgeDirection = default)
+        protected override void BeginSkill(Vector2 direction)
         {
-            _isDodging = isDodging;
-            _characterModel.SkillSetModel.SetIsDodging(_isDodging);
-
-            if (isDodging)
-            {
-                BeginDodge(dodgeDirection);
-            }
-        }
-
-        private void BeginDodge(Vector2 dodgeDirection)
-        {
-            BeginSkill();
-            _direction = dodgeDirection.normalized;
+            base.BeginSkill(direction);            
+            _characterModel.SkillSetModel.SetIsDodging(true);
         }
         
         protected override void SkillUpdate(float deltaTime)
@@ -68,7 +41,7 @@ namespace Urd.Character.Skill
         {
             base.OnFinishSkill();
             
-            SetIsDodging(false);
+            _characterModel.SkillSetModel.SetIsDodging(false);
         }
     }
 }

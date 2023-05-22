@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using Urd.Services;
 using Urd.Utils;
 
@@ -12,6 +13,9 @@ namespace Urd.Character.Skill
         
         private IClockService _clockService;
         protected ISkillModel _skillModel;
+
+        protected Vector2 _direction;
+        private bool _isDoingSkill;
 
         public virtual void Init(CharacterModel characterModel,
             ICharacterInput characterInput)
@@ -36,14 +40,46 @@ namespace Urd.Character.Skill
         {
             _characterInput = characterInput;
         }
+
+
+        protected void OnSkillStatusChanged(bool isDoingSkill, Vector2 direction)
+        {
+            if(!CanDoSkill())
+            {
+                return;
+            }
+            
+            if (!_isDoingSkill)
+            {
+                SetIsDoing(isDoingSkill, direction);
+            }
+        }
+
+        private void SetIsDoing(bool isDoingSkill, Vector2 direction = default)
+        {
+            _isDoingSkill = isDoingSkill;
+            
+            if (isDoingSkill)
+            {
+                _direction = direction.normalized;
+                BeginSkill(direction);
+            }
+        }
         
-        protected void BeginSkill()
+        protected virtual void BeginSkill(Vector2 direction)
         {
             _clockService.AddDelayCall(_skillModel.Duration, OnFinishSkill);
             _clockService.SubscribeToUpdate(SkillUpdate);
         }
 
         protected virtual void SkillUpdate(float deltaTime) { }
+        
+        protected virtual void OnFinishSkill()
+        {
+            SetIsDoing(false);
+            _clockService.UnSubscribeToUpdate(SkillUpdate);
+            BeginCoolDown();
+        }
         
         protected virtual void CoolDownUpdate(float deltaTime)
         {
@@ -53,11 +89,9 @@ namespace Urd.Character.Skill
             }
         }
 
-        protected virtual void OnFinishSkill()
-        {
-            _clockService.UnSubscribeToUpdate(SkillUpdate);
-            BeginCoolDown();
-        }
+        
+        
+      
 
         private void BeginCoolDown()
         {

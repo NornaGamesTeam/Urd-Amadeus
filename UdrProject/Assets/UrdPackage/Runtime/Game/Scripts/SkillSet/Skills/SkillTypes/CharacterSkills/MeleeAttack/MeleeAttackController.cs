@@ -1,16 +1,12 @@
 using System;
 using UnityEngine;
-using Urd.Services;
-using Urd.Utils;
 
 namespace Urd.Character.Skill
 {
     [Serializable] 
     public class MeleeAttackController : SkillController
     {
-        private bool _isAttacking;
         private MeleeAttackModel _meleeAttackModel => _skillModel as MeleeAttackModel;
-        private Vector2 _direction;
         
         public override void Init(CharacterModel characterModel, ICharacterInput characterInput)
         {
@@ -18,50 +14,26 @@ namespace Urd.Character.Skill
 
             SetModel(_characterModel.SkillSetModel.MeleeAttackModel);
             
-            _characterInput.OnAttackingChanged += OnIsAttackingChanged;
+            _characterInput.OnAttackingChanged += OnSkillStatusChanged;
         }
         
         public override void Dispose()
         {
-            _characterInput.OnAttackingChanged -= OnIsAttackingChanged;
+            _characterInput.OnAttackingChanged -= OnSkillStatusChanged;
             base.Dispose();
         }
 
-        private void OnIsAttackingChanged(bool isAttacking, Vector2 attackDirection)
+        protected override void BeginSkill(Vector2 direction)
         {
-            if(!CanDoSkill())
-            {
-                return;
-            }
-            
-            if (!_isAttacking)
-            {
-                SetIsAttacking(isAttacking, attackDirection);
-            }
-        }
-
-        private void SetIsAttacking(bool isAttacking, Vector2 attackDirection = default)
-        {
-            _isAttacking = isAttacking;
-            _characterModel.SkillSetModel.SetIsMeleeAttack(_isAttacking);
-
-            if (isAttacking)
-            {
-                BeginMeleeAttack(attackDirection);
-            }
-        }
-
-        private void BeginMeleeAttack(Vector2 attackDirection)
-        {
-            BeginSkill();
-            _direction = attackDirection.normalized;
+            base.BeginSkill(direction);
+            _characterModel.SkillSetModel.SetIsMeleeAttack(true);
         }
 
         protected override void OnFinishSkill()
         {
             base.OnFinishSkill();
             
-            SetIsAttacking(false);
+            _characterModel.SkillSetModel.SetIsMeleeAttack(false);
         }
     }
 }
