@@ -1,13 +1,15 @@
 using UnityEngine;
+using Urd.Services.Physics;
 
 namespace Urd.Game.SkillTrees
 {
     [System.Serializable]
-    public class HitAreaBox : HitArea
+    public class AreaShapeBoxModel : AreaShapeModel
     {
-        public override HitAreaShape Shape => HitAreaShape.Box;
+        public override AreaShapeType AreaShape => AreaShapeType.Box;
         
         [field: SerializeField]
         public Vector2 Area { get; private set; }
+
     }
 }

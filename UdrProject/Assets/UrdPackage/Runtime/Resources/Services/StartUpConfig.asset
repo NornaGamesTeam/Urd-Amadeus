@@ -30,6 +30,7 @@ MonoBehaviour:
   - rid: 1248381299958480919
   - rid: 1248381299958480922
   - rid: 4760200691194265600
+  - rid: 4760200870295502887
   references:
     version: 2
     RefIds:
@@ -110,3 +111,13 @@ MonoBehaviour:
         _adMobSettings: {fileID: 11400000, guid: 51849b33b277ab34a85ce1ff8c674526, type: 2}
     - rid: 4760200691194265600
       type: {class: GameManagerService, ns: Urd.Game, asm: Udr}
+    - rid: 4760200870295502887
+      type: {class: PhysicsService, ns: Urd.Services, asm: Udr}
+      data:
+        _shapeManager:
+        - rid: 4760200870295502888
+        - rid: 4760200870295502889
+    - rid: 4760200870295502888
+      type: {class: PhysicsConeManager, ns: Urd.Services.Physics, asm: Udr}
+    - rid: 4760200870295502889
+      type: {class: PhysicsCubeManager, ns: Urd.Services.Physics, asm: Udr}

@@ -1,13 +1,14 @@
 using UnityEngine;
 
-namespace Urd.Game.SkillTrees
+namespace Urd.Services.Physics
 {
     [System.Serializable]
-    public class HitAreaCone : HitArea
+    public class AreaShapeConeModel : AreaShapeModel
     {
-        public override HitAreaShape Shape => HitAreaShape.Cone;
+        public override AreaShapeType AreaShape => AreaShapeType.Cone;
 
         [field: SerializeField]
         public float AngleDegreesClockWise { get; private set; }
+
     }
 }

@@ -1,12 +1,18 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Urd.Game.SkillTrees;
+using Urd.Services;
+using Urd.Utils;
 
 namespace Urd.Character.Skill
 {
     [Serializable] 
-    public class MeleeAttackController : SkillController
+    public class MeleeAttackController : SkillController<MeleeAttackModel>
     {
-        private MeleeAttackModel _meleeAttackModel => _skillModel as MeleeAttackModel;
+        private List<HitAreaModel> _hitAreas;
+
+        private ServiceHelper<IPhysicsService> _physicsService;
         
         public override void Init(CharacterModel characterModel, ICharacterInput characterInput)
         {
@@ -27,6 +33,33 @@ namespace Urd.Character.Skill
         {
             base.BeginSkill(direction);
             _characterModel.SkillSetModel.SetIsMeleeAttack(true);
+
+            var skillDirection = direction.ConvertToDirection();
+            _hitAreas = _skillModel.DamageOverTime.Find( hitArea => hitArea.Direction == skillDirection)?.HitArea;
+        }
+
+        protected override void SkillUpdate(float deltaTime)
+        {
+            base.SkillUpdate(deltaTime);
+
+            CheckDamage();
+        }
+
+        private void CheckDamage()
+        {
+            var hitAreasActives = GetAreasToCheck();
+            for (int i = 0; i < hitAreasActives.Count; i++)
+            {
+                _physicsService.Service.TryHit(hitAreasActives[i].AreaShapeModel);
+            }
+        }
+
+        private List<HitAreaModel> GetAreasToCheck()
+        {
+            return _hitAreas.FindAll(
+                damageOverTime => damageOverTime.BeginTime < _skillTime
+                                  && _skillTime < damageOverTime.EndTime);
+            
         }
 
         protected override void OnFinishSkill()

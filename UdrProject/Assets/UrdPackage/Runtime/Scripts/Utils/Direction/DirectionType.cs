@@ -2,7 +2,7 @@ namespace Urd.Utils
 {
     public enum DirectionType
     {
-        Top,
+        Up,
         Down,
         Left,
         Right,

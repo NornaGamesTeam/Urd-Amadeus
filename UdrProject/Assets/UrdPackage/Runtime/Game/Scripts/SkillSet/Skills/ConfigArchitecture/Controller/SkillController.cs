@@ -6,16 +6,18 @@ using Urd.Utils;
 namespace Urd.Character.Skill
 {
     [Serializable] 
-    public abstract class SkillController : ISkillController
+    public abstract class SkillController<TSkillModel> : ISkillController where TSkillModel : class, ISkillModel
     {
         protected CharacterModel _characterModel;
         protected ICharacterInput _characterInput;
         
         private IClockService _clockService;
-        protected ISkillModel _skillModel;
+        protected TSkillModel _skillModel;
 
         protected Vector2 _direction;
         private bool _isDoingSkill;
+
+        protected float _skillTime;
 
         public virtual void Init(CharacterModel characterModel,
             ICharacterInput characterInput)
@@ -33,7 +35,7 @@ namespace Urd.Character.Skill
         
         protected void SetModel(ISkillModel skillModel)
         {
-            _skillModel = skillModel;
+            _skillModel = skillModel as TSkillModel;
         }
 
         public void SetInput(ICharacterInput characterInput)
@@ -72,7 +74,10 @@ namespace Urd.Character.Skill
             _clockService.SubscribeToUpdate(SkillUpdate);
         }
 
-        protected virtual void SkillUpdate(float deltaTime) { }
+        protected virtual void SkillUpdate(float deltaTime)
+        {
+            _skillTime += deltaTime;
+        }
         
         protected virtual void OnFinishSkill()
         {
@@ -88,10 +93,6 @@ namespace Urd.Character.Skill
                 _skillModel.TimerModel.DeductTime(deltaTime);
             }
         }
-
-        
-        
-      
 
         private void BeginCoolDown()
         {

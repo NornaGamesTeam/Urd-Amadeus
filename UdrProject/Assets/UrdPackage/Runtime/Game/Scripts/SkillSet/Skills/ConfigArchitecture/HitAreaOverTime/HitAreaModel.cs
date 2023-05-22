@@ -1,12 +1,11 @@
 using UnityEngine;
+using Urd.Services.Physics;
 
 namespace Urd.Game.SkillTrees
 {
     [System.Serializable]
-    public abstract class HitArea : IHitArea
+    public abstract class HitAreaModel
     {
-        public abstract HitAreaShape Shape { get; }
-        
         [field: SerializeField]
         public float BeginTime { get; private set; }
         [field: SerializeField]
@@ -17,5 +16,8 @@ namespace Urd.Game.SkillTrees
 
         [field: SerializeField] 
         public float RotationDegreesClockWise { get; private set; }
+        
+        [field: SerializeReference, SubclassSelector]
+        public IAreaShapeModel AreaShapeModel { get; private set; }
     }
 }

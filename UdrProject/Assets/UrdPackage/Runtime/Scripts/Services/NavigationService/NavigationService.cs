@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using Urd.Error;
-using Urd.Scene;
 using Urd.Services.Navigation;
 
 namespace Urd.Services
