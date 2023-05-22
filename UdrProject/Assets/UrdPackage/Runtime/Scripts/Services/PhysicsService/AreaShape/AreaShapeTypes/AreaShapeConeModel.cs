@@ -9,6 +9,9 @@ namespace Urd.Services.Physics
 
         [field: SerializeField]
         public float AngleDegreesClockWise { get; private set; }
+        
+        [field: SerializeField]
+        public float Distance { get; private set; }
 
     }
 }

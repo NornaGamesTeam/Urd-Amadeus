@@ -18,7 +18,7 @@ namespace Urd.Services
             SetAsLoaded();
         }
 
-        public bool TryHit(IAreaShapeModel areaShapeModel)
+        public bool TryHit(Vector2 originPoint, Vector2 direction, IAreaShapeModel areaShapeModel)
         {
             var manager = GetManager(areaShapeModel);
             if (manager == null)
@@ -29,7 +29,7 @@ namespace Urd.Services
                 return false;
             }
 
-            return manager.TryHit(areaShapeModel);
+            return manager.TryHit(originPoint, direction, areaShapeModel);
         }
 
         private IPhysicsAreaShapeManager GetManager(IAreaShapeModel areaShapeModel)

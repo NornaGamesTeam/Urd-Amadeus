@@ -1,7 +1,6 @@
 using UnityEngine;
-using Urd.Services.Physics;
 
-namespace Urd.Game.SkillTrees
+namespace Urd.Services.Physics
 {
     [System.Serializable]
     public class AreaShapeBoxModel : AreaShapeModel

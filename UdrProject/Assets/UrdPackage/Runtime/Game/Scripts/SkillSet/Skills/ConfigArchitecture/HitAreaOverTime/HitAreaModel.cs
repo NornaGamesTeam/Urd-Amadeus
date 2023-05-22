@@ -4,7 +4,7 @@ using Urd.Services.Physics;
 namespace Urd.Game.SkillTrees
 {
     [System.Serializable]
-    public abstract class HitAreaModel
+    public class HitAreaModel
     {
         [field: SerializeField]
         public float BeginTime { get; private set; }

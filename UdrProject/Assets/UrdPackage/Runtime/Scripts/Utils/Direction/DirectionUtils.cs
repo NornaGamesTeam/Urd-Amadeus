@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Urd.Utils
@@ -37,6 +38,18 @@ namespace Urd.Utils
             }
 
             return finalDirection;
+        }
+        
+        public static Vector2 ConvertToVector2(this DirectionType directionType)
+        {
+            switch (directionType)
+            {
+                case DirectionType.Up: return Vector2.up;
+                case DirectionType.Down: return Vector2.down;
+                case DirectionType.Left: return Vector2.left;
+                case DirectionType.Right: return Vector2.right;
+                default: return Vector3.zero;
+            }
         }
     }
 }

@@ -35,6 +35,7 @@ namespace Urd.Character.Skill
             _characterModel.SkillSetModel.SetIsMeleeAttack(true);
 
             var skillDirection = direction.ConvertToDirection();
+            _direction = skillDirection.ConvertToVector2();
             _hitAreas = _skillModel.DamageOverTime.Find( hitArea => hitArea.Direction == skillDirection)?.HitArea;
         }
 
@@ -50,7 +51,7 @@ namespace Urd.Character.Skill
             var hitAreasActives = GetAreasToCheck();
             for (int i = 0; i < hitAreasActives.Count; i++)
             {
-                _physicsService.Service.TryHit(hitAreasActives[i].AreaShapeModel);
+                _physicsService.Service.TryHit(_characterModel.CharacterMovement.Position, _direction, hitAreasActives[i].AreaShapeModel);
             }
         }
 

@@ -10,7 +10,7 @@ namespace Urd.Game.SkillTrees
     {
         [field: SerializeField] 
         public DirectionType Direction { get; private set; }
-        [field: SerializeReference, SubclassSelector] 
+        [field: SerializeField] 
         public List<HitAreaModel> HitArea { get; private set; }
     }
 }
