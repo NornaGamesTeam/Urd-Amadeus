@@ -23,12 +23,16 @@ MonoBehaviour:
     rid: 4760200848147742724
   <CoolDown>k__BackingField: 0.2
   <Duration>k__BackingField: 0.3
-  <Distance>k__BackingField: 0.5
-  <HitAngle>k__BackingField: 0
   <Damage>k__BackingField: 0
   <DamageOverTime>k__BackingField:
   - <Direction>k__BackingField: 0
-    <HitArea>k__BackingField: []
+    <HitArea>k__BackingField:
+    - <BeginTime>k__BackingField: 0.12
+      <EndTime>k__BackingField: 0.3
+      <DamagePercentage>k__BackingField: 1
+      <RotationDegreesClockWise>k__BackingField: -45
+      <AreaShapeModel>k__BackingField:
+        rid: 4760200873497592039
   - <Direction>k__BackingField: 1
     <HitArea>k__BackingField:
     - <BeginTime>k__BackingField: 0.12
@@ -38,9 +42,21 @@ MonoBehaviour:
       <AreaShapeModel>k__BackingField:
         rid: 4760200873497591867
   - <Direction>k__BackingField: 2
-    <HitArea>k__BackingField: []
+    <HitArea>k__BackingField:
+    - <BeginTime>k__BackingField: 0.12
+      <EndTime>k__BackingField: 0.3
+      <DamagePercentage>k__BackingField: 1
+      <RotationDegreesClockWise>k__BackingField: -45
+      <AreaShapeModel>k__BackingField:
+        rid: 4760200873497592040
   - <Direction>k__BackingField: 3
-    <HitArea>k__BackingField: []
+    <HitArea>k__BackingField:
+    - <BeginTime>k__BackingField: 0.12
+      <EndTime>k__BackingField: 0.3
+      <DamagePercentage>k__BackingField: 1
+      <RotationDegreesClockWise>k__BackingField: -45
+      <AreaShapeModel>k__BackingField:
+        rid: 4760200873497592041
   references:
     version: 2
     RefIds:
@@ -54,6 +70,21 @@ MonoBehaviour:
     - rid: 4760200873497591864
       type: {class: MeleeAttackController, ns: Urd.Character.Skill, asm: Udr}
     - rid: 4760200873497591867
+      type: {class: AreaShapeConeModel, ns: Urd.Services.Physics, asm: Udr}
+      data:
+        <AngleDegreesClockWise>k__BackingField: 90
+        <Distance>k__BackingField: 5
+    - rid: 4760200873497592039
+      type: {class: AreaShapeConeModel, ns: Urd.Services.Physics, asm: Udr}
+      data:
+        <AngleDegreesClockWise>k__BackingField: 90
+        <Distance>k__BackingField: 5
+    - rid: 4760200873497592040
+      type: {class: AreaShapeConeModel, ns: Urd.Services.Physics, asm: Udr}
+      data:
+        <AngleDegreesClockWise>k__BackingField: 90
+        <Distance>k__BackingField: 5
+    - rid: 4760200873497592041
       type: {class: AreaShapeConeModel, ns: Urd.Services.Physics, asm: Udr}
       data:
         <AngleDegreesClockWise>k__BackingField: 90
