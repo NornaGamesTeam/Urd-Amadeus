@@ -9,7 +9,7 @@ namespace Urd.Services.Physics
         private IAreaShapeModel _areaShapeModel;
         private Vector3 _originPoint;
         private Vector2 _direction;
-        
+
         public void SetAreaShapeModel(Vector2 originPoint, Vector2 direction, IAreaShapeModel areaShapeModel)
         {
             _areaShapeModel = areaShapeModel;
@@ -31,9 +31,11 @@ namespace Urd.Services.Physics
 
             switch (_areaShapeModel)
             {
-                case AreaShapeConeModel: DrawCone();
+                case AreaShapeConeModel:
+                    DrawCone();
                     break;
-                case AreaShapeBoxModel: DrawBox();
+                case AreaShapeBoxModel:
+                    DrawBox();
                     break;
             }
         }
@@ -41,7 +43,7 @@ namespace Urd.Services.Physics
         private void DrawCone()
         {
             var areaShapeConeModel = _areaShapeModel as AreaShapeConeModel;
-            
+
             float angle = areaShapeConeModel.AngleDegreesClockWise;
             float rayRange = areaShapeConeModel.Distance;
             float halfFOV = angle / 2.0f;
@@ -55,12 +57,12 @@ namespace Urd.Services.Physics
 
             Gizmos.DrawRay(_originPoint, upRayDirection);
             Gizmos.DrawRay(_originPoint, downRayDirection);
-            Gizmos.DrawLine(_originPoint + downRayDirection, _originPoint + upRayDirection);        
+            Gizmos.DrawLine(_originPoint + downRayDirection, _originPoint + upRayDirection);
         }
-        
+
         private void DrawBox()
         {
-            
+
         }
 
     }

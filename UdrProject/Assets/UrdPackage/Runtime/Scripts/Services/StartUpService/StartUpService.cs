@@ -13,7 +13,7 @@ namespace Urd.Services
         private const string STARTUP_CONFIG_FILE_PATH = "Services/StartUpConfig";
         
         private int _totalElements;
-        private List<IBaseService> _allServicesToStartUp = new();
+        private List<IBaseService> _allServicesToStartUp;
         
         private IStartUpService _startUpService;
         public float LoadingFactor => (_allServicesToStartUp.FindAll(service => service.InitBegins).Count 
@@ -71,8 +71,8 @@ namespace Urd.Services
         private void InstantiateServices()
         {
             var startUpServiceConfig = Resources.Load<StartUpServiceConfig>(STARTUP_CONFIG_FILE_PATH);
-            _allServicesToStartUp = startUpServiceConfig.BaseServices;
-            _totalElements = startUpServiceConfig.BaseServices.Count;
+            _allServicesToStartUp = startUpServiceConfig.ListOfServices;
+            _totalElements = startUpServiceConfig.ListOfServices.Count;
         }
 
         private void StartUpServices()

@@ -8,17 +8,19 @@ namespace Urd.Services
     public class StartUpServiceConfig : ScriptableObject
     {
         [field: SerializeReference, SubclassSelector]
-        public List<IBaseService> BaseServices { get; private set; }
+        public List<IBaseService> ListOfServices { get; private set; } = new List<IBaseService>();
+        [field: SerializeReference, SubclassSelector]
+        public List<IBaseService> BaseServices2 { get; private set; } = new List<IBaseService>();
 
         [ContextMenu("FillWithAllServices")]
         public void FillWithAllServices()
         {
-                BaseServices.Clear();
+            ListOfServices.Clear();
             var types = AssemblyHelper.GetClassTypesThatImplement<IBaseService>();
             for (int i = 0; i < types.Count; i++)
             {
                 var baseService = Activator.CreateInstance(types[i]) as IBaseService;
-                BaseServices.Add(baseService);
+                ListOfServices.Add(baseService);
             }
         }
     }
