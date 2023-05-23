@@ -17,6 +17,8 @@ namespace Urd.Character.Skill
         protected Vector2 _direction;
         private bool _isDoingSkill;
 
+        protected float _skillTime;
+        
         public virtual void Init(CharacterModel characterModel,
             ICharacterInput characterInput)
         {
@@ -70,9 +72,14 @@ namespace Urd.Character.Skill
         {
             _clockService.AddDelayCall(_skillModel.Duration, OnFinishSkill);
             _clockService.SubscribeToUpdate(SkillUpdate);
+
+            _skillTime = 0;
         }
 
-        protected virtual void SkillUpdate(float deltaTime) { }
+        protected virtual void SkillUpdate(float deltaTime)
+        {
+            _skillTime += deltaTime;
+        }
         
         protected virtual void OnFinishSkill()
         {
