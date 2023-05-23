@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Melee
   <Model>k__BackingField:
-    rid: 4760200803881058306
+    rid: 4760200873497591863
   <Controller>k__BackingField:
-    rid: 4760200803881058305
+    rid: 4760200873497591864
   <LevelToUnlock>k__BackingField: 0
   <Type>k__BackingField: 1
   <SkillAnimationModel>k__BackingField:
@@ -31,7 +31,7 @@ MonoBehaviour:
     <HitArea>k__BackingField: []
   - <Direction>k__BackingField: 1
     <HitArea>k__BackingField:
-    - rid: 4760200848147742747
+    - <Area>k__BackingField: {x: 0, y: 0}
   - <Direction>k__BackingField: 2
     <HitArea>k__BackingField: []
   - <Direction>k__BackingField: 3
@@ -39,20 +39,12 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4760200803881058305
-      type: {class: MeleeAttackController, ns: Urd.Character.Skill, asm: Udr}
-    - rid: 4760200803881058306
-      type: {class: MeleeAttackModel, ns: Urd.Character.Skill, asm: Udr}
     - rid: 4760200848147742724
       type: {class: MeleeSkillAnimationModel, ns: Urd.Game.SkillTrees, asm: Udr}
       data:
         <AnimationName>k__BackingField: 3
         <AnimationLoops>k__BackingField: 1
-    - rid: 4760200848147742747
-      type: {class: HitAreaCone, ns: Urd.Game.SkillTrees, asm: Udr}
-      data:
-        <BeginTime>k__BackingField: 0.12
-        <EndTime>k__BackingField: 0.3
-        <DamagePercentage>k__BackingField: 1
-        <RotationDegreesClockWise>k__BackingField: -45
-        <AngleDegreesClockWise>k__BackingField: 180
+    - rid: 4760200873497591863
+      type: {class: MeleeAttackModel, ns: Urd.Character.Skill, asm: Udr}
+    - rid: 4760200873497591864
+      type: {class: MeleeAttackController, ns: Urd.Character.Skill, asm: Udr}
