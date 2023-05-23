@@ -18,7 +18,7 @@ namespace Urd.Character.Skill
         private bool _isDoingSkill;
 
         protected float _skillTime;
-
+        
         public virtual void Init(CharacterModel characterModel,
             ICharacterInput characterInput)
         {
@@ -33,9 +33,9 @@ namespace Urd.Character.Skill
             _characterInput?.Dispose();
         }
         
-        protected void SetModel(ISkillModel skillModel)
+        protected void SetModel(TSkillModel skillModel)
         {
-            _skillModel = skillModel as TSkillModel;
+            _skillModel = skillModel;
         }
 
         public void SetInput(ICharacterInput characterInput)
@@ -72,6 +72,8 @@ namespace Urd.Character.Skill
         {
             _clockService.AddDelayCall(_skillModel.Duration, OnFinishSkill);
             _clockService.SubscribeToUpdate(SkillUpdate);
+
+            _skillTime = 0;
         }
 
         protected virtual void SkillUpdate(float deltaTime)
@@ -93,6 +95,10 @@ namespace Urd.Character.Skill
                 _skillModel.TimerModel.DeductTime(deltaTime);
             }
         }
+
+        
+        
+      
 
         private void BeginCoolDown()
         {

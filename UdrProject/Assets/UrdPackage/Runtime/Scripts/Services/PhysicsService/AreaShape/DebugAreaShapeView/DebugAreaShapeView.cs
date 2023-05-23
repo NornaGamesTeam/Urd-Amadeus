@@ -1,14 +1,20 @@
 
 using System;
+using MyBox;
 using UnityEngine;
 
 namespace Urd.Services.Physics
 {
     public class DebugAreaShapeView : MonoBehaviour
     {
+        [SerializeReference]
         private IAreaShapeModel _areaShapeModel;
+        [SerializeField]
         private Vector3 _originPoint;
+        [SerializeField]
         private Vector2 _direction;
+
+        [SerializeField, PositiveValueOnly] private int _steps = 100;
 
         public void SetAreaShapeModel(Vector2 originPoint, Vector2 direction, IAreaShapeModel areaShapeModel)
         {
@@ -43,21 +49,23 @@ namespace Urd.Services.Physics
         private void DrawCone()
         {
             var areaShapeConeModel = _areaShapeModel as AreaShapeConeModel;
-
+            
             float angle = areaShapeConeModel.AngleDegreesClockWise;
             float rayRange = areaShapeConeModel.Distance;
-            float halfFOV = angle / 2.0f;
-            float coneDirection = 180;
 
-            Quaternion upRayRotation = Quaternion.AngleAxis(-halfFOV, _direction);
-            Quaternion downRayRotation = Quaternion.AngleAxis(halfFOV, _direction);
+            var initialRadians = Mathf.Deg2Rad * angle* 0.5f;
+           
+            Gizmos.color = Color.white;
+            Gizmos.DrawRay(_originPoint, _direction*rayRange);
 
-            Vector3 upRayDirection = upRayRotation * transform.right * rayRange;
-            Vector3 downRayDirection = downRayRotation * transform.right * rayRange;
-
-            Gizmos.DrawRay(_originPoint, upRayDirection);
-            Gizmos.DrawRay(_originPoint, downRayDirection);
-            Gizmos.DrawLine(_originPoint + downRayDirection, _originPoint + upRayDirection);
+            Vector3 direction = Quaternion.AngleAxis(-angle * 0.5f, Vector3.forward) * _direction;
+            float anglePerStep = angle / _steps;
+            
+            for (int i = 0; i < _steps; i++)
+            {
+                Gizmos.DrawRay(_originPoint, direction*rayRange);
+                direction = Quaternion.AngleAxis(anglePerStep, Vector3.forward) * direction;
+            }
         }
 
         private void DrawBox()

@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Melee
   <Model>k__BackingField:
-    rid: -2
+    rid: 4760200873497591863
   <Controller>k__BackingField:
-    rid: -2
+    rid: 4760200873497591864
   <LevelToUnlock>k__BackingField: 0
   <Type>k__BackingField: 1
   <SkillAnimationModel>k__BackingField:
     rid: 4760200848147742724
   <CoolDown>k__BackingField: 0.2
   <Duration>k__BackingField: 0.3
+  <Distance>k__BackingField: 0.5
+  <HitAngle>k__BackingField: 0
   <Damage>k__BackingField: 0
   <DamageOverTime>k__BackingField:
   - <Direction>k__BackingField: 0
@@ -34,7 +36,7 @@ MonoBehaviour:
       <DamagePercentage>k__BackingField: 1
       <RotationDegreesClockWise>k__BackingField: -45
       <AreaShapeModel>k__BackingField:
-        rid: 4760200872426209280
+        rid: 4760200873497591867
   - <Direction>k__BackingField: 2
     <HitArea>k__BackingField: []
   - <Direction>k__BackingField: 3
@@ -42,14 +44,16 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 4760200848147742724
       type: {class: MeleeSkillAnimationModel, ns: Urd.Game.SkillTrees, asm: Udr}
       data:
         <AnimationName>k__BackingField: 3
         <AnimationLoops>k__BackingField: 1
-    - rid: 4760200872426209280
+    - rid: 4760200873497591863
+      type: {class: MeleeAttackModel, ns: Urd.Character.Skill, asm: Udr}
+    - rid: 4760200873497591864
+      type: {class: MeleeAttackController, ns: Urd.Character.Skill, asm: Udr}
+    - rid: 4760200873497591867
       type: {class: AreaShapeConeModel, ns: Urd.Services.Physics, asm: Udr}
       data:
         <AngleDegreesClockWise>k__BackingField: 90
