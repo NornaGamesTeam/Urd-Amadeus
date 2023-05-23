@@ -31,7 +31,12 @@ MonoBehaviour:
     <HitArea>k__BackingField: []
   - <Direction>k__BackingField: 1
     <HitArea>k__BackingField:
-    - <Area>k__BackingField: {x: 0, y: 0}
+    - <BeginTime>k__BackingField: 0.12
+      <EndTime>k__BackingField: 0.3
+      <DamagePercentage>k__BackingField: 1
+      <RotationDegreesClockWise>k__BackingField: -45
+      <AreaShapeModel>k__BackingField:
+        rid: 4760200873497591867
   - <Direction>k__BackingField: 2
     <HitArea>k__BackingField: []
   - <Direction>k__BackingField: 3
@@ -48,3 +53,8 @@ MonoBehaviour:
       type: {class: MeleeAttackModel, ns: Urd.Character.Skill, asm: Udr}
     - rid: 4760200873497591864
       type: {class: MeleeAttackController, ns: Urd.Character.Skill, asm: Udr}
+    - rid: 4760200873497591867
+      type: {class: AreaShapeConeModel, ns: Urd.Services.Physics, asm: Udr}
+      data:
+        <AngleDegreesClockWise>k__BackingField: 90
+        <Distance>k__BackingField: 5

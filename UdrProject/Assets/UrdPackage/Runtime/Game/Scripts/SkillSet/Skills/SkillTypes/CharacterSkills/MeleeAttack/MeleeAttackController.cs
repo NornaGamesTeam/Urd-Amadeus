@@ -1,13 +1,19 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Urd.Game.SkillTrees;
+using Urd.Services;
+using Urd.Utils;
 
 namespace Urd.Character.Skill
 {
     [Serializable] 
-    public class MeleeAttackController : SkillController
+    public class MeleeAttackController : SkillController<MeleeAttackModel>
     {
-        private MeleeAttackModel _meleeAttackModel => _skillModel as MeleeAttackModel;
-        
+        private List<HitAreaModel> _hitAreas;
+
+        private ServiceHelper<IPhysicsService> _physicsService;
+
         public override void Init(CharacterModel characterModel, ICharacterInput characterInput)
         {
             base.Init(characterModel, characterInput);

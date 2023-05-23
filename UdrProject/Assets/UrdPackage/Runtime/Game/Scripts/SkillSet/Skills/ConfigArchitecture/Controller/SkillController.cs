@@ -6,13 +6,13 @@ using Urd.Utils;
 namespace Urd.Character.Skill
 {
     [Serializable] 
-    public abstract class SkillController : ISkillController
+    public abstract class SkillController<TSkillModel> : ISkillController where TSkillModel : class, ISkillModel
     {
         protected CharacterModel _characterModel;
         protected ICharacterInput _characterInput;
         
         private IClockService _clockService;
-        protected ISkillModel _skillModel;
+        protected TSkillModel _skillModel;
 
         protected Vector2 _direction;
         private bool _isDoingSkill;
@@ -31,7 +31,7 @@ namespace Urd.Character.Skill
             _characterInput?.Dispose();
         }
         
-        protected void SetModel(ISkillModel skillModel)
+        protected void SetModel(TSkillModel skillModel)
         {
             _skillModel = skillModel;
         }

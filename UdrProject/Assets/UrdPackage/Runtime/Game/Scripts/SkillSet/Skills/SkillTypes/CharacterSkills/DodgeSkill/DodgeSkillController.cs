@@ -4,10 +4,8 @@ using UnityEngine;
 namespace Urd.Character.Skill
 {
     [Serializable] 
-    public class DodgeSkillController : SkillController
+    public class DodgeSkillController : SkillController<DodgeSkillModel>
     {
-        private DodgeSkillModel _dodgeSkillModel => _skillModel as DodgeSkillModel;
-
         public override void Init(CharacterModel characterModel, ICharacterInput characterInput)
         {
             base.Init(characterModel, characterInput);
@@ -33,7 +31,7 @@ namespace Urd.Character.Skill
         {
             base.SkillUpdate(deltaTime);
             
-            var movement = _direction * _dodgeSkillModel.Distance/_dodgeSkillModel.Duration * deltaTime;
+            var movement = _direction * _skillModel.Distance/_skillModel.Duration * deltaTime;
             _characterModel.CharacterMovement.ModifyPosition(movement);
         }
 
