@@ -50,7 +50,13 @@ namespace Urd.Character.Skill
             var hitAreasActives = GetAreasToCheck();
             for (int i = 0; i < hitAreasActives.Count; i++)
             {
-                _physicsService.Service.TryHit(_characterModel.CharacterMovement.Position, _direction, hitAreasActives[i].AreaShapeModel);
+                var direction = _direction;
+                if (hitAreasActives[i].RotationDegreesClockWise != 0)
+                {
+                    direction = _direction.RotateDegrees(hitAreasActives[i].RotationDegreesClockWise);
+                    
+                }
+                _physicsService.Service.TryHit(_characterModel.CharacterMovement.Position, direction, hitAreasActives[i].AreaShapeModel);
             }
         }
         

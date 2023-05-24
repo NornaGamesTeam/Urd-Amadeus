@@ -12,6 +12,20 @@ namespace Urd.Services.Physics
         
         [field: SerializeField]
         public float Distance { get; private set; }
+        
+        public override bool Equals(IAreaShapeModel obj)
+        {
+            if (!(obj is AreaShapeConeModel))
+            {
+                return false;
+            }
+
+            var areaShapeConeModel = obj as AreaShapeConeModel;
+            
+            return base.Equals(obj) 
+                   && areaShapeConeModel.AngleDegreesClockWise == AngleDegreesClockWise
+                    && areaShapeConeModel.Distance == Distance;
+        }
 
     }
 }

@@ -31,7 +31,7 @@ namespace Urd.Character
         {
             for (int i = 0; i < _skillSetModel.DefaultSkills.Count; i++)
             {
-                var controller = _skillSetModel.DefaultSkills[i].Controller;
+                var controller = Activator.CreateInstance(_skillSetModel.DefaultSkills[i].Controller.GetType()) as ISkillController;
                 controller.Init(_characterModel, _characterInput);
                 _usableSkills.Add(controller);
             }

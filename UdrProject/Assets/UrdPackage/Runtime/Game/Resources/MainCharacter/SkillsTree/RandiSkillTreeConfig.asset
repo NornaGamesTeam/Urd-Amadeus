@@ -13,4 +13,11 @@ MonoBehaviour:
   m_Name: RandiSkillTreeConfig
   m_EditorClassIdentifier: 
   <PointPerLevel>k__BackingField: 3
-  <Columns>k__BackingField: []
+  <Columns>k__BackingField:
+  - <ColumnName>k__BackingField: 
+    <Levels>k__BackingField:
+    - <LevelSkills>k__BackingField:
+      - {fileID: 11400000, guid: 842fec75adf502a4f8903e398dbf2530, type: 2}
+    - <LevelSkills>k__BackingField: []
+  - <ColumnName>k__BackingField: 
+    <Levels>k__BackingField: []

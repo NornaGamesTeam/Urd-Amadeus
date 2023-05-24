@@ -15,7 +15,7 @@ namespace Urd.Character.Skill
         protected TSkillModel _skillModel;
 
         protected Vector2 _direction;
-        private bool _isDoingSkill;
+        private bool _isDoingSkill = false;
 
         protected float _skillTime;
         
@@ -95,11 +95,7 @@ namespace Urd.Character.Skill
                 _skillModel.TimerModel.DeductTime(deltaTime);
             }
         }
-
         
-        
-      
-
         private void BeginCoolDown()
         {
             if (!_skillModel.TimerModel.HasCooldown)
