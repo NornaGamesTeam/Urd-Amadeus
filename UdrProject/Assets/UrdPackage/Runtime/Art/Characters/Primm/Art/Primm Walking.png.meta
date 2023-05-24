@@ -541,24 +541,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Primm Walking_Up_02: 1916715248
-      Primm Walking_Up_04: -889513905
-      Primm Walking_Down_01: -1620368191
-      Primm Walking_Side_03: -163130476
-      Primm Walking_Up_03: -1277009041
-      Primm Walking_Up_05: 353415095
-      Primm Walking_Side_01: 702499476
-      Primm Walking_Down_05: -623421433
-      Primm Walking_Side_05: 1953361267
-      Primm Walking_Side_06: 1878418459
-      Primm Walking_Down_06: 200196380
-      Primm Walking_Down_02: 1012903242
-      Primm Walking_Up_01: 302900984
-      Primm Walking_Down_03: -499353215
-      Primm Walking_Side_04: -2093907639
-      Primm Walking_Side_02: -426262756
-      Primm Walking_Up_06: -1747578261
       Primm Walking_Down_04: 579795301
+      Primm Walking_Down_01: -1620368191
+      Primm Walking_Down_05: -623421433
+      Primm Walking_Up_06: -1747578261
+      Primm Walking_Up_05: 353415095
+      Primm Walking_Up_02: 1916715248
+      Primm Walking_Side_02: -426262756
+      Primm Walking_Side_05: 1953361267
+      Primm Walking_Up_01: 302900984
+      Primm Walking_Side_06: 1878418459
+      Primm Walking_Up_03: -1277009041
+      Primm Walking_Down_02: 1012903242
+      Primm Walking_Side_03: -163130476
+      Primm Walking_Side_01: 702499476
+      Primm Walking_Side_04: -2093907639
+      Primm Walking_Down_06: 200196380
+      Primm Walking_Down_03: -499353215
+      Primm Walking_Up_04: -889513905
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

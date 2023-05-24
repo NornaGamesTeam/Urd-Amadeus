@@ -21,11 +21,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Wall
+  - Item
+  - Enemy
+  - NPC
+  - Character
   - 
   - 
   - 
