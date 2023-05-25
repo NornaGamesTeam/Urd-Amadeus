@@ -44,7 +44,7 @@ MonoBehaviour:
     - <BeginTime>k__BackingField: 0.12
       <EndTime>k__BackingField: 0.3
       <DamagePercentage>k__BackingField: 1
-      <RotationDegreesClockWise>k__BackingField: -90
+      <RotationDegreesClockWise>k__BackingField: 45
       <AreaShapeModel>k__BackingField:
         rid: 4760200916062699724
   - <Direction>k__BackingField: 2
@@ -82,7 +82,7 @@ MonoBehaviour:
     - rid: 4760200916062699724
       type: {class: AreaShapeBoxModel, ns: Urd.Services.Physics, asm: Udr}
       data:
-        <Area>k__BackingField: {x: 3, y: 5}
+        <Area>k__BackingField: {x: 3, y: 2}
     - rid: 4760200916062699748
       type: {class: AreaShapeConeModel, ns: Urd.Services.Physics, asm: Udr}
       data:

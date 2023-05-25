@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Urd.Game.SkillTrees;
 using Urd.Services;
+using Urd.Services.Physics;
 using Urd.Utils;
 
 namespace Urd.Character.Skill
@@ -10,7 +11,7 @@ namespace Urd.Character.Skill
     [Serializable] 
     public class MeleeAttackController : SkillController<MeleeAttackModel>
     {
-        private List<HitAreaModel> _hitAreas;
+        private List<AttackAreaModel> _hitAreas;
 
         private ServiceHelper<IPhysicsService> _physicsService = new ServiceHelper<IPhysicsService>();
 
@@ -56,11 +57,13 @@ namespace Urd.Character.Skill
                     direction = _direction.RotateDegrees(hitAreasActives[i].RotationDegreesClockWise);
                     
                 }
-                _physicsService.Service.TryHit(_characterModel.CharacterMovement.Position, direction, hitAreasActives[i].AreaShapeModel);
+
+                var hitModel = new HitEnemyModel(hitAreasActives[i].AreaShapeModel);
+                _physicsService.Service.TryHit(_characterModel.CharacterMovement.Position, direction, hitModel);
             }
         }
         
-        private List<HitAreaModel> GetAreasToCheck()
+        private List<AttackAreaModel> GetAreasToCheck()
         {
             return _hitAreas.FindAll(
                 damageOverTime => damageOverTime.BeginTime < _skillTime

@@ -8,6 +8,6 @@ namespace Urd.Character.Skill
     public class MeleeAttackModel : SkillModel<MeleeAttackConfig>
     {
         public float Damage => _skillConfig.Damage;
-        public List<HitAreaByDirection> DamageOverTime => _skillConfig.DamageOverTime;
+        public List<AttackAreaByDirection> DamageOverTime => _skillConfig.DamageOverTime;
     }
 }

@@ -9,6 +9,6 @@ namespace Urd.Game.SkillTrees
         [field: SerializeField]
         public float Damage { get; protected set; }
         [field: SerializeField]
-        public List<HitAreaByDirection> DamageOverTime { get; protected set; }
+        public List<AttackAreaByDirection> DamageOverTime { get; protected set; }
     }
 }

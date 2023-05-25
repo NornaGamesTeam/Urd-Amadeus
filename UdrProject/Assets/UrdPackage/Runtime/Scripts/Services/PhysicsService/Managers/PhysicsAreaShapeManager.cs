@@ -8,17 +8,17 @@ namespace Urd.Services.Physics
         
         private DebugAreaShapeView _debugAreaShapeView;
 
-        public abstract bool TryHit(Vector2 vector2, Vector2 originPoint, IAreaShapeModel areaShapeModel);
+        public abstract bool TryHit(Vector2 vector2, Vector2 originPoint, IHitModel hitModel);
 
-        protected void PrintDebugObject(Vector2 originPoint, Vector2 direction, IAreaShapeModel areaShapeModel)
+        protected void PrintDebugObject(Vector2 originPoint, Vector2 direction, IHitModel hitModel)
         {
             if (_debugAreaShapeView == null
                 || (_debugAreaShapeView?.OriginPoint != originPoint
                     || _debugAreaShapeView?.Direction != direction
-                    || _debugAreaShapeView?.AreaShapeModel != areaShapeModel))
+                    || _debugAreaShapeView?.AreaShapeModel != hitModel.AreaShapeModel))
             {
                 GameObject.Destroy(_debugAreaShapeView?.gameObject);
-                CreateDebugObject(originPoint, direction, areaShapeModel);
+                CreateDebugObject(originPoint, direction, hitModel.AreaShapeModel);
             }
         }
 

@@ -17,23 +17,23 @@ namespace Urd.Services
             SetAsLoaded();
         }
 
-        public bool TryHit(Vector2 originPoint, Vector2 direction, IAreaShapeModel areaShapeModel)
+        public bool TryHit(Vector2 originPoint, Vector2 direction, IHitModel hitModel)
         {
-            var manager = GetManager(areaShapeModel);
+            var manager = GetManager(hitModel);
             if (manager == null)
             {
-                var error = new ErrorModel($"Manager for shape: {areaShapeModel.AreaShape} Not Found",
+                var error = new ErrorModel($"Manager for shape: {hitModel.AreaShapeModel.AreaShape} Not Found",
                                            ErrorCode.Error_404_Not_Found);
                 Debug.LogWarning(error);
                 return false;
             }
 
-            return manager.TryHit(originPoint, direction, areaShapeModel);
+            return manager.TryHit(originPoint, direction, hitModel);
         }
 
-        private IPhysicsAreaShapeManager GetManager(IAreaShapeModel areaShapeModel)
+        private IPhysicsAreaShapeManager GetManager(IHitModel hitModel)
         {
-            return _shapeManager.Find(manager => manager.AreaShape == areaShapeModel.AreaShape);
+            return _shapeManager.Find(manager => manager.AreaShape == hitModel.AreaShapeModel.AreaShape);
         }
     }
 }

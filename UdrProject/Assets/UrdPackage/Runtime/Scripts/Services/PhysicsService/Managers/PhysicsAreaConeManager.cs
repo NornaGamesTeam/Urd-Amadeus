@@ -1,6 +1,7 @@
 using MyBox.Internal;
 using UnityEditor;
 using UnityEngine;
+using Urd.Utils;
 
 namespace Urd.Services.Physics
 {
@@ -8,13 +9,14 @@ namespace Urd.Services.Physics
     public class PhysicsAreaConeManager : PhysicsAreaShapeManager
     {
         public override AreaShapeType AreaShape => AreaShapeType.Cone;
-        public override bool TryHit(Vector2 originPoint, Vector2 direction, IAreaShapeModel areaShapeModel)
+        public override bool TryHit(Vector2 originPoint, Vector2 direction, IHitModel hitModel)
         {
-            PrintDebugObject(originPoint, direction, areaShapeModel);
+            PrintDebugObject(originPoint, direction, hitModel);
             
-            var areaConeShapeModel = areaShapeModel as AreaShapeConeModel; 
+            var areaConeShapeModel = hitModel.AreaShapeModel as AreaShapeConeModel; 
 
-            var targets = Physics2D.OverlapCircleAll(originPoint, areaConeShapeModel.Distance);
+            var targets = Physics2D.OverlapCircleAll(originPoint, areaConeShapeModel.Distance,
+                hitModel.LayerMask.ToLayer());
             
             for (int i = 0; i < targets.Length; i++)
             {

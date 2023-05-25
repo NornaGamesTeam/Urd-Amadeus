@@ -6,12 +6,12 @@ using Urd.Utils;
 namespace Urd.Game.SkillTrees
 {
     [Serializable]
-    public class HitAreaByDirection
+    public class AttackAreaByDirection
     {
         [field: SerializeField] 
         public DirectionType Direction { get; private set; }
         [field: SerializeField] 
-        public List<HitAreaModel> HitArea { get; private set; }
+        public List<AttackAreaModel> HitArea { get; private set; }
         
     }
 }
