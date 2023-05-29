@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -545,7 +545,7 @@ TextureImporter:
       Primm Walking_Down_01: -1620368191
       Primm Walking_Down_05: -623421433
       Primm Walking_Up_06: -1747578261
-      Primm Walking_Up_05: 353415095
+      Primm Walking_Down_03: -499353215
       Primm Walking_Up_02: 1916715248
       Primm Walking_Side_02: -426262756
       Primm Walking_Side_05: 1953361267
@@ -557,8 +557,8 @@ TextureImporter:
       Primm Walking_Side_01: 702499476
       Primm Walking_Side_04: -2093907639
       Primm Walking_Down_06: 200196380
-      Primm Walking_Down_03: -499353215
       Primm Walking_Up_04: -889513905
+      Primm Walking_Up_05: 353415095
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

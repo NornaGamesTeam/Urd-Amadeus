@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 25e11df60c9d49248b36595ba6a96cfe
+guid: 38e34fbfba475624e9769ab3d6a094ff
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -153,13 +153,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Randi Idle_Down_01
+      name: Primm Hit_Down_01
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 16
-        height: 32
+        y: 4
+        width: 24
+        height: 26
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,13 +174,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Randi Idle_Up_01
+      name: Primm Hit_Up_01
       rect:
         serializedVersion: 2
-        x: 19
-        y: 0
-        width: 16
-        height: 32
+        x: 26
+        y: 4
+        width: 23
+        height: 26
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,13 +195,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Randi Idle_Side_01
+      name: Primm Hit_Side_01
       rect:
         serializedVersion: 2
-        x: 40
+        x: 51
         y: 0
-        width: 15
-        height: 32
+        width: 23
+        height: 30
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,9 +226,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Randi Idle_Down_01: -779615076
-      Randi Idle_Up_01: -645642006
-      Randi Idle_Side_01: 221335771
+      Primm Hit_Up_01: -645642006
+      Primm Hit_Down_01: -779615076
+      Primm Hit_Side_01: 221335771
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
