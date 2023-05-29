@@ -6,6 +6,9 @@ namespace Urd.Character
 {
     public class CharacterConfig : ScriptableObject
     {
+        [field: Header("Hit Points"), SerializeField] 
+        public float HitPoints { get; private set; }
+        
         [field: Header("Movement"), SerializeField] 
         public float Speed { get; private set; }
 

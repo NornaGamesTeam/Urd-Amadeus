@@ -8,9 +8,12 @@ namespace Urd.Services.Physics
     {
         public override AreaShapeType AreaShape => AreaShapeType.Box;
 
-        public override bool TryHit(Vector2 originPoint, Vector2 direction, IHitModel hitModel)
+        public override bool TryHit(IHitModel hitModel)
         {
-            PrintDebugObject(originPoint, direction, hitModel);
+            Vector2 originPoint = hitModel.Position;
+            Vector2 direction = hitModel.Direction;
+            
+            PrintDebugObject(hitModel);
 
             var areaShapeBoxModel = hitModel.AreaShapeModel as AreaShapeBoxModel;
 
@@ -18,7 +21,7 @@ namespace Urd.Services.Physics
                                                   Vector3.Angle(Vector2.up, direction), hitModel.LayerMask.ToLayer());
             for (int i = 0; i < targets.Length; i++)
             {
-                Debug.Log(targets[i]);
+                hitModel.AddCollision(targets[i]);
             }
 
             return false;

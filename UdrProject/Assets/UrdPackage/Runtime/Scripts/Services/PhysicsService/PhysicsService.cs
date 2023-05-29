@@ -17,7 +17,7 @@ namespace Urd.Services
             SetAsLoaded();
         }
 
-        public bool TryHit(Vector2 originPoint, Vector2 direction, IHitModel hitModel)
+        public bool TryHit(ref IHitModel hitModel)
         {
             var manager = GetManager(hitModel);
             if (manager == null)
@@ -28,7 +28,7 @@ namespace Urd.Services
                 return false;
             }
 
-            return manager.TryHit(originPoint, direction, hitModel);
+            return manager.TryHit(hitModel);
         }
 
         private IPhysicsAreaShapeManager GetManager(IHitModel hitModel)

@@ -1,5 +1,3 @@
-using MyBox.Internal;
-using UnityEditor;
 using UnityEngine;
 using Urd.Utils;
 
@@ -9,9 +7,12 @@ namespace Urd.Services.Physics
     public class PhysicsAreaConeManager : PhysicsAreaShapeManager
     {
         public override AreaShapeType AreaShape => AreaShapeType.Cone;
-        public override bool TryHit(Vector2 originPoint, Vector2 direction, IHitModel hitModel)
+        public override bool TryHit(IHitModel hitModel)
         {
-            PrintDebugObject(originPoint, direction, hitModel);
+            Vector2 originPoint = hitModel.Position;
+            Vector2 direction = hitModel.Direction;
+            
+            PrintDebugObject(hitModel);
             
             var areaConeShapeModel = hitModel.AreaShapeModel as AreaShapeConeModel; 
 
@@ -24,9 +25,11 @@ namespace Urd.Services.Physics
                 Vector3 dirToTarget = (target.position - (Vector3)originPoint).normalized;
                 if (Vector3.Angle(direction, dirToTarget) < areaConeShapeModel.AngleDegreesClockWise * 0.5f)
                 {
-                    if (Physics2D.Raycast(originPoint, dirToTarget))
+                    var raycastHit2D = Physics2D.Raycast(originPoint, dirToTarget, areaConeShapeModel.Distance, 
+                                                         hitModel.LayerMask.ToLayer());
+                    if (raycastHit2D != null)
                     {
-                        Debug.Log(target.name);
+                        hitModel.AddCollision(targets[i]);
                     }
                 }
             }

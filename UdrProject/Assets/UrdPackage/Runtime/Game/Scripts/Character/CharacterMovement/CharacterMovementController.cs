@@ -50,7 +50,7 @@ namespace Urd.Character
             {
                 _characterModel.CharacterMovement.SetRawNormalizedMovement(movement);
                 _characterModel.CharacterMovement.ModifyPosition(
-                    movement * _characterModel.Speed * _clockService.DeltaTime);
+                    movement * _characterModel.CharacterMovement.Speed * _clockService.DeltaTime);
             }
         }
 

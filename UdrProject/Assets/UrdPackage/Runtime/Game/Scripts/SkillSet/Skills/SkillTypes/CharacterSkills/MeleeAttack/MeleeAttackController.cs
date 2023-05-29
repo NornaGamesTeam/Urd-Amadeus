@@ -15,6 +15,8 @@ namespace Urd.Character.Skill
 
         private ServiceHelper<IPhysicsService> _physicsService = new ServiceHelper<IPhysicsService>();
 
+        private List<Collider2D> _alreadyHit = new ();
+        
         public override void Init(CharacterModel characterModel, ICharacterInput characterInput)
         {
             base.Init(characterModel, characterInput);
@@ -58,11 +60,34 @@ namespace Urd.Character.Skill
                     
                 }
 
-                var hitModel = new HitEnemyModel(hitAreasActives[i].AreaShapeModel);
-                _physicsService.Service.TryHit(_characterModel.CharacterMovement.Position, direction, hitModel);
+                IHitModel hitModel = new HitEnemyModel(_characterModel.CharacterMovement.Position, direction, hitAreasActives[i].AreaShapeModel);
+                if (_physicsService.Service.TryHit(ref hitModel))
+                {
+                    CheckHit(hitAreasActives[i], hitModel);
+                }
             }
         }
-        
+
+        private void CheckHit(AttackAreaModel attackAreaModel, IHitModel hitModel)
+        {
+            for (int i = 0; i < hitModel.Collisions.Count; i++)
+            {
+                if (!_alreadyHit.Contains(hitModel.Collisions[i]))
+                {
+                    Hit(attackAreaModel, hitModel.Collisions[i]);
+                    
+                    _alreadyHit.Add(hitModel.Collisions[i]);
+                }
+            }
+        }
+
+        private void Hit(AttackAreaModel attackAreaModel, Collider2D collider)
+        {
+            // do this better
+            var characterController = collider.GetComponentInParent<CharacterController>();
+            characterController.CharacterModel.HitPoints.Hit(_skillModel.Damage * attackAreaModel.DamagePercentage);
+        }
+
         private List<AttackAreaModel> GetAreasToCheck()
         {
             return _hitAreas.FindAll(

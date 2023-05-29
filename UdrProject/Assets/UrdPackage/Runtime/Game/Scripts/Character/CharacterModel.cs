@@ -1,3 +1,4 @@
+using MyBox;
 using UnityEngine;
 using Urd.Character.Skill;
 using Urd.Game.SkillTrees;
@@ -8,10 +9,13 @@ namespace Urd.Character
     [System.Serializable]
     public class CharacterModel
     {
-        public float Speed => _characterConfig.Speed;
-        [field: SerializeField]
-        public CharacterMovementModel CharacterMovement { get; private set; } = new ();
-        [field: SerializeField]
+        [field: SerializeField, ReadOnly]
+        public CharacterHitPointsModel HitPoints { get; private set; }
+        
+        [field: SerializeField, ReadOnly]
+        public CharacterMovementModel CharacterMovement { get; private set; }
+        
+        [field: SerializeField, ReadOnly]
         public SkillSetModel SkillSetModel { get; private set; }
         
         private CharacterConfig _characterConfig;
@@ -19,6 +23,8 @@ namespace Urd.Character
         public CharacterModel(CharacterConfig characterConfig)
         {
             _characterConfig = characterConfig;
+            HitPoints = new CharacterHitPointsModel(_characterConfig);
+            CharacterMovement = new CharacterMovementModel(_characterConfig);
             SkillSetModel = new SkillSetModel(characterConfig.DefaultSkillConfigs, characterConfig.SkillTreeConfig);
         }
     }

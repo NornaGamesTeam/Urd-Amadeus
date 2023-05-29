@@ -1,17 +1,22 @@
 using MyBox;
 using UnityEngine;
 using Urd.Character.Skill;
+using Urd.Services.Physics;
 
 namespace Urd.Character
 {
     public class CharacterGraphicView : MonoBehaviour
     {
+        // movement related
         private const string ANIMATION_KEY_MOVEMENT_X = "MOVEMENT_X";
         private const string ANIMATION_KEY_MOVEMENT_Y = "MOVEMENT_Y";
         private const string ANIMATION_KEY_AIM_X = "AIM_X";
         private const string ANIMATION_KEY_AIM_Y = "AIM_Y";
         private const string ANIMATION_KEY_IS_MOVING = "IS_MOVING";
         private const string ANIMATION_KEY_IS_SKILL = "IS_SKILL";
+        
+        // hit related
+        private const string ANIMATION_KEY_IS_HIT = "IS_HIT";
         
         [SerializeField]
         private SpriteRenderer _mainImage;
@@ -37,13 +42,23 @@ namespace Urd.Character
 
         private void Init()
         {
+            // movement related
             _characterModel.CharacterMovement.OnRawNormalizedMovementChanged += OnRawNormalizedPositionChanged;
             _characterModel.CharacterMovement.OnIsMovingChanged += OnMovingChanged;
             _characterModel.CharacterMovement.OnAimDirectionChanged += OnAimDirectionChanged;
             _characterModel.SkillSetModel.OnIsSkill += OnIsSkill;
             _characterModel.SkillSetModel.OnSkillAction += OnSkillAction;
+            
+            // hitted related
+            _characterModel.HitPoints.OnIsHit += OnIsHit;
+            //_characterModel.HitPoints.OnHitted += OnHitted;
         }
-        
+
+        private void OnIsHit(bool isHit)
+        {
+            _animator.SetBool(ANIMATION_KEY_IS_HIT, isHit);
+        }
+
         private void OnSkillAction(ISkillModel skillModel)
         {
             _animator.Play(skillModel.SkillAnimationModel.AnimationName.ToString());

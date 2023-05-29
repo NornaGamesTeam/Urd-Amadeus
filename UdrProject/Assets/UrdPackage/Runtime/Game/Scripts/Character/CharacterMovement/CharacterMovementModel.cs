@@ -1,11 +1,20 @@
 using System;
 using UnityEngine;
+using Urd.Character;
 
 namespace Urd.Models
 {
     [System.Serializable]
     public class CharacterMovementModel
     {
+        private CharacterConfig _characterConfig;
+        public CharacterMovementModel(CharacterConfig characterConfig)
+        {
+            _characterConfig = characterConfig;
+        }
+        
+        public float Speed => _characterConfig.Speed;
+
         [field: SerializeField, MyBox.ReadOnly]
         public Vector2 AimDirection { get; private set; }
         

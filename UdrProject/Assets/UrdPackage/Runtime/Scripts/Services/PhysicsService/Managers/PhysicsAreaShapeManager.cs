@@ -8,10 +8,18 @@ namespace Urd.Services.Physics
         
         private DebugAreaShapeView _debugAreaShapeView;
 
-        public abstract bool TryHit(Vector2 vector2, Vector2 originPoint, IHitModel hitModel);
+        public abstract bool TryHit(IHitModel hitModel);
 
-        protected void PrintDebugObject(Vector2 originPoint, Vector2 direction, IHitModel hitModel)
+        private void Hit(Collider2D target)
         {
+            
+        }
+        
+        protected void PrintDebugObject(IHitModel hitModel)
+        {
+            Vector2 originPoint = hitModel.Position;
+            Vector2 direction = hitModel.Direction;
+                
             if (_debugAreaShapeView == null
                 || (_debugAreaShapeView?.OriginPoint != originPoint
                     || _debugAreaShapeView?.Direction != direction
@@ -21,7 +29,7 @@ namespace Urd.Services.Physics
                 CreateDebugObject(originPoint, direction, hitModel.AreaShapeModel);
             }
         }
-
+        
         private void CreateDebugObject(Vector2 originPoint, Vector2 direction, IAreaShapeModel areaShapeModel)
         {
             var gameObject = new GameObject("DEBUG_CONE");
