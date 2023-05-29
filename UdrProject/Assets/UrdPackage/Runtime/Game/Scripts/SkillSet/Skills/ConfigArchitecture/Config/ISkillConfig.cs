@@ -4,5 +4,6 @@ namespace Urd.Game.SkillTrees
     {
         SkillType Type { get; }
         float Duration { get; }
+        ISkillAnimationModel SkillAnimationModel { get; }
     }
 }

@@ -40,7 +40,7 @@ namespace Urd.Character
 
         private void OnMovementChanged(Vector2 movement)
         {
-            if (_characterModel.SkillSetModel.IsSkill)
+            if (!CanMove())
             {
                 return;
             }
@@ -52,6 +52,12 @@ namespace Urd.Character
                 _characterModel.CharacterMovement.ModifyPosition(
                     movement * _characterModel.CharacterMovement.Speed * _clockService.DeltaTime);
             }
+        }
+
+        private bool CanMove()
+        {
+            return !_characterModel.SkillSetModel.IsSkill &&
+                   !_characterModel.HitPointsModel.IsHit;
         }
 
         private void OnAimChanged(Vector2 aimDirection)

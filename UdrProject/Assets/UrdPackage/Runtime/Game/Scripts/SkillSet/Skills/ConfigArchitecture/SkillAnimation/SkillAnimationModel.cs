@@ -9,5 +9,8 @@ namespace Urd.Game.SkillTrees
 
         [field: SerializeField]
         public int AnimationLoops { get; private set; } = 1;
+
+        [field: SerializeField]
+        public float Duration { get; private set; }
     }
 }

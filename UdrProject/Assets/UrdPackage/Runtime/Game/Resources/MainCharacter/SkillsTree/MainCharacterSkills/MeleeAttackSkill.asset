@@ -23,7 +23,7 @@ MonoBehaviour:
     rid: 4760200848147742724
   <CoolDown>k__BackingField: 0.3
   <Duration>k__BackingField: 0.3
-  <Damage>k__BackingField: 0
+  <Damage>k__BackingField: 5
   <DamageOverTime>k__BackingField:
   - <Direction>k__BackingField: 0
     <HitArea>k__BackingField:
@@ -71,6 +71,7 @@ MonoBehaviour:
       data:
         <AnimationName>k__BackingField: 3
         <AnimationLoops>k__BackingField: 1
+        <Duration>k__BackingField: 0.3
     - rid: 4760200873497591863
       type: {class: MeleeAttackModel, ns: Urd.Character.Skill, asm: Udr}
     - rid: 4760200873497591864
@@ -86,14 +87,14 @@ MonoBehaviour:
     - rid: 4760200916062699748
       type: {class: AreaShapeConeModel, ns: Urd.Services.Physics, asm: Udr}
       data:
-        <AngleDegreesClockWise>k__BackingField: 84.76
+        <AngleDegreesClockWise>k__BackingField: 72.6
         <Distance>k__BackingField: 8.01
     - rid: 4760200916062699772
       type: {class: AreaShapeConeModel, ns: Urd.Services.Physics, asm: Udr}
       data:
-        <AngleDegreesClockWise>k__BackingField: 72.24
-        <Distance>k__BackingField: 1.61
+        <AngleDegreesClockWise>k__BackingField: 116.27
+        <Distance>k__BackingField: 2.43
     - rid: 4760200916062699776
       type: {class: AreaShapeBoxModel, ns: Urd.Services.Physics, asm: Udr}
       data:
-        <Area>k__BackingField: {x: 2, y: 2}
+        <Area>k__BackingField: {x: 2.4, y: 2.17}

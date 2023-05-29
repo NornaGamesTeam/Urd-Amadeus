@@ -5,6 +5,7 @@ namespace Urd.Game.SkillTrees
         IdleTree,
         WalkingTree,
         DodgeTree,
-        MeleeAttackTree
+        MeleeAttackTree,
+        HitTree
     }
 }

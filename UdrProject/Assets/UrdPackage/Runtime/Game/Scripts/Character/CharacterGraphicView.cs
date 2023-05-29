@@ -50,13 +50,15 @@ namespace Urd.Character
             _characterModel.SkillSetModel.OnSkillAction += OnSkillAction;
             
             // hitted related
-            _characterModel.HitPoints.OnIsHit += OnIsHit;
-            //_characterModel.HitPoints.OnHitted += OnHitted;
+            _characterModel.HitPointsModel.OnIsHit += OnIsHit;
         }
 
-        private void OnIsHit(bool isHit)
+        private void OnIsHit(bool isHit, Vector2 hitDirection, ISkillModel hitSkillModel)
         {
             _animator.SetBool(ANIMATION_KEY_IS_HIT, isHit);
+            _animator.Play(hitSkillModel.SkillAnimationModel.AnimationName.ToString());
+
+            OnAimDirectionChanged(hitDirection);
         }
 
         private void OnSkillAction(ISkillModel skillModel)

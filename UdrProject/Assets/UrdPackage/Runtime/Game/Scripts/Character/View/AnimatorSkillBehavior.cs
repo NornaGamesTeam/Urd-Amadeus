@@ -3,15 +3,18 @@ using Urd.Game.SkillTrees;
 
 public class AnimatorSkillBehavior : StateMachineBehaviour
 {
-    [SerializeField] 
+    [SerializeReference] 
     private SkillConfig _skillConfig;
-    
-    
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
+
+        float duration = _skillConfig.SkillAnimationModel.Duration <= 0
+            ? _skillConfig.Duration
+            : _skillConfig.SkillAnimationModel.Duration;
         
-        var speed = stateInfo.length / (_skillConfig.Duration);
+        var speed = stateInfo.length / (duration);
         speed *= (float)_skillConfig.SkillAnimationModel.AnimationLoops;
         animator.speed = speed;
     }

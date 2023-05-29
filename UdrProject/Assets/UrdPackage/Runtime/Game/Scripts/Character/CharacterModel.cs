@@ -10,20 +10,20 @@ namespace Urd.Character
     public class CharacterModel
     {
         [field: SerializeField, ReadOnly]
-        public CharacterHitPointsModel HitPoints { get; private set; }
+        public CharacterHitPointsModel HitPointsModel { get; private set; }
         
         [field: SerializeField, ReadOnly]
         public CharacterMovementModel CharacterMovement { get; private set; }
         
         [field: SerializeField, ReadOnly]
         public SkillSetModel SkillSetModel { get; private set; }
-        
+
         private CharacterConfig _characterConfig;
 
         public CharacterModel(CharacterConfig characterConfig)
         {
             _characterConfig = characterConfig;
-            HitPoints = new CharacterHitPointsModel(_characterConfig);
+            HitPointsModel = new CharacterHitPointsModel(_characterConfig);
             CharacterMovement = new CharacterMovementModel(_characterConfig);
             SkillSetModel = new SkillSetModel(characterConfig.DefaultSkillConfigs, characterConfig.SkillTreeConfig);
         }

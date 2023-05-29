@@ -9,9 +9,12 @@ namespace Urd.Character
         [field: Header("Hit Points"), SerializeField] 
         public float HitPoints { get; private set; }
         
+        [field: SerializeReference] 
+        public SkillConfig HitSkillConfig { get; private set; }
+        
         [field: Header("Movement"), SerializeField] 
         public float Speed { get; private set; }
-
+        
         [field: Header("Skills"),SerializeField] 
         public List<SkillConfig> DefaultSkillConfigs { get; private set; }
 

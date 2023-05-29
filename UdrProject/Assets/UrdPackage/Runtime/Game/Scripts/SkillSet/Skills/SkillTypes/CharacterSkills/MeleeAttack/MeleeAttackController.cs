@@ -35,6 +35,8 @@ namespace Urd.Character.Skill
         protected override void BeginSkill(Vector2 direction)
         {
             base.BeginSkill(direction);
+            
+            _alreadyHit.Clear();
             _characterModel.SkillSetModel.SetIsMeleeAttack(true);
             var skillDirection = direction.ConvertToDirection();
             _direction = skillDirection.ConvertToVector2();
@@ -84,8 +86,10 @@ namespace Urd.Character.Skill
         private void Hit(AttackAreaModel attackAreaModel, Collider2D collider)
         {
             // do this better
-            var characterController = collider.GetComponentInParent<CharacterController>();
-            characterController.CharacterModel.HitPoints.Hit(_skillModel.Damage * attackAreaModel.DamagePercentage);
+            var hittableObject = collider.GetComponentInParent<IHittable>();
+            float damage = _skillModel.Damage * attackAreaModel.DamagePercentage;
+            var attackDirection = collider.transform.position - (Vector3)_characterModel.CharacterMovement.Position;
+            hittableObject.Hit(damage, attackDirection.normalized);
         }
 
         private List<AttackAreaModel> GetAreasToCheck()

@@ -4,5 +4,6 @@ namespace Urd.Game.SkillTrees
     {
         SkillAnimationNames AnimationName { get; }
         int AnimationLoops { get; }
+        float Duration { get; }
     }
 }

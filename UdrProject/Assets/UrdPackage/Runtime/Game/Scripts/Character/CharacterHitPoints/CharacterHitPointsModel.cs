@@ -1,35 +1,44 @@
 using System;
-using Urd.Services.Physics;
+using MyBox;
+using UnityEngine;
+using Urd.Character.Skill;
+using Urd.Game.SkillTrees;
 
 namespace Urd.Character
 {
+    [Serializable]
     public class CharacterHitPointsModel
     {
         private CharacterConfig _characterConfig;
+
+        public float MaxHitPoints => _characterConfig.HitPoints;
+        
+        [field: SerializeField, ReadOnly]
+        public float HitPoints { get; private set; }
+
+        public ISkillModel HitSkillModel { get; private set; }
+
+        public bool IsHit { get; private set; }
+        public event Action<bool, Vector2, ISkillModel> OnIsHit;
+        
         public CharacterHitPointsModel(CharacterConfig characterConfig)
         {
             _characterConfig = characterConfig;
+            HitPoints = MaxHitPoints;
+            HitSkillModel = new HitSkillModel();
+            HitSkillModel.SetConfig(_characterConfig.HitSkillConfig);
         }
-
-        public float MaxHitPoints => _characterConfig.HitPoints;
-        public float HitPoints { get; private set; }
         
-        public event Action<bool> OnIsHit;
-
-        public void Hit(float damage)
+        public void Hit(float damage, Vector2 hitDirection)
         {
-            if (damage <= 0)
-            {
-                return;
-            }
-            
             HitPoints -= damage;
-            SetIsHit(true);
+            SetIsHit(damage > 0, hitDirection);
         }
 
-        public void SetIsHit(bool isHit)
+        public void SetIsHit(bool isHit, Vector2 hitDirection)
         {
-            OnIsHit?.Invoke(isHit);
+            IsHit = isHit;
+            OnIsHit?.Invoke(isHit, -hitDirection, HitSkillModel);
         }
     }
 }

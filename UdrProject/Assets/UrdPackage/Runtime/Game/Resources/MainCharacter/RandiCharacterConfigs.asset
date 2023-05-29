@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RandiCharacterConfigs
   m_EditorClassIdentifier: 
   <HitPoints>k__BackingField: 20
+  <HitSkillConfig>k__BackingField: {fileID: 11400000, guid: e526b0e593bc9104a8ca00ae957e0608, type: 2}
   <Speed>k__BackingField: 3
   <DefaultSkillConfigs>k__BackingField:
   - {fileID: 11400000, guid: 842fec75adf502a4f8903e398dbf2530, type: 2}

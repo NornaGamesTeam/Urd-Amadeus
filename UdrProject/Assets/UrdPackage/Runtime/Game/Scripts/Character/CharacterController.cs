@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
+using Urd.Services.Physics;
 
 namespace Urd.Character
 {
     // TODO create from the level manager
-    public class CharacterController : MonoBehaviour, IDisposable
+    public class CharacterController : MonoBehaviour, IDisposable, IHittable, IInteractable
     {
         [SerializeField] 
         private CharacterConfig _characterConfig;
@@ -13,6 +14,7 @@ namespace Urd.Character
 
         protected CharacterMovementController _movementController;
         protected SkillSetController _skillSetController;
+        protected CharacterHitPointsController _hitPointsController;
         
         [field: SerializeField, MyBox.ReadOnly]
         public CharacterModel CharacterModel { get; private set; }
@@ -25,6 +27,8 @@ namespace Urd.Character
         protected virtual void Init()
         {
             CharacterModel = new CharacterModel(_characterConfig);
+            
+            _hitPointsController = new CharacterHitPointsController(CharacterModel);
         }
         
         public void SetInput(ICharacterInput characterInput)
@@ -40,5 +44,15 @@ namespace Urd.Character
             _skillSetController?.Dispose();
         }
 
+        public void Hit(float damage, Vector2 hitDirection)
+        {
+            _hitPointsController.Hit(damage, hitDirection);
+        }
+
+        public void Interact()
+        {
+            Debug.Log("Interact");
+
+        }
     }
 }
