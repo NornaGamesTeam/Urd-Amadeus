@@ -34,7 +34,7 @@ namespace Urd.Services.Physics
                 }
             }
             
-            return false;
+            return hitModel.Collisions.Count > 0;
         }
     }
 }

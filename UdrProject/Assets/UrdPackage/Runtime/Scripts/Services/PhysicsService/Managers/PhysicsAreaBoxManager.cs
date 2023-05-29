@@ -17,6 +17,7 @@ namespace Urd.Services.Physics
 
             var areaShapeBoxModel = hitModel.AreaShapeModel as AreaShapeBoxModel;
 
+            originPoint += new Vector2(areaShapeBoxModel.Area.x * direction.x*0.5f , areaShapeBoxModel.Area.y * direction.y*0.5f); 
             var targets = Physics2D.OverlapBoxAll(originPoint, areaShapeBoxModel.Area,
                                                   Vector3.Angle(Vector2.up, direction), hitModel.LayerMask.ToLayer());
             for (int i = 0; i < targets.Length; i++)
@@ -24,7 +25,7 @@ namespace Urd.Services.Physics
                 hitModel.AddCollision(targets[i]);
             }
 
-            return false;
+            return hitModel.Collisions.Count > 0;
         }
     }
 }
