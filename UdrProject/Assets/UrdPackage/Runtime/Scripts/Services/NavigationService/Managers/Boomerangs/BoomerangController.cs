@@ -13,9 +13,9 @@ namespace Urd.Boomerang
         public virtual BoomerangBodyView BoomerangDefaultBody { get; protected set; }
         
         public BoomerangBodyView BoomerangBody { get; protected set; }
-        public BoomerangModel BoomerangModel => BoomerangBody?.BoomerangModel;
+        public TBoomerangModel BoomerangModel => BoomerangBody?.BoomerangModel as TBoomerangModel;
 
-        private ServiceHelper<IClockService> _clockService = new();
+        protected ServiceHelper<IClockService> _clockService = new();
 
         public void SetBoomerangBody(BoomerangBodyView boomerangBody)
         {
@@ -23,29 +23,35 @@ namespace Urd.Boomerang
             BoomerangBody.BoomerangView.OnClickOnClose += Close;
         }
 
-        public void Open()
+        public virtual void Open()
         {
             BoomerangBody.Open();
             BoomerangModel.ChangeStatus(NavigableStatus.Opening);
             
-            StaticServiceLocator.Get<IClockService>().AddDelayCall(0.1f, OnIdle);
+            StaticServiceLocator.Get<IClockService>().AddDelayCall(BoomerangModel.FadeInTime, OnIdle);
         }
 
-        private void OnIdle()
+        protected virtual void OnIdle()
         {
             BoomerangModel.ChangeStatus(NavigableStatus.Idle);
             BoomerangBody.OnIdle();
-            _clockService.Service.AddDelayCall(BoomerangModel.Duration, Close);
+            _clockService.Service.AddDelayCall(BoomerangModel.Duration, AutoClose);
         }
 
-        public void Close()
+        private void AutoClose()
         {
+            StaticServiceLocator.Get<INavigationService>().Close(BoomerangModel);
+        }
+
+        public virtual void Close()
+        {
+
             BoomerangModel.ChangeStatus(NavigableStatus.Closing);
             BoomerangBody.Close();
-            StaticServiceLocator.Get<IClockService>().AddDelayCall(0.1f, OnClose);
+            StaticServiceLocator.Get<IClockService>().AddDelayCall(BoomerangModel.FadeOutTime, OnClose);
         }
 
-        private void OnClose()
+        protected virtual void OnClose()
         {
             BoomerangModel.ChangeStatus(NavigableStatus.Closed);
             

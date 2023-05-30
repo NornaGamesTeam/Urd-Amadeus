@@ -12,11 +12,14 @@ namespace Urd.Character
 
         private IClockService _clockService;
         
-        public CharacterMovementController(CharacterModel characterModel, ICharacterInput characterInput)
+        public CharacterMovementController(CharacterModel characterModel, ICharacterInput characterInput,
+            Vector3 initialPosition)
         {
             _characterModel = characterModel;
             SetInput(characterInput);
             Init();
+            
+            _characterModel.CharacterMovement.SetPosition(initialPosition);
         }
 
         public void Init()

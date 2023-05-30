@@ -46,7 +46,7 @@ namespace Urd.Services
             var navigable = GetNavigationManager(enumValue);
             if (navigable != null)
             {
-                return navigable.GetModel(enumValue) as TNavigable;
+                return navigable.GetModel<TEnum, TNavigable>(enumValue);
             }
 
             return null;

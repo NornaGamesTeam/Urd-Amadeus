@@ -267,7 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7744823324971503468}
-  - component: {fileID: 2112384091513087209}
+  - component: {fileID: 5349213733496653986}
   - component: {fileID: 2560374026742572683}
   - component: {fileID: 7053699527019498447}
   m_Layer: 12
@@ -294,7 +294,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2112384091513087209
+--- !u!114 &5349213733496653986
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,11 +303,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8703236166929520026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50587eeec1c54f24389a9c1a7e80075b, type: 3}
+  m_Script: {fileID: 11500000, guid: 157065905d7447744b2c7b323242ca62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _characterConfig: {fileID: 11400000, guid: 67b3930dad51b8d46962f9d0cd5c2028, type: 2}
   <CharacterModel>k__BackingField:
+    <HitPointsModel>k__BackingField:
+      <HitPoints>k__BackingField: 0
     <CharacterMovement>k__BackingField:
       <AimDirection>k__BackingField: {x: 0, y: 0}
       <RawNormalizedMovement>k__BackingField: {x: 0, y: 0}

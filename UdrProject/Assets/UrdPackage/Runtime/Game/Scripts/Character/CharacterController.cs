@@ -35,7 +35,7 @@ namespace Urd.Character
         {
             // TODO move this to other place
             _input = characterInput;
-            _movementController = new CharacterMovementController(CharacterModel, _input);
+            _movementController = new CharacterMovementController(CharacterModel, _input, transform.position);
             _skillSetController = new SkillSetController(CharacterModel, _input);
         }
         public void Dispose()

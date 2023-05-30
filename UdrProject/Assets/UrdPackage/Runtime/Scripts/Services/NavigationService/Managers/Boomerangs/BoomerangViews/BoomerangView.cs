@@ -1,4 +1,5 @@
 using System;
+using MyBox;
 using UnityEngine;
 using Urd.Boomerang;
 using Urd.Services.Navigation;
@@ -9,6 +10,7 @@ namespace Urd.View.Boomerang
     public abstract class BoomerangView<T> : BoomerangViewNoModel, IBoomerangView where T : BoomerangModel
     {
         public GameObject GameObject => gameObject;
+        [field: SerializeField, ReadOnly]
         public BoomerangModel BoomerangModel { get; private set; }
         public T Model => BoomerangModel as T;
         public event Action OnClickOnClose;

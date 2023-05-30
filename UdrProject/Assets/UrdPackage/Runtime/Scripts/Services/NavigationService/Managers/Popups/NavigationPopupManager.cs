@@ -40,11 +40,11 @@ namespace Urd.Services.Navigation
             
         }
         
-        public INavigable GetModel<TEnum>(TEnum enumValue) where TEnum : Enum
+        public TNavigable GetModel<TEnum, TNavigable>(TEnum enumValue) where TEnum : Enum where TNavigable : class, INavigable
         {
             if (Enum.TryParse(enumValue.ToString(), out PopupTypes popupType))
             {
-                return new PopupModel(popupType);
+                return new PopupModel(popupType) as TNavigable;
             }
 
             return null;

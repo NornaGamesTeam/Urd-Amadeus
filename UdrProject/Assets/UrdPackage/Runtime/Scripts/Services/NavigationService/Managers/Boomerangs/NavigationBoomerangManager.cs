@@ -69,13 +69,13 @@ namespace Urd.Services.Navigation
             }
         }
 
-        public INavigable GetModel<TEnum>(TEnum enumValue) where TEnum : Enum
+        public TNavigable GetModel<TEnum, TNavigable>(TEnum enumValue) where TEnum : Enum where TNavigable : class, INavigable
         {
             if (Enum.TryParse(enumValue.ToString(), out BoomerangTypes boomerangType ))
             {
                 if (_boomerangTypesConfig.TryGetBoomerangModel(boomerangType, out var boomerangModel))
                 {
-                    return boomerangModel;
+                    return Activator.CreateInstance(typeof(TNavigable), boomerangModel) as TNavigable;
                 }
             }
 

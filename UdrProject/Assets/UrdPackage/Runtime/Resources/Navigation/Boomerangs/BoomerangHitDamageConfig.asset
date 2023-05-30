@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef0e23806648ad48b6a6936cfc53452, type: 3}
   m_Name: BoomerangHitDamageConfig
   m_EditorClassIdentifier: 
-  <BoomerangModel>k__BackingField:
-    rid: 4760201052173107202
-  <BoomerangView>k__BackingField: {fileID: -4509024430258238316, guid: fd12a7e0af4374e46a356c516ceeebba, type: 3}
+  <BoomerangView>k__BackingField: {fileID: 3598343845878636700, guid: fd12a7e0af4374e46a356c516ceeebba, type: 3}
   <BoomerangController>k__BackingField:
     rid: 4760201052173107203
+  <BoomerangModel>k__BackingField:
+    rid: 4760201052173107202
   references:
     version: 2
     RefIds:
@@ -24,7 +24,12 @@ MonoBehaviour:
       type: {class: BoomerangHitDamageModel, ns: Urd.Boomerang, asm: Udr}
       data:
         <BoomerangType>k__BackingField: 2
+        <FadeInTime>k__BackingField: 0
         <Duration>k__BackingField: 1
+        <FadeOutTime>k__BackingField: 0
+        <Speed>k__BackingField: 2
+        <Damage>k__BackingField: 0
+        <OriginPoint>k__BackingField: {x: 0, y: 0}
     - rid: 4760201052173107203
       type: {class: BoomerangHitDamageController, ns: Urd.Boomerang, asm: Udr}
       data:

@@ -34,15 +34,17 @@ namespace Urd.Services.Navigation
             
         }
 
-        public INavigable GetModel<TEnum>(TEnum enumValue) where TEnum : Enum
+        
+        public TNavigable GetModel<TEnum, TNavigable>(TEnum enumValue) where TEnum : Enum where TNavigable : class, INavigable
         {
             if (Enum.TryParse(enumValue.ToString(), out SceneTypes sceneType))
             {
-                return new SceneModel(sceneType);
+                return new SceneModel(sceneType) as TNavigable;
             }
 
             return null;
         }
+
 
         public bool CanHandle<TEnum>(TEnum enumValue) where TEnum : Enum
         {

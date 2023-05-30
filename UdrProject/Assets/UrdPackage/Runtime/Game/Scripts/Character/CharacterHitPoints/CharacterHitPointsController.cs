@@ -35,13 +35,14 @@ namespace Urd.Character
             _characterModel.HitPointsModel.Hit(damage, hitDirection);
             _clockService.Service.AddDelayCall(_characterModel.HitPointsModel.HitSkillModel.Duration, OnFinishHit);
 
-            ShowDamage();
+            ShowDamage(damage, hitDirection);
         }
 
-        private void ShowDamage()
+        private void ShowDamage(float damage, Vector2 hitDirection)
         {
             BoomerangHitDamageModel hitDamageModel = _navigationService.Service.GetModel<BoomerangTypes, BoomerangHitDamageModel>(BoomerangTypes.HitDamage);
-            Debug.Log(hitDamageModel);
+            hitDamageModel.SetDamage(damage);
+            hitDamageModel.SetOriginPoint(_characterModel.CharacterMovement.Position);
             _navigationService.Service.Open(hitDamageModel);
         }
 
