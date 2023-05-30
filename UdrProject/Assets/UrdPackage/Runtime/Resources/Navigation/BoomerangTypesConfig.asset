@@ -15,8 +15,5 @@ MonoBehaviour:
   <BoomerangCanvas>k__BackingField: {fileID: 8457022142200454235, guid: 7dab5e17bbfc9bd4b95362f5ade38d33, type: 3}
   <BoomerangDefaultDuration>k__BackingField: 0.5
   <BoomerangBodyPrefab>k__BackingField: {fileID: 103014050374772821, guid: f6191f46f8e85614b82a703d96bc5b46, type: 3}
-  _boomerangList:
-  - <BoomerangType>k__BackingField: 1
-    <BoomerangView>k__BackingField: {fileID: -4509024430258238316, guid: 545d87de04958d5468fa90033fa6997b, type: 3}
-  - <BoomerangType>k__BackingField: 2
-    <BoomerangView>k__BackingField: {fileID: -4509024430258238316, guid: fd12a7e0af4374e46a356c516ceeebba, type: 3}
+  _boomerangConfigs:
+  - {fileID: 11400000, guid: 8e232f5ec5000284f959577651b355ee, type: 2}

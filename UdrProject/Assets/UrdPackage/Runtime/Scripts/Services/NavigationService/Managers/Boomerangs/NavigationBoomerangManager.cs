@@ -19,7 +19,7 @@ namespace Urd.Services.Navigation
 
         private ServiceHelper<IAssetService> _assetService = new ServiceHelper<IAssetService>();
 
-        private List<BoomerangBodyView> _boomerangsOpened = new List<BoomerangBodyView>();
+        private List<IBoomerangController> _boomerangsOpened = new List<IBoomerangController>();
         
         public bool IsInitialized { get; private set; }
 
@@ -95,7 +95,7 @@ namespace Urd.Services.Navigation
         public void Open(INavigable navigable, Action<bool> onOpenNavigable)
         {
             var boomerangModel = navigable as BoomerangModel;
-
+            
             if(!_boomerangTypesConfig.TryGetBoomerangView(boomerangModel, out var boomerangViewPrefab))
             {
                 var error = new ErrorModel(
@@ -107,20 +107,33 @@ namespace Urd.Services.Navigation
                 return;
             }
             
-            _assetService.Service.Instantiate(_boomerangTypesConfig.BoomerangBodyPrefab.gameObject, _boomerangParent,
-                                      (boomerangBody) => OnInstantiateBoomerangBody(boomerangBody,boomerangViewPrefab, boomerangModel, onOpenNavigable));
+            if(!_boomerangTypesConfig.TryGetBoomerangController(boomerangModel, out var boomerangController))
+            {
+                var error = new ErrorModel(
+                    $"[NavigationBoomerangManager] Error when try to get the boomerang controller from the config, boomerang type {boomerangModel.BoomerangType}",
+                    ErrorCode.Error_404_Not_Found, UnityWebRequest.Result.DataProcessingError);
+                Debug.LogWarning(error.ToString());
+                
+                onOpenNavigable?.Invoke(false);
+                return;
+            }
+            
+            _assetService.Service.Instantiate(boomerangController.BoomerangDefaultBody.gameObject, _boomerangParent,
+                                      (boomerangBody) => OnInstantiateBoomerangBody(boomerangBody,boomerangController, boomerangViewPrefab, boomerangModel, onOpenNavigable));
 
         }
 
-        private void OnInstantiateBoomerangBody(GameObject boomerangBodyGameObject, IBoomerangView boomerangViewPrefab, BoomerangModel boomerangModel,
+        private void OnInstantiateBoomerangBody(GameObject boomerangBodyGameObject,
+            IBoomerangController boomerangController, IBoomerangView boomerangViewPrefab, BoomerangModel boomerangModel,
             Action<bool> onOpenNavigable)
         {
             var boomerangBody = boomerangBodyGameObject.GetComponent<BoomerangBodyView>();
             _assetService.Service.Instantiate(boomerangViewPrefab.GameObject, boomerangBody.Container, 
-                                              boomerangView => OnInstantiateBoomerangView(boomerangBody, boomerangView, boomerangModel, onOpenNavigable));
+                                              boomerangView => OnInstantiateBoomerangView(boomerangBody, boomerangController, boomerangView, boomerangModel, onOpenNavigable));
         }
 
-        private void OnInstantiateBoomerangView(BoomerangBodyView boomerangBody, GameObject boomerangViewGameObject,
+        private void OnInstantiateBoomerangView(BoomerangBodyView boomerangBody, IBoomerangController boomerangController,
+            GameObject boomerangViewGameObject,
             BoomerangModel boomerangModel, Action<bool> onOpenNavigable)
         {
             if (boomerangViewGameObject == null)
@@ -138,10 +151,14 @@ namespace Urd.Services.Navigation
             HydrateModel(boomerangModel);
             boomerangView.SetBoomerangModel(boomerangModel);
             boomerangBody.SetBoomerangView(boomerangView);
-            _boomerangsOpened.Add(boomerangBody);
-            onOpenNavigable?.Invoke(true);
             
-            boomerangBody.Open();
+            var newBoomerangController = Activator.CreateInstance(boomerangController.GetType()) as IBoomerangController;
+            newBoomerangController.SetBoomerangBody(boomerangBody);
+            
+            _boomerangsOpened.Add(newBoomerangController);
+            
+            onOpenNavigable?.Invoke(true);
+            newBoomerangController.Open();
         }
 
         private void HydrateModel(BoomerangModel boomerangModel)
@@ -160,25 +177,25 @@ namespace Urd.Services.Navigation
         public void Close(INavigable navigable, Action<bool> onCloseNavigable)
         {
             var boomerangToClose = _boomerangsOpened.Find(
-                boomerangBody => boomerangBody.BoomerangModel.Id == navigable.Id 
-                && !boomerangBody.BoomerangModel.IsClosingOrDestroyed);
+                boomerangController => boomerangController.BoomerangBody.BoomerangModel.Id == navigable.Id 
+                                       && !boomerangController.BoomerangBody.BoomerangModel.IsClosingOrDestroyed);
             if (boomerangToClose == null)
             {
                 return;
             }
             
-            boomerangToClose.BoomerangModel.OnStatusChanged += 
+            boomerangToClose.BoomerangBody.BoomerangModel.OnStatusChanged += 
                 (statusFrom, statusTo) => OnBoomerangModelToCloseChangeStatus(boomerangToClose, statusFrom, statusTo, onCloseNavigable);
             boomerangToClose.Close();
         }
 
-        private void OnBoomerangModelToCloseChangeStatus(BoomerangBodyView boomerangToClose, NavigableStatus statusFrom, 
+        private void OnBoomerangModelToCloseChangeStatus(IBoomerangController boomerangToClose, NavigableStatus statusFrom, 
                                                          NavigableStatus statusTo, Action<bool> onCloseNavigable)
         {
             if (statusTo == NavigableStatus.Closed)
             {
                 _boomerangsOpened.Remove(boomerangToClose);
-                _assetService.Service.Destroy(boomerangToClose.gameObject);
+                _assetService.Service.Destroy(boomerangToClose.BoomerangBody.gameObject);
                 onCloseNavigable?.Invoke(true);
             }
         }

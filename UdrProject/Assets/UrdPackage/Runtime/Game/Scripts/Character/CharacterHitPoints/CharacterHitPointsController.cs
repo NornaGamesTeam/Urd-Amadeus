@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Urd.Boomerang;
 using Urd.Services;
 using Urd.Utils;
 
@@ -10,7 +11,8 @@ namespace Urd.Character
         private CharacterModel _characterModel;
 
         private ServiceHelper<IClockService> _clockService = new();
-        
+        private ServiceHelper<INavigationService> _navigationService = new();
+
         public CharacterHitPointsController(CharacterModel characterModel)
         {
             _characterModel = characterModel;
@@ -32,6 +34,15 @@ namespace Urd.Character
         {
             _characterModel.HitPointsModel.Hit(damage, hitDirection);
             _clockService.Service.AddDelayCall(_characterModel.HitPointsModel.HitSkillModel.Duration, OnFinishHit);
+
+            ShowDamage();
+        }
+
+        private void ShowDamage()
+        {
+            BoomerangHitDamageModel hitDamageModel = _navigationService.Service.GetModel<BoomerangTypes, BoomerangHitDamageModel>(BoomerangTypes.HitDamage);
+            Debug.Log(hitDamageModel);
+            _navigationService.Service.Open(hitDamageModel);
         }
 
         private void OnFinishHit()

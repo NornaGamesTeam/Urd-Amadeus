@@ -24,8 +24,8 @@ MonoBehaviour:
       type: {class: BoomerangHitDamageModel, ns: Urd.Boomerang, asm: Udr}
       data:
         <BoomerangType>k__BackingField: 2
-        <Duration>k__BackingField: 0.5
+        <Duration>k__BackingField: 1
     - rid: 4760201052173107203
       type: {class: BoomerangHitDamageController, ns: Urd.Boomerang, asm: Udr}
       data:
-        <BoomerangBody>k__BackingField: {fileID: 2240053135913471757, guid: 39e3bd0d8e9d7c543b6a1f39264b62f3, type: 3}
+        <BoomerangDefaultBody>k__BackingField: {fileID: 2240053135913471757, guid: 39e3bd0d8e9d7c543b6a1f39264b62f3, type: 3}

@@ -45,5 +45,14 @@ namespace Urd.Services.Navigation
             boomerangView = boomerangConfig.BoomerangView as IBoomerangView;
             return boomerangView != null;
         }
+        
+        public bool TryGetBoomerangController(BoomerangModel navigable, out IBoomerangController boomerangController)
+        {
+            var boomerangConfig = _boomerangConfigs
+                .Find(boomerangInfo =>
+                          boomerangInfo.BoomerangModel.BoomerangType == navigable.BoomerangType);
+            boomerangController = boomerangConfig.BoomerangController;
+            return boomerangController != null;
+        }
     }
 }

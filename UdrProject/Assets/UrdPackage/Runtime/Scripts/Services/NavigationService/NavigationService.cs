@@ -41,7 +41,7 @@ namespace Urd.Services
             }
         }
 
-        public TNavigable GetModel<TEnum, TNavigable>(TEnum enumValue, Action<bool> onOpenNavigableCallback) where TEnum : Enum where TNavigable : class, INavigable
+        public TNavigable GetModel<TEnum, TNavigable>(TEnum enumValue) where TEnum : Enum where TNavigable : class, INavigable
         {
             var navigable = GetNavigationManager(enumValue);
             if (navigable != null)
@@ -50,6 +50,18 @@ namespace Urd.Services
             }
 
             return null;
+        }
+
+        public void Open<TEnum, TNavigable>(TEnum enumValue, Action<bool> onOpenNavigableCallback) where TEnum : Enum where TNavigable : class, INavigable
+        {
+            var model = GetModel<TEnum, TNavigable>(enumValue);
+            if (model == null)
+            {
+                onOpenNavigableCallback?.Invoke(false);
+                return;
+            }
+
+            Open(model, onOpenNavigableCallback);
         }
 
         public void Open(INavigable navigable, Action<bool> onOpenNavigableCallback)
