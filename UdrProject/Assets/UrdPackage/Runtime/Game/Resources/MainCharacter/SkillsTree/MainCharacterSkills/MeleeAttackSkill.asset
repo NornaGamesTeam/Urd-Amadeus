@@ -30,12 +30,14 @@ MonoBehaviour:
     - <BeginTime>k__BackingField: 0.12
       <EndTime>k__BackingField: 0.3
       <DamagePercentage>k__BackingField: 1
+      <OriginPoinOffset>k__BackingField: {x: 0, y: 0.5}
       <RotationDegreesClockWise>k__BackingField: 0
       <AreaShapeModel>k__BackingField:
         rid: 4760200916062699721
     - <BeginTime>k__BackingField: 0.12
       <EndTime>k__BackingField: 0.3
       <DamagePercentage>k__BackingField: 1
+      <OriginPoinOffset>k__BackingField: {x: 0, y: 0.5}
       <RotationDegreesClockWise>k__BackingField: 0
       <AreaShapeModel>k__BackingField:
         rid: 4760200916062699748
@@ -44,6 +46,7 @@ MonoBehaviour:
     - <BeginTime>k__BackingField: 0.12
       <EndTime>k__BackingField: 0.3
       <DamagePercentage>k__BackingField: 1
+      <OriginPoinOffset>k__BackingField: {x: 0, y: -0.5}
       <RotationDegreesClockWise>k__BackingField: 45
       <AreaShapeModel>k__BackingField:
         rid: 4760200916062699724
@@ -52,6 +55,7 @@ MonoBehaviour:
     - <BeginTime>k__BackingField: 0.12
       <EndTime>k__BackingField: 0.3
       <DamagePercentage>k__BackingField: 1
+      <OriginPoinOffset>k__BackingField: {x: -0.25, y: 0.5}
       <RotationDegreesClockWise>k__BackingField: 0
       <AreaShapeModel>k__BackingField:
         rid: 4760200916062699772
@@ -60,6 +64,7 @@ MonoBehaviour:
     - <BeginTime>k__BackingField: 0.12
       <EndTime>k__BackingField: 0.3
       <DamagePercentage>k__BackingField: 1
+      <OriginPoinOffset>k__BackingField: {x: 0.25, y: -0.5}
       <RotationDegreesClockWise>k__BackingField: 0
       <AreaShapeModel>k__BackingField:
         rid: 4760200916062699776

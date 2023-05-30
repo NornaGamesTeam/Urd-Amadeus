@@ -61,8 +61,9 @@ namespace Urd.Character.Skill
                     direction = _direction.RotateDegrees(hitAreasActives[i].RotationDegreesClockWise);
                     
                 }
+                var position = _characterModel.CharacterMovement.Position + hitAreasActives[i].OriginPoinOffset;
 
-                IHitModel hitModel = new HitEnemyModel(_characterModel.CharacterMovement.Position, direction, hitAreasActives[i].AreaShapeModel);
+                IHitModel hitModel = new HitEnemyModel(position, direction, hitAreasActives[i].AreaShapeModel);
                 if (_physicsService.Service.TryHit(ref hitModel))
                 {
                     CheckHit(hitAreasActives[i], hitModel);

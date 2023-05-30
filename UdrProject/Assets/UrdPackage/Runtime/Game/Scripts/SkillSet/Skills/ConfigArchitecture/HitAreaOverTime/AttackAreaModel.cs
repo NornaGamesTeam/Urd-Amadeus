@@ -15,9 +15,12 @@ namespace Urd.Game.SkillTrees
         public float DamagePercentage { get; private set; }
 
         [field: SerializeField] 
+        public Vector2 OriginPoinOffset { get; private set; }
+        [field: SerializeField] 
         public float RotationDegreesClockWise { get; private set; }
         
         [field: SerializeReference, SubclassSelector]
         public IAreaShapeModel AreaShapeModel { get; private set; }
+
     }
 }
