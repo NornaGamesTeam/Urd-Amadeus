@@ -5,7 +5,8 @@ using Urd.Services.Navigation;
 
 namespace Urd.View.Boomerang
 {
-    public class BoomerangView<T> : BoomerangViewNoModel, IBoomerangView where T : BoomerangModel
+    [Serializable]
+    public abstract class BoomerangView<T> : BoomerangViewNoModel, IBoomerangView where T : BoomerangModel
     {
         public GameObject GameObject => gameObject;
         public BoomerangModel BoomerangModel { get; private set; }

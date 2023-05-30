@@ -7,17 +7,13 @@ namespace Urd.Services.Navigation
 {
     public class BoomerangTypesConfig : ScriptableObject
     {
-        [field: SerializeField]
-        public Canvas BoomerangCanvas { get; private set; }
-        
-        [field: SerializeField]
-        public float BoomerangDefaultDuration { get; private set; }
-        
-        [field: SerializeField]
-        public BoomerangBodyView BoomerangBodyPrefab { get; private set; }
+        [field: SerializeField] public Canvas BoomerangCanvas { get; private set; }
 
-        [SerializeField]
-        private List<BoomerangTypesConfigInfo> _boomerangList = new List<BoomerangTypesConfigInfo>();
+        [field: SerializeField] public float BoomerangDefaultDuration { get; private set; }
+
+        [field: SerializeField] public BoomerangBodyView BoomerangBodyPrefab { get; private set; }
+
+        [SerializeField] private List<BoomerangConfig> _boomerangConfigs = new List<BoomerangConfig>();
 
         public bool Contains(INavigable navigable)
         {
@@ -26,25 +22,28 @@ namespace Urd.Services.Navigation
             {
                 return false;
             }
-            
+
             var boomerangType = boomerangModel.BoomerangType;
-            return _boomerangList.Exists( boomerangInfo => boomerangInfo.BoomerangType == boomerangType);
+            return _boomerangConfigs.Exists(
+                boomerangInfo => boomerangInfo.BoomerangModel.BoomerangType == boomerangType);
         }
-        
+
+        public bool TryGetBoomerangModel(BoomerangTypes boomerangType, out BoomerangModel boomerangModel)
+        {
+            var boomerangConfig = _boomerangConfigs
+                                   .Find(boomerangInfo =>
+                                             boomerangInfo.BoomerangModel.BoomerangType == boomerangType);
+            boomerangModel = boomerangConfig?.BoomerangModel;
+            return boomerangModel != null;
+        }
+
         public bool TryGetBoomerangView(BoomerangModel navigable, out IBoomerangView boomerangView)
         {
-            var rawBoomerangView = _boomerangList.Find( boomerangInfo => boomerangInfo.BoomerangType == navigable.BoomerangType)?.BoomerangView;
-            boomerangView = rawBoomerangView as IBoomerangView;
+            var boomerangConfig = _boomerangConfigs
+                                   .Find(boomerangInfo =>
+                                             boomerangInfo.BoomerangModel.BoomerangType == navigable.BoomerangType);
+            boomerangView = boomerangConfig.BoomerangView as IBoomerangView;
             return boomerangView != null;
         }
-    }
-
-    [System.Serializable]
-    internal class BoomerangTypesConfigInfo
-    {
-        [field: SerializeField]
-        public BoomerangTypes BoomerangType { get; private set; }
-        [field: SerializeField]
-        public BoomerangViewNoModel BoomerangView { get; private set; }
     }
 }

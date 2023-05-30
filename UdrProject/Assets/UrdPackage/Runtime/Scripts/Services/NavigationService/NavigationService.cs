@@ -41,6 +41,17 @@ namespace Urd.Services
             }
         }
 
+        public TNavigable GetModel<TEnum, TNavigable>(TEnum enumValue, Action<bool> onOpenNavigableCallback) where TEnum : Enum where TNavigable : class, INavigable
+        {
+            var navigable = GetNavigationManager(enumValue);
+            if (navigable != null)
+            {
+                return navigable.GetModel(enumValue) as TNavigable;
+            }
+
+            return null;
+        }
+
         public void Open(INavigable navigable, Action<bool> onOpenNavigableCallback)
         {
             var navigationManager = GetNavigationManager(navigable);
@@ -77,6 +88,19 @@ namespace Urd.Services
             }
 
             onOpenNavigableCallback?.Invoke(success);
+        }
+        
+        private INavigationManager GetNavigationManager<TEnum>(TEnum enumValue) where TEnum : Enum
+        {
+            for (int i = 0; i < _navigationManagers.Count; i++)
+            {
+                if (_navigationManagers[i].CanHandle(enumValue))
+                {
+                    return _navigationManagers[i];
+                }
+            }
+
+            return null;
         }
         
         private INavigationManager GetNavigationManager(INavigable navigable)

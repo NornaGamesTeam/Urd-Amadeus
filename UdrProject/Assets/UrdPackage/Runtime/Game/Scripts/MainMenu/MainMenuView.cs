@@ -65,6 +65,7 @@ namespace Urd.Services
         public void ClickOnPlayGame()
         {
             var sceneModel = new SceneModel(SceneTypes.Game);
+            sceneModel.SetAsActiveSceneAfterOpen(true);
             StaticServiceLocator.Get<INavigationService>().Open(sceneModel);
             sceneModel = new SceneModel(SceneTypes.MainMenu);
             StaticServiceLocator.Get<INavigationService>().Close(sceneModel);

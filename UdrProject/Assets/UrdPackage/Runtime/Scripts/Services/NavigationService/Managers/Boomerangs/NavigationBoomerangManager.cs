@@ -68,7 +68,25 @@ namespace Urd.Services.Navigation
                 Debug.LogWarning(error.ToString());
             }
         }
-        
+
+        public INavigable GetModel<TEnum>(TEnum enumValue) where TEnum : Enum
+        {
+            if (Enum.TryParse(enumValue.ToString(), out BoomerangTypes boomerangType ))
+            {
+                if (_boomerangTypesConfig.TryGetBoomerangModel(boomerangType, out var boomerangModel))
+                {
+                    return boomerangModel;
+                }
+            }
+
+            return null;
+        }
+
+        public bool CanHandle<TEnum>(TEnum enumValue) where TEnum : Enum
+        {
+            return typeof(TEnum) == typeof(BoomerangTypes);
+        }
+
         public bool CanHandle(INavigable navigable)
         {
             return navigable is BoomerangModel && _boomerangTypesConfig.Contains(navigable);

@@ -7,6 +7,9 @@ namespace Urd.Services
     {
         public event Action<INavigable> OnFinishLoadNavigable;
 
+        public TNavigable GetModel<TEnum, TNavigable>(TEnum enumValue, Action<bool> onOpenNavigableCallback)
+            where TEnum : Enum where TNavigable : class, INavigable;
+
         void Open(INavigable navigable, Action<bool> onOpenNavigableCallback = null);
         bool IsOpen(INavigable navigable);
         void Close(INavigable navigable, Action<bool> onCloseNavigableCallback = null);

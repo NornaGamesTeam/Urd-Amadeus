@@ -138,6 +138,10 @@ namespace Urd.Services
 
             var scene = SceneManager.GetSceneByBuildIndex(sceneModel.BuildIndex);
             sceneModel.SetScene(scene);
+            if (sceneModel.SetAsActiveScene)
+            {
+                SceneManager.SetActiveScene(scene);
+            }
             onLoadSceneCallback.Invoke(sceneModel);
         }
 

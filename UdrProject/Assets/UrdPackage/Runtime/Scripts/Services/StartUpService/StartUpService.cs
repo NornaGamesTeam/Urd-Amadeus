@@ -11,14 +11,16 @@ namespace Urd.Services
     public class StartUpService : BaseService, IStartUpService
     {
         private const string STARTUP_CONFIG_FILE_PATH = "Services/StartUpConfig";
-        
+
         private int _totalElements;
         private List<IBaseService> _allServicesToStartUp;
-        
+
         private IStartUpService _startUpService;
-        public float LoadingFactor => (_allServicesToStartUp.FindAll(service => service.InitBegins).Count 
-                                      + _allServicesToStartUp.FindAll(service => service.IsLoaded).Count)
-                                      /(_totalElements*2.0f);
+
+        public float LoadingFactor => (_allServicesToStartUp.FindAll(service => service.InitBegins).Count
+                                       + _allServicesToStartUp.FindAll(service => service.IsLoaded).Count)
+                                      / (_totalElements * 2.0f);
+
         public event Action<float> OnLoadingFactorChanged;
 
         private readonly ServiceHelper<INavigationService> _navigationService = new ServiceHelper<INavigationService>();
@@ -31,6 +33,7 @@ namespace Urd.Services
                 SceneManager.sceneLoaded += OnSceneLoaded;
                 return;
             }
+
             InitStartUpService();
         }
 
@@ -47,7 +50,7 @@ namespace Urd.Services
         {
             var startUpService = AssemblyHelper.GetClassTypesThatImplement<IStartUpService>();
             var startUpInstance = Activator.CreateInstance(startUpService[0]) as StartUpService;
-            
+
             var serviceLocator = new ServiceLocator();
             serviceLocator.Register<IStartUpService>(startUpInstance);
         }
@@ -55,7 +58,7 @@ namespace Urd.Services
         public override void Init()
         {
             base.Init();
-            
+
             InstantiateServices();
             InitICoroutine();
             ServiceLocatorService.Get<ICoroutineService>().StartCoroutine(CheckRemainingClassesCo());
@@ -64,7 +67,9 @@ namespace Urd.Services
 
         private void InitICoroutine()
         {
-            ICoroutineService coroutineService = _allServicesToStartUp.Find(service => service.GetType().ToString().Contains("oroutine")) as ICoroutineService;
+            ICoroutineService coroutineService =
+                _allServicesToStartUp.Find(service => service.GetType().ToString().Contains("oroutine")) as
+                    ICoroutineService;
             ServiceLocatorService.Register<ICoroutineService>(coroutineService);
         }
 
@@ -81,45 +86,51 @@ namespace Urd.Services
             {
                 if (!_allServicesToStartUp[i].InitBegins && _allServicesToStartUp[i].CanBeInitialized())
                 {
-                    ServiceLocatorService.Register(_allServicesToStartUp[i], _allServicesToStartUp[i].GetMainInterface());
+                    ServiceLocatorService.Register(_allServicesToStartUp[i],
+                                                   _allServicesToStartUp[i].GetMainInterface());
                     CallOnLoadingFactorChanged();
                 }
             }
         }
-        
+
         private IEnumerator CheckRemainingClassesCo()
         {
-            while(_allServicesToStartUp.FindAll(service => !service.IsLoaded).Count > 0)
+            while (_allServicesToStartUp.FindAll(service => !service.IsLoaded).Count > 0)
             {
                 yield return 0;
                 StartUpServices();
             }
 
             OnFinishLoadServices();
-            
+
         }
 
         private void OnFinishLoadServices()
         {
             CallOnLoadingFactorChanged();
             SetAsLoaded();
-            
+
             _navigationService.Service.Close(new SceneModel(SceneTypes.LoadingGame), OnCloseLoadingScene);
         }
 
         private void OnCloseLoadingScene(bool obj)
         {
-            _navigationService.Service.Open(new SceneModel(SceneTypes.MainMenu));
+            var sceneModel = new SceneModel(SceneTypes.MainMenu);
+            sceneModel.SetAsActiveSceneAfterOpen(true);
+
+            _navigationService.Service.Open(sceneModel);
         }
 
         private void CallOnLoadingFactorChanged()
         {
             OnLoadingFactorChanged?.Invoke(LoadingFactor);
         }
-        
+
         private void OnInitializeNavigationService()
         {
-            _navigationService.Service.Open(new SceneModel(SceneTypes.LoadingGame));
+            var sceneModel = new SceneModel(SceneTypes.LoadingGame);
+            sceneModel.SetAsActiveSceneAfterOpen(true);
+            _navigationService.Service.Open(sceneModel);
         }
     }
 }

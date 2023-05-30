@@ -4,6 +4,7 @@ namespace Urd.Boomerang
     {
         None,
         Info,
+        HitDamage,
         Size,
     }
 }

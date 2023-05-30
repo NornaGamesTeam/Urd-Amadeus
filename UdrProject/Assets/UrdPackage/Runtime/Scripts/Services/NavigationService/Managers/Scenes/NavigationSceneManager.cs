@@ -34,6 +34,21 @@ namespace Urd.Services.Navigation
             
         }
 
+        public INavigable GetModel<TEnum>(TEnum enumValue) where TEnum : Enum
+        {
+            if (Enum.TryParse(enumValue.ToString(), out SceneTypes sceneType))
+            {
+                return new SceneModel(sceneType);
+            }
+
+            return null;
+        }
+
+        public bool CanHandle<TEnum>(TEnum enumValue) where TEnum : Enum
+        {
+            return typeof(TEnum) == typeof(SceneTypes);
+        }
+        
         public bool CanHandle(INavigable navigable)
         {
             return navigable is SceneModel;

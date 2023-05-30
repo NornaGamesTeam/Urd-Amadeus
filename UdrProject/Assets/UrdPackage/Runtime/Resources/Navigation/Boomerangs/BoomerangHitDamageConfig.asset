@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef0e23806648ad48b6a6936cfc53452, type: 3}
+  m_Name: BoomerangHitDamageConfig
+  m_EditorClassIdentifier: 
+  <BoomerangModel>k__BackingField:
+    rid: 4760201052173107202
+  <BoomerangView>k__BackingField: {fileID: -4509024430258238316, guid: fd12a7e0af4374e46a356c516ceeebba, type: 3}
+  <BoomerangController>k__BackingField:
+    rid: 4760201052173107203
+  references:
+    version: 2
+    RefIds:
+    - rid: 4760201052173107202
+      type: {class: BoomerangHitDamageModel, ns: Urd.Boomerang, asm: Udr}
+      data:
+        <BoomerangType>k__BackingField: 2
+        <Duration>k__BackingField: 0.5
+    - rid: 4760201052173107203
+      type: {class: BoomerangHitDamageController, ns: Urd.Boomerang, asm: Udr}
+      data:
+        <BoomerangBody>k__BackingField: {fileID: 2240053135913471757, guid: 39e3bd0d8e9d7c543b6a1f39264b62f3, type: 3}

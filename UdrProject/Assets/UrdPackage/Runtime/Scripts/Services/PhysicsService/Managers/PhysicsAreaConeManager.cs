@@ -27,7 +27,7 @@ namespace Urd.Services.Physics
                 {
                     var raycastHit2D = Physics2D.Raycast(originPoint, dirToTarget, areaConeShapeModel.Distance, 
                                                          hitModel.LayerMask.ToLayer());
-                    if (raycastHit2D != null)
+                    if (raycastHit2D.collider != null)
                     {
                         hitModel.AddCollision(targets[i]);
                     }

@@ -22,7 +22,7 @@ namespace Urd.Services.Navigation
         private List<PopupBodyView> _popupsOpened = new List<PopupBodyView>();
             
         public bool IsInitialized { get; private set; }
-
+        
         public NavigationPopupManager()
         {
         }
@@ -38,6 +38,21 @@ namespace Urd.Services.Navigation
         public void Dispose()
         {
             
+        }
+        
+        public INavigable GetModel<TEnum>(TEnum enumValue) where TEnum : Enum
+        {
+            if (Enum.TryParse(enumValue.ToString(), out PopupTypes popupType))
+            {
+                return new PopupModel(popupType);
+            }
+
+            return null;
+        }
+
+        public bool CanHandle<TEnum>(TEnum enumValue) where TEnum : Enum
+        {
+            return typeof(TEnum) == typeof(PopupTypes);
         }
         
         private void LoadParent()

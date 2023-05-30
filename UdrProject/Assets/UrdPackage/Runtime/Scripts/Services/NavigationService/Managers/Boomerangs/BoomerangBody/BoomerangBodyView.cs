@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Urd.Boomerang;
 using Urd.Services;
@@ -7,7 +6,7 @@ using Urd.Utils;
 
 namespace Urd.View.Boomerang
 {
-    public class BoomerangBodyView : MonoBehaviour
+    public abstract class BoomerangBodyView : MonoBehaviour
     {
         public IBoomerangView BoomerangView { get; private set; }
         public BoomerangModel BoomerangModel => BoomerangView?.BoomerangModel;
