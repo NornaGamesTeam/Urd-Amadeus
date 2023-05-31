@@ -25,13 +25,13 @@ MonoBehaviour:
       data:
         <BoomerangType>k__BackingField: 2
         <FadeInTime>k__BackingField: 0.1
-        <FadeInEase>k__BackingField: 1
-        <Duration>k__BackingField: 0.3
-        <FadeOutTime>k__BackingField: 3
-        <FadeOutEase>k__BackingField: 1
-        <Speed>k__BackingField: 6
+        <FadeInEase>k__BackingField: 9
+        <Duration>k__BackingField: 0.2
+        <FadeOutTime>k__BackingField: 0.2
+        <FadeOutEase>k__BackingField: 8
+        <Speed>k__BackingField: 5
         <TextColor>k__BackingField: {r: 0.7735849, g: 0, b: 0, a: 1}
-        <AnimationEase>k__BackingField: 1
+        <AnimationEase>k__BackingField: 9
         <Damage>k__BackingField: 0
         <OriginPoint>k__BackingField: {x: 0, y: 0}
     - rid: 4760201052173107203
