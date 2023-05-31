@@ -11,6 +11,7 @@ namespace Urd.Character.Skill
         ISkillController Controller { get; }
         bool IsActive { get; }
         float Duration { get; }
+        float CoolDown { get; }
         public ISkillAnimationModel SkillAnimationModel { get; }
         public TimerModel TimerModel { get; }
         void SetConfig(SkillConfig defaultSkillConfig);

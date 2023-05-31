@@ -21,7 +21,7 @@ MonoBehaviour:
   <Type>k__BackingField: 1
   <SkillAnimationModel>k__BackingField:
     rid: 4760200848147742725
-  <CoolDown>k__BackingField: 0.01
+  <CoolDown>k__BackingField: 3
   <Duration>k__BackingField: 0.2
   <Distance>k__BackingField: 3
   references:
