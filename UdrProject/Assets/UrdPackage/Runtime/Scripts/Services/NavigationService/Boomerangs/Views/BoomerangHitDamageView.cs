@@ -12,7 +12,8 @@ namespace Urd.Boomerang
         protected override void OnBeginOpen()
         {
             base.OnBeginOpen();
-            _text.text = $"+{Model.Damage}";
+            _text.text = $"{Model.Damage}";
+            _text.color = Model.TextColor;
         }
     }
 }

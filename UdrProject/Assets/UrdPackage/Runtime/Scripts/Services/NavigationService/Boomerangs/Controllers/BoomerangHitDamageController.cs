@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Urd.Boomerang
@@ -6,6 +7,8 @@ namespace Urd.Boomerang
     [Serializable]
     public class BoomerangHitDamageController: BoomerangController<BoomerangHitDamageModel>
     {
+        private Tween _tweenAnimation;
+        
         public override void Open()
         {
             base.Open();
@@ -16,18 +19,16 @@ namespace Urd.Boomerang
         private void InitAnim()
         {
             BoomerangBody.transform.position = BoomerangModel.OriginPoint;
-            _clockService.Service.SubscribeToUpdate(CustomUpdate);
-        }
-
-        private void CustomUpdate(float deltaTime)
-        {
-            BoomerangBody.transform.position += Vector3.up * deltaTime * BoomerangModel.Speed;
+            
+            _tweenAnimation = BoomerangBody.transform.DOMoveY(BoomerangModel.Speed * BoomerangModel.TotalDuration, BoomerangModel.TotalDuration)
+                                           .SetEase(BoomerangModel.AnimationEase);
         }
 
         protected override void OnClose()
         {
+            _tweenAnimation.Complete();
+            
             base.OnClose();
-            _clockService.Service.UnSubscribeToUpdate(CustomUpdate);
         }
     }
 }

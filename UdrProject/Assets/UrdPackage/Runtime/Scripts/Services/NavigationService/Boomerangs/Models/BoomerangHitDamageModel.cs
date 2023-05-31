@@ -1,5 +1,7 @@
 using System;
+using DG.Tweening;
 using MyBox;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Urd.Boomerang
@@ -7,8 +9,13 @@ namespace Urd.Boomerang
     [Serializable]
     public class BoomerangHitDamageModel : BoomerangModel
     {
-        [field: SerializeField]
+        [field: Header("Hit Damage Model"), SerializeField]
         public float Speed { get; private set; }
+        
+        [field: SerializeField]
+        public Color TextColor { get; private set; }
+        [field: SerializeField]
+        public Ease AnimationEase { get; private set; }
         
         [field: SerializeField, ReadOnly]
         public float Damage { get; private set; }
@@ -22,6 +29,8 @@ namespace Urd.Boomerang
         public BoomerangHitDamageModel(BoomerangHitDamageModel boomerangModel) : base(boomerangModel)
         {
             Speed = boomerangModel.Speed;
+            TextColor = boomerangModel.TextColor;
+            AnimationEase = boomerangModel.AnimationEase;
         }
 
         public void SetDamage(float newDamage)
@@ -33,5 +42,7 @@ namespace Urd.Boomerang
         {
             OriginPoint = originPoint;
         }
+
+      
     }
 }
