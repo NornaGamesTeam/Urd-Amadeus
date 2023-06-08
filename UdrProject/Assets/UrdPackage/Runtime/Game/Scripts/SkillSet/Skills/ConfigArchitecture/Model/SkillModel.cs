@@ -1,6 +1,7 @@
 using System;
 using Urd.Game.SkillTrees;
 using Urd.Timer;
+using Urd.UI;
 
 namespace Urd.Character.Skill
 {
@@ -19,6 +20,7 @@ namespace Urd.Character.Skill
         public ISkillAnimationModel SkillAnimationModel => _skillConfig?.SkillAnimationModel;
         public bool IsActive { get; private set; }
         public TimerModel TimerModel { get; private set; }
+        public UISkillConfig UISkillConfig => _skillConfig?.UISkillConfig;
 
         public SkillModel() { }
         

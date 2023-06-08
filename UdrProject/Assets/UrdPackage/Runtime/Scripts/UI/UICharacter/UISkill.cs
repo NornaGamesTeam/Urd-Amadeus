@@ -19,19 +19,7 @@ namespace Urd.UI
         
         private ISkillModel _skillModel;
 
-        // move this to a scriptable
-        private Color _backgroundDefaultColor;
-        private Color _coolDownAreaDefaultColor;
-
         private bool _isActive;
-        
-        protected virtual void Awake()
-        {
-            _backgroundDefaultColor = _background.color;
-            _coolDownAreaDefaultColor= _coolDownArea.color;
-            
-            EnableSkill(true);
-        }
 
         public virtual void SetCharacterModel(CharacterModel characterModel)
         {
@@ -39,13 +27,19 @@ namespace Urd.UI
 
             _characterModel.SkillSetModel.OnSkillAction += OnSkillAction;
             _characterModel.SkillSetModel.OnIsSkill += OnIsSkill;
-            EnableSkill(true);
-
         }
 
         public void SetSkill(ISkillModel skillModel)
         {
             _skillModel = skillModel;
+            Init();
+        }
+        
+        private void Init()
+        {
+            _coolDownArea.sprite = _skillModel.UISkillConfig.Image;
+            _background.sprite = _skillModel.UISkillConfig.BackgroundImage;
+            EnableSkill(true);
         }
 
         private void OnSkillAction(ISkillModel skill)
@@ -67,15 +61,17 @@ namespace Urd.UI
 
         private void EnableSkill(bool enable)
         {
-            _background.color = enable? _backgroundDefaultColor : Color.gray;
-            _coolDownArea.color = enable? _coolDownAreaDefaultColor : Color.gray;
+            _background.color = enable? _skillModel.UISkillConfig.BackgroundColor :_skillModel.UISkillConfig.BackgroundColorCoolDown;
+            _coolDownArea.color = enable? _skillModel.UISkillConfig.ImageColor : _skillModel.UISkillConfig.ImageColorCoolDown;
             _coolDownArea.fillAmount = enable?1:0;
         }
 
         private void BeginCooldown()
         {
             _isActive = false;
-            _coolDownArea.DOFillAmount(1, _skillModel.CoolDown).onComplete += OnCoolDownFinish;
+            _coolDownArea.DOFillAmount(1, _skillModel.CoolDown).
+                          SetEase(_skillModel.UISkillConfig.AnimationEase)
+                          .onComplete += OnCoolDownFinish;
         }
 
         private void OnCoolDownFinish()

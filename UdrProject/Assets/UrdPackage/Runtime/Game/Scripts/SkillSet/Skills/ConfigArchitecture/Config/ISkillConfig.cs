@@ -1,3 +1,5 @@
+using Urd.UI;
+
 namespace Urd.Game.SkillTrees
 {
     public interface ISkillConfig
@@ -5,5 +7,6 @@ namespace Urd.Game.SkillTrees
         SkillType Type { get; }
         float Duration { get; }
         ISkillAnimationModel SkillAnimationModel { get; }
+        UISkillConfig UISkillConfig { get; }
     }
 }
