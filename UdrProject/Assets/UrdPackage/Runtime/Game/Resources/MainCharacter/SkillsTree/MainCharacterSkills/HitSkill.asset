@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9c2a987d8e0e6d4086229d1bcdde5cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a003c97f47e28748a1427d3cfc5cbd6, type: 3}
   m_Name: HitSkill
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Hit
@@ -23,7 +23,6 @@ MonoBehaviour:
     rid: 4760201029302091788
   <CoolDown>k__BackingField: 0.1
   <Duration>k__BackingField: 0.3
-  <Distance>k__BackingField: 0
   references:
     version: 2
     RefIds:
