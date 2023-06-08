@@ -19,7 +19,10 @@ namespace Urd.Character
         public ISkillModel HitSkillModel { get; private set; }
 
         public bool IsHit { get; private set; }
+
         public event Action<bool, Vector2, ISkillModel> OnIsHit;
+        
+        public bool IsFull => HitPoints >= MaxHitPoints;
         
         public CharacterHitPointsModel(CharacterConfig characterConfig)
         {

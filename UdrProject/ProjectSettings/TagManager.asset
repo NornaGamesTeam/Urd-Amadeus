@@ -62,6 +62,9 @@ TagManager:
   - name: Character
     uniqueID: 514754175
     locked: 0
+  - name: WorldUI
+    uniqueID: 3146680203
+    locked: 0
   - name: Visual Effect
     uniqueID: 2785151777
     locked: 0

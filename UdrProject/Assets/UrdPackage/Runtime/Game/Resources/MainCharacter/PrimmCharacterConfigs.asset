@@ -18,3 +18,4 @@ MonoBehaviour:
   <DefaultSkillConfigs>k__BackingField:
   - {fileID: 11400000, guid: dd39982a41ac0a142aafc008decad43b, type: 2}
   <SkillTreeConfig>k__BackingField: {fileID: 11400000, guid: 363fd3d731479d54d954476eb740dce9, type: 2}
+  <UICharacterConfig>k__BackingField: {fileID: 11400000, guid: b992e6025a9884543ac9595f3044e2e9, type: 2}

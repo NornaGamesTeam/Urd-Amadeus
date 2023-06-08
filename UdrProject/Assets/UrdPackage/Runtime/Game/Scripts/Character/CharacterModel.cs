@@ -1,14 +1,16 @@
 using MyBox;
 using UnityEngine;
 using Urd.Character.Skill;
-using Urd.Game.SkillTrees;
 using Urd.Models;
+using Urd.UI;
 
 namespace Urd.Character
 {
     [System.Serializable]
     public class CharacterModel
     {
+        public UICharacterConfig UICharacterConfig => _characterConfig?.UICharacterConfig;
+        
         [field: SerializeField, ReadOnly]
         public CharacterHitPointsModel HitPointsModel { get; private set; }
         
@@ -19,6 +21,7 @@ namespace Urd.Character
         public SkillSetModel SkillSetModel { get; private set; }
 
         private CharacterConfig _characterConfig;
+        
 
         public CharacterModel(CharacterConfig characterConfig)
         {

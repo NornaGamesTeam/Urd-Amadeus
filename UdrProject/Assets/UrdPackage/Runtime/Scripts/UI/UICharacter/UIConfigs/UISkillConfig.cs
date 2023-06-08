@@ -4,7 +4,7 @@ using Urd.Utils;
 
 namespace Urd.UI
 {
-    [CreateAssetMenu(fileName = "NewDodgeSkill", menuName = "Urd/UI/UISkill", order = 1)]
+    [CreateAssetMenu(fileName = "NewDodgeSkill", menuName = "Urd/UI/UISkillConfig", order = 1)]
 
     public class UISkillConfig : ScriptableObject
     {
