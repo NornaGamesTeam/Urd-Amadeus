@@ -1,6 +1,12 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Urd.Services.Localization;
 
 namespace Urd.Services
@@ -8,50 +14,29 @@ namespace Urd.Services
     [Serializable]
     public class LocalizationService : BaseService, ILocalizationService
     {
-        public LocalizationLanguages Language { get; private set; }
+        private const string MAIN_TABLE_REFERENCE = "MainTable";
+            
+        public CultureInfo Language { get; }
 
         private IEventBusService _eventBusService;
-
-        private Dictionary<string, string> _localizationKeys = new Dictionary<string, string>();
-        [SerializeReference, SubclassSelector]
-        private ILocalizationKeysProvider _localizationKeysProvider;
-
+        
         public override void Init()
         {
             base.Init();
 
-            _eventBusService = ServiceLocatorService.Get<IEventBusService>();
-
             LoadLanguage();
-            SetDefaultProvider();
+            _eventBusService = ServiceLocatorService.Get<IEventBusService>();
         }
         private void LoadLanguage()
         {
-            // TODO load last language and if not, read the device one
-            Language = LocalizationLanguages.English;
+            var initializationOperation = LocalizationSettings.InitializationOperation;
+            initializationOperation.Completed += OnInitializeLocalization;
         }
 
-        private void SetDefaultProvider()
+        private void OnInitializeLocalization(AsyncOperationHandle<LocalizationSettings> task)
         {
-            SetProvider(new RemoteConfigurationLocalizationKeyProvider());
-        }
-
-        public void SetProvider(ILocalizationKeysProvider localizationKeysProvider)
-        {
-            _localizationKeysProvider = localizationKeysProvider;
-            _localizationKeysProvider.GetLocalization(Language, OnLoadLocalization);
-        }
-
-        private void OnLoadLocalization(Dictionary<string, string> localizationKeys)
-        {
-            SetLocalizationKeysValues(localizationKeys);
             SetAsLoaded();
-        }
-
-        private void SetLocalizationKeysValues(Dictionary<string, string> localizationKeys)
-        {
-            _localizationKeys = localizationKeys;
-
+            
             _eventBusService.Send(new EventOnLocalizationChanged());
         }
 
@@ -63,15 +48,13 @@ namespace Urd.Services
 
         public bool TryLocate(string key, out string value)
         {
-            if(!_localizationKeys.TryGetValue(key, out value))
+            var stringReference = new LocalizedString()
             {
-                value = key;
-                Debug.LogWarning($"[LocalizationService] The key {key} is not in the dictionary");
-                return false;
-            }
-
-            
-            return true;
+                TableReference = MAIN_TABLE_REFERENCE,
+                TableEntryReference = key,
+            };
+            value = stringReference.GetLocalizedString();
+            return !string.IsNullOrWhiteSpace(value);
         }
     }
 }

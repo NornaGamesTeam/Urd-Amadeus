@@ -10,10 +10,9 @@ namespace Urd.Test
     public class TestLocalizationService
     {
         private ILocalizationService _localizationService;
-        private ILocalizationKeysProvider _testDummyLocalizationProvider;
 
-        public const string ArbitrarySuccessKey = "SUCCESS_KEY";
-        public const string ArbitraryValue = "Success";
+        public const string ArbitrarySuccessKey = "ACCEPT_KEY";
+        public const string ArbitraryValue = "accept";
         public const string ArbitraryWrongKey = "WRONG_KEY";
 
         [SetUp]
@@ -30,9 +29,6 @@ namespace Urd.Test
             _localizationService = new LocalizationService();
             _localizationService.SetServiceLocatorService(serviceLocator);
             serviceLocator.Register<ILocalizationService>(_localizationService);
-
-            _testDummyLocalizationProvider = new TestDummyLocalizationProvider();
-            _localizationService.SetProvider(_testDummyLocalizationProvider);
         }
 
         [Test]
@@ -55,17 +51,6 @@ namespace Urd.Test
             }
 
             Assert.That(stringValue, Is.EqualTo(ArbitraryWrongKey));
-        }
-
-        protected class TestDummyLocalizationProvider : ILocalizationKeysProvider
-        {
-            public void GetLocalization(LocalizationLanguages language, Action<Dictionary<string, string>> localizationKeyValuesCallback)
-            {
-                var arbitraryProviderKeyValues = new Dictionary<string, string>();
-                arbitraryProviderKeyValues.Add(ArbitrarySuccessKey, ArbitraryValue);
-
-                localizationKeyValuesCallback?.Invoke(arbitraryProviderKeyValues);
-            }
         }
     }
 }
