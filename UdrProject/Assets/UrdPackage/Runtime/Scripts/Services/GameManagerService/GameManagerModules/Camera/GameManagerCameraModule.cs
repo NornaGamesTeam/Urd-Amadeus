@@ -1,9 +1,10 @@
 using Urd.Game.Camera;
 using Urd.Scene;
+using Urd.Services;
 using Urd.Services.Navigation;
 using Urd.Utils;
 
-namespace Urd.Services
+namespace Urd.GameManager
 {
     public class GameManagerCameraModule
     {

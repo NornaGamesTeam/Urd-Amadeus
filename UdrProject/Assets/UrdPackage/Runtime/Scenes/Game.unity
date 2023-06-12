@@ -12214,10 +12214,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3597452592247431031, guid: 44e3c36d152c3af4ebc86edc821eb0e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597452592247431031, guid: 44e3c36d152c3af4ebc86edc821eb0e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597452593046211005, guid: 44e3c36d152c3af4ebc86edc821eb0e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3597452593503246964, guid: 44e3c36d152c3af4ebc86edc821eb0e2, type: 3}
       propertyPath: _characterController
       value: 
       objectReference: {fileID: 2108786525}
+    - target: {fileID: 3597452593503246965, guid: 44e3c36d152c3af4ebc86edc821eb0e2, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597452593503246965, guid: 44e3c36d152c3af4ebc86edc821eb0e2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597452593503246965, guid: 44e3c36d152c3af4ebc86edc821eb0e2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597452593503246965, guid: 44e3c36d152c3af4ebc86edc821eb0e2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597452593503246965, guid: 44e3c36d152c3af4ebc86edc821eb0e2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30
+      objectReference: {fileID: 0}
     - target: {fileID: 3597452593609392200, guid: 44e3c36d152c3af4ebc86edc821eb0e2, type: 3}
       propertyPath: m_Name
       value: GameUI
