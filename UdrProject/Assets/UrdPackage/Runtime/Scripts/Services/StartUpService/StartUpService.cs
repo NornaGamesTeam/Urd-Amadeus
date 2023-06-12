@@ -61,8 +61,8 @@ namespace Urd.Services
 
             InstantiateServices();
             InitICoroutine();
-            ServiceLocatorService.Get<ICoroutineService>().StartCoroutine(CheckRemainingClassesCo());
             _navigationService.OnInitialize += OnInitializeNavigationService;
+            ServiceLocatorService.Get<ICoroutineService>().StartCoroutine(CheckRemainingClassesCo());
         }
 
         private void InitICoroutine()
@@ -101,8 +101,8 @@ namespace Urd.Services
                 StartUpServices();
             }
 
+            yield return 0;
             OnFinishLoadServices();
-
         }
 
         private void OnFinishLoadServices()

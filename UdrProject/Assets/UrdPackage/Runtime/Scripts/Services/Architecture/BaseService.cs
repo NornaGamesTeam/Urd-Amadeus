@@ -7,7 +7,7 @@ namespace Urd.Services
     public abstract class BaseService : IBaseService
     {
         public bool InitBegins { get; protected set; }
-        public bool IsLoaded { get; protected set; }
+        public bool IsLoaded { get; protected set; } = false;
         public event Action OnServiceFinishLoad;
         
         public IServiceLocator ServiceLocatorService { get; private set; }
@@ -15,6 +15,7 @@ namespace Urd.Services
         public virtual void Init()
         {
             InitBegins = true;
+            IsLoaded = false;
         }
 
         public Type GetMainInterface()

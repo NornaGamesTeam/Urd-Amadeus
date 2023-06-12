@@ -24,8 +24,9 @@ namespace Urd.Services
         {
             base.Init();
 
-            LoadLanguage();
-            _eventBusService = ServiceLocatorService.Get<IEventBusService>();
+            //_eventBusService = ServiceLocatorService.Get<IEventBusService>();
+            SetAsLoaded();
+            //LoadLanguage();
         }
         private void LoadLanguage()
         {

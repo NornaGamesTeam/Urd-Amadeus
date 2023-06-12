@@ -13,112 +13,107 @@ MonoBehaviour:
   m_Name: StartUpConfig
   m_EditorClassIdentifier: 
   <ListOfServices>k__BackingField:
-  - rid: 4760200873497592006
-  - rid: 4760200873497592007
-  - rid: 4760200873497592008
-  - rid: 4760200873497592009
-  - rid: 4760200873497592010
-  - rid: 4760200873497592011
-  - rid: 4760200873497592012
-  - rid: 4760200873497592013
-  - rid: 4760200873497592014
-  - rid: 4760200873497592015
-  - rid: 4760200873497592016
-  - rid: 4760200873497592017
-  - rid: 4760200873497592018
-  - rid: 4760200873497592019
-  - rid: 4760200873497592020
-  - rid: 4760200873497592021
-  - rid: 4760200873497592023
-  - rid: 4760200873497592005
+  - rid: 4932070783904383022
+  - rid: 4932070783904383023
+  - rid: 4932070783904383024
+  - rid: 4932070783904383025
+  - rid: 4932070783904383026
+  - rid: 4932070783904383027
+  - rid: 4932070783904383028
+  - rid: 4932070783904383029
+  - rid: 4932070783904383030
+  - rid: 4932070783904383031
+  - rid: 4932070783904383032
+  - rid: 4932070783904383033
+  - rid: 4932070783904383034
+  - rid: 4932070783904383035
+  - rid: 4932070783904383036
+  - rid: 4932070783904383037
+  - rid: 4932070783904383038
+  - rid: 4932070783904383040
   <BaseServices2>k__BackingField: []
   references:
     version: 2
     RefIds:
-    - rid: 4760200873497592005
+    - rid: 4932070783904383022
       type: {class: GameManagerService, ns: Urd.Game, asm: Udr}
-    - rid: 4760200873497592006
+    - rid: 4932070783904383023
       type: {class: AdsService, ns: Urd.Services, asm: Udr}
       data:
         _adsServiceProvider:
-          rid: 4760200873497592025
-    - rid: 4760200873497592007
+          rid: 4932070783904383042
+    - rid: 4932070783904383024
       type: {class: AssetService, ns: Urd.Services, asm: Udr}
-    - rid: 4760200873497592008
+    - rid: 4932070783904383025
       type: {class: AudioService, ns: Urd.Services, asm: Udr}
       data:
         _audioProvider:
-          rid: 4760200873497592037
-    - rid: 4760200873497592009
+          rid: 4932070783904383044
+    - rid: 4932070783904383026
       type: {class: CacheService, ns: Urd.Services, asm: Udr}
-    - rid: 4760200873497592010
+    - rid: 4932070783904383027
       type: {class: ClockService, ns: Urd.Services, asm: Udr}
-    - rid: 4760200873497592011
+    - rid: 4932070783904383028
       type: {class: CoroutineService, ns: Urd.Services, asm: Udr}
-    - rid: 4760200873497592012
+    - rid: 4932070783904383029
       type: {class: EventBusService, ns: Urd.Services, asm: Udr}
-    - rid: 4760200873497592013
+    - rid: 4932070783904383030
       type: {class: InAppPurchaseService, ns: Urd.Services, asm: Udr}
       data:
         _provider:
-          rid: 4760200873497592033
-    - rid: 4760200873497592014
+          rid: 4932070783904383045
+    - rid: 4932070783904383031
       type: {class: InputService, ns: Urd.Services, asm: Udr}
-    - rid: 4760200873497592015
+    - rid: 4932070783904383032
       type: {class: LiveOpsService, ns: Urd.Services, asm: Udr}
       data:
         _liveOpsProvider:
-          rid: 4760200873497592034
-    - rid: 4760200873497592016
+          rid: 4932070783904383046
+    - rid: 4932070783904383033
       type: {class: LocalizationService, ns: Urd.Services, asm: Udr}
-      data:
-        _localizationKeysProvider:
-          rid: 4760200873497592036
-    - rid: 4760200873497592017
+    - rid: 4932070783904383034
       type: {class: NavigationService, ns: Urd.Services, asm: Udr}
       data:
         _navigationManagers:
-        - rid: 4760200873497592029
-        - rid: 4760200873497592028
-        - rid: 4760200873497592027
-    - rid: 4760200873497592018
+        - rid: 4932070783904383047
+        - rid: 4932070783904383049
+        - rid: 4932070783904383048
+    - rid: 4932070783904383035
       type: {class: NetworkService, ns: Urd.Services, asm: Udr}
-    - rid: 4760200873497592019
+    - rid: 4932070783904383036
       type: {class: PhysicsService, ns: Urd.Services, asm: Udr}
       data:
         _shapeManager:
-        - rid: 4760200873497592030
-        - rid: 4760200873497592031
-    - rid: 4760200873497592020
+        - rid: 4932070783904383050
+        - rid: 4932070783904383051
+    - rid: 4932070783904383037
       type: {class: PoolService, ns: Urd.Services, asm: Udr}
-    - rid: 4760200873497592021
+    - rid: 4932070783904383038
       type: {class: RemoteConfigurationService, ns: Urd.Services, asm: Udr}
       data:
         _provider:
-          rid: 4760200873497592032
-    - rid: 4760200873497592023
+          rid: 4932070783904383052
+    - rid: 4932070783904383040
       type: {class: UnityService, ns: Urd.Services, asm: Udr}
-    - rid: 4760200873497592025
+    - rid: 4932070783904383042
       type: {class: AdsServiceProviderAdMob, ns: Urd.Services.Ads, asm: Udr}
       data:
         _adMobSettings: {fileID: 11400000, guid: 51849b33b277ab34a85ce1ff8c674526, type: 2}
-    - rid: 4760200873497592027
-      type: {class: NavigationBoomerangManager, ns: Urd.Services.Navigation, asm: Udr}
-    - rid: 4760200873497592028
-      type: {class: NavigationPopupManager, ns: Urd.Services.Navigation, asm: Udr}
-    - rid: 4760200873497592029
-      type: {class: NavigationSceneManager, ns: Urd.Services.Navigation, asm: Udr}
-    - rid: 4760200873497592030
-      type: {class: PhysicsAreaBoxManager, ns: Urd.Services.Physics, asm: Udr}
-    - rid: 4760200873497592031
-      type: {class: PhysicsAreaConeManager, ns: Urd.Services.Physics, asm: Udr}
-    - rid: 4760200873497592032
-      type: {class: RemoteConfigurationProviderUnity, ns: Urd.Services.RemoteConfiguration, asm: Udr}
-    - rid: 4760200873497592033
-      type: {class: InAppPurchaseProviderRemoteConfig, ns: Urd.Services.RemoteConfiguration, asm: Udr}
-    - rid: 4760200873497592034
-      type: {class: LiveOpsProviderForRemoteConfig, ns: Urd.LiveOps, asm: Udr}
-    - rid: 4760200873497592036
-      type: {class: RemoteConfigurationLocalizationKeyProvider, ns: Urd.Services.Localization, asm: Udr}
-    - rid: 4760200873497592037
+    - rid: 4932070783904383044
       type: {class: AudioProviderUnityResources, ns: Urd.Services.Audio, asm: Udr}
+    - rid: 4932070783904383045
+      type: {class: InAppPurchaseProviderRemoteConfig, ns: Urd.Services.RemoteConfiguration, asm: Udr}
+    - rid: 4932070783904383046
+      type: {class: LiveOpsProviderForRemoteConfig, ns: Urd.LiveOps, asm: Udr}
+    - rid: 4932070783904383047
+      type: {class: NavigationBoomerangManager, ns: Urd.Services.Navigation, asm: Udr}
+    - rid: 4932070783904383048
+      type: {class: NavigationPopupManager, ns: Urd.Services.Navigation, asm: Udr}
+    - rid: 4932070783904383049
+      type: {class: NavigationSceneManager, ns: Urd.Services.Navigation, asm: Udr}
+    - rid: 4932070783904383050
+      type: {class: PhysicsAreaBoxManager, ns: Urd.Services.Physics, asm: Udr}
+    - rid: 4932070783904383051
+      type: {class: PhysicsAreaConeManager, ns: Urd.Services.Physics, asm: Udr}
+    - rid: 4932070783904383052
+      type: {class: RemoteConfigurationProviderUnity, ns: Urd.Services.RemoteConfiguration, asm: Udr}
