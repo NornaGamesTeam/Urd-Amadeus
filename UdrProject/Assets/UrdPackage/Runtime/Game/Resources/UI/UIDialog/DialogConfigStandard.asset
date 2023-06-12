@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19e10a0120eceb4dbbc9462be469739, type: 3}
   m_Name: DialogConfigStandard
   m_EditorClassIdentifier: 
-  <TimePerLetter>k__BackingField: 1
-  <Ease>k__BackingField: 0
+  <TimePerLetter>k__BackingField: 0.1
+  <Ease>k__BackingField: 3
