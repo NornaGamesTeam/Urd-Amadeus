@@ -17,7 +17,7 @@ namespace Urd.Game.Camera
         {
             _camera = GetComponent<UnityEngine.Camera>();
                 
-            _gameCameraModel = StaticServiceLocator.Get<IGameManagerService>().GameCameraModel;
+            _gameCameraModel = StaticServiceLocator.Get<IGameManagerService>().CameraModule.GameCameraModel;
             _gameCameraModel.OnPositionChagned += OnGameCameraPositionChanged;
 
             SetUpCamera();
