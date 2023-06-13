@@ -6,7 +6,10 @@ namespace Urd.Timer
     [Serializable]
     public class TimerModel
     {
+        private static int TIMER_MODEL_ID = 0;
+
         public bool IsPausable { get; private set; } = true;
+        public float Id { get; private set; }
         [field: SerializeField]
         public float Duration { get; private set; }
         [field: SerializeField]
@@ -21,10 +24,12 @@ namespace Urd.Timer
 
         public TimerModel(float duration, Action finishCallback, bool isPausable)
         {
+            Id = TIMER_MODEL_ID++;
             Duration = duration;
             FinishCallback = finishCallback;
             IsPausable = isPausable;
         }
+        
 
         private void CallFinishCallback()
         {
@@ -36,7 +41,7 @@ namespace Urd.Timer
             RemainingTime = Duration;
             FinishCallback = finishCallback;
         }
-        
+
         public void DeductTime(float deltaTime)
         {
             RemainingTime -= deltaTime;
@@ -44,6 +49,11 @@ namespace Urd.Timer
             {
                 CallFinishCallback();
             }
+        }
+
+        public void ForceFinish()
+        {
+            DeductTime(RemainingTime);
         }
     }
 }

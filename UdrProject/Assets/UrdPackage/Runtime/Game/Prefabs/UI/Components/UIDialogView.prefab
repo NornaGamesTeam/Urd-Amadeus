@@ -53,6 +53,7 @@ MonoBehaviour:
   _dialogBoxCanvasGroup: {fileID: 7541350166216962482}
   _arrowCanvasGroup: {fileID: 822300616929414243}
   _text: {fileID: 3240271088743121227}
+  _uiDialogViewConfig: {fileID: 11400000, guid: 0903cbc7f0b07fb4a85f2b1690faaf74, type: 2}
 --- !u!1 &3902678448353798077
 GameObject:
   m_ObjectHideFlags: 0

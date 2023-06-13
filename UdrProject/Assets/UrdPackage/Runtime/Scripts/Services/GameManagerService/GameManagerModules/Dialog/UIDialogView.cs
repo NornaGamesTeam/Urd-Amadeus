@@ -16,7 +16,13 @@ namespace Urd.UI.Dialog
         [SerializeField]
         private TextMeshProUGUI _text;
 
+        [SerializeField]
+        private UIDialogViewConfig _uiDialogViewConfig;
+        
         private DialogModel _dialogModel;
+
+        private Tween _tweenDialogBox;
+        private Tween _tweenArrow;
 
         void Start()
         {
@@ -51,22 +57,26 @@ namespace Urd.UI.Dialog
         private void OnChangeVisibleText()
         {
             _text.DOText(_dialogModel.VisibleText, _dialogModel.CurrentTextDuration).SetEase(_dialogModel.Ease).OnComplete(ShowArrow);
+            if (_arrowCanvasGroup.alpha >= 0)
+            {
+                _arrowCanvasGroup.DOFade(0, _uiDialogViewConfig.ArrowFadeOutTime);
+            }
         }
 
         private void ShowDialogBox()
         {
-            _dialogBoxCanvasGroup.DOFade(1, 0.1f);
+            _dialogBoxCanvasGroup.DOFade(1, _uiDialogViewConfig.FadeInTime);
             _dialogBoxCanvasGroup.interactable = true;
             _arrowCanvasGroup.alpha = 0;
         }
         private void ShowArrow()
         {
-            _arrowCanvasGroup.DOFade(1, 0.1f);
+            _arrowCanvasGroup.DOFade(1, _uiDialogViewConfig.ArrowFadeInTime);
         }
         
         private void HideDialogBox(bool forced = false)
         {
-            _dialogBoxCanvasGroup.DOFade(0, forced? 0 : 0.1f);
+            _dialogBoxCanvasGroup.DOFade(0, forced? 0 : _uiDialogViewConfig.FadeOutTime);
             _arrowCanvasGroup.alpha = 0;
             _dialogBoxCanvasGroup.interactable = false;
             _text.text = string.Empty;

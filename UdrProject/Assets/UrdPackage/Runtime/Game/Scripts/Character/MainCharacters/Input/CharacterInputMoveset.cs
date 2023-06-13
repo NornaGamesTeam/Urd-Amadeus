@@ -249,6 +249,56 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""a834127f-ab55-4c12-851b-5de110fbf8ec"",
+            ""actions"": [
+                {
+                    ""name"": ""DialogBox"",
+                    ""type"": ""Button"",
+                    ""id"": ""4eb50f64-7e91-4952-b7b3-90d36f484816"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""976fe291-afc6-4bbc-a1e7-62008f911689"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DialogBox"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68020ac9-6a5c-47c1-9768-b16a80695e15"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DialogBox"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d0f553b-ac85-459c-8c67-9924222b5333"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DialogBox"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -261,6 +311,9 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         m_Character_MousePosition = m_Character.FindAction("MousePosition", throwIfNotFound: true);
         m_Character_GamePadMovement = m_Character.FindAction("GamePadMovement", throwIfNotFound: true);
         m_Character_GamePadAim = m_Character.FindAction("GamePadAim", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_DialogBox = m_UI.FindAction("DialogBox", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -404,6 +457,52 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         }
     }
     public CharacterActions @Character => new CharacterActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+    private readonly InputAction m_UI_DialogBox;
+    public struct UIActions
+    {
+        private @CharacterInputMoveset m_Wrapper;
+        public UIActions(@CharacterInputMoveset wrapper) { m_Wrapper = wrapper; }
+        public InputAction @DialogBox => m_Wrapper.m_UI_DialogBox;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+            @DialogBox.started += instance.OnDialogBox;
+            @DialogBox.performed += instance.OnDialogBox;
+            @DialogBox.canceled += instance.OnDialogBox;
+        }
+
+        private void UnregisterCallbacks(IUIActions instance)
+        {
+            @DialogBox.started -= instance.OnDialogBox;
+            @DialogBox.performed -= instance.OnDialogBox;
+            @DialogBox.canceled -= instance.OnDialogBox;
+        }
+
+        public void RemoveCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUIActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     public interface ICharacterActions
     {
         void OnHorizontalMovement(InputAction.CallbackContext context);
@@ -412,5 +511,9 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         void OnMousePosition(InputAction.CallbackContext context);
         void OnGamePadMovement(InputAction.CallbackContext context);
         void OnGamePadAim(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnDialogBox(InputAction.CallbackContext context);
     }
 }

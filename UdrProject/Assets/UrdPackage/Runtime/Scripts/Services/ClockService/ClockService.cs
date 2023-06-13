@@ -48,11 +48,12 @@ namespace Urd.Services
             }
         }
 
-        public void AddDelayCall(float duration, Action finishCallback, bool pausable = true)
+        public TimerModel AddDelayCall(float duration, Action finishCallback, bool pausable = true)
         {
             var timerModel = new TimerModel(duration, finishCallback, pausable);
             _delayedCalls.Add(timerModel);
             timerModel.BeginTimer(finishCallback);
+            return timerModel;
         }
 
         private IEnumerator UpdateCoroutineCo()

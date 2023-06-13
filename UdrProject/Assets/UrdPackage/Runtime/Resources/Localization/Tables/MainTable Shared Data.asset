@@ -23,6 +23,10 @@ MonoBehaviour:
     m_Key: CANCEL_KEY
     m_Metadata:
       m_Items: []
+  - m_Id: 701805414232064
+    m_Key: TEST_LONG_TEXT
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

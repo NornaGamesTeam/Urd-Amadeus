@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using Urd.Inputs;
 using Urd.Utils;
 
 namespace Urd.Services
@@ -73,6 +74,24 @@ namespace Urd.Services
                 allActions[i].performed -= OnHoldBegin;
                 allActions[i].canceled -= OnHoldEnd;
                 _holdActions.RemoveAll(action => action.InputAction == allActions[i]);
+            }
+        }
+
+        public void ChangeAvailabilityOfActionMap(InputActionMapTypes actionMapType, bool enabled)
+        {
+            for (int i = 0; i < _actions.Count; i++)
+            {
+                if (_actions[i].actionMap.name == actionMapType.ToString())
+                {
+                    if (enabled)
+                    {
+                        _actions[i].actionMap.Enable();
+                    }
+                    else
+                    {
+                        _actions[i].actionMap.Disable();
+                    }
+                }
             }
         }
 

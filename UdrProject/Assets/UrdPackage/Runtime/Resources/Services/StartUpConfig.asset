@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: StartUpConfig
   m_EditorClassIdentifier: 
   <ListOfServices>k__BackingField:
-  - rid: 4932070783904383022
   - rid: 4932070783904383023
   - rid: 4932070783904383024
   - rid: 4932070783904383025
@@ -31,6 +30,7 @@ MonoBehaviour:
   - rid: 4932070783904383037
   - rid: 4932070783904383038
   - rid: 4932070783904383040
+  - rid: 4932070783904383022
   <BaseServices2>k__BackingField: []
   references:
     version: 2

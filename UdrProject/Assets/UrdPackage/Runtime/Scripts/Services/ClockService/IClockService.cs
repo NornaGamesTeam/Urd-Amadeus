@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Urd.Timer;
 
 namespace Urd.Services
 {
@@ -13,7 +14,7 @@ namespace Urd.Services
 
         void SetPause(bool gamePaused);
 
-        void AddDelayCall(float duration, Action finishCallback, bool pausable = true);
+        TimerModel AddDelayCall(float duration, Action finishCallback, bool pausable = true);
 
         /// <summary>
         /// Method for Test propose, do not use!!

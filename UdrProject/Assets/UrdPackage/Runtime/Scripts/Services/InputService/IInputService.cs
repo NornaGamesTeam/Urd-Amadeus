@@ -1,5 +1,6 @@
 using System;
 using UnityEngine.InputSystem;
+using Urd.Inputs;
 
 namespace Urd.Services
 {
@@ -12,5 +13,7 @@ namespace Urd.Services
         void UnsubscribeToActionOnCancel(string actionName, Action<InputAction.CallbackContext> onPerformMethod);
         void SubscribeToActionOnHold(string actionName, Action<InputAction.CallbackContext> onHoldMethod);
         void UnsubscribeToActionOnHold(string actionName, Action<InputAction.CallbackContext> onHoldMethod);
+
+        void ChangeAvailabilityOfActionMap(InputActionMapTypes actionMapType, bool enabled);
     }
 }
