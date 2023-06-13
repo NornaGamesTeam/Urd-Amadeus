@@ -11,7 +11,7 @@ namespace Urd.GameManager
         public GameCameraModel GameCameraModel { get; private set; }
         private GameCameraController _gameCameraController;
 
-        private INavigationService _navigationService;
+        private ServiceHelper<INavigationService> _navigationService = new ServiceHelper<INavigationService>();
 
         public GameManagerCameraModule()
         {
@@ -20,12 +20,22 @@ namespace Urd.GameManager
 
         public void Init()
         {
-
             GameCameraModel = new GameCameraModel();
             _gameCameraController = new GameCameraController(GameCameraModel);
 
-            _navigationService = StaticServiceLocator.Get<INavigationService>();
-            _navigationService.OnFinishLoadNavigable += OnFinishLoadNavigable;
+            if (_navigationService.HasService)
+            {
+                SubscribeToNavigation();
+            }
+            else
+            {
+                _navigationService.OnInitialize += SubscribeToNavigation;
+            }
+        }
+
+        private void SubscribeToNavigation()
+        {
+            _navigationService.Service.OnFinishLoadNavigable += OnFinishLoadNavigable;
         }
 
         private void OnFinishLoadNavigable(INavigable iNavigable)

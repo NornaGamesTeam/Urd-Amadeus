@@ -1,27 +1,47 @@
 using System;
 using MyBox;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Urd.Dialog;
 using Urd.Services;
+using Urd.Timer;
 using Urd.Utils;
 
 namespace Urd.UI.Dialog
 {
     public class DialogController
     {
+        private const string INPUT_DIALOG_BOX_ACTION = "DialogBox";
+
         private DialogModel _dialogModel;
 
-        private IClockService _clockService;
 
         private float _timeStamp;
+
+        private ServiceHelper<IClockService> _clockService = new ServiceHelper<IClockService>();
+        private ServiceHelper<IInputService> _inputService = new ServiceHelper<IInputService>();
+
+        private TimerModel _timerModel;
+        
+        public event Action OnDialogFinished;
         
         public DialogController()
         {
-            _clockService = StaticServiceLocator.Get<IClockService>();
+            SubscribeToUIInput();
         }
 
-        public event Action OnDialogFinished;
-
+        private void SubscribeToUIInput()
+        {
+            if (_inputService.HasService)
+            {
+                _inputService.Service.SubscribeToActionOnPerformed(INPUT_DIALOG_BOX_ACTION, OnUseDialogBox);
+            }
+            else
+            {
+                _inputService.OnInitialize += SubscribeToUIInput;
+            }
+        }
+        
         public void SetDialogModel(DialogModel dialogModel)
         {
             _dialogModel = dialogModel;
@@ -39,11 +59,12 @@ namespace Urd.UI.Dialog
         {
             _dialogModel.SetSubString();
             
-            _clockService.AddDelayCall(_dialogModel.CurrentTextDuration, FinishCurrentText);
+            _timerModel = _clockService.Service.AddDelayCall(_dialogModel.CurrentTextDuration, FinishCurrentText);
         }
 
         private void FinishCurrentText()
         {
+            _timerModel = null;
             _dialogModel.FinishCurrentText();
 
             if (_dialogModel.IsFinished)
@@ -54,9 +75,27 @@ namespace Urd.UI.Dialog
             WaitForInput(ContinueText);
         }
 
+        private void OnUseDialogBox(InputAction.CallbackContext context)
+        {
+            if (_timerModel.IsInCooldown)
+            {
+                _timerModel.ForceFinish();
+                return;
+            }
+
+            if (_dialogModel.IsFinished)
+            {
+                FinishDialog();
+                return;
+            }
+            
+            ContinueText();
+        }
+
+        
         public void WaitForInput(Action onCallback)
         {
-            //onCallback?.Invoke();
+            
         }
 
         private void ContinueText()
