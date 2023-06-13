@@ -89,9 +89,11 @@ namespace Urd.Services
             {
                 if (!IsInPause || !_delayedCalls[i].IsPausable)
                 {
-                    _delayedCalls[i].DeductTime(deltaTime);
-
-                    if (!_delayedCalls[i].IsInCooldown)
+                    if (_delayedCalls[i].IsInCooldown)
+                    {
+                        _delayedCalls[i].DeductTime(deltaTime);
+                    }
+                    else
                     {
                         _delayedCalls.RemoveAt(i);
                     }

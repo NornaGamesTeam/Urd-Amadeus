@@ -1,6 +1,4 @@
 using System;
-using MyBox;
-using UnityEngine;
 using UnityEngine.InputSystem;
 using Urd.Dialog;
 using Urd.Services;
@@ -14,7 +12,6 @@ namespace Urd.UI.Dialog
         private const string INPUT_DIALOG_BOX_ACTION = "DialogBox";
 
         private DialogModel _dialogModel;
-
 
         private float _timeStamp;
 
@@ -51,33 +48,25 @@ namespace Urd.UI.Dialog
         private void BeginDialog()
         {
             _dialogModel.BeginDialog();
-
-            BeginSubString();
+            SetSubString();
         }
 
-        private void BeginSubString()
+        private void SetSubString()
         {
             _dialogModel.SetSubString();
-            
             _timerModel = _clockService.Service.AddDelayCall(_dialogModel.CurrentTextDuration, FinishCurrentText);
         }
 
         private void FinishCurrentText()
         {
             _timerModel = null;
+            
             _dialogModel.FinishCurrentText();
-
-            if (_dialogModel.IsFinished)
-            {
-                WaitForInput(FinishDialog);
-                return;
-            }
-            WaitForInput(ContinueText);
         }
 
         private void OnUseDialogBox(InputAction.CallbackContext context)
         {
-            if (_timerModel.IsInCooldown)
+            if (_timerModel?.IsInCooldown == true)
             {
                 _timerModel.ForceFinish();
                 return;
@@ -92,15 +81,10 @@ namespace Urd.UI.Dialog
             ContinueText();
         }
 
-        
-        public void WaitForInput(Action onCallback)
-        {
-            
-        }
-
         private void ContinueText()
         {
             _dialogModel.ContinueText();
+            SetSubString();
         }
 
         private void FinishDialog()

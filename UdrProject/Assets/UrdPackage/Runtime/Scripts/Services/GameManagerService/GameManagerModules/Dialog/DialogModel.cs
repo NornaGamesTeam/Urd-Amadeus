@@ -14,10 +14,11 @@ namespace Urd.Dialog
 
         public string VisibleText { get; private set; }
         public float CurrentTextDuration => VisibleText.Length * +_dialogConfig.TimePerLetter;
-        public bool IsFinished => _currentSubString >= Text.Split(SPLIT_CHARACTER).Length;
+        public bool IsFinished => _currentSubString >= Text.Split(SPLIT_CHARACTER).Length-1;
         public Ease Ease => _dialogConfig.Ease;
 
         public event Action OnChangeVisibleText;
+        public event Action OnSubStringFinished;
         public delegate void DelegateOnChangeVisibleTextAmount(bool isShowingCompleted);
         public event DelegateOnChangeVisibleTextAmount OnChangeVisibleTextAmount;
 
@@ -41,24 +42,22 @@ namespace Urd.Dialog
         public void SetSubString()
         {
             VisibleText = Text.Split(SPLIT_CHARACTER)[_currentSubString];
+            OnChangeVisibleText?.Invoke();
         }
         
         public void ContinueText()
         {
             _currentSubString++;
-            SetSubString();
         }
 
         public void FinishCurrentText()
         {
-            _currentSubString++;
+            OnSubStringFinished?.Invoke();
         }
 
         public void FinishDialog()
         {
             
         }
-
-       
     }
 }

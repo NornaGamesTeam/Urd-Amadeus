@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Urd.Dialog;
 using Urd.Inputs;
+using Urd.Scene;
 using Urd.Services;
+using Urd.Services.Navigation;
 using Urd.UI.Dialog;
 using Urd.Utils;
 
@@ -18,6 +20,7 @@ namespace Urd.GameManager
         private DialogController _dialogController;
         
         private ServiceHelper<IInputService> _inputService = new ServiceHelper<IInputService>();
+        private ServiceHelper<INavigationService> _navigationService = new ServiceHelper<INavigationService>();
 
         public event Action<DialogModel> OnNewDialog;
         public event Action OnFinishDialog;
@@ -28,21 +31,30 @@ namespace Urd.GameManager
             _dialogController.OnDialogFinished += OnFinishDialogFinished;
 
             LoadDialogConfig();
-            if (_inputService.HasService)
+            if (_navigationService.HasService)
             {
-                SetInitialInput();
+                OnSceneChanged();
             }
             else
             {
-                _inputService.OnInitialize += SetInitialInput;
+                _navigationService.OnInitialize += OnSceneChanged;
             }
         }
         
-        private void SetInitialInput()
+        private void OnSceneChanged()
         {
-            SetUpUIInput(false);
+            _navigationService.Service.OnFinishLoadNavigable += OnSceneChanged;
         }
-        
+
+        private void OnSceneChanged(INavigable iNavigable)
+        {
+            var sceneModel = iNavigable as SceneModel;
+            if (sceneModel != null && sceneModel.Id == SceneTypes.Game.ToString())
+            {
+                SetUpUIInput(false);
+            }
+        }
+
         private void LoadDialogConfig()
         {
             _dialogConfigs = Resources.Load<DialogConfigs>(DIALOG_CONFIG_PATH);
@@ -52,19 +64,14 @@ namespace Urd.GameManager
         public void ShowDialog(DialogModel dialogModel)
         {
             _dialogController.SetDialogModel(dialogModel);
-
-           
+            SetUpUIInput(true);
             OnNewDialog?.Invoke(dialogModel);
         }
 
         private void SetUpUIInput(bool enableUI)
         {
-            
-            var inputService = StaticServiceLocator.Get<IInputService>();
-
-            // move this to a proper site
-            inputService.ChangeAvailabilityOfActionMap(InputActionMapTypes.Character, !enableUI);
-            inputService.ChangeAvailabilityOfActionMap(InputActionMapTypes.UI, enableUI);
+            _inputService.Service.ChangeAvailabilityOfActionMap(InputActionMapTypes.Character, !enableUI);
+            _inputService.Service.ChangeAvailabilityOfActionMap(InputActionMapTypes.UI, enableUI);
         }
 
         private void OnFinishDialogFinished()

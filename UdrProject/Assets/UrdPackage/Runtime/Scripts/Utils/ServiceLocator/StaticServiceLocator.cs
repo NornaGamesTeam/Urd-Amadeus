@@ -33,7 +33,7 @@ namespace Urd.Utils
             List<Type> toDestroy = new List<Type>();
             foreach (var serviceInitializationCallback in _onServiceInitialized)
             {
-                if (Get(serviceInitializationCallback.Key).IsLoaded)
+                if (Get(serviceInitializationCallback.Key)?.IsLoaded == true)
                 {
                     serviceInitializationCallback.Value?.Invoke();
                     toDestroy.Add(serviceInitializationCallback.Key);
