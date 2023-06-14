@@ -34,35 +34,24 @@ namespace Urd.Character.Skill
             SkillTreeModel = new SkillTreeModel(skillTreeConfig);
         }
 
-        public void SetIsMeleeAttack(bool isMeleeAttack)
+        public TModel GetSkillModel<TModel>() where TModel : class
         {
-            var meleeAttack = MeleeAttackModel;
-            if (meleeAttack == null)
-            {
-                return;
-            }
-
-            meleeAttack.SetIsActive(isMeleeAttack);
-            SetIsSkill(isMeleeAttack);
-            if (isMeleeAttack)
-            {
-                OnSkillAction?.Invoke(meleeAttack);
-            }
+            return DefaultSkills.Find(skill => skill is TModel) as TModel;
         }
-        
-        public void SetIsDodging(bool isDodging)
+
+        public void SetIsSkill<TSkillModel>(bool isSkill) where TSkillModel : class, ISkillModel
         {
-            var dodgeSkill = DodgeSkillModel;
-            if (dodgeSkill == null)
+            var skillModel = GetSkillModel<TSkillModel>();
+            if (skillModel == null)
             {
                 return;
             }
-
-            dodgeSkill.SetIsActive(isDodging);
-            SetIsSkill(isDodging);
-            if (isDodging)
+            
+            skillModel.SetIsActive(isSkill);
+            SetIsSkill(isSkill);
+            if (isSkill)
             {
-                OnSkillAction?.Invoke(dodgeSkill);
+                OnSkillAction?.Invoke(skillModel);
             }
         }
 

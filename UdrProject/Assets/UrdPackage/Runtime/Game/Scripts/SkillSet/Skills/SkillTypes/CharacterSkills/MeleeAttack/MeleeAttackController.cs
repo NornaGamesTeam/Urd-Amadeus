@@ -37,7 +37,6 @@ namespace Urd.Character.Skill
             base.BeginSkill(direction);
             
             _alreadyHit.Clear();
-            _characterModel.SkillSetModel.SetIsMeleeAttack(true);
             var skillDirection = direction.ConvertToDirection();
             _direction = skillDirection.ConvertToVector2();
             _hitAreas = _skillModel.DamageOverTime.Find( hitArea => hitArea.Direction == skillDirection)?.HitArea;
@@ -99,13 +98,6 @@ namespace Urd.Character.Skill
                 damageOverTime => damageOverTime.BeginTime < _skillTime
                                   && _skillTime < damageOverTime.EndTime);
             
-        }
-        
-        protected override void OnFinishSkill()
-        {
-            base.OnFinishSkill();
-            
-            _characterModel.SkillSetModel.SetIsMeleeAttack(false);
         }
     }
 }

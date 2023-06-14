@@ -70,6 +70,8 @@ namespace Urd.Character.Skill
         
         protected virtual void BeginSkill(Vector2 direction)
         {
+            _characterModel.SkillSetModel.SetIsSkill<TSkillModel>(true);
+
             _clockService.AddDelayCall(_skillModel.Duration, OnFinishSkill);
             _clockService.SubscribeToUpdate(SkillUpdate);
 
@@ -83,9 +85,12 @@ namespace Urd.Character.Skill
         
         protected virtual void OnFinishSkill()
         {
+
             SetIsDoing(false);
             _clockService.UnSubscribeToUpdate(SkillUpdate);
             BeginCoolDown();
+            
+            _characterModel.SkillSetModel.SetIsSkill<TSkillModel>(false);
         }
         
         protected virtual void CoolDownUpdate(float deltaTime)

@@ -36,6 +36,7 @@ namespace Urd.Character
         public event Action<Vector2> OnAimDirectionChanged;
         public event ICharacterInput.DodgeDelegate OnIsDodgingChanged;
         public event ICharacterInput.AttackDelegate OnAttackingChanged;
+        public event ICharacterInput.InteractDelegate OnInteractDelegate;
 
         public MainCharacterInput(ICharacterModel characterModel)
         {

@@ -12,7 +12,7 @@ namespace Urd.Character
             SetInput(new NpcCharacterInput(CharacterModel));
         }
 
-        public void Interact()
+        public void Interact(Vector3 directionNormalized)
         {
             Debug.Log("Interact");
         }

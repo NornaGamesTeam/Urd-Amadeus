@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2957dfb136bc36c46843a44d94da5ded, type: 3}
-  m_Name: InteractSkill
+  m_Name: Interact
   m_EditorClassIdentifier: 
   <Controller>k__BackingField:
     rid: -2
