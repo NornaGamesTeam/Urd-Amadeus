@@ -8,15 +8,15 @@ namespace Urd.Character
     [System.Serializable]
     public class SkillSetController : IDisposable
     {
-        private CharacterModel _characterModel;
         [SerializeField]
         private SkillSetModel _skillSetModel;
         
         private ICharacterInput _characterInput;
+        private ICharacterModel _characterModel;
 
         private List<ISkillController> _usableSkills = new List<ISkillController>(); 
 
-        public SkillSetController(CharacterModel characterModel, ICharacterInput characterInput)
+        public SkillSetController(ICharacterModel characterModel, ICharacterInput characterInput)
         {
             _characterModel = characterModel;
             _skillSetModel = characterModel.SkillSetModel;

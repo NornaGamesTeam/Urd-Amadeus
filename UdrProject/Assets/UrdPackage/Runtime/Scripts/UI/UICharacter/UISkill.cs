@@ -15,13 +15,13 @@ namespace Urd.UI
         [SerializeField]
         private Image _coolDownArea;
             
-        private CharacterModel _characterModel;
+        private ICharacterModel _characterModel;
         
         private ISkillModel _skillModel;
 
         private bool _isActive;
 
-        public virtual void SetCharacterModel(CharacterModel characterModel)
+        public virtual void SetCharacterModel(ICharacterModel characterModel)
         {
             _characterModel = characterModel;
 

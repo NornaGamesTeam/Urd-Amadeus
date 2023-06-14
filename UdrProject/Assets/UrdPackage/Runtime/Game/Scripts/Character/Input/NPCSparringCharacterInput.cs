@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Urd.Character
 {
-    public class SparringCharacterInput : ICharacterInput
+    public class NPCSparringCharacterInput : ICharacterInput
     {
-        public SparringCharacterInput(ICharacterModel characterModel)
+        public NPCSparringCharacterInput(CharacterModel characterModel)
         {
         }
 

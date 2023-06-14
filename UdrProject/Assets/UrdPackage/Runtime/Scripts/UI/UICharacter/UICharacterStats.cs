@@ -1,11 +1,11 @@
 using UnityEngine;
-using CharacterController = Urd.Character.CharacterController;
+using Urd.Character;
 
 namespace Urd.UI
 {
     public class UICharacterStats : MonoBehaviour
     {
-        [SerializeField] private CharacterController _characterController;
+        [SerializeField] private CharacterController<CharacterModel> _characterController;
 
         void Start()
         {

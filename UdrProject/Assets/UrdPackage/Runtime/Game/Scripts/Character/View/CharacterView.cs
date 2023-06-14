@@ -4,7 +4,10 @@ namespace Urd.Character
 {
     public class CharacterView : MonoBehaviour
     {
-        private CharacterModel _characterModel;
+        private ICharacterModel _characterModel;
+
+        [SerializeReference] 
+        private CharacterController<CharacterModel> _characterController;
 
         private void Start()
         {
@@ -14,10 +17,10 @@ namespace Urd.Character
         private void Init()
         {
             // remove this from the start
-            SetModel(GetComponent<CharacterController>().CharacterModel);
+            SetModel(_characterController.CharacterModel);
         }
 
-        private void SetModel(CharacterModel characterModel)
+        private void SetModel(ICharacterModel characterModel)
         {
             _characterModel = characterModel;
             

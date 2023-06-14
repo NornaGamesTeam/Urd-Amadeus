@@ -8,12 +8,12 @@ namespace Urd.Character
 {
     public class CharacterHitPointsController : IDisposable
     {
-        private CharacterModel _characterModel;
+        private ICharacterModel _characterModel;
 
         private ServiceHelper<IClockService> _clockService = new();
         private ServiceHelper<INavigationService> _navigationService = new();
 
-        public CharacterHitPointsController(CharacterModel characterModel)
+        public CharacterHitPointsController(ICharacterModel characterModel)
         {
             _characterModel = characterModel;
             Init();

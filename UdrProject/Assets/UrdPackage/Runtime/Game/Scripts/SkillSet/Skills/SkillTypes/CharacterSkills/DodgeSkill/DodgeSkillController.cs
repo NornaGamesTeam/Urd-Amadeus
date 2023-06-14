@@ -6,7 +6,7 @@ namespace Urd.Character.Skill
     [Serializable] 
     public class DodgeSkillController : SkillController<DodgeSkillModel>
     {
-        public override void Init(CharacterModel characterModel, ICharacterInput characterInput)
+        public override void Init(ICharacterModel characterModel, ICharacterInput characterInput)
         {
             base.Init(characterModel, characterInput);
 

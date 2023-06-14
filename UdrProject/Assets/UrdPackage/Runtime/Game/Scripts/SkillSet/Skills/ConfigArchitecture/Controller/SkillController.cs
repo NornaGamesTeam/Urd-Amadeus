@@ -8,7 +8,7 @@ namespace Urd.Character.Skill
     [Serializable] 
     public abstract class SkillController<TSkillModel> : ISkillController where TSkillModel : class, ISkillModel
     {
-        protected CharacterModel _characterModel;
+        protected ICharacterModel _characterModel;
         protected ICharacterInput _characterInput;
         
         private IClockService _clockService;
@@ -19,7 +19,7 @@ namespace Urd.Character.Skill
 
         protected float _skillTime;
         
-        public virtual void Init(CharacterModel characterModel,
+        public virtual void Init(ICharacterModel characterModel,
             ICharacterInput characterInput)
         {
             _characterModel = characterModel;

@@ -11887,6 +11887,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2560374026742572683, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
+      propertyPath: _characterController
+      value: 
+      objectReference: {fileID: 1417701147}
     - target: {fileID: 2819359234221499886, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
       propertyPath: m_Camera
       value: 
@@ -11995,6 +11999,17 @@ PrefabInstance:
     - {fileID: 4316600751321207809, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
     - {fileID: 4438032751952063621, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
+--- !u!114 &1417701147 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5349213733496653986, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
+  m_PrefabInstance: {fileID: 1417701146}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157065905d7447744b2c7b323242ca62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1465502025
 GameObject:
   m_ObjectHideFlags: 0
@@ -12204,6 +12219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 9046163178879299791, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
+      propertyPath: _characterController
+      value: 
+      objectReference: {fileID: 2108786525}
     m_RemovedComponents:
     - {fileID: 2003916317442300762, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}

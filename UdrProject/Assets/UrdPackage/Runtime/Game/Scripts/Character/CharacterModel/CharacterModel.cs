@@ -7,7 +7,7 @@ using Urd.UI;
 namespace Urd.Character
 {
     [System.Serializable]
-    public class CharacterModel
+    public class CharacterModel : ICharacterModel
     {
         public UICharacterConfig UICharacterConfig => _characterConfig?.UICharacterConfig;
         
@@ -21,7 +21,11 @@ namespace Urd.Character
         public SkillSetModel SkillSetModel { get; private set; }
 
         private CharacterConfig _characterConfig;
-        
+
+        public CharacterModel()
+        {
+            
+        }
 
         public CharacterModel(CharacterConfig characterConfig)
         {

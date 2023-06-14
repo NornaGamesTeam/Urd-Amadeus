@@ -8,11 +8,11 @@ namespace Urd.Character
     public class CharacterMovementController : IDisposable
     {
         private ICharacterInput _characterInput;
-        private CharacterModel _characterModel;
+        private ICharacterModel _characterModel;
 
         private IClockService _clockService;
         
-        public CharacterMovementController(CharacterModel characterModel, ICharacterInput characterInput,
+        public CharacterMovementController(ICharacterModel characterModel, ICharacterInput characterInput,
             Vector3 initialPosition)
         {
             _characterModel = characterModel;

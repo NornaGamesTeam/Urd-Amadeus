@@ -20,10 +20,10 @@ namespace Urd.UI
 
         [SerializeField] private bool _showOnlyIfNotFull;
         
-        private CharacterModel _characterModel;
+        private ICharacterModel _characterModel;
      
         
-        public void SetCharacterModel(CharacterModel characterModel)
+        public void SetCharacterModel(ICharacterModel characterModel)
         {
             _characterModel = characterModel;
 

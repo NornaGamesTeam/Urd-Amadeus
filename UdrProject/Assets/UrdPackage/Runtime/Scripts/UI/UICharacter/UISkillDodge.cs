@@ -4,7 +4,7 @@ namespace Urd.UI
 {
     public class UISkillDodge : UISkill
     {
-        public override void SetCharacterModel(CharacterModel characterModel)
+        public override void SetCharacterModel(ICharacterModel characterModel)
         {
             base.SetCharacterModel(characterModel);
             

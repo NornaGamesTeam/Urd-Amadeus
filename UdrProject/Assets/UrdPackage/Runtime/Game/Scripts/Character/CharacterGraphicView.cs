@@ -30,10 +30,10 @@ namespace Urd.Character
         [SerializeField]
         private float _aimOffset;
 
-        private CharacterModel _characterModel;
+        private ICharacterModel _characterModel;
         private string _lastAnimation;
         
-        public void SetModel(CharacterModel characterModel)
+        public void SetModel(ICharacterModel characterModel)
         {
             _characterModel = characterModel;
 

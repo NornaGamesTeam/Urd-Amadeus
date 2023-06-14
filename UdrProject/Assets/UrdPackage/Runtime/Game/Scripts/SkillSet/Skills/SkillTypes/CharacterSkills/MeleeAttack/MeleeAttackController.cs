@@ -17,7 +17,7 @@ namespace Urd.Character.Skill
 
         private List<Collider2D> _alreadyHit = new ();
         
-        public override void Init(CharacterModel characterModel, ICharacterInput characterInput)
+        public override void Init(ICharacterModel characterModel, ICharacterInput characterInput)
         {
             base.Init(characterModel, characterInput);
 
