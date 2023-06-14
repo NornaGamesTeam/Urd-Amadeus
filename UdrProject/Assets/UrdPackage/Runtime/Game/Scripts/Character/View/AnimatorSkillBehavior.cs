@@ -10,12 +10,12 @@ public class AnimatorSkillBehavior : StateMachineBehaviour
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
-        float duration = _skillConfig.SkillAnimationModel.Duration <= 0
-            ? _skillConfig.Duration
-            : _skillConfig.SkillAnimationModel.Duration;
+        float duration = _skillConfig.Model.SkillAnimationModel.Duration <= 0
+            ? _skillConfig.Model.Duration
+            : _skillConfig.Model.SkillAnimationModel.Duration;
         
         var speed = stateInfo.length / (duration);
-        speed *= (float)_skillConfig.SkillAnimationModel.AnimationLoops;
+        speed *= (float)_skillConfig.Model.SkillAnimationModel.AnimationLoops;
         animator.speed = speed;
     }
 

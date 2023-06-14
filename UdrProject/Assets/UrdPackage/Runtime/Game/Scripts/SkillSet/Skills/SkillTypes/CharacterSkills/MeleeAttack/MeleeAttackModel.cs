@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Urd.Game.SkillTrees;
 
 namespace Urd.Character.Skill
 {
     [Serializable]
-    public class MeleeAttackModel : SkillModel<MeleeAttackConfig>
+    public class MeleeAttackModel : SkillModel<SkillConfig>
     {
-        public float Damage => _skillConfig.Damage;
-        public List<AttackAreaByDirection> DamageOverTime => _skillConfig.DamageOverTime;
+        [field: SerializeField, Header("Specific properties")]
+        public float Damage { get; protected set; }
+        [field: SerializeField]
+        public List<AttackAreaByDirection> DamageOverTime { get; protected set; }
     }
 }

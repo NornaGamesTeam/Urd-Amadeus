@@ -381,19 +381,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterConfig: {fileID: 11400000, guid: 67b3930dad51b8d46962f9d0cd5c2028, type: 2}
-  <CharacterModel>k__BackingField:
-    <HitPointsModel>k__BackingField:
-      <HitPoints>k__BackingField: 0
-    <CharacterMovement>k__BackingField:
-      <AimDirection>k__BackingField: {x: 0, y: 0}
-      <RawNormalizedMovement>k__BackingField: {x: 0, y: 0}
-      <Position>k__BackingField: {x: 0, y: 0}
-      <IsMoving>k__BackingField: 0
-    <SkillSetModel>k__BackingField:
-      <DefaultSkills>k__BackingField: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &2560374026742572683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,8 +461,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainImage: {fileID: 4150704527871269290}
   _animator: {fileID: 7053699527019498447}
-  _aimImage: {fileID: 8811007470946910932}
-  _aimOffset: 0
+  _debugAimImage: {fileID: 8811007470946910932}
+  _debugAimOffset: 3
 --- !u!1001 &8021986185517525410
 PrefabInstance:
   m_ObjectHideFlags: 0

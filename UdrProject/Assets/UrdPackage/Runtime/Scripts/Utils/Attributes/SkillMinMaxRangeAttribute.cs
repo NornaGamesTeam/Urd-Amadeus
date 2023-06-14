@@ -104,7 +104,7 @@ namespace MyBox.Internal
 			float minValue = isInt ? minProp.intValue : minProp.floatValue;
 			float maxValue = isInt ? maxProp.intValue : maxProp.floatValue;
 			float rangeMin = 0;
-			float rangeMax = (property.serializedObject.targetObject as ISkillConfig).Duration;
+			float rangeMax = (property.serializedObject.targetObject as ISkillConfig).Model.Duration;
 
 
 			const float rangeBoundsLabelWidth = 40f;

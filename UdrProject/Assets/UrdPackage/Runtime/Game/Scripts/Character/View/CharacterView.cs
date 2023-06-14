@@ -2,22 +2,12 @@ using UnityEngine;
 
 namespace Urd.Character
 {
-    public class CharacterView : MonoBehaviour
+    public class CharacterView : CharacterModelListener
     {
-        private ICharacterModel _characterModel;
-
-        [SerializeReference] 
-        private CharacterController<CharacterModel> _characterController;
-
-        private void Start()
-        {
-            Init();
-        }
-
-        private void Init()
+        public override void Init()
         {
             // remove this from the start
-            SetModel(_characterController.CharacterModel);
+            SetModel(_characterModel);
         }
 
         private void SetModel(ICharacterModel characterModel)

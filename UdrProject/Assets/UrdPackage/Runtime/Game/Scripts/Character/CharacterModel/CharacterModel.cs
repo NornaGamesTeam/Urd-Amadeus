@@ -20,13 +20,12 @@ namespace Urd.Character
         [field: SerializeField, ReadOnly]
         public SkillSetModel SkillSetModel { get; private set; }
 
-        private CharacterConfig _characterConfig;
+        protected CharacterConfig _characterConfig;
 
         public CharacterModel()
         {
             
         }
-
         public CharacterModel(CharacterConfig characterConfig)
         {
             _characterConfig = characterConfig;

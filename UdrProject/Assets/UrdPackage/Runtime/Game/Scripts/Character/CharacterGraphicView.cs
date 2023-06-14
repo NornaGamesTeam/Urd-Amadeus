@@ -1,7 +1,7 @@
 using MyBox;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Urd.Character.Skill;
-using Urd.Services.Physics;
 
 namespace Urd.Character
 {
@@ -26,9 +26,9 @@ namespace Urd.Character
         
         [Header("AIM")]
         [SerializeField]
-        private SpriteRenderer _aimImage;
+        private SpriteRenderer _debugAimImage;
         [SerializeField]
-        private float _aimOffset;
+        private float _debugAimOffset;
 
         private ICharacterModel _characterModel;
         private string _lastAnimation;
@@ -83,9 +83,9 @@ namespace Urd.Character
         
         private void OnAimDirectionChanged(Vector2 aimDirection)
         {
-            _aimImage.transform.SetXY(
-                transform.position.x + aimDirection.x * _aimOffset,
-                transform.position.y + aimDirection.y * _aimOffset);
+            _debugAimImage.transform.SetXY(
+                transform.position.x + aimDirection.x * _debugAimOffset,
+                transform.position.y + aimDirection.y * _debugAimOffset);
             
             _animator.SetFloat(ANIMATION_KEY_AIM_X, aimDirection.x);
             _animator.SetFloat(ANIMATION_KEY_AIM_Y, aimDirection.y);

@@ -24,7 +24,7 @@ namespace Urd.Character
 
         private IInputService _inputService;
         private ICoroutineService _coroutineService;
-        private CharacterModel _characterModel;
+        private ICharacterModel _characterModel;
         private Coroutine _joinEventsCoroutine;
 
         private bool IsMoving => _movement != Vector2.zero;
@@ -37,7 +37,7 @@ namespace Urd.Character
         public event ICharacterInput.DodgeDelegate OnIsDodgingChanged;
         public event ICharacterInput.AttackDelegate OnAttackingChanged;
 
-        public MainCharacterInput(CharacterModel characterModel)
+        public MainCharacterInput(ICharacterModel characterModel)
         {
             _characterModel = characterModel;
 

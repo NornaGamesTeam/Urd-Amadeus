@@ -5,7 +5,7 @@ namespace Urd.UI
 {
     public class UICharacterStats : MonoBehaviour
     {
-        [SerializeField] private CharacterController<CharacterModel> _characterController;
+        [SerializeField] private CharacterControllerNoModel _characterController;
 
         void Start()
         {

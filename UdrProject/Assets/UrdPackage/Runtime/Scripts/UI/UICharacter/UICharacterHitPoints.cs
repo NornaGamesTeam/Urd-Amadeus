@@ -6,7 +6,7 @@ using Urd.Character.Skill;
 
 namespace Urd.UI
 {
-    public class UICharacterHitPoints : MonoBehaviour, IUICharacter
+    public class UICharacterHitPoints : CharacterModelListener, IUICharacter
     {
         private const string HIT_POINTS_FORMAT = "{0}/{1}";
         
@@ -19,20 +19,12 @@ namespace Urd.UI
         private TextMeshProUGUI _hitPointsText;
 
         [SerializeField] private bool _showOnlyIfNotFull;
-        
-        private ICharacterModel _characterModel;
-     
-        
-        public void SetCharacterModel(ICharacterModel characterModel)
-        {
-            _characterModel = characterModel;
 
+        public override void Init()
+        {
+            base.Init();
             _characterModel.HitPointsModel.OnIsHit += OnIsHit;
-            Init();
-        }
-
-        private void Init()
-        {
+            
             SetGameObjectsAs(!_showOnlyIfNotFull);
             
             _background.color = _characterModel.UICharacterConfig.HitPointsConfig.BackgroundColor;

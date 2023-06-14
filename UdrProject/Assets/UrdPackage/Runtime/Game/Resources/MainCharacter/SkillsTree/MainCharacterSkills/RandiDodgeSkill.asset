@@ -9,30 +9,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9c2a987d8e0e6d4086229d1bcdde5cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 2957dfb136bc36c46843a44d94da5ded, type: 3}
   m_Name: RandiDodgeSkill
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: DodgeSkill
-  <Model>k__BackingField:
-    rid: 4760200803881058307
   <Controller>k__BackingField:
-    rid: 4760200657423302656
-  <LevelToUnlock>k__BackingField: 0
-  <Type>k__BackingField: 1
-  <SkillAnimationModel>k__BackingField:
-    rid: 4760200848147742725
-  <UISkillConfig>k__BackingField: {fileID: 11400000, guid: 464b4e63c9dc0a8409bf32e7bd92eda4, type: 2}
-  <CoolDown>k__BackingField: 3
-  <Duration>k__BackingField: 0.2
-  <Distance>k__BackingField: 3
+    rid: 4932070851253895176
+  <Model>k__BackingField:
+    rid: 4932070851253895177
   references:
     version: 2
     RefIds:
-    - rid: 4760200657423302656
+    - rid: 4932070851253895176
       type: {class: DodgeSkillController, ns: Urd.Character.Skill, asm: Udr}
-    - rid: 4760200803881058307
+    - rid: 4932070851253895177
       type: {class: DodgeSkillModel, ns: Urd.Character.Skill, asm: Udr}
-    - rid: 4760200848147742725
+      data:
+        <Name>k__BackingField: DodgeSkill
+        <LevelToUnlock>k__BackingField: 0
+        <Type>k__BackingField: 1
+        <UISkillConfig>k__BackingField: {fileID: 11400000, guid: 464b4e63c9dc0a8409bf32e7bd92eda4, type: 2}
+        <SkillAnimationModel>k__BackingField:
+          rid: 4932070851253895178
+        <CoolDown>k__BackingField: 3
+        <Duration>k__BackingField: 0.2
+        <Distance>k__BackingField: 3
+    - rid: 4932070851253895178
       type: {class: DodgeSkillAnimationModel, ns: Urd.Game.SkillTrees, asm: Udr}
       data:
         <AnimationName>k__BackingField: 2

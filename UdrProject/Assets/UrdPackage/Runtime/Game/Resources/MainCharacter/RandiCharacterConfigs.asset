@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4904fc0ee5640142a391d1f879c95b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 49178022d42629549ac7ce918a68a6dc, type: 3}
   m_Name: RandiCharacterConfigs
   m_EditorClassIdentifier: 
   <HitPoints>k__BackingField: 20
@@ -20,3 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dd39982a41ac0a142aafc008decad43b, type: 2}
   <SkillTreeConfig>k__BackingField: {fileID: 11400000, guid: 363fd3d731479d54d954476eb740dce9, type: 2}
   <UICharacterConfig>k__BackingField: {fileID: 11400000, guid: b992e6025a9884543ac9595f3044e2e9, type: 2}
+  <InteractionObjectDistance>k__BackingField: 2
+  <InteractionArea>k__BackingField:
+    <Radio>k__BackingField: 1

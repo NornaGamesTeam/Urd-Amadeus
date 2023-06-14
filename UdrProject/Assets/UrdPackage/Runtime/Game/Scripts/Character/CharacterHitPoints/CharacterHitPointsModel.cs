@@ -28,8 +28,7 @@ namespace Urd.Character
         {
             _characterConfig = characterConfig;
             HitPoints = MaxHitPoints;
-            HitSkillModel = new HitSkillModel();
-            HitSkillModel.SetConfig(_characterConfig.HitSkillConfig);
+            HitSkillModel = _characterConfig.HitSkillConfig.Model;
         }
         
         public void Hit(float damage, Vector2 hitDirection)
