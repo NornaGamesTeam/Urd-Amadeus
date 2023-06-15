@@ -13,11 +13,31 @@ MonoBehaviour:
   m_Name: Interact
   m_EditorClassIdentifier: 
   <Controller>k__BackingField:
-    rid: -2
+    rid: 4932070851253895181
   <Model>k__BackingField:
-    rid: -2
+    rid: 4932070851253895182
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 4932070851253895181
+      type: {class: InteractSkillController, ns: Urd.Character.Skill, asm: Udr}
+    - rid: 4932070851253895182
+      type: {class: InteractSkillModel, ns: Urd.Character.Skill, asm: Udr}
+      data:
+        <Name>k__BackingField: Interact
+        <LevelToUnlock>k__BackingField: 0
+        <Type>k__BackingField: 1
+        <UISkillConfig>k__BackingField: {fileID: 0}
+        <SkillAnimationModel>k__BackingField:
+          rid: 4932070851253895184
+        <CoolDown>k__BackingField: 0.1
+        <Duration>k__BackingField: 0.1
+        <Distance>k__BackingField: 2
+        <AreaSphere>k__BackingField:
+          <Radio>k__BackingField: 1
+    - rid: 4932070851253895184
+      type: {class: SkillAnimationModel, ns: Urd.Game.SkillTrees, asm: Udr}
+      data:
+        <AnimationName>k__BackingField: 0
+        <AnimationLoops>k__BackingField: 1
+        <Duration>k__BackingField: 0.1

@@ -14,6 +14,7 @@ namespace Urd.Character
         private const string DODGE_SKILL = "DodgeSkill";
         private const string GAMEPAD_MOVEMENT = "GamePadMovement";
         private const string GAMEPAD_AIM = "GamePadAim";
+        private const string INTERACT_BUTTON = "InteractButton";
 
         public Vector2 Movement => _movement;
         private Vector2 _movement;
@@ -36,7 +37,7 @@ namespace Urd.Character
         public event Action<Vector2> OnAimDirectionChanged;
         public event ICharacterInput.DodgeDelegate OnIsDodgingChanged;
         public event ICharacterInput.AttackDelegate OnAttackingChanged;
-        public event ICharacterInput.InteractDelegate OnInteractDelegate;
+        public event ICharacterInput.InteractDelegate OnInteractChanged;
 
         public MainCharacterInput(ICharacterModel characterModel)
         {
@@ -69,9 +70,13 @@ namespace Urd.Character
             _inputService.SubscribeToActionOnHold(GAMEPAD_AIM, OnGamePadAimDown);
             _inputService.SubscribeToActionOnCancel(GAMEPAD_AIM, OnGamePadAimUp);
 
+            _inputService.SubscribeToActionOnPerformed(INTERACT_BUTTON, OnInteractDown);
+            _inputService.SubscribeToActionOnCancel(INTERACT_BUTTON, OnInteractUp);
+            
+            
             _joinEventsCoroutine = _coroutineService.StartCoroutine(JoinMovementsCo());
         }
-
+        
         private IEnumerator JoinMovementsCo()
         {
             while (true)
@@ -115,6 +120,9 @@ namespace Urd.Character
             _inputService.UnsubscribeToActionOnHold(GAMEPAD_AIM, OnGamePadAimDown);
             _inputService.UnsubscribeToActionOnCancel(GAMEPAD_AIM, OnGamePadAimUp);
 
+            _inputService.UnsubscribeToActionOnPerformed(INTERACT_BUTTON, OnInteractDown);
+            _inputService.UnsubscribeToActionOnCancel(INTERACT_BUTTON, OnInteractUp);
+            
             OnIsDodgingChanged = null;
             OnMovementChanged = null;
 
@@ -156,5 +164,10 @@ namespace Urd.Character
             OnIsDodgingChanged?.Invoke(inputAction.performed, _movement);
         private void OnDodgeSkillUp(InputAction.CallbackContext inputAction) =>
             OnIsDodgingChanged?.Invoke(false, _movement);
+
+        private void OnInteractDown(InputAction.CallbackContext inputAction) =>
+            OnInteractChanged?.Invoke(inputAction.performed, _finalAimDirection);
+        private void OnInteractUp(InputAction.CallbackContext inputAction)=>
+            OnInteractChanged?.Invoke(false, _finalAimDirection);
     }
 }

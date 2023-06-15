@@ -29,12 +29,12 @@ MonoBehaviour:
         <Type>k__BackingField: 1
         <UISkillConfig>k__BackingField: {fileID: 0}
         <SkillAnimationModel>k__BackingField:
-          rid: 4932070849493073931
+          rid: 4932070851253895187
         <CoolDown>k__BackingField: 0.1
         <Duration>k__BackingField: 0.3
-    - rid: 4932070849493073931
+    - rid: 4932070851253895187
       type: {class: HitAnimationModel, ns: Urd.Character, asm: Udr}
       data:
         <AnimationName>k__BackingField: 4
         <AnimationLoops>k__BackingField: 1
-        <Duration>k__BackingField: 0.1
+        <Duration>k__BackingField: 0.3

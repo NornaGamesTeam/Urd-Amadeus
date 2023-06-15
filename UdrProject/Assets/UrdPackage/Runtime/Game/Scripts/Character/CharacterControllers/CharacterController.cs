@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Urd.Services.Physics;
 
 namespace Urd.Character
 {
@@ -32,7 +31,7 @@ namespace Urd.Character
             }
         }
 
-        public void SetInput(ICharacterInput characterInput)
+        public virtual void SetInput(ICharacterInput characterInput)
         {
             // TODO move this to other place
             _input = characterInput;

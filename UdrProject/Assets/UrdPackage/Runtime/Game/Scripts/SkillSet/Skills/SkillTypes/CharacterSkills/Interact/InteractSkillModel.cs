@@ -12,6 +12,6 @@ namespace Urd.Character.Skill
         public float Distance { get; private set; }
         
         [field: SerializeField]
-        public AreaShapeSphereModel Sphere { get; private set; }
+        public AreaShapeSphereModel AreaSphere { get; private set; }
     }
 }

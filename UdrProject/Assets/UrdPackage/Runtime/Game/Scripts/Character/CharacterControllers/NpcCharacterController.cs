@@ -3,8 +3,10 @@ using Urd.Services.Physics;
 
 namespace Urd.Character
 {
-    public class NpcCharacterController : CharacterController<CharacterModel>, IInteractable
+    public class NpcCharacterController : CharacterController<NpcCharacterModel>, IInteractable
     {
+        protected NpcInteractionsController _npcInteractionsController;
+
         protected override void Init()
         {
             base.Init();
@@ -12,9 +14,16 @@ namespace Urd.Character
             SetInput(new NpcCharacterInput(CharacterModel));
         }
 
+        public override void SetInput(ICharacterInput characterInput)
+        {
+            base.SetInput(characterInput);
+
+            _npcInteractionsController = new NpcInteractionsController(CharacterModel);
+        }
+
         public void Interact(Vector3 directionNormalized)
         {
-            Debug.Log("Interact");
+            _npcInteractionsController.Interact(directionNormalized);
         }
     }
 }

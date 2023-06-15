@@ -1,3 +1,4 @@
+using MyBox;
 using UnityEngine;
 
 namespace Urd.UI
@@ -6,7 +7,7 @@ namespace Urd.UI
 
     public class UICharacterConfig : ScriptableObject
     {
-        [field: SerializeField]
+        [field: SerializeField, DisplayInspector]
         public UICharacterHitPointsConfig HitPointsConfig { get; private set; }
     }
 }

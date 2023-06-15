@@ -80,6 +80,15 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""InteractButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""b55d9e4b-cfc4-4289-ac23-615b08679598"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -247,6 +256,17 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                     ""action"": ""GamePadAim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d89a7a6-e35d-41dd-86f4-ea418c544159"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InteractButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -311,6 +331,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         m_Character_MousePosition = m_Character.FindAction("MousePosition", throwIfNotFound: true);
         m_Character_GamePadMovement = m_Character.FindAction("GamePadMovement", throwIfNotFound: true);
         m_Character_GamePadAim = m_Character.FindAction("GamePadAim", throwIfNotFound: true);
+        m_Character_InteractButton = m_Character.FindAction("InteractButton", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_DialogBox = m_UI.FindAction("DialogBox", throwIfNotFound: true);
@@ -381,6 +402,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
     private readonly InputAction m_Character_MousePosition;
     private readonly InputAction m_Character_GamePadMovement;
     private readonly InputAction m_Character_GamePadAim;
+    private readonly InputAction m_Character_InteractButton;
     public struct CharacterActions
     {
         private @CharacterInputMoveset m_Wrapper;
@@ -391,6 +413,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         public InputAction @MousePosition => m_Wrapper.m_Character_MousePosition;
         public InputAction @GamePadMovement => m_Wrapper.m_Character_GamePadMovement;
         public InputAction @GamePadAim => m_Wrapper.m_Character_GamePadAim;
+        public InputAction @InteractButton => m_Wrapper.m_Character_InteractButton;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -418,6 +441,9 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
             @GamePadAim.started += instance.OnGamePadAim;
             @GamePadAim.performed += instance.OnGamePadAim;
             @GamePadAim.canceled += instance.OnGamePadAim;
+            @InteractButton.started += instance.OnInteractButton;
+            @InteractButton.performed += instance.OnInteractButton;
+            @InteractButton.canceled += instance.OnInteractButton;
         }
 
         private void UnregisterCallbacks(ICharacterActions instance)
@@ -440,6 +466,9 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
             @GamePadAim.started -= instance.OnGamePadAim;
             @GamePadAim.performed -= instance.OnGamePadAim;
             @GamePadAim.canceled -= instance.OnGamePadAim;
+            @InteractButton.started -= instance.OnInteractButton;
+            @InteractButton.performed -= instance.OnInteractButton;
+            @InteractButton.canceled -= instance.OnInteractButton;
         }
 
         public void RemoveCallbacks(ICharacterActions instance)
@@ -511,6 +540,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         void OnMousePosition(InputAction.CallbackContext context);
         void OnGamePadMovement(InputAction.CallbackContext context);
         void OnGamePadAim(InputAction.CallbackContext context);
+        void OnInteractButton(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -1,6 +1,6 @@
 namespace Urd.Character
 {
-    public class MainCharacterController : CharacterController<MainCharacterModel>
+    public class MainCharacterController : CharacterController<CharacterModel>
     {
         protected override void Init()
         {

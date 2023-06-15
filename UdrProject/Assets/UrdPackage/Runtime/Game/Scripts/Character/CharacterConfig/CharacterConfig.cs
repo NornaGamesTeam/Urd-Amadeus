@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
 using Urd.Game.SkillTrees;
 using Urd.UI;
@@ -20,6 +21,6 @@ namespace Urd.Character
         public List<SkillConfig> DefaultSkillConfigs { get; private set; }
 
         [field: SerializeField] public SkillTreeConfig SkillTreeConfig { get; private set; }
-        [field: SerializeField, Header("UI")] public UICharacterConfig UICharacterConfig { get; private set; }
+        [field: SerializeField, Header("UI"), DisplayInspector] public UICharacterConfig UICharacterConfig { get; private set; }
     }
 }

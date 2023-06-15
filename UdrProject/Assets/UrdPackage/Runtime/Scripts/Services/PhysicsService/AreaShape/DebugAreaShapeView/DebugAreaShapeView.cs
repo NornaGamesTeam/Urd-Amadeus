@@ -44,7 +44,17 @@ namespace Urd.Services.Physics
                 case AreaShapeBoxModel:
                     DrawBox();
                     break;
+                case AreaShapeSphereModel:
+                    DrawSphere();
+                    break;
             }
+        }
+
+        private void DrawSphere()
+        {
+            var areaShapeSphereModel = AreaShapeModel as AreaShapeSphereModel;
+            
+            Gizmos.DrawSphere(OriginPoint, areaShapeSphereModel.Radio);
         }
 
         private void DrawCone()

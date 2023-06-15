@@ -86,6 +86,7 @@ MonoBehaviour:
         _shapeManager:
         - rid: 4932070783904383050
         - rid: 4932070783904383051
+        - rid: 4932070851253895185
     - rid: 4932070783904383037
       type: {class: PoolService, ns: Urd.Services, asm: Udr}
     - rid: 4932070783904383038
@@ -117,3 +118,5 @@ MonoBehaviour:
       type: {class: PhysicsAreaConeManager, ns: Urd.Services.Physics, asm: Udr}
     - rid: 4932070783904383052
       type: {class: RemoteConfigurationProviderUnity, ns: Urd.Services.RemoteConfiguration, asm: Udr}
+    - rid: 4932070851253895185
+      type: {class: PhysicsAreaSphereManager, ns: Urd.Services.Physics, asm: Udr}

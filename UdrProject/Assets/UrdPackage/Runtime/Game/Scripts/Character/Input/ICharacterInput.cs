@@ -12,6 +12,6 @@ namespace Urd.Character
         delegate void AttackDelegate(bool isAttacking, Vector2 attackDirection);
         event AttackDelegate OnAttackingChanged;
         delegate void InteractDelegate(bool isInteracting, Vector2 interactDirection);
-        event InteractDelegate OnInteractDelegate;
+        event InteractDelegate OnInteractChanged;
     }
 }

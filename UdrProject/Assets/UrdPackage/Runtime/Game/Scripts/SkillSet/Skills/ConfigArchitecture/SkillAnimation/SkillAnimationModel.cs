@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 namespace Urd.Game.SkillTrees
 {
-    public abstract class SkillAnimationModel : ISkillAnimationModel
+    [Serializable]
+    public class SkillAnimationModel : ISkillAnimationModel
     {
         [field: SerializeField]
         public SkillAnimationNames AnimationName { get; private set; }
