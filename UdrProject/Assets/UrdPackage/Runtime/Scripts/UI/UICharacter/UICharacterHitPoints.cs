@@ -6,7 +6,7 @@ using Urd.Character.Skill;
 
 namespace Urd.UI
 {
-    public class UICharacterHitPoints : CharacterModelListener, IUICharacter
+    public class UICharacterHitPoints : CharacterModelListener
     {
         private const string HIT_POINTS_FORMAT = "{0}/{1}";
         
