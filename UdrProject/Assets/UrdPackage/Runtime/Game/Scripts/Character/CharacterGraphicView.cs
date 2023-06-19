@@ -51,6 +51,18 @@ namespace Urd.Character
             
             // hitted related
             _characterModel.HitPointsModel.OnIsHit += OnIsHit;
+            
+            // Interact related
+            var npcModel = _characterModel as NpcCharacterModel;
+            if (npcModel != null)
+            {
+                npcModel.NPCInteractionsModel.OnInteract += OnInteract;
+            }
+        }
+
+        private void OnInteract(Vector2 interactDirection)
+        {
+            OnAimDirectionChanged(interactDirection);
         }
 
         private void OnIsHit(bool isHit, Vector2 hitDirection, ISkillModel hitSkillModel)

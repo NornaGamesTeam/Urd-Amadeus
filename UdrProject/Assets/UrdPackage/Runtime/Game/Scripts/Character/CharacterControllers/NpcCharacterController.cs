@@ -25,5 +25,10 @@ namespace Urd.Character
         {
             _npcInteractionsController.Interact(directionNormalized);
         }
+
+        public void ShowInteractButton(bool showInteractButton)
+        {
+            (CharacterModel as NpcCharacterModel).NPCInteractionsModel.SetAsAbleToTalk(showInteractButton);
+        }
     }
 }

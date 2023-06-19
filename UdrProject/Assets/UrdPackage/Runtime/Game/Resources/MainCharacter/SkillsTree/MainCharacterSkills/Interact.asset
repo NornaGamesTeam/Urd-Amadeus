@@ -32,9 +32,9 @@ MonoBehaviour:
           rid: 4932070851253895184
         <CoolDown>k__BackingField: 0.1
         <Duration>k__BackingField: 0.1
-        <Distance>k__BackingField: 2
+        <Distance>k__BackingField: 0.5
         <AreaSphere>k__BackingField:
-          <Radio>k__BackingField: 1
+          <Radio>k__BackingField: 0.9
     - rid: 4932070851253895184
       type: {class: SkillAnimationModel, ns: Urd.Game.SkillTrees, asm: Udr}
       data:

@@ -1,8 +1,9 @@
 using UnityEngine;
+using Urd.UI;
 
 namespace Urd.Character
 {
-    public class CharacterModelListener : MonoBehaviour
+    public class CharacterModelListener : MonoBehaviour, IUICharacter
     {
         protected ICharacterModel _characterModel;
 

@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
-using Urd.Game.SkillTrees;
 using Urd.Services;
 using Urd.Services.Physics;
 using Urd.Utils;
@@ -14,6 +11,8 @@ namespace Urd.Character.Skill
     {
         private ServiceHelper<IPhysicsService> _physicsService = new ServiceHelper<IPhysicsService>();
 
+        private IHitModel _lastInteractModel;
+        
         public override void Init(ICharacterModel characterModel, ICharacterInput characterInput)
         {
             base.Init(characterModel, characterInput);
@@ -21,7 +20,22 @@ namespace Urd.Character.Skill
             SetModel(_characterModel.SkillSetModel.GetSkillModel<InteractSkillModel>());
 
             _characterInput.OnInteractChanged += OnSkillStatusChanged;
+            _characterInput.OnAimDirectionChanged += OnAimChanged;
         }
+
+        private void OnAimChanged(Vector2 aimDirection)
+        {
+            if(TryInteract(aimDirection, out IHitModel hitModel))
+            {
+                ShowInteractButton(hitModel, true);
+            }
+            else if(_lastInteractModel != null)
+            {
+                ShowInteractButton(_lastInteractModel, false);
+                _lastInteractModel = null;
+            }
+        }
+        
 
         public override void Dispose()
         {
@@ -32,32 +46,40 @@ namespace Urd.Character.Skill
         protected override void BeginSkill(Vector2 direction)
         {
             base.BeginSkill(direction);
-            _direction = direction;
-            CheckInteraction();
-        }
-
-        private void CheckInteraction()
-        {
-            var direction = _direction;
-            var position = _characterModel.CharacterMovement.Position + direction*_skillModel.Distance;
-
-            IHitModel hitModel = new InteractNPCModel(position, direction, _skillModel.AreaSphere);
-            if (_physicsService.Service.TryHit(ref hitModel))
+            if (TryInteract(direction, out IHitModel hitModel))
             {
                 Interact(hitModel);
             }
         }
 
+        private bool TryInteract(Vector2 direction, out IHitModel hitModel)
+        {
+            var position = _characterModel.CharacterMovement.Position + direction *_skillModel.Distance;
+
+            hitModel = new InteractNPCModel(position, direction, _skillModel.AreaSphere);
+            if (_physicsService.Service.TryHit(ref hitModel))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private void ShowInteractButton(IHitModel hitModel, bool showInteractButton)
+        {
+            // do this better
+            var interactableObject = hitModel.Collisions[0].GetComponentInParent<IInteractable>();
+            interactableObject.ShowInteractButton(showInteractButton);
+            _lastInteractModel = hitModel;
+        }
+
         private void Interact(IHitModel hitModel)
         {
-            for (int i = 0; i < hitModel.Collisions.Count; i++)
-            {
-                // do this better
-                var interactableObject = hitModel.Collisions[i].GetComponentInParent<IInteractable>();
-                var direction = hitModel.Collisions[i].transform.position -
-                                (Vector3)_characterModel.CharacterMovement.Position;
-                interactableObject.Interact(direction.normalized);
-            }
+            // do this better
+            var interactableObject = hitModel.Collisions[0].GetComponentInParent<IInteractable>();
+            var direction = hitModel.Collisions[0].transform.position -
+                            (Vector3)_characterModel.CharacterMovement.Position;
+            interactableObject.Interact(-direction.normalized);
         }
     }
 }

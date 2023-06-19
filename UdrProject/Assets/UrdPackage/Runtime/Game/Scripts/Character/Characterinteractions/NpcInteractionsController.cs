@@ -27,6 +27,7 @@ namespace Urd.Character
         {
             var text = _interactionsModel.Text;
             _gameManagerService.Service.DialogModule.ShowDialog(text);
+            _interactionsModel.Interact(directionNormalized);
         }
     }
 }
