@@ -3,6 +3,7 @@
     "com.browar.editor-toolbox": "https://github.com/arimger/Unity-Editor-Toolbox.git#upm",
     "com.coffee.upm-git-extension": "https://github.com/mob-sakai/UpmGitExtension.git",
     "com.domybest.mybox": "https://github.com/Deadcows/MyBox.git",
+    "com.h8man.2d.navmeshplus": "https://github.com/h8man/NavMeshPlus.git",
     "com.qriva.monobehaviourtree": "https://github.com/Qriva/MonoBehaviourTree.git#upm",
     "com.unity.addressables": "1.21.10",
     "com.unity.collab-proxy": "1.17.2",
