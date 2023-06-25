@@ -39,6 +39,13 @@
       "dependencies": {},
       "hash": "8cb15690ed56c20dc5038825590631905c350607"
     },
+    "com.superkerokero.bookmark4unity": {
+      "version": "https://github.com/superkerokero/Bookmark4Unity.git?path=/Assets/Bookmark4Unity",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "051cb31b700200dac89d06d779d22fa0b280e205"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.7",
       "depth": 1,
