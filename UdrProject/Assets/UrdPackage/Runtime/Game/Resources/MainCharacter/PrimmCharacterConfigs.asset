@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <HitPoints>k__BackingField: 50
   <HitSkillConfig>k__BackingField: {fileID: 11400000, guid: e526b0e593bc9104a8ca00ae957e0608, type: 2}
-  <Speed>k__BackingField: 1
+  <Speed>k__BackingField: 2
   <DefaultSkillConfigs>k__BackingField:
   - {fileID: 11400000, guid: dd39982a41ac0a142aafc008decad43b, type: 2}
   <SkillTreeConfig>k__BackingField: {fileID: 11400000, guid: 363fd3d731479d54d954476eb740dce9, type: 2}
