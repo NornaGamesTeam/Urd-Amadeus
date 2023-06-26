@@ -1,5 +1,6 @@
 using MBT;
 using UnityEngine;
+using Urd.Character;
 
 namespace Urd.AI
 {
@@ -13,32 +14,54 @@ namespace Urd.AI
         [Space, SerializeField]
         private Vector2Reference destinyVariable = new Vector2Reference(VarRefMode.DisableConstant);
 
+        private float _timestamp;
         private float _movementDuration;
+        private Vector2 _initialPosition;
+        private Vector2 _movementDirection;
 
+        private ICharacterModel _characterModel;
+        private EnemyCharacterInput _enemyCharacterInput;
+        
         public override void OnEnter()
         {
             base.OnEnter();
+
+            _characterModel = characterVariable.Value.CharacterModel;
+            _enemyCharacterInput = characterVariable.Value.CharacterInput as EnemyCharacterInput;
             
-            var characterPosition = characterVariable.Value.CharacterModel.CharacterMovement.Position;
-            _movementDuration = Vector2.Distance(characterPosition, destinyVariable.Value) /
-                                characterVariable.Value.CharacterModel.CharacterMovement.Speed;
+            _timestamp = 0;
+            _initialPosition = _characterModel.CharacterMovement.Position;
+
+            _movementDirection = (destinyVariable.Value - _initialPosition).normalized; 
+            _enemyCharacterInput.SetMovementVector(_movementDirection);
+            
+            _movementDuration = Vector2.Distance(_initialPosition, destinyVariable.Value) /
+                                _characterModel.CharacterMovement.Speed;
         }
 
+        public override void OnExit()
+        {
+            _enemyCharacterInput.SetMovementVector(Vector2.zero);
+            
+            base.OnExit();
+        }
         public override NodeResult Execute()
         {
-            var characterPosition = characterVariable.Value.CharacterModel.CharacterMovement.Position;
-
-            if (Vector2.Distance(characterPosition, destinyVariable.Value) < 0.01f)
+            _timestamp += DeltaTime;
+            
+            if (_timestamp >= _movementDuration)
             {
                 return NodeResult.success;
             }
-            var timestamp = DeltaTime;
             
+            /*
             Vector2 newPosition =
-                Vector2.Lerp(characterPosition, destinyVariable.Value, timestamp / _movementDuration);
-            characterVariable.Value.CharacterModel.CharacterMovement.SetPosition(newPosition);
+                Vector2.Lerp(_initialPosition, destinyVariable.Value, _timestamp / _movementDuration);
+            _characterModel.CharacterMovement.SetPosition(newPosition);
+            */
             
             return NodeResult.running;
         }
+
     }
 }

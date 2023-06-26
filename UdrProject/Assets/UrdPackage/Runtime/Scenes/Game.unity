@@ -180,6 +180,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 657eeb4693b34fc4a96d50c65a729d9c, type: 3}
+--- !u!114 &847269382 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1628211800157486342, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
+  m_PrefabInstance: {fileID: 1417701146}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2217e4d35c0c94ea02cf2166c17e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1417701146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,6 +246,14 @@ PrefabInstance:
       propertyPath: _boxSize.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7321233144860472780, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
+      propertyPath: _destinyVariable.key
+      value: destinyPosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321233144860472780, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
+      propertyPath: _destinyVariable.blackboard
+      value: 
+      objectReference: {fileID: 847269382}
     - target: {fileID: 7744823324971503468, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -342,7 +361,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 5467075014806636570, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
 --- !u!1 &1465502025
 GameObject:
@@ -487,54 +505,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafac002b89be5f45931e84c39e53350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1613793790 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 149765833036110087, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
-  m_PrefabInstance: {fileID: 1417701146}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1613793798 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8833751431485834407, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
-  m_PrefabInstance: {fileID: 1417701146}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613793790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1613793811
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613793790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Wait
-  rect:
-    serializedVersion: 2
-    x: 366
-    y: 544
-    width: 160
-    height: 45
-  parent: {fileID: 1613793798}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  time:
-    useConstant: 1
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 1
-  randomDeviation: 0
-  continueOnRestart: 0
 --- !u!1 &1651696542
 GameObject:
   m_ObjectHideFlags: 0
