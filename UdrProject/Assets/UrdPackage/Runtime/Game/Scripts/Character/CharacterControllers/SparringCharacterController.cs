@@ -9,7 +9,7 @@ namespace Urd.Character
         {
             base.Init();
 
-            SetInput(new SparringCharacterInput(CharacterModel));
+            SetInput(new EnemyCharacterInput(CharacterModel));
         }
 
         public void Hit(float damage, Vector2 hitDirection)

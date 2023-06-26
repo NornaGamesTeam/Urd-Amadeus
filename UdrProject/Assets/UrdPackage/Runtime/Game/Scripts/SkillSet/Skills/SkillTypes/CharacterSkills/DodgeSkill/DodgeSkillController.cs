@@ -11,12 +11,12 @@ namespace Urd.Character.Skill
 
             SetModel(_characterModel.SkillSetModel.DodgeSkillModel);
             
-            characterInput.OnIsDodgingChanged += OnSkillStatusChanged;
+            (_characterInput as MainCharacterInput).OnIsDodgingChanged += OnSkillStatusChanged;
         }
 
         public override void Dispose()
         {
-            _characterInput.OnIsDodgingChanged -= OnSkillStatusChanged;
+            (_characterInput as MainCharacterInput).OnIsDodgingChanged -= OnSkillStatusChanged;
             base.Dispose();
         }
         

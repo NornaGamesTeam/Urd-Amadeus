@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 5467075014806636570}
+  selectedEditorNode: {fileID: 7321233144860472780}
   repeatOnFinish: 0
   maxExecutionsPerTick: 1000
   parent: {fileID: 0}
@@ -258,12 +258,13 @@ MonoBehaviour:
     key: CharacterController
     constantValue: {fileID: 0}
   _boxSize: {x: 2, y: 2}
-  destinyVariable:
+  _destinyVariable:
     useConstant: 0
     mode: 1
     blackboard: {fileID: 1628211800157486342}
     key: destinyPosition
     constantValue: {x: 0, y: 0}
+  _drawGizmos: 0
 --- !u!114 &6844777042057844011
 MonoBehaviour:
   m_ObjectHideFlags: 0

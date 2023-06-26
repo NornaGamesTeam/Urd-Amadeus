@@ -8,5 +8,6 @@ namespace Urd.Character
     public interface ICharacterController : IDisposable
     {
         public ICharacterModel CharacterModel { get; }
+        public ICharacterInput CharacterInput { get; }
     }
 }

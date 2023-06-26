@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Urd.Services;
@@ -7,7 +6,7 @@ using Urd.Utils;
 
 namespace Urd.Character
 {
-    public class MainCharacterInput : ICharacterInput
+    public class MainCharacterInput : CharacterInput
     {
         private const string HORIZONTAL_MOVEMENT = "HorizontalMovement";
         private const string VERTICAL_MOVEMENT = "VerticalMovement";
@@ -15,41 +14,22 @@ namespace Urd.Character
         private const string GAMEPAD_MOVEMENT = "GamePadMovement";
         private const string GAMEPAD_AIM = "GamePadAim";
         private const string INTERACT_BUTTON = "InteractButton";
-
-        public Vector2 Movement => _movement;
-        private Vector2 _movement;
-
-        public Vector2 AimDirection => _aimDirection.normalized;
-        private Vector2 _aimDirection;
-        public bool IsDodging { get; private set; }
-
+        
         private IInputService _inputService;
-        private ICoroutineService _coroutineService;
-        private ICharacterModel _characterModel;
-        private Coroutine _joinEventsCoroutine;
+        
+        public bool IsDodging { get; private set; }
+        public delegate void DodgeDelegate(bool isDodging, Vector2 dodgeDirection);
+        public event DodgeDelegate OnIsDodgingChanged;
+        public delegate void InteractDelegate(bool isInteracting, Vector2 interactDirection);
+        public event InteractDelegate OnInteractChanged;
 
-        private bool IsMoving => _movement != Vector2.zero;
-        private bool IsAiming => _aimDirection != Vector2.zero;
-        private bool _isAttacking;
-        private Vector2 _finalAimDirection;
+        public MainCharacterInput(ICharacterModel characterModel): base(characterModel) { }
 
-        public event Action<Vector2> OnMovementChanged;
-        public event Action<Vector2> OnAimDirectionChanged;
-        public event ICharacterInput.DodgeDelegate OnIsDodgingChanged;
-        public event ICharacterInput.AttackDelegate OnAttackingChanged;
-        public event ICharacterInput.InteractDelegate OnInteractChanged;
-
-        public MainCharacterInput(ICharacterModel characterModel)
+        public override void Init()
         {
-            _characterModel = characterModel;
-
-            Init();
-        }
-
-        public void Init()
-        {
+            base.Init();
+            
             _inputService = StaticServiceLocator.Get<IInputService>();
-            _coroutineService = StaticServiceLocator.Get<ICoroutineService>();
 
             SubscribeToInput();
         }
@@ -72,35 +52,12 @@ namespace Urd.Character
 
             _inputService.SubscribeToActionOnPerformed(INTERACT_BUTTON, OnInteractDown);
             _inputService.SubscribeToActionOnCancel(INTERACT_BUTTON, OnInteractUp);
-            
-            
-            _joinEventsCoroutine = _coroutineService.StartCoroutine(JoinMovementsCo());
         }
         
-        private IEnumerator JoinMovementsCo()
+        public override void Dispose()
         {
-            while (true)
-            {
-                yield return new WaitForEndOfFrame();
-                OnMovementChanged?.Invoke(Movement);
-
-                if (IsAiming)
-                {
-                    _finalAimDirection = AimDirection;
-                }
-
-                if (!IsAiming && IsMoving)
-                {
-                    _finalAimDirection = Movement.normalized;
-                }
-
-                OnAimDirectionChanged?.Invoke(_finalAimDirection);
-                OnAttackingChanged?.Invoke(_isAttacking, _finalAimDirection);
-            }
-        }
-
-        public void Dispose()
-        {
+            base.Dispose();
+            
             UnsubscribeToInput();
         }
 
@@ -124,9 +81,6 @@ namespace Urd.Character
             _inputService.UnsubscribeToActionOnCancel(INTERACT_BUTTON, OnInteractUp);
             
             OnIsDodgingChanged = null;
-            OnMovementChanged = null;
-
-            _coroutineService.StopCoroutine(_joinEventsCoroutine);
         }
 
         private void OnHorizontalMovementDown(InputAction.CallbackContext inputAction) =>

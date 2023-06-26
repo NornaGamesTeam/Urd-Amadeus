@@ -19,7 +19,7 @@ namespace Urd.Character.Skill
 
             SetModel(_characterModel.SkillSetModel.GetSkillModel<InteractSkillModel>());
 
-            _characterInput.OnInteractChanged += OnSkillStatusChanged;
+            (_characterInput as MainCharacterInput).OnInteractChanged += OnSkillStatusChanged;
             _characterInput.OnAimDirectionChanged += OnAimChanged;
         }
 
@@ -39,7 +39,7 @@ namespace Urd.Character.Skill
 
         public override void Dispose()
         {
-            _characterInput.OnInteractChanged -= OnSkillStatusChanged;
+            (_characterInput as MainCharacterInput).OnInteractChanged -= OnSkillStatusChanged;
             base.Dispose();
         }
 
