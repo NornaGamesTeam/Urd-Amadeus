@@ -34,7 +34,7 @@ namespace Urd.Character
             base.SetInput(characterInput);
            
             _hitPointsController = new CharacterHitPointsController(CharacterModel);
-            _movementController = new CharacterMovementController(CharacterModel, CharacterInput, transform.position);
+            _movementController = new CharacterMovementController(CharacterModel, CharacterInput, transform.position, GetComponentInChildren<Rigidbody2D>());
             _skillSetController = new SkillSetController(CharacterModel, CharacterInput);
         }
 

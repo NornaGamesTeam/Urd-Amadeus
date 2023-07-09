@@ -11,15 +11,19 @@ namespace Urd.Character
         private ICharacterModel _characterModel;
 
         private IClockService _clockService;
+        private IPhysicsService _physicsService;
+        private Rigidbody2D _rigidbody2D;
         
         public CharacterMovementController(ICharacterModel characterModel, ICharacterInput characterInput,
-            Vector3 initialPosition)
+            Vector3 initialPosition, Rigidbody2D rigidbody2D)
         {
             _characterModel = characterModel;
             SetInput(characterInput);
             Init();
+            _rigidbody2D = rigidbody2D;
             
             _characterModel.CharacterMovement.SetPosition(initialPosition);
+            _rigidbody2D.position = _characterModel.CharacterMovement.Position;
         }
 
         public void Init()
@@ -52,9 +56,29 @@ namespace Urd.Character
             if (_characterModel.CharacterMovement.IsMoving)
             {
                 _characterModel.CharacterMovement.SetRawNormalizedMovement(movement);
-                _characterModel.CharacterMovement.ModifyPosition(
-                    movement * _characterModel.CharacterMovement.Speed * _clockService.DeltaTime);
+
+                var deltaMovement = movement * _characterModel.CharacterMovement.Speed * _clockService.DeltaTime;
+                Move(deltaMovement);
+                /*
+                ClampMovement(ref deltaMovement);
+                Debug.Log($"Movement Before: {movement * _characterModel.CharacterMovement.Speed * _clockService.DeltaTime}" +
+                          $"Movement After: {deltaMovement}");
+                _characterModel.CharacterMovement.ModifyPosition(deltaMovement);
+                */
             }
+        }
+
+        private void Move(Vector2 deltaMovement)
+        {
+            _rigidbody2D.MovePosition(_characterModel.CharacterMovement.Position + deltaMovement);
+            //_rigidbody2D.GetContacts()
+            _clockService.AddDelayCall(0.01f,DoMovement);
+        }
+
+        private void DoMovement()
+        {
+            var deltaMovement = _rigidbody2D.position - _characterModel.CharacterMovement.Position;
+            _characterModel.CharacterMovement.ModifyPosition(deltaMovement);
         }
 
         private bool CanMove()
