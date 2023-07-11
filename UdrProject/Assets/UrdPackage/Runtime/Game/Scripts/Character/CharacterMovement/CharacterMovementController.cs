@@ -58,27 +58,105 @@ namespace Urd.Character
                 _characterModel.CharacterMovement.SetRawNormalizedMovement(movement);
 
                 var deltaMovement = movement * _characterModel.CharacterMovement.Speed * _clockService.DeltaTime;
-                Move(deltaMovement);
-                /*
-                ClampMovement(ref deltaMovement);
-                Debug.Log($"Movement Before: {movement * _characterModel.CharacterMovement.Speed * _clockService.DeltaTime}" +
-                          $"Movement After: {deltaMovement}");
+                //ClampMovement(ref deltaMovement);
                 _characterModel.CharacterMovement.ModifyPosition(deltaMovement);
-                */
+                //_characterModel.CharacterMovement.ModifyPosition(deltaMovement);
+                //_rigidbody2D.MovePosition(_rigidbody2D.position + deltaMovement);
             }
         }
 
-        private void Move(Vector2 deltaMovement)
+        
+        private void DoMovement(Vector2 deltaMovement)
         {
-            _rigidbody2D.MovePosition(_characterModel.CharacterMovement.Position + deltaMovement);
-            //_rigidbody2D.GetContacts()
-            _clockService.AddDelayCall(0.01f,DoMovement);
+            var newDeltaMovement = _rigidbody2D.transform.localPosition;
+            //*
+            _rigidbody2D.transform.localPosition = Vector3.zero;
+             _clockService.AddDelayCall(0.01f, () => DoMovement2(newDeltaMovement));
+             /*/
+            _characterModel.CharacterMovement.ModifyPosition(newDeltaMovement);
+            Debug.Log($"Movement Before: {deltaMovement}" +
+                      $"Movement After: {newDeltaMovement}");
+            /**/
         }
 
-        private void DoMovement()
+        private void DoMovement2(Vector2 newDeltaMovement)
         {
-            var deltaMovement = _rigidbody2D.position - _characterModel.CharacterMovement.Position;
-            _characterModel.CharacterMovement.ModifyPosition(deltaMovement);
+            _characterModel.CharacterMovement.ModifyPosition(newDeltaMovement);
+        }
+
+        private void ClampMovement(ref Vector2 deltaMovement)
+        {
+            _rigidbody2D.MovePosition(_characterModel.CharacterMovement.Position + deltaMovement);
+            var vector2 = deltaMovement;
+            _clockService.AddDelayCall(0.01f, () => DoMovement(vector2));
+            /*
+            deltaMovement = _rigidbody2D.position - _characterModel.CharacterMovement.Position;
+            _rigidbody2D.MovePosition(_characterModel.CharacterMovement.Position - deltaMovement);
+            */
+            
+            /*
+            var newDeltaMovement = deltaMovement;
+            _rigidbody2D.MovePosition(_rigidbody2D.position + deltaMovement);
+
+            List<ContactPoint2D> contacts = new List<ContactPoint2D>();
+            _rigidbody2D.GetContacts(contacts);
+            if (contacts.IsNullOrEmpty())
+            {
+                return;
+            }
+            
+            Vector2 position = _rigidbody2D.position;
+
+            float minX = position.x+newDeltaMovement.x;
+            float maxX = position.x+newDeltaMovement.x;
+            float minY = position.y+newDeltaMovement.y;
+            float maxY = position.y+newDeltaMovement.y;
+            //Vector2 position = _characterModel.CharacterMovement.Position;
+            
+            for (int i = 0; i < contacts.Count; i++)
+            {
+                if (minX > contacts[i].point.x)
+                {
+                    minX = contacts[i].point.x;
+                }
+                if (maxX < contacts[i].point.x)
+                {
+                    maxX = contacts[i].point.x;
+                }
+                if (minY > contacts[i].point.y)
+                {
+                    minY = contacts[i].point.y;
+                }
+                if (maxY < contacts[i].point.y)
+                {
+                    maxY = contacts[i].point.y;
+                }
+            }
+
+            if (deltaMovement.x < 0)
+            {
+                newDeltaMovement.x = Mathf.Max(deltaMovement.x, position.x-maxX);
+            }
+            if (deltaMovement.x > 0)
+            {
+                newDeltaMovement.x = Mathf.Min(deltaMovement.x, position.x-minX);
+            }
+            
+            if (deltaMovement.y < 0)
+            {
+                newDeltaMovement.y = Mathf.Max(deltaMovement.y, position.y-maxY);
+            }
+            if (deltaMovement.y > 0)
+            {
+                newDeltaMovement.y = Mathf.Min(deltaMovement.y, position.y-minY);
+            }
+
+            _rigidbody2D.MovePosition(_rigidbody2D.position - deltaMovement);
+
+            Debug.Log($"minX: {minX} | maxX:{maxX} | minY: {minY} | maxY:{maxY}");
+            Debug.Log($"deltaMovement: {deltaMovement} | newDeltaMovement:{newDeltaMovement}");
+            deltaMovement = newDeltaMovement;
+            /* */
         }
 
         private bool CanMove()
