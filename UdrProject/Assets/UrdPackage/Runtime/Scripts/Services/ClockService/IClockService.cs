@@ -9,8 +9,9 @@ namespace Urd.Services
         bool IsInPause { get; }
         float DeltaTime { get; }
         void SubscribeToUpdate(Action<float> listener, bool pausable = true);
-
         void UnSubscribeToUpdate(Action<float> listener);
+        void SubscribeToLateUpdate(Action<float> listener, bool pausable = true);
+        void UnSubscribeToLateUpdate(Action<float> listener);
 
         void SetPause(bool gamePaused);
 

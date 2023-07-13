@@ -13,6 +13,7 @@ namespace Urd.Services
         public float DeltaTime => Time.deltaTime;
 
         List<ClockServiceUpdateModel> _updateListeners = new List<ClockServiceUpdateModel>();
+        List<ClockServiceUpdateModel> _lateUpdateListeners = new List<ClockServiceUpdateModel>();
         List<TimerModel> _delayedCalls = new List<TimerModel>();
 
         private ICoroutineService _coroutineService;
@@ -28,6 +29,8 @@ namespace Urd.Services
             
             SetAsLoaded();
         }
+
+        
 
         public void SetPause(bool gamePaused)
         {
@@ -48,6 +51,20 @@ namespace Urd.Services
             }
         }
 
+        public void SubscribeToLateUpdate(Action<float> listener, bool pausable = true)
+        {
+            _lateUpdateListeners.Add(new ClockServiceUpdateModel(listener, pausable));
+        }
+
+        public void UnSubscribeToLateUpdate(Action<float> listenerToDelete)
+        {
+            var model = _lateUpdateListeners.Find(listener => listener.Listener == listenerToDelete);
+            if (model != null)
+            {
+                _lateUpdateListeners.Remove(model);
+            }
+        }
+
         public TimerModel AddDelayCall(float duration, Action finishCallback, bool pausable = true)
         {
             var timerModel = new TimerModel(duration, finishCallback, pausable);
@@ -61,7 +78,12 @@ namespace Urd.Services
             while (_update)
             {
                 float deltaTime = Time.deltaTime;
-                __TestUpdate(deltaTime);
+                UpdateUpdates(deltaTime);
+                UpdateDelayedCalls(deltaTime);
+
+                yield return new WaitForEndOfFrame();
+                deltaTime = Time.deltaTime;
+                UpdateLateUpdate(deltaTime);
                 yield return 0;
             }
         }
@@ -79,6 +101,17 @@ namespace Urd.Services
                 if (!IsInPause || !_updateListeners[i].IsPausable)
                 {
                     _updateListeners[i].CallListener(deltaTime);
+                }
+            }
+        }
+
+        private void UpdateLateUpdate(float deltaTime)
+        {
+            for (int i = 0; i < _lateUpdateListeners.Count; i++)
+            {
+                if (!IsInPause || !_lateUpdateListeners[i].IsPausable)
+                {
+                    _lateUpdateListeners[i].CallListener(deltaTime);
                 }
             }
         }
