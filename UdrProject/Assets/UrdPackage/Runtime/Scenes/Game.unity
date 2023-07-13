@@ -3466,26 +3466,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3299268906212890001, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299268906212890001, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5881085419448022447, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5881085419448022447, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
-      propertyPath: m_Interpolate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5881085419448022447, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7744823324971503468, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3534,12 +3514,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
-    - target: {fileID: 9046163178879299791, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
-      propertyPath: _characterController
-      value: -2
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2003916317442300762, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9048821b4b31fe847b30a3c0b1a27937, type: 3}
 --- !u!1001 &3027258786462248375
 PrefabInstance:

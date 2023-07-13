@@ -42,7 +42,7 @@ namespace Urd.Character
         {
             BoomerangHitDamageModel hitDamageModel = _navigationService.Service.GetModel<BoomerangTypes, BoomerangHitDamageModel>(BoomerangTypes.HitDamage);
             hitDamageModel.SetDamage(damage);
-            hitDamageModel.SetOriginPoint(_characterModel.CharacterMovement.Position);
+            hitDamageModel.SetOriginPoint(_characterModel.CharacterMovement.PhysicPosition);
             _navigationService.Service.Open(hitDamageModel);
         }
 

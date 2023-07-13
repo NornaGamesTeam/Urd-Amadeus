@@ -25,7 +25,7 @@ namespace Urd.Character.Skill
             base.SkillUpdate(deltaTime);
             
             var movement = _direction * _skillModel.Distance/_skillModel.Duration * deltaTime;
-            _characterModel.CharacterMovement.ModifyPosition(movement);
+            _characterModel.CharacterMovement.TryModifyPhysicPosition(movement);
         }
     }
 }

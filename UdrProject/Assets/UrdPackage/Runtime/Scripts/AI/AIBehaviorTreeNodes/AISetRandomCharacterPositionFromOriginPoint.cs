@@ -27,7 +27,7 @@ namespace Urd.AI
         
         private void Start()
         {
-            _originalPoint = characterVariable.Value.CharacterModel.CharacterMovement.Position;
+            _originalPoint = characterVariable.Value.CharacterModel.CharacterMovement.PhysicPosition;
         }
 
         public override NodeResult Execute()

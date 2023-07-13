@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GameCameraConfig
   m_EditorClassIdentifier: 
   <OrthographicSize>k__BackingField: 4.99
-  <TimeToReachTheObjective>k__BackingField: 0
+  <TimeToReachTheObjective>k__BackingField: 1

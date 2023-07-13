@@ -6,7 +6,7 @@ namespace Urd.Character
 {
     public abstract class CharacterControllerNoModel : MonoBehaviour, ICharacterController
     {
-        [field: SerializeField, ReadOnly]
+        [field: SerializeReference, ReadOnly]
         public ICharacterModel CharacterModel { get; protected set; }
 
         [field: SerializeField, ReadOnly]

@@ -30,7 +30,7 @@ namespace Urd.AI
             _enemyCharacterInput = characterVariable.Value.CharacterInput as EnemyCharacterInput;
             
             _timestamp = 0;
-            _initialPosition = _characterModel.CharacterMovement.Position;
+            _initialPosition = _characterModel.CharacterMovement.PhysicPosition;
 
             _movementDirection = (destinyVariable.Value - _initialPosition).normalized; 
             _enemyCharacterInput.SetMovementVector(_movementDirection);

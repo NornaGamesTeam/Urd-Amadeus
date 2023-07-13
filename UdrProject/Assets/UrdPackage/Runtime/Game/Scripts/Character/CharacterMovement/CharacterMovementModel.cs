@@ -25,9 +25,13 @@ namespace Urd.Models
         public Vector2 Position { get; private set; }
         
         [field: SerializeField, MyBox.ReadOnly]
+        public Vector2 PhysicPosition { get; private set; }
+        
+        [field: SerializeField, MyBox.ReadOnly]
         public bool IsMoving { get; private set; }
         
         public event Action<Vector2> OnRawNormalizedMovementChanged;
+        public event Action<Vector2> OnPhysicPositionChanged;
         public event Action<Vector2> OnPositionChanged;
         public event Action<Vector2> OnAimDirectionChanged;
         public event Action<bool> OnIsMovingChanged;
@@ -43,7 +47,24 @@ namespace Urd.Models
             OnRawNormalizedMovementChanged?.Invoke(rawNormalizedMovement);
         }
         
-        public void ModifyPosition(Vector2 movement) => SetPosition(Position + movement);
+        public void TryModifyPhysicPosition(Vector2 movement) => TrySetPhysicPosition(PhysicPosition + movement);
+        public void TrySetPhysicPosition(Vector2 newPosition)
+        {
+            if (PhysicPosition == newPosition)
+            {
+                return;
+            }
+            
+            PhysicPosition = newPosition;
+            OnPhysicPositionChanged?.Invoke(PhysicPosition);
+        }
+
+        public void FoceSetPhysicPosition(Vector2 newPhysicPosition)
+        {
+            PhysicPosition = newPhysicPosition;
+        }
+        
+        public void ModifyPosition(Vector2 movement) => TrySetPhysicPosition(Position + movement);
         public void SetPosition(Vector2 newPosition)
         {
             if (Position == newPosition)

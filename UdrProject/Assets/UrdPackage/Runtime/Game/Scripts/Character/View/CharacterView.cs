@@ -14,11 +14,11 @@ namespace Urd.Character
         {
             _characterModel = characterModel;
             
-            _characterModel.CharacterMovement.OnPositionChanged += OnCharacterMove;
+            _characterModel.CharacterMovement.OnPhysicPositionChanged += OnPhysicCharacterMove;
             GetComponentInChildren<CharacterGraphicView>().SetModel(_characterModel);
         }
         
-        private void OnCharacterMove(Vector2 characterPosition)
+        private void OnPhysicCharacterMove(Vector2 characterPosition)
         {
             transform.position = characterPosition;
         }
