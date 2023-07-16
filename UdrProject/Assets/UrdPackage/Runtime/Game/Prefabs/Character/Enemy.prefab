@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 7321233144860472780}
+  selectedEditorNode: {fileID: 0}
   repeatOnFinish: 0
   maxExecutionsPerTick: 1000
   parent: {fileID: 0}
@@ -122,7 +122,7 @@ MonoBehaviour:
   runtimePriority: 0
   breakpoint: 0
   loops: 1
-  infinite: 0
+  infinite: 1
 --- !u!114 &8833751431485834407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +138,8 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: 219
-    y: 392
+    x: 220
+    y: 400
     width: 160
     height: 45
   parent: {fileID: 115308546502287713}
@@ -166,7 +166,7 @@ MonoBehaviour:
   title: Wait
   rect:
     serializedVersion: 2
-    x: 420
+    x: 400
     y: 560
     width: 160
     height: 45
@@ -257,7 +257,7 @@ MonoBehaviour:
     blackboard: {fileID: 1628211800157486342}
     key: CharacterController
     constantValue: {fileID: 0}
-  _boxSize: {x: 2, y: 2}
+  _boxSize: {x: 5, y: 5}
   _destinyVariable:
     useConstant: 0
     mode: 1
@@ -277,11 +277,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d2c20fb1909b544bc372df46e020b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Move Character To Position
+  title: Move Character To Position No Checks
   rect:
     serializedVersion: 2
-    x: 200
-    y: 540
+    x: 220
+    y: 560
     width: 160
     height: 59
   parent: {fileID: 8833751431485834407}
@@ -338,7 +338,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5568792878132102943
 MonoBehaviour:
@@ -500,16 +500,16 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5683541104307009595}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -705,7 +705,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157065905d7447744b2c7b323242ca62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CharacterModel>k__BackingField:
+    rid: -2
   _characterConfig: {fileID: 11400000, guid: 67b3930dad51b8d46962f9d0cd5c2028, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!114 &2560374026742572683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,11 +866,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1423216307940799129, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1423216307940799129, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1423216307940799129, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_RootOrder
@@ -871,27 +878,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1423216307940799129, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1423216307940799129, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1423216307940799129, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1423216307940799129, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1423216307940799129, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 19.8
+      value: 1.39
       objectReference: {fileID: 0}
     - target: {fileID: 1423216307940799129, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 29.9481
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1423216307940799129, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -927,7 +934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1423216307940799129, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 1.553
       objectReference: {fileID: 0}
     - target: {fileID: 1423216307940799129, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -947,7 +954,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1423216308386996320, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
       propertyPath: m_fontSize
-      value: 18
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423216308386996320, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b423d792d2fac346933d53ae46ed21e, type: 3}
