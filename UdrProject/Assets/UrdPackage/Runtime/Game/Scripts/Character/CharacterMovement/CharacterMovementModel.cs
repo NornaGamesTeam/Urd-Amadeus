@@ -59,7 +59,7 @@ namespace Urd.Models
             OnPhysicPositionChanged?.Invoke(PhysicPosition);
         }
 
-        public void FoceSetPhysicPosition(Vector2 newPhysicPosition)
+        public void ForceSetPhysicPosition(Vector2 newPhysicPosition)
         {
             PhysicPosition = newPhysicPosition;
         }

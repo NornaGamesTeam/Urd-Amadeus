@@ -3040,17 +3040,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 657eeb4693b34fc4a96d50c65a729d9c, type: 3}
---- !u!114 &847269382 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1628211800157486342, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
-  m_PrefabInstance: {fileID: 1417701146}
+--- !u!1 &1278212071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417701147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b2217e4d35c0c94ea02cf2166c17e4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1278212072}
+  m_Layer: 0
+  m_Name: IAPUtil
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1278212072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278212071}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1417701146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3058,18 +3078,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1417701149, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
+      propertyPath: _navMeshAgent
+      value: 
+      objectReference: {fileID: 1973921454}
     - target: {fileID: 2819359234221499886, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1465502028}
-    - target: {fileID: 6844777042057844011, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
-      propertyPath: rect.x
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 6844777042057844011, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
-      propertyPath: rect.y
-      value: 440
-      objectReference: {fileID: 0}
     - target: {fileID: 7744823324971503468, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3118,64 +3134,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 8833751431485834407, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
-      propertyPath: children.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
---- !u!1 &1417701147 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 149765833036110087, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
-  m_PrefabInstance: {fileID: 1417701146}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1417701148 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8833751431485834407, guid: 74071f39daa960e46bd4a3216004ad9c, type: 3}
-  m_PrefabInstance: {fileID: 1417701146}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417701147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1417701149
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417701147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a1b3a0970b3444bad9695cb4acccf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Move Character To Position Using Grid
-  rect:
-    serializedVersion: 2
-    x: 220
-    y: 560
-    width: 160
-    height: 59
-  parent: {fileID: 1417701148}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  characterVariable:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 847269382}
-    key: CharacterController
-    constantValue: {fileID: 0}
-  destinyVariable:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 847269382}
-    key: destinyPosition
-    constantValue: {x: 0, y: 0}
 --- !u!1 &1465502025
 GameObject:
   m_ObjectHideFlags: 0
@@ -3379,7 +3339,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.016666668
+  m_VoxelSize: 0.06666667
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: d5a8a8b8ee0cc534fb5513e680a5cc30, type: 2}

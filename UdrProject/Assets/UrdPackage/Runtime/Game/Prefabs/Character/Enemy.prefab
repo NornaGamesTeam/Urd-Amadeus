@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8364308002638990861}
   - component: {fileID: 7321233144860472780}
   - component: {fileID: 6844777042057844011}
+  - component: {fileID: 1417701149}
   m_Layer: 12
   m_Name: BehaviorTree
   m_TagString: Untagged
@@ -67,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 0}
+  selectedEditorNode: {fileID: 6844777042057844011}
   repeatOnFinish: 0
   maxExecutionsPerTick: 1000
   parent: {fileID: 0}
@@ -145,7 +146,7 @@ MonoBehaviour:
   parent: {fileID: 115308546502287713}
   children:
   - {fileID: 7321233144860472780}
-  - {fileID: 6844777042057844011}
+  - {fileID: 1417701149}
   - {fileID: 5467075014806636570}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -257,14 +258,14 @@ MonoBehaviour:
     blackboard: {fileID: 1628211800157486342}
     key: CharacterController
     constantValue: {fileID: 0}
-  _boxSize: {x: 5, y: 5}
+  _boxSize: {x: 18.08, y: 11.76}
   _destinyVariable:
     useConstant: 0
     mode: 1
     blackboard: {fileID: 1628211800157486342}
     key: destinyPosition
     constantValue: {x: 0, y: 0}
-  _drawGizmos: 0
+  _drawGizmos: 1
 --- !u!114 &6844777042057844011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,11 +281,11 @@ MonoBehaviour:
   title: Move Character To Position No Checks
   rect:
     serializedVersion: 2
-    x: 220
-    y: 560
+    x: 600
+    y: 440
     width: 160
     height: 59
-  parent: {fileID: 8833751431485834407}
+  parent: {fileID: 0}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -301,6 +302,44 @@ MonoBehaviour:
     blackboard: {fileID: 1628211800157486342}
     key: destinyPosition
     constantValue: {x: 0, y: 0}
+--- !u!114 &1417701149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149765833036110087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a1b3a0970b3444bad9695cb4acccf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Move Character To Position Using Grid
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: 560
+    width: 160
+    height: 59
+  parent: {fileID: 8833751431485834407}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  _drawGizmos: 1
+  characterVariable:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 1628211800157486342}
+    key: CharacterController
+    constantValue: {fileID: 0}
+  _destinyVariable:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 1628211800157486342}
+    key: destinyPosition
+    constantValue: {x: 0, y: 0}
+  _navMeshAgent: {fileID: 0}
 --- !u!1 &703924287393727113
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +506,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6054859584522607160}
-  - component: {fileID: 4948067849321487683}
   m_Layer: 15
   m_Name: Colliders
   m_TagString: Untagged
@@ -492,27 +530,6 @@ Transform:
   m_Father: {fileID: 7744823324971503468}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &4948067849321487683
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5683541104307009595}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!1 &7659137044615818661
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +684,7 @@ GameObject:
   - component: {fileID: 5349213733496653986}
   - component: {fileID: 2560374026742572683}
   - component: {fileID: 7053699527019498447}
+  - component: {fileID: 6906664652680165237}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Untagged
@@ -745,6 +763,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &6906664652680165237
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703236166929520026}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &8949176325135275060
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +840,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.5}
+  m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
 --- !u!1 &9204196409728097359
 GameObject:

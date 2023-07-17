@@ -47,6 +47,7 @@ namespace Urd.AI
                 return;
             }
 
+            
             Gizmos.color = Color.white.SetAlpha(0.5f);; 
             Gizmos.DrawCube(_originalPoint, _boxSize);
             Gizmos.color = Color.black.SetAlpha(0.5f);

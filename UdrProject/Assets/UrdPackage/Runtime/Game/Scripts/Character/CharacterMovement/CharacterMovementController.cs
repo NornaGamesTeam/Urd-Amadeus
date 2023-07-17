@@ -23,6 +23,7 @@ namespace Urd.Character
             SetInput(characterInput);
             _rigidbody2D = rigidbody2D;
             
+            _characterModel.CharacterMovement.ForceSetPhysicPosition(initialPosition);
             _characterModel.CharacterMovement.SetPosition(initialPosition);
             _rigidbody2D.position = _characterModel.CharacterMovement.Position;
         }
@@ -73,8 +74,9 @@ namespace Urd.Character
 
         private void OnSetPhysicPosition()
         {
-            _characterModel.CharacterMovement.FoceSetPhysicPosition(_rigidbody2D.position);
+            _characterModel.CharacterMovement.ForceSetPhysicPosition(_rigidbody2D.position);
             _characterModel.CharacterMovement.SetPosition(_rigidbody2D.position);
+            Debug.Log($"POS: {_characterModel.CharacterMovement.Position}  PH:{_rigidbody2D.position}");
         }
 
         private bool CanMove()
