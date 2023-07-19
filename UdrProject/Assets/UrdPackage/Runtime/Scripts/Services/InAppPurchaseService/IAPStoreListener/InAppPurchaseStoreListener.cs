@@ -5,7 +5,6 @@ namespace Urd.Services.InAppPurchase
 {
     public class InAppPurchaseStoreListener : IInAppPurchaseStoreListener
     {
-        
         public event Action<IStoreController, IExtensionProvider> OnInitializedEvent;
         public event Action<InitializationFailureReason> OnInitializeFailedEvent;
         public event Func<PurchaseEventArgs, PurchaseProcessingResult> ProcessPurchaseEvent;
@@ -15,11 +14,17 @@ namespace Urd.Services.InAppPurchase
         {
             OnInitializedEvent?.Invoke(controller,extensions);
         }
+
         public void OnInitializeFailed(InitializationFailureReason error)
         {
             OnInitializeFailedEvent?.Invoke(error);
         }
-        
+
+        public void OnInitializeFailed(InitializationFailureReason error, string message)
+        {
+            OnInitializeFailedEvent?.Invoke(error);
+        }
+
         public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs purchaseEvent)
         {
             if (ProcessPurchaseEvent != null)

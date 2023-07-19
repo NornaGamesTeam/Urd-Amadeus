@@ -10,8 +10,8 @@ namespace Urd.Services
         float DeltaTime { get; }
         void SubscribeToUpdate(Action<float> listener, bool pausable = true);
         void UnSubscribeToUpdate(Action<float> listener);
-        void SubscribeToLateUpdate(Action<float> listener, bool pausable = true);
-        void UnSubscribeToLateUpdate(Action<float> listener);
+        void SubscribeToFixedUpdate(Action<float> listener, bool pausable = true);
+        void UnSubscribeToFixedUpdate(Action<float> listener);
 
         void SetPause(bool gamePaused);
 

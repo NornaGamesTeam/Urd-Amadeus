@@ -13,7 +13,7 @@ namespace Urd.Services
         public float DeltaTime => Time.deltaTime;
 
         List<ClockServiceUpdateModel> _updateListeners = new List<ClockServiceUpdateModel>();
-        List<ClockServiceUpdateModel> _lateUpdateListeners = new List<ClockServiceUpdateModel>();
+        List<ClockServiceUpdateModel> _fixedUpdateListeners = new List<ClockServiceUpdateModel>();
         List<TimerModel> _delayedCalls = new List<TimerModel>();
 
         private ICoroutineService _coroutineService;
@@ -26,10 +26,10 @@ namespace Urd.Services
             _coroutineService = ServiceLocatorService.Get<ICoroutineService>();
 
             _coroutineService.StartCoroutine(UpdateCoroutineCo());
+            _coroutineService.StartCoroutine(FixedUpdateCoroutineCo());
             
             SetAsLoaded();
         }
-
         
 
         public void SetPause(bool gamePaused)
@@ -51,17 +51,17 @@ namespace Urd.Services
             }
         }
 
-        public void SubscribeToLateUpdate(Action<float> listener, bool pausable = true)
+        public void SubscribeToFixedUpdate(Action<float> listener, bool pausable = true)
         {
-            _lateUpdateListeners.Add(new ClockServiceUpdateModel(listener, pausable));
+            _fixedUpdateListeners.Add(new ClockServiceUpdateModel(listener, pausable));
         }
 
-        public void UnSubscribeToLateUpdate(Action<float> listenerToDelete)
+        public void UnSubscribeToFixedUpdate(Action<float> listenerToDelete)
         {
-            var model = _lateUpdateListeners.Find(listener => listener.Listener == listenerToDelete);
-            if (model != null)
+            var model = _fixedUpdateListeners.Find(listener => listener.Listener == listenerToDelete);
+            if(model != null)
             {
-                _lateUpdateListeners.Remove(model);
+                _fixedUpdateListeners.Remove(model);
             }
         }
 
@@ -87,6 +87,28 @@ namespace Urd.Services
                 yield return 0;
             }
         }
+        
+        private IEnumerator FixedUpdateCoroutineCo()
+        {
+            while (_update)
+            {
+                float deltaTime = Time.fixedDeltaTime;
+                UpdateFixedUpdates(deltaTime);
+
+                yield return new WaitForFixedUpdate();
+            }
+        }
+
+        private void UpdateFixedUpdates(float deltaTime)
+        {
+            for (int i = 0; i < _fixedUpdateListeners.Count; i++)
+            {
+                if (!IsInPause || !_fixedUpdateListeners[i].IsPausable)
+                {
+                    _fixedUpdateListeners[i].CallListener(deltaTime);
+                }
+            }
+        }
 
         public void __TestUpdate(float deltaTime)
         {
@@ -107,11 +129,11 @@ namespace Urd.Services
 
         private void UpdateLateUpdate(float deltaTime)
         {
-            for (int i = 0; i < _lateUpdateListeners.Count; i++)
+            for (int i = 0; i < _fixedUpdateListeners.Count; i++)
             {
-                if (!IsInPause || !_lateUpdateListeners[i].IsPausable)
+                if (!IsInPause || !_fixedUpdateListeners[i].IsPausable)
                 {
-                    _lateUpdateListeners[i].CallListener(deltaTime);
+                    _fixedUpdateListeners[i].CallListener(deltaTime);
                 }
             }
         }

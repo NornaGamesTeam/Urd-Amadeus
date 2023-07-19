@@ -1,5 +1,6 @@
 using DG.DemiEditor;
 using MBT;
+using MyBox;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -18,14 +19,20 @@ namespace Urd.AI
             new AIReferenceCharacterController(VarRefMode.DisableConstant);
 
         [Space, SerializeField]
-        private Vector2Reference _destinyVariable = new Vector2Reference(VarRefMode.DisableConstant);
+        private Vector2Reference destinyVariable = new Vector2Reference(VarRefMode.DisableConstant);
 
         [Space, SerializeField] private NavMeshAgent _navMeshAgent;
 
+        [SerializeField, ReadOnly()]
         private float _timestamp;
+        [SerializeField, ReadOnly()] 
         private float _movementDuration;
+        [SerializeField, ReadOnly()]
         private Vector2 _lastPosition;
+        [SerializeField, ReadOnly()]
         private Vector2 _nextPosition;
+        [SerializeField, ReadOnly()]
+        private Vector2 _currentPosition;
 
         private Vector2 _movementDirection;
 
@@ -43,13 +50,13 @@ namespace Urd.AI
             _enemyCharacterInput = characterVariable.Value.CharacterInput as EnemyCharacterInput;
 
             _timestamp = 0;
-            _lastPosition = _characterModel.CharacterMovement.Position;
-            _nextPosition = _characterModel.CharacterMovement.Position;
+            _lastPosition = characterVariable.Value.transform.position;
+            _nextPosition = _lastPosition;
 
             _pathIndex = 0;
-            _navMeshAgent.transform.position = _characterModel.CharacterMovement.Position;
+            _navMeshAgent.transform.position = _lastPosition;
             _path = new NavMeshPath();
-            _navMeshAgent.CalculatePath(_destinyVariable.Value, _path);
+            _navMeshAgent.CalculatePath(destinyVariable.Value, _path);
             _navMeshAgent.speed = _characterModel.CharacterMovement.Speed;
 
             CalculateNextPosition();
@@ -68,7 +75,7 @@ namespace Urd.AI
             _movementDirection = (_nextPosition - _lastPosition).normalized;
             _enemyCharacterInput.SetMovementVector(_movementDirection);
             _movementDuration =
-                Vector2.Distance(_lastPosition, _nextPosition) * _characterModel.CharacterMovement.Speed;
+                Vector2.Distance(_lastPosition, _nextPosition) / _characterModel.CharacterMovement.Speed;
             return true;
         }
 
@@ -94,16 +101,17 @@ namespace Urd.AI
                 _timestamp = 0;
             }
 
-            Vector2 newPosition =
+           
+            _currentPosition =
                 Vector2.Lerp(_lastPosition, _nextPosition, _timestamp / _movementDuration);
-            _characterModel.CharacterMovement.TrySetPhysicPosition(newPosition);
-
+            characterVariable.Value.transform.position = _currentPosition;
+            
             return NodeResult.running;
         }
 
         private void OnDrawGizmos()
         {
-            if (!_drawGizmos)
+            if (!_drawGizmos || _path == null)
             {
                 return;
             }

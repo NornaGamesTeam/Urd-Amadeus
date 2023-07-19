@@ -22,6 +22,8 @@ namespace Urd.Character
             Init();
             SetInput(characterInput);
             _rigidbody2D = rigidbody2D;
+            _rigidbody2D.inertia = 0; 
+            _rigidbody2D.drag = 0;
             
             _characterModel.CharacterMovement.ForceSetPhysicPosition(initialPosition);
             _characterModel.CharacterMovement.SetPosition(initialPosition);
@@ -39,6 +41,7 @@ namespace Urd.Character
             _characterInput.OnMovementChanged += OnMovementChanged;
             _characterInput.OnAimDirectionChanged += OnAimChanged;
             _characterModel.CharacterMovement.OnPhysicPositionChanged += OnPhysicPositionChanged;
+            _clockService.SubscribeToFixedUpdate(OnSetPhysicPosition);
         }
 
         public void Dispose()
@@ -47,6 +50,7 @@ namespace Urd.Character
             _characterInput.OnAimDirectionChanged -= OnAimChanged;
             _characterInput?.Dispose();
             _characterModel.CharacterMovement.OnPhysicPositionChanged -= OnPhysicPositionChanged;
+            _clockService.UnSubscribeToFixedUpdate(OnSetPhysicPosition);
         }
 
         private void OnMovementChanged(Vector2 movement)
@@ -69,13 +73,13 @@ namespace Urd.Character
         private void OnPhysicPositionChanged(Vector2 characterMovementPhysicPosition)
         {
             _rigidbody2D.MovePosition(characterMovementPhysicPosition);
-            _clockService.AddDelayCall(0.01f, OnSetPhysicPosition);
+            //_clockService.AddDelayCall(0.01f, OnSetPhysicPosition);
         }
 
-        private void OnSetPhysicPosition()
+        private void OnSetPhysicPosition(float fixedDeltaTime)
         {
-            _characterModel.CharacterMovement.ForceSetPhysicPosition(_rigidbody2D.position);
-            _characterModel.CharacterMovement.SetPosition(_rigidbody2D.position);
+            _characterModel.CharacterMovement.ForceSetPhysicPosition(_rigidbody2D.transform.position);
+            _characterModel.CharacterMovement.SetPosition(_rigidbody2D.transform.position);
             Debug.Log($"POS: {_characterModel.CharacterMovement.Position}  PH:{_rigidbody2D.position}");
         }
 

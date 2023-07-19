@@ -18,7 +18,7 @@ namespace Urd.AI
         [SerializeField]
         private Vector2 _boxSize;
         [Space, SerializeField]
-        private Vector2Reference _destinyVariable = new Vector2Reference(VarRefMode.DisableConstant);
+        private Vector2Reference destinyVariable = new Vector2Reference(VarRefMode.DisableConstant);
 
         private Vector2 _originalPoint;
         
@@ -36,7 +36,7 @@ namespace Urd.AI
                 Random.Range(-_boxSize.x*0.5f, _boxSize.x*0.5f),
                 Random.Range(-_boxSize.y*0.5f, _boxSize.y*0.5f)
             );
-            _destinyVariable.Value = _originalPoint + newPosition;
+            destinyVariable.Value = _originalPoint + newPosition;
             return NodeResult.success;
         }
 
@@ -51,7 +51,7 @@ namespace Urd.AI
             Gizmos.color = Color.white.SetAlpha(0.5f);; 
             Gizmos.DrawCube(_originalPoint, _boxSize);
             Gizmos.color = Color.black.SetAlpha(0.5f);
-            Gizmos.DrawSphere(_destinyVariable.Value, 0.5f);
+            Gizmos.DrawSphere(destinyVariable.Value, 0.5f);
         }
     }
 }
