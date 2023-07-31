@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: BlockHex
+  m_Name: HouseExample
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 2e429301e8ff84441964b972d85cffa2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9694ece8c1e82c40b47b4df429d6e88, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

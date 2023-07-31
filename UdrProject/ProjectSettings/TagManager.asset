@@ -20,8 +20,8 @@ TagManager:
   - 
   - 
   - 
-  - 
   - Wall
+  - Buildings
   - Item
   - Enemy
   - NPC
@@ -58,6 +58,9 @@ TagManager:
     locked: 0
   - name: HexWall
     uniqueID: 2675178761
+    locked: 0
+  - name: HexBuiding
+    uniqueID: 1890043399
     locked: 0
   - name: Character
     uniqueID: 514754175
