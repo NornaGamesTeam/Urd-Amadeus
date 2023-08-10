@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2957dfb136bc36c46843a44d94da5ded, type: 3}
+  m_Name: Wolf_MeleeAttackSkill
+  m_EditorClassIdentifier: 
+  <Controller>k__BackingField:
+    rid: 4760200873497591864
+  <Model>k__BackingField:
+    rid: 4932070849493073929
+  references:
+    version: 2
+    RefIds:
+    - rid: 4760200873497591864
+      type: {class: MeleeAttackController, ns: Urd.Character.Skill, asm: Udr}
+    - rid: 4932070849493073929
+      type: {class: MeleeAttackModel, ns: Urd.Character.Skill, asm: Udr}
+      data:
+        <Name>k__BackingField: Melee
+        <LevelToUnlock>k__BackingField: 0
+        <Type>k__BackingField: 1
+        <UISkillConfig>k__BackingField: {fileID: 0}
+        <SkillAnimationModel>k__BackingField:
+          rid: 4932070851253895170
+        <CoolDown>k__BackingField: 0.3
+        <Duration>k__BackingField: 0.3
+        <Damage>k__BackingField: 5
+        <DamageOverTime>k__BackingField:
+        - <Direction>k__BackingField: 0
+          <HitArea>k__BackingField:
+          - <BeginTime>k__BackingField: 0.12
+            <EndTime>k__BackingField: 0.3
+            <DamagePercentage>k__BackingField: 1
+            <OriginPoinOffset>k__BackingField: {x: 0, y: 0.5}
+            <RotationDegreesClockWise>k__BackingField: 0
+            <AreaShapeModel>k__BackingField:
+              rid: 4932070851253895171
+          - <BeginTime>k__BackingField: 0.12
+            <EndTime>k__BackingField: 0.3
+            <DamagePercentage>k__BackingField: 1
+            <OriginPoinOffset>k__BackingField: {x: 0, y: 0.5}
+            <RotationDegreesClockWise>k__BackingField: 0
+            <AreaShapeModel>k__BackingField:
+              rid: 4932070851253895172
+        - <Direction>k__BackingField: 1
+          <HitArea>k__BackingField:
+          - <BeginTime>k__BackingField: 0.12
+            <EndTime>k__BackingField: 0.3
+            <DamagePercentage>k__BackingField: 1
+            <OriginPoinOffset>k__BackingField: {x: 0, y: -0.5}
+            <RotationDegreesClockWise>k__BackingField: 45
+            <AreaShapeModel>k__BackingField:
+              rid: 4932070851253895173
+        - <Direction>k__BackingField: 2
+          <HitArea>k__BackingField:
+          - <BeginTime>k__BackingField: 0.12
+            <EndTime>k__BackingField: 0.3
+            <DamagePercentage>k__BackingField: 1
+            <OriginPoinOffset>k__BackingField: {x: -0.25, y: 0.5}
+            <RotationDegreesClockWise>k__BackingField: 0
+            <AreaShapeModel>k__BackingField:
+              rid: 4932070851253895174
+        - <Direction>k__BackingField: 3
+          <HitArea>k__BackingField:
+          - <BeginTime>k__BackingField: 0.12
+            <EndTime>k__BackingField: 0.3
+            <DamagePercentage>k__BackingField: 1
+            <OriginPoinOffset>k__BackingField: {x: 0.25, y: -0.5}
+            <RotationDegreesClockWise>k__BackingField: 0
+            <AreaShapeModel>k__BackingField:
+              rid: 4932070851253895175
+    - rid: 4932070851253895170
+      type: {class: MeleeSkillAnimationModel, ns: Urd.Game.SkillTrees, asm: Udr}
+      data:
+        <AnimationName>k__BackingField: 3
+        <AnimationLoops>k__BackingField: 1
+        <Duration>k__BackingField: 0.3
+    - rid: 4932070851253895171
+      type: {class: AreaShapeBoxModel, ns: Urd.Services.Physics, asm: Udr}
+      data:
+        <Area>k__BackingField: {x: 0.1, y: 5.22}
+    - rid: 4932070851253895172
+      type: {class: AreaShapeConeModel, ns: Urd.Services.Physics, asm: Udr}
+      data:
+        <AngleDegreesClockWise>k__BackingField: 72.6
+        <Distance>k__BackingField: 8.01
+    - rid: 4932070851253895173
+      type: {class: AreaShapeBoxModel, ns: Urd.Services.Physics, asm: Udr}
+      data:
+        <Area>k__BackingField: {x: 3, y: 2}
+    - rid: 4932070851253895174
+      type: {class: AreaShapeConeModel, ns: Urd.Services.Physics, asm: Udr}
+      data:
+        <AngleDegreesClockWise>k__BackingField: 116.27
+        <Distance>k__BackingField: 2.43
+    - rid: 4932070851253895175
+      type: {class: AreaShapeBoxModel, ns: Urd.Services.Physics, asm: Udr}
+      data:
+        <Area>k__BackingField: {x: 2.4, y: 2.17}

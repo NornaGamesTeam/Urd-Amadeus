@@ -47,9 +47,13 @@ namespace Urd.AI
                 return;
             }
 
-            
+            Vector2 position = _originalPoint;
+            if (position == Vector2.zero)
+            {
+                position = transform.position;
+            }
             Gizmos.color = Color.white.SetAlpha(0.5f);; 
-            Gizmos.DrawCube(_originalPoint, _boxSize);
+            Gizmos.DrawCube(position, _boxSize);
             Gizmos.color = Color.black.SetAlpha(0.5f);
             Gizmos.DrawSphere(destinyVariable.Value, 0.5f);
         }

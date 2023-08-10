@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4904fc0ee5640142a391d1f879c95b6, type: 3}
+  m_Name: WolfCharacterConfigs
+  m_EditorClassIdentifier: 
+  <HitPoints>k__BackingField: 50
+  <HitSkillConfig>k__BackingField: {fileID: 11400000, guid: 10306ce834d6afd45a72c9e47f9a2a07, type: 2}
+  <Speed>k__BackingField: 4
+  <DefaultSkillConfigs>k__BackingField:
+  - {fileID: 11400000, guid: 56ef98c6c1e8c08408f396800425d159, type: 2}
+  <SkillTreeConfig>k__BackingField: {fileID: 0}
+  <UICharacterConfig>k__BackingField: {fileID: 11400000, guid: b992e6025a9884543ac9595f3044e2e9, type: 2}
