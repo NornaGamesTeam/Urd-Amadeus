@@ -21,13 +21,20 @@ namespace Urd.Character
             _characterModel = characterModel;
             Init();
             SetInput(characterInput);
-            _rigidbody2D = rigidbody2D;
-            _rigidbody2D.inertia = 0; 
-            _rigidbody2D.drag = 0;
+
+            InitRightBody(rigidbody2D);
             
             _characterModel.CharacterMovement.ForceSetPhysicPosition(initialPosition);
             _characterModel.CharacterMovement.SetPosition(initialPosition);
             _rigidbody2D.position = _characterModel.CharacterMovement.Position;
+        }
+
+        private void InitRightBody(Rigidbody2D rigidbody2D)
+        {
+            //_rigidbody2D = GameObject.Instantiate(_characterModel.CharacterMovement.CharacterPhysics);
+            _rigidbody2D = rigidbody2D;
+            _rigidbody2D.inertia = 0; 
+            _rigidbody2D.drag = 0;
         }
 
         public void Init()
@@ -73,14 +80,16 @@ namespace Urd.Character
         private void OnPhysicPositionChanged(Vector2 characterMovementPhysicPosition)
         {
             _rigidbody2D.MovePosition(characterMovementPhysicPosition);
-            //_clockService.AddDelayCall(0.01f, OnSetPhysicPosition);
         }
 
         private void OnSetPhysicPosition(float fixedDeltaTime)
         {
             _characterModel.CharacterMovement.ForceSetPhysicPosition(_rigidbody2D.transform.position);
             _characterModel.CharacterMovement.SetPosition(_rigidbody2D.transform.position);
-            Debug.Log($"POS: {_characterModel.CharacterMovement.Position}  PH:{_rigidbody2D.position}");
+            if (_characterModel.CharacterMovement.Position != _rigidbody2D.position)
+            {
+                Debug.Log($"POS: {_characterModel.CharacterMovement.Position}  PH:{_rigidbody2D.position}");
+            }
         }
 
         private bool CanMove()

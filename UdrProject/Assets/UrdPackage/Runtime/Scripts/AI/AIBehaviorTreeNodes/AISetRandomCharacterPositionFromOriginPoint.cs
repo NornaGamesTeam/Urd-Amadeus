@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using DG.DemiEditor;
 using MBT;
 using UnityEngine;
@@ -55,7 +56,11 @@ namespace Urd.AI
             Gizmos.color = Color.white.SetAlpha(0.5f);; 
             Gizmos.DrawCube(position, _boxSize);
             Gizmos.color = Color.black.SetAlpha(0.5f);
-            Gizmos.DrawSphere(destinyVariable.Value, 0.5f);
+            if (destinyVariable != null 
+                && destinyVariable.blackboard.GetVariable<BlackboardVariable>(destinyVariable.key) != null)
+            {
+                Gizmos.DrawSphere(destinyVariable.Value, 0.5f);
+            }
         }
     }
 }

@@ -29,6 +29,9 @@ namespace Urd.Models
         
         [field: SerializeField, MyBox.ReadOnly]
         public bool IsMoving { get; private set; }
+
+        [field: SerializeField, MyBox.ReadOnly]
+        public Rigidbody2D CharacterPhysics => _characterConfig.CharacterPhysics;
         
         public event Action<Vector2> OnRawNormalizedMovementChanged;
         public event Action<Vector2> OnPhysicPositionChanged;

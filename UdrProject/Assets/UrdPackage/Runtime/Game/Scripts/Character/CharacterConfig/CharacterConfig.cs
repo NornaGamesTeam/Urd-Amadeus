@@ -22,5 +22,7 @@ namespace Urd.Character
 
         [field: SerializeField] public SkillTreeConfig SkillTreeConfig { get; private set; }
         [field: SerializeField, Header("UI"), DisplayInspector] public UICharacterConfig UICharacterConfig { get; private set; }
+        
+        [field: SerializeField, Header("Physics"), DisplayInspector] public Rigidbody2D CharacterPhysics { get; private set; }
     }
 }

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49178022d42629549ac7ce918a68a6dc, type: 3}
+  m_Script: {fileID: 11500000, guid: a4904fc0ee5640142a391d1f879c95b6, type: 3}
   m_Name: RandiCharacterConfigs
   m_EditorClassIdentifier: 
   <HitPoints>k__BackingField: 20
@@ -21,15 +21,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d6638b6ac9f4108428babeceb859afc4, type: 2}
   <SkillTreeConfig>k__BackingField: {fileID: 11400000, guid: 363fd3d731479d54d954476eb740dce9, type: 2}
   <UICharacterConfig>k__BackingField: {fileID: 11400000, guid: b992e6025a9884543ac9595f3044e2e9, type: 2}
-  <Text>k__BackingField:
-    m_TableReference:
-      m_TableCollectionName: 
-    m_TableEntryReference:
-      m_KeyId: 0
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  references:
-    version: 2
-    RefIds: []
+  <CharacterPhysics>k__BackingField: {fileID: 5124374630553961521, guid: c5088f634f1e896498b2d55d5116964b, type: 3}

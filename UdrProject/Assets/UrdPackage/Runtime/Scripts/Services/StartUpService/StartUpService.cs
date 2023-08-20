@@ -34,6 +34,8 @@ namespace Urd.Services
                 return;
             }
 
+            Application.targetFrameRate = 60;
+
             InitStartUpService();
         }
 
