@@ -46,7 +46,7 @@ namespace Urd.Game.Camera
 
         private void CustomUpdate(float deltaTime)
         {
-            _gameCameraModel.SetPosition(_mainCharacterController.CharacterModel.CharacterMovement.Position);
+            _gameCameraModel.SetPosition(_mainCharacterController.CharacterModel.MovementModel.Position);
         }
     }
 }

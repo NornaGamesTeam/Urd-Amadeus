@@ -2,7 +2,6 @@ using System;
 using MyBox;
 using UnityEngine;
 using Urd.Character.Skill;
-using Urd.Game.SkillTrees;
 
 namespace Urd.Character
 {
@@ -10,37 +9,58 @@ namespace Urd.Character
     public class CharacterHitPointsModel
     {
         private CharacterConfig _characterConfig;
-
-        public float MaxHitPoints => _characterConfig.HitPoints;
         
         [field: SerializeField, ReadOnly]
         public float HitPoints { get; private set; }
+        
+        [field: SerializeField, ReadOnly]
+        public float Shield { get; private set; }
 
         public ISkillModel HitSkillModel { get; private set; }
 
-        public bool IsHit { get; private set; }
+        public bool HasShield => Shield > 0;
 
-        public event Action<bool, Vector2, ISkillModel> OnIsHit;
-        
-        public bool IsFull => HitPoints >= MaxHitPoints;
-        
         public CharacterHitPointsModel(CharacterConfig characterConfig)
         {
             _characterConfig = characterConfig;
-            HitPoints = MaxHitPoints;
+            HitPoints = characterConfig.HitPoints;
             HitSkillModel = _characterConfig.HitSkillConfig.Model;
         }
-        
-        public void Hit(float damage, Vector2 hitDirection)
+
+        public bool TryHit(float hitDamage, Vector2 hitDirection, out float finalDamage)
         {
-            HitPoints -= damage;
-            SetIsHit(damage > 0, hitDirection);
+            finalDamage = hitDamage;
+            if (CanHitOnlyShield(finalDamage))
+            {
+                Shield -= finalDamage;
+                return false;
+            }
+
+            if (Shield > 0)
+            {
+                finalDamage -= Shield;
+                Shield = 0;
+            }
+            
+            HitPoints -= finalDamage;
+            return true;
+            
+            return true;
         }
 
-        public void SetIsHit(bool isHit, Vector2 hitDirection)
+        private bool CanHitOnlyShield(float hitDamage)
         {
-            IsHit = isHit;
-            OnIsHit?.Invoke(isHit, -hitDirection, HitSkillModel);
+            if (Shield < 0)
+            {
+                return false;
+            }
+
+            if (Shield < hitDamage)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

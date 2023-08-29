@@ -60,7 +60,7 @@ namespace Urd.Character.Skill
                     direction = _direction.RotateDegrees(hitAreasActives[i].RotationDegreesClockWise);
                     
                 }
-                var position = _characterModel.CharacterMovement.PhysicPosition + hitAreasActives[i].OriginPoinOffset;
+                var position = _characterModel.MovementModel.PhysicPosition + hitAreasActives[i].OriginPoinOffset;
 
                 IHitModel hitModel = new HitEnemyModel(position, direction, hitAreasActives[i].AreaShapeModel);
                 if (_physicsService.Service.TryHit(ref hitModel))
@@ -87,8 +87,9 @@ namespace Urd.Character.Skill
         {
             // do this better
             var hittableObject = collider.GetComponentInParent<IHittable>();
-            float damage = _skillModel.Damage * attackAreaModel.DamagePercentage;
-            var attackDirection = collider.transform.position - (Vector3)_characterModel.CharacterMovement.PhysicPosition;
+            float damageFactor = _skillModel.DamageFromStats * attackAreaModel.DamagePercentage;
+            float damage = _characterModel.CharacterStatsModel.GetFinalDamage(_skillModel.DamageElement, damageFactor);
+            var attackDirection = collider.transform.position - (Vector3)_characterModel.MovementModel.PhysicPosition;
             hittableObject.Hit(damage, attackDirection.normalized);
         }
 

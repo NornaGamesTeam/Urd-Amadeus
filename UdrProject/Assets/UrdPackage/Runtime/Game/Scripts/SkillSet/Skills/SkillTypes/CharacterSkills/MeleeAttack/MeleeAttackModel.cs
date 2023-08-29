@@ -9,7 +9,9 @@ namespace Urd.Character.Skill
     public class MeleeAttackModel : SkillModel<SkillConfig>
     {
         [field: SerializeField, Header("Specific properties")]
-        public float Damage { get; protected set; }
+        public ElementType DamageElement { get; protected set; }
+        [field: SerializeField, Range(0f,1f), Tooltip("Percentage of damage from the Stat")]
+        public float DamageFromStats { get; protected set; }
         [field: SerializeField]
         public List<AttackAreaByDirection> DamageOverTime { get; protected set; }
     }

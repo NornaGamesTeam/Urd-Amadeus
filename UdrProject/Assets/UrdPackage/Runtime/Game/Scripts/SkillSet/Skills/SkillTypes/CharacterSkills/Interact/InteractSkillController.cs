@@ -54,7 +54,7 @@ namespace Urd.Character.Skill
 
         private bool TryInteract(Vector2 direction, out IHitModel hitModel)
         {
-            var position = _characterModel.CharacterMovement.PhysicPosition + direction *_skillModel.Distance;
+            var position = _characterModel.MovementModel.PhysicPosition + direction *_skillModel.Distance;
 
             hitModel = new InteractNPCModel(position, direction, _skillModel.AreaSphere);
             if (_physicsService.Service.TryHit(ref hitModel))
@@ -78,7 +78,7 @@ namespace Urd.Character.Skill
             // do this better
             var interactableObject = hitModel.Collisions[0].GetComponentInParent<IInteractable>();
             var direction = hitModel.Collisions[0].transform.position -
-                            (Vector3)_characterModel.CharacterMovement.PhysicPosition;
+                            (Vector3)_characterModel.MovementModel.PhysicPosition;
             interactableObject.Interact(-direction.normalized);
         }
     }

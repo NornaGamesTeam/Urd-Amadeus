@@ -23,7 +23,7 @@ namespace Urd.UI
         public override void Init()
         {
             base.Init();
-            _characterModel.HitPointsModel.OnIsHit += OnIsHit;
+            _characterModel.CharacterStatsModel.OnIsHit += OnIsHit;
             
             SetGameObjectsAs(!_showOnlyIfNotFull);
             
@@ -36,7 +36,7 @@ namespace Urd.UI
 
         private void OnIsHit(bool isHit, Vector2 hitDirection, ISkillModel hitModel)
         {
-            if (isHit && !_characterModel.HitPointsModel.IsFull && !_background.isActiveAndEnabled)
+            if (isHit && !_characterModel.CharacterStatsModel.HasFullHitPoints && !_background.isActiveAndEnabled)
             {
                 SetGameObjectsAs(true);
             }
@@ -55,7 +55,7 @@ namespace Urd.UI
             // TODO do the animation
             
             _fillArea.fillAmount =
-                _characterModel.HitPointsModel.HitPoints / _characterModel.HitPointsModel.MaxHitPoints;
+                _characterModel.CharacterStatsModel.CurrentHitPoints / _characterModel.HitPointsModel.MaxHitPoints;
             _hitPointsText.text = string.Format(HIT_POINTS_FORMAT, _characterModel.HitPointsModel.HitPoints,
                                                 _characterModel.HitPointsModel.MaxHitPoints);
         }

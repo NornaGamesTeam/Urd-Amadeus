@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using MyBox;
 using UnityEngine;
+using Urd.Character.Skill;
 using Urd.Game.SkillTrees;
 using Urd.UI;
 
@@ -8,8 +10,23 @@ namespace Urd.Character
 {
     public class CharacterConfig : ScriptableObject
     {
-        [field: Header("Hit Points"), SerializeField] 
+        [field: Header("Basic Stats")]
+        [field: SerializeField] 
         public float HitPoints { get; private set; }
+        [field: SerializeField] 
+        public float Attack { get; private set; }
+        [field: SerializeField] 
+        public float Defense { get; private set; }
+        [field: SerializeField] 
+        public float SpecialAttack { get; private set; }
+        [field: SerializeField] 
+        public float SpecialDefense { get; private set; }
+        [field: SerializeField, Range(0f,1f)] 
+        public float CriticChance { get; private set; }
+        [field: SerializeField] 
+        public List<ElementModsInfo> Vulnerabilities { get; private set; }
+        [field: SerializeField] 
+        public List<ElementModsInfo> Resistances { get; private set; }
         
         [field: SerializeReference] 
         public SkillConfig HitSkillConfig { get; private set; }

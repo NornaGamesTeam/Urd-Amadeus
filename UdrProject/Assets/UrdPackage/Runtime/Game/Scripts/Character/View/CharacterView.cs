@@ -14,7 +14,7 @@ namespace Urd.Character
         {
             _characterModel = characterModel;
             
-            _characterModel.CharacterMovement.OnPositionChanged += OnPositionChanged;
+            _characterModel.MovementModel.OnPositionChanged += OnPositionChanged;
             GetComponentInChildren<CharacterGraphicView>().SetModel(_characterModel);
         }
         

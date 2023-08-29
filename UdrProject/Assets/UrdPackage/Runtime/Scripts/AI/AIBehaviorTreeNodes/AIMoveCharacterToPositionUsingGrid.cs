@@ -57,7 +57,7 @@ namespace Urd.AI
             _navMeshAgent.transform.position = _lastPosition;
             _path = new NavMeshPath();
             _navMeshAgent.CalculatePath(destinyVariable.Value, _path);
-            _navMeshAgent.speed = _characterModel.CharacterMovement.Speed;
+            _navMeshAgent.speed = _characterModel.MovementModel.Speed;
 
             CalculateNextPosition();
         }
@@ -75,7 +75,7 @@ namespace Urd.AI
             _movementDirection = (_nextPosition - _lastPosition).normalized;
             _enemyCharacterInput.SetMovementVector(_movementDirection);
             _movementDuration =
-                Vector2.Distance(_lastPosition, _nextPosition) / _characterModel.CharacterMovement.Speed;
+                Vector2.Distance(_lastPosition, _nextPosition) / _characterModel.MovementModel.Speed;
             return true;
         }
 
@@ -94,7 +94,7 @@ namespace Urd.AI
             {
                 if(!CalculateNextPosition())
                 {
-                    _characterModel.CharacterMovement.TrySetPhysicPosition(_nextPosition);
+                    _characterModel.MovementModel.TrySetPhysicPosition(_nextPosition);
                     Debug.Log($"Next Pos: {_nextPosition}");
                     return NodeResult.success;
                 }

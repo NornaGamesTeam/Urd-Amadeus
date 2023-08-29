@@ -32,7 +32,8 @@ MonoBehaviour:
           rid: 4932070851253895170
         <CoolDown>k__BackingField: 0.3
         <Duration>k__BackingField: 0.3
-        <Damage>k__BackingField: 5
+        <DamageElement>k__BackingField: 0
+        <DamageFromStats>k__BackingField: 1
         <DamageOverTime>k__BackingField:
         - <Direction>k__BackingField: 0
           <HitArea>k__BackingField:

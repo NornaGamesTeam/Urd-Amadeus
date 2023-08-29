@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "AttackButton",
+                    "type": "Button",
+                    "id": "ffdaf5a0-cb85-4a00-b643-cad710dd9d8e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "MousePosition",
                     "type": "Value",
                     "id": "78e1d9c4-0e3c-4a11-bd9a-afc17fd0b130",
@@ -243,6 +252,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "InteractButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72d67897-7acc-4595-bfae-4f0de5fe096f",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

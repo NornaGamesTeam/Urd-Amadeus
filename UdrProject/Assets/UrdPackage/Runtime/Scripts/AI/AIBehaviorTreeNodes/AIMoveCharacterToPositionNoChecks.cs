@@ -30,13 +30,13 @@ namespace Urd.AI
             _enemyCharacterInput = characterVariable.Value.CharacterInput as EnemyCharacterInput;
             
             _timestamp = 0;
-            _initialPosition = _characterModel.CharacterMovement.PhysicPosition;
+            _initialPosition = _characterModel.MovementModel.PhysicPosition;
 
             _movementDirection = (destinyVariable.Value - _initialPosition).normalized; 
             _enemyCharacterInput.SetMovementVector(_movementDirection);
             
             _movementDuration = Vector2.Distance(_initialPosition, destinyVariable.Value) /
-                                _characterModel.CharacterMovement.Speed;
+                                _characterModel.MovementModel.Speed;
         }
 
         public override void OnExit()

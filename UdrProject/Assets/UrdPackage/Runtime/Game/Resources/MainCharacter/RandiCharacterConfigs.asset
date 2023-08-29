@@ -13,8 +13,19 @@ MonoBehaviour:
   m_Name: RandiCharacterConfigs
   m_EditorClassIdentifier: 
   <HitPoints>k__BackingField: 20
+  <Attack>k__BackingField: 100
+  <Defense>k__BackingField: 200
+  <SpecialAttack>k__BackingField: 150
+  <SpecialDefense>k__BackingField: 250
+  <CriticChance>k__BackingField: 0.1
+  <Vulnerabilities>k__BackingField:
+  - <Element>k__BackingField: 1
+    <Percentage>k__BackingField: 0.1
+  <Resistances>k__BackingField:
+  - <Element>k__BackingField: 2
+    <Percentage>k__BackingField: 0.1
   <HitSkillConfig>k__BackingField: {fileID: 11400000, guid: e526b0e593bc9104a8ca00ae957e0608, type: 2}
-  <Speed>k__BackingField: 5
+  <Speed>k__BackingField: 4
   <DefaultSkillConfigs>k__BackingField:
   - {fileID: 11400000, guid: 842fec75adf502a4f8903e398dbf2530, type: 2}
   - {fileID: 11400000, guid: dd39982a41ac0a142aafc008decad43b, type: 2}

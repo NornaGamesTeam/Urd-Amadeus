@@ -32,23 +32,24 @@ namespace Urd.Character
 
         public void Hit(float damage, Vector2 hitDirection)
         {
-            _characterModel.HitPointsModel.Hit(damage, hitDirection);
-            _clockService.Service.AddDelayCall(_characterModel.HitPointsModel.HitSkillModel.Duration, OnFinishHit);
-
-            ShowDamage(damage, hitDirection);
+            if (_characterModel.CharacterStatsModel.TryHit(damage, hitDirection, out var hitSkillModel))
+            {
+                _clockService.Service.AddDelayCall(hitSkillModel.Duration, OnFinishHit);
+                ShowDamage(damage, hitDirection);
+            }
         }
 
         private void ShowDamage(float damage, Vector2 hitDirection)
         {
             BoomerangHitDamageModel hitDamageModel = _navigationService.Service.GetModel<BoomerangTypes, BoomerangHitDamageModel>(BoomerangTypes.HitDamage);
             hitDamageModel.SetDamage(damage);
-            hitDamageModel.SetOriginPoint(_characterModel.CharacterMovement.PhysicPosition);
+            hitDamageModel.SetOriginPoint(_characterModel.MovementModel.PhysicPosition);
             _navigationService.Service.Open(hitDamageModel);
         }
 
         private void OnFinishHit()
         {
-            _characterModel.HitPointsModel.SetIsHit(false, Vector2.zero);
+            _characterModel.CharacterStatsModel.SetIsHit(false, Vector2.zero);
         }
     }
 }

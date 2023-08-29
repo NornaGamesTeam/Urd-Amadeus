@@ -43,14 +43,14 @@ namespace Urd.Character
         private void Init()
         {
             // movement related
-            _characterModel.CharacterMovement.OnRawNormalizedMovementChanged += OnRawNormalizedPositionChanged;
-            _characterModel.CharacterMovement.OnIsMovingChanged += OnMovingChanged;
-            _characterModel.CharacterMovement.OnAimDirectionChanged += OnAimDirectionChanged;
+            _characterModel.MovementModel.OnRawNormalizedMovementChanged += OnRawNormalizedPositionChanged;
+            _characterModel.MovementModel.OnIsMovingChanged += OnMovingChanged;
+            _characterModel.MovementModel.OnAimDirectionChanged += OnAimDirectionChanged;
             _characterModel.SkillSetModel.OnIsSkill += OnIsSkill;
             _characterModel.SkillSetModel.OnSkillAction += OnSkillAction;
             
             // hitted related
-            _characterModel.HitPointsModel.OnIsHit += OnIsHit;
+            _characterModel.CharacterStatsModel.OnIsHit += OnIsHit;
             
             // Interact related
             var npcModel = _characterModel as NpcCharacterModel;

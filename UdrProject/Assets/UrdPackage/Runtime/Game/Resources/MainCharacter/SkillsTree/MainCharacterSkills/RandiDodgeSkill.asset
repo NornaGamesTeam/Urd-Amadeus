@@ -32,7 +32,7 @@ MonoBehaviour:
           rid: 4932070851253895178
         <CoolDown>k__BackingField: 3
         <Duration>k__BackingField: 0.2
-        <Distance>k__BackingField: 3
+        <Distance>k__BackingField: 6
     - rid: 4932070851253895178
       type: {class: DodgeSkillAnimationModel, ns: Urd.Game.SkillTrees, asm: Udr}
       data:

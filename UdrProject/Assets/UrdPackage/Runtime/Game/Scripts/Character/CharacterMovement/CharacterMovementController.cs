@@ -24,9 +24,9 @@ namespace Urd.Character
 
             InitRightBody(rigidbody2D);
             
-            _characterModel.CharacterMovement.ForceSetPhysicPosition(initialPosition);
-            _characterModel.CharacterMovement.SetPosition(initialPosition);
-            _rigidbody2D.position = _characterModel.CharacterMovement.Position;
+            _characterModel.MovementModel.ForceSetPhysicPosition(initialPosition);
+            _characterModel.MovementModel.SetPosition(initialPosition);
+            _rigidbody2D.position = _characterModel.MovementModel.Position;
         }
 
         private void InitRightBody(Rigidbody2D rigidbody2D)
@@ -47,7 +47,7 @@ namespace Urd.Character
             _characterInput = newInput;
             _characterInput.OnMovementChanged += OnMovementChanged;
             _characterInput.OnAimDirectionChanged += OnAimChanged;
-            _characterModel.CharacterMovement.OnPhysicPositionChanged += OnPhysicPositionChanged;
+            _characterModel.MovementModel.OnPhysicPositionChanged += OnPhysicPositionChanged;
             _clockService.SubscribeToFixedUpdate(OnSetPhysicPosition);
         }
 
@@ -56,7 +56,7 @@ namespace Urd.Character
             _characterInput.OnMovementChanged -= OnMovementChanged;
             _characterInput.OnAimDirectionChanged -= OnAimChanged;
             _characterInput?.Dispose();
-            _characterModel.CharacterMovement.OnPhysicPositionChanged -= OnPhysicPositionChanged;
+            _characterModel.MovementModel.OnPhysicPositionChanged -= OnPhysicPositionChanged;
             _clockService.UnSubscribeToFixedUpdate(OnSetPhysicPosition);
         }
 
@@ -67,13 +67,13 @@ namespace Urd.Character
                 return;
             }
 
-            _characterModel.CharacterMovement.SetIsMoving(movement.sqrMagnitude > 0);
-            if (_characterModel.CharacterMovement.IsMoving)
+            _characterModel.MovementModel.SetIsMoving(movement.sqrMagnitude > 0);
+            if (_characterModel.MovementModel.IsMoving)
             {
-                _characterModel.CharacterMovement.SetRawNormalizedMovement(movement);
+                _characterModel.MovementModel.SetRawNormalizedMovement(movement);
 
-                var deltaMovement = _characterModel.CharacterMovement.Position + movement * _characterModel.CharacterMovement.Speed * _clockService.DeltaTime;
-                _characterModel.CharacterMovement.TrySetPhysicPosition(deltaMovement);
+                var deltaMovement = _characterModel.MovementModel.Position + movement * _characterModel.MovementModel.Speed * _clockService.DeltaTime;
+                _characterModel.MovementModel.TrySetPhysicPosition(deltaMovement);
             }
         }
 
@@ -84,18 +84,18 @@ namespace Urd.Character
 
         private void OnSetPhysicPosition(float fixedDeltaTime)
         {
-            _characterModel.CharacterMovement.ForceSetPhysicPosition(_rigidbody2D.transform.position);
-            _characterModel.CharacterMovement.SetPosition(_rigidbody2D.transform.position);
-            if (_characterModel.CharacterMovement.Position != _rigidbody2D.position)
+            _characterModel.MovementModel.ForceSetPhysicPosition(_rigidbody2D.transform.position);
+            _characterModel.MovementModel.SetPosition(_rigidbody2D.transform.position);
+            if (_characterModel.MovementModel.Position != _rigidbody2D.position)
             {
-                Debug.Log($"POS: {_characterModel.CharacterMovement.Position}  PH:{_rigidbody2D.position}");
+                Debug.Log($"POS: {_characterModel.MovementModel.Position}  PH:{_rigidbody2D.position}");
             }
         }
 
         private bool CanMove()
         {
             return !_characterModel.SkillSetModel.IsSkill &&
-                   !_characterModel.HitPointsModel.IsHit;
+                   !_characterModel.CharacterStatsModel.IsHit;
         }
 
         private void OnAimChanged(Vector2 aimDirection)
@@ -105,7 +105,7 @@ namespace Urd.Character
                 return;
             }
 
-            _characterModel.CharacterMovement.SetAimDirection(aimDirection);
+            _characterModel.MovementModel.SetAimDirection(aimDirection);
         }
     }
 }

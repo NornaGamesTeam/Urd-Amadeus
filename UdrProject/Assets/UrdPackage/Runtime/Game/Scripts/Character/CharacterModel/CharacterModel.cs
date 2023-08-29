@@ -12,10 +12,10 @@ namespace Urd.Character
         public UICharacterConfig UICharacterConfig => _characterConfig?.UICharacterConfig;
         
         [field: SerializeField, ReadOnly]
-        public CharacterHitPointsModel HitPointsModel { get; private set; }
+        public CharacterStatsModel CharacterStatsModel { get; private set; }
         
         [field: SerializeField, ReadOnly]
-        public CharacterMovementModel CharacterMovement { get; private set; }
+        public CharacterMovementModel MovementModel { get; private set; }
         
         [field: SerializeField, ReadOnly]
         public SkillSetModel SkillSetModel { get; private set; }
@@ -29,8 +29,7 @@ namespace Urd.Character
         public CharacterModel(CharacterConfig characterConfig)
         {
             _characterConfig = characterConfig;
-            HitPointsModel = new CharacterHitPointsModel(_characterConfig);
-            CharacterMovement = new CharacterMovementModel(_characterConfig);
+            MovementModel = new CharacterMovementModel(_characterConfig);
             SkillSetModel = new SkillSetModel(characterConfig.DefaultSkillConfigs, characterConfig.SkillTreeConfig);
         }
     }

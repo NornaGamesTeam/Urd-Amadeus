@@ -14,6 +14,7 @@ namespace Urd.Character
         private const string GAMEPAD_MOVEMENT = "GamePadMovement";
         private const string GAMEPAD_AIM = "GamePadAim";
         private const string INTERACT_BUTTON = "InteractButton";
+        private const string ATTACK_BUTTON = "AttackButton";
         
         private IInputService _inputService;
         
@@ -44,6 +45,9 @@ namespace Urd.Character
 
             _inputService.SubscribeToActionOnHold(DODGE_SKILL, OnDodgeSkillDown);
             _inputService.SubscribeToActionOnCancel(DODGE_SKILL, OnDodgeSkillUp);
+            
+            _inputService.SubscribeToActionOnHold(ATTACK_BUTTON, OnAttackButtonDown);
+            _inputService.SubscribeToActionOnCancel(ATTACK_BUTTON, OnAttackButtonUp);
 
             _inputService.SubscribeToActionOnHold(GAMEPAD_MOVEMENT, OnGamePadMovementDown);
             _inputService.SubscribeToActionOnCancel(GAMEPAD_MOVEMENT, OnGamePadMovementUp);
@@ -71,6 +75,9 @@ namespace Urd.Character
 
             _inputService.UnsubscribeToActionOnPerformed(DODGE_SKILL, OnDodgeSkillDown);
             _inputService.UnsubscribeToActionOnCancel(DODGE_SKILL, OnDodgeSkillUp);
+            
+            _inputService.UnsubscribeToActionOnPerformed(ATTACK_BUTTON, OnAttackButtonDown);
+            _inputService.UnsubscribeToActionOnCancel(ATTACK_BUTTON, OnAttackButtonUp);
 
             _inputService.UnsubscribeToActionOnHold(GAMEPAD_MOVEMENT, OnGamePadMovementDown);
             _inputService.UnsubscribeToActionOnCancel(GAMEPAD_MOVEMENT, OnGamePadMovementUp);
@@ -106,11 +113,21 @@ namespace Urd.Character
                 _aimDirection = aimDirection;
                 _isAttacking = true;
             }
-        }
+        } 
 
         private void OnGamePadAimUp(InputAction.CallbackContext inputAction)
         {
             _aimDirection = Vector2.zero;
+            _isAttacking = false;
+        }
+
+        private void OnAttackButtonDown(InputAction.CallbackContext inputAction)
+        {
+            _isAttacking = true;
+        }
+        
+        private void OnAttackButtonUp(InputAction.CallbackContext inputAction)
+        {
             _isAttacking = false;
         }
 
