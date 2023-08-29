@@ -11,7 +11,7 @@ namespace Urd.Character
 
         protected CharacterMovementController _movementController;
         protected SkillSetController _skillSetController;
-        protected CharacterHitPointsController _hitPointsController;
+        protected CharacterStatsController StatsController;
 
         void Awake()
         {
@@ -33,7 +33,7 @@ namespace Urd.Character
         {
             base.SetInput(characterInput);
            
-            _hitPointsController = new CharacterHitPointsController(CharacterModel);
+            StatsController = new CharacterStatsController(CharacterModel);
             _movementController = new CharacterMovementController(CharacterModel, CharacterInput, transform.position, GetComponentInChildren<Rigidbody2D>());
             _skillSetController = new SkillSetController(CharacterModel, CharacterInput);
         }

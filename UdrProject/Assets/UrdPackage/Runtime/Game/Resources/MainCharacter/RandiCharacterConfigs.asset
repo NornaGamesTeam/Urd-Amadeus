@@ -25,7 +25,7 @@ MonoBehaviour:
   - <Element>k__BackingField: 2
     <Percentage>k__BackingField: 0.1
   <HitSkillConfig>k__BackingField: {fileID: 11400000, guid: e526b0e593bc9104a8ca00ae957e0608, type: 2}
-  <Speed>k__BackingField: 4
+  <Speed>k__BackingField: 8
   <DefaultSkillConfigs>k__BackingField:
   - {fileID: 11400000, guid: 842fec75adf502a4f8903e398dbf2530, type: 2}
   - {fileID: 11400000, guid: dd39982a41ac0a142aafc008decad43b, type: 2}

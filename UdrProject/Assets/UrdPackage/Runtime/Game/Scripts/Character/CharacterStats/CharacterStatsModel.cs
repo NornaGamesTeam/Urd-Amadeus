@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
 using Urd.Character.Skill;
 
@@ -8,42 +9,57 @@ namespace Urd.Character
     [Serializable]
     public class CharacterStatsModel
     {
-        private CharacterConfig _characterConfig;
-
+        [field: SerializeField, MyBox.ReadOnly]
         public float CurrentHitPoints { get; private set; }
+        [field: SerializeField, MyBox.ReadOnly]
+        public float CurrentShield { get; private set; }
+        [field: SerializeField, MyBox.ReadOnly]
         public float CurrentAttack { get; private set; }
+        [field: SerializeField, MyBox.ReadOnly]
         public float CurrentDefense { get; private set; }
+        [field: SerializeField, MyBox.ReadOnly]
         public float CurrentSpecialAttack { get; private set; }
+        [field: SerializeField, MyBox.ReadOnly]
         public float CurrentSpecialDefense { get; private set; }
+        [field: SerializeField, MyBox.ReadOnly]
         public float CurrentCriticChance { get; private set; }
         
-        public float DefaultHitPoints => _characterConfig.HitPoints;
-        public float DefaultAttack { get; private set; }
-        public float DefaultDefense { get; private set; }
-        public float DefaultSpecialAttack { get; private set; }
-        public float DefaultSpecialDefense { get; private set; }
-        public float DefaultCriticChance { get; private set; }
         
+        public float DefaultHitPoints => _characterModel.CharacterConfig.HitPoints;
+        public float DefaultAttack =>_characterModel.CharacterConfig.Attack;
+        public float DefaultDefense =>_characterModel.CharacterConfig.Defense;
+        public float DefaultSpecialAttack =>_characterModel.CharacterConfig.SpecialAttack;
+        public float DefaultSpecialDefense =>_characterModel.CharacterConfig.SpecialDefense;
+        public float DefaultCriticChance =>_characterModel.CharacterConfig.CriticChance;
+        
+        public float MaxHitPoints => GetFinalStats(StatType.HitPoints);
+        
+        [field: SerializeField, MyBox.ReadOnly]
         public List<ElementModsInfo> Vulnerabilities { get; private set; }
-        [field: SerializeField] 
+        [field: SerializeField, MyBox.ReadOnly]
         public List<ElementModsInfo> Resistances { get; private set; }
         
-        public float CurrentShield { get; private set; }
+
+        [field: SerializeField, ReadOnly]
+        public ISkillModel HitSkillModel { get; private set; }
         
+        public bool HasShield => CurrentShield > 0;
+        public bool HasFullHitPoints => CurrentHitPoints == MaxHitPoints;
         public bool IsHit { get; private set; }
-        public bool HasFullHitPoints => _characterHitPointsModel.HasFullHitPoints;
 
         public event Action OnShieldModified;
         public event Action<bool, Vector2, ISkillModel> OnIsHit;
 
-        private CharacterHitPointsModel _characterHitPointsModel;
-            
-        public CharacterStatsModel(CharacterConfig characterConfig)
-        {
-            _characterConfig = characterConfig;
-            _characterHitPointsModel = new CharacterHitPointsModel(_characterConfig);
-        }
+        private CharacterModel _characterModel;
         
+        public CharacterStatsModel(CharacterModel characterModel)
+        {
+            _characterModel = characterModel;
+
+            CurrentHitPoints = MaxHitPoints;
+        }
+
+
         public float GetFinalDamage(ElementType damageType, float damageFactor)
         {
             if (damageType == ElementType.None)
@@ -56,24 +72,66 @@ namespace Urd.Character
             }
         }
 
-        public bool TryHit(float damage, Vector2 hitDirection, out ISkillModel hitSkillModel)
+        public bool TryHit(float hitDamage, Vector2 hitDirection, out ISkillModel hitSkillModel)
         {
-            bool hadShield = _characterHitPointsModel.HasShield;
-            hitSkillModel = _characterConfig.HitSkillConfig.Model;
-            bool hit = _characterHitPointsModel.TryHit(damage, hitDirection, out var finalDamage);
-            if (!hit || hadShield)
+            hitSkillModel = _characterModel.CharacterConfig.HitSkillConfig.Model;
+            var finalDamage = hitDamage;
+
+            if (CanHitOnlyShield(finalDamage))
             {
+                CurrentShield -= finalDamage;
                 OnShieldModified ?.Invoke();
+
+                return false;
             }
             
-            SetIsHit(hit && finalDamage > 0, hitDirection);
-            return hit && finalDamage > 0;
+            if (CurrentShield > 0)
+            {
+                finalDamage -= CurrentShield;
+                CurrentShield = 0;
+            }
+            
+            CurrentHitPoints -= finalDamage;
+            SetIsHit(finalDamage > 0, hitDirection);
+            return finalDamage > 0;
         }
 
+        private bool CanHitOnlyShield(float hitDamage)
+        {
+            if (CurrentShield < 0)
+            {
+                return false;
+            }
+
+            if (CurrentShield < hitDamage)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        
         public void SetIsHit(bool isHit, Vector2 hitDirection)
         {
             IsHit = isHit;
-            OnIsHit?.Invoke(isHit, -hitDirection, _characterConfig.HitSkillConfig.Model);
+            OnIsHit?.Invoke(isHit, -hitDirection, _characterModel.CharacterConfig.HitSkillConfig.Model);
+        }
+        
+        private float GetFinalStats(StatType statType)
+        {
+            var factorPerSkill = _characterModel.SkillSetModel.GetPassiveModificationFor(statType);
+            switch (statType)
+            {
+                case StatType.HitPoints: return DefaultHitPoints * factorPerSkill;
+                case StatType.Attack: return DefaultAttack * factorPerSkill; 
+                case StatType.Defense: return DefaultDefense * factorPerSkill; 
+                case StatType.SpecialAttack: return DefaultSpecialAttack * factorPerSkill; 
+                case StatType.SpecialDefense: return DefaultSpecialDefense * factorPerSkill; 
+                case StatType.CriticChance: return DefaultCriticChance * factorPerSkill; 
+                case StatType.Shield: return CurrentShield * factorPerSkill; 
+            }
+
+            return 0;
         }
     }
 }

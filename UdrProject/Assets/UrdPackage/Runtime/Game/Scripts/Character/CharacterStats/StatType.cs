@@ -8,6 +8,7 @@ namespace Urd.Character
         SpecialAttack,
         SpecialDefense,
         CriticChance,
-        Shield
+        Shield,
+        Speed
     }
 }

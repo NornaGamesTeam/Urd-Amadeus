@@ -18,11 +18,16 @@ namespace Urd.Character.Skill
         public MeleeAttackModel MeleeAttackModel => DefaultSkills.Find(skill => skill is MeleeAttackModel) as MeleeAttackModel;
         public DodgeSkillModel DodgeSkillModel => DefaultSkills.Find(skill => skill is DodgeSkillModel) as DodgeSkillModel;
 
+        public List<(SkillSlotType, ISkillModel)> EquippedSkills;
+        public List<(int, ISkillModel)> Skills;
+        
         public event Action<ISkillModel> OnSkillAction;
         public event Action<bool> OnIsSkill;
 
-        public SkillSetModel(List<SkillConfig> defaultSkillConfigs, SkillTreeConfig skillTreeConfig)
+        public SkillSetModel(CharacterModel characterModel)
         {
+            var defaultSkillConfigs = characterModel.CharacterConfig.DefaultSkillConfigs;
+
             DefaultSkills = new List<ISkillModel>();
             for (int i = 0; i < defaultSkillConfigs.Count; i++)
             {
@@ -31,7 +36,7 @@ namespace Urd.Character.Skill
                 DefaultSkills.Add(model);
             }
             
-            SkillTreeModel = new SkillTreeModel(skillTreeConfig);
+            SkillTreeModel = new SkillTreeModel(characterModel.CharacterConfig.SkillTreeConfig);
         }
 
         public TModel GetSkillModel<TModel>() where TModel : class
@@ -59,6 +64,23 @@ namespace Urd.Character.Skill
         {
             IsSkill = isSkill;
             OnIsSkill?.Invoke(IsSkill);
+        }
+        
+        public float GetPassiveModificationFor(StatType statType)
+        {
+            var passiveSkills = Skills.FindAll(skill => skill.Item2.Type == SkillType.Pasive);
+
+            float factor = 1;
+            for (int i = 0; i < passiveSkills.Count; i++)
+            {
+                var passiveSkillOfStatType = passiveSkills[i].Item2 as PassiveSkillModel;
+                if (passiveSkillOfStatType.AffectedElement == statType)
+                {
+                    factor += passiveSkillOfStatType.Factor;
+                }
+            }
+            
+            return factor;
         }
     }
 }

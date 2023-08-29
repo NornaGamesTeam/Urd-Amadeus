@@ -14,7 +14,7 @@ namespace Urd.Character
 
         public void Hit(float damage, Vector2 hitDirection)
         {
-            _hitPointsController.Hit(damage, hitDirection);
+            StatsController.Hit(damage, hitDirection);
         }
     }
 }

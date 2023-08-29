@@ -9,14 +9,11 @@ namespace Urd.UI
     public class UICharacterHitPoints : CharacterModelListener
     {
         private const string HIT_POINTS_FORMAT = "{0}/{1}";
-        
-        [SerializeField]
-        private Image _background;
-        [SerializeField]
-        private Image _fillArea;
-        
-        [SerializeField]
-        private TextMeshProUGUI _hitPointsText;
+
+        [SerializeField] private Image _background;
+        [SerializeField] private Image _fillArea;
+
+        [SerializeField] private TextMeshProUGUI _hitPointsText;
 
         [SerializeField] private bool _showOnlyIfNotFull;
 
@@ -24,13 +21,13 @@ namespace Urd.UI
         {
             base.Init();
             _characterModel.CharacterStatsModel.OnIsHit += OnIsHit;
-            
+
             SetGameObjectsAs(!_showOnlyIfNotFull);
-            
+
             _background.color = _characterModel.UICharacterConfig.HitPointsConfig.BackgroundColor;
             _fillArea.color = _characterModel.UICharacterConfig.HitPointsConfig.FillColor;
             _hitPointsText.color = _characterModel.UICharacterConfig.HitPointsConfig.TextColor;
-            
+
             SetHitPoints();
         }
 
@@ -40,6 +37,7 @@ namespace Urd.UI
             {
                 SetGameObjectsAs(true);
             }
+
             SetHitPoints();
         }
 
@@ -53,12 +51,13 @@ namespace Urd.UI
         private void SetHitPoints()
         {
             // TODO do the animation
-            
-            _fillArea.fillAmount =
-                _characterModel.CharacterStatsModel.CurrentHitPoints / _characterModel.HitPointsModel.MaxHitPoints;
-            _hitPointsText.text = string.Format(HIT_POINTS_FORMAT, _characterModel.HitPointsModel.HitPoints,
-                                                _characterModel.HitPointsModel.MaxHitPoints);
-        }
 
+            var statsModel = _characterModel.CharacterStatsModel;
+
+            _fillArea.fillAmount =
+                statsModel.CurrentHitPoints / statsModel.MaxHitPoints;
+            _hitPointsText.text =
+                string.Format(HIT_POINTS_FORMAT, statsModel.CurrentHitPoints, statsModel.MaxHitPoints);
+        }
     }
 }

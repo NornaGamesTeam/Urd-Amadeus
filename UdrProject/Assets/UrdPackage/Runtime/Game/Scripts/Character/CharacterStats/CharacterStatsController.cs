@@ -6,14 +6,14 @@ using Urd.Utils;
 
 namespace Urd.Character
 {
-    public class CharacterHitPointsController : IDisposable
+    public class CharacterStatsController : IDisposable
     {
         private ICharacterModel _characterModel;
 
         private ServiceHelper<IClockService> _clockService = new();
         private ServiceHelper<INavigationService> _navigationService = new();
 
-        public CharacterHitPointsController(ICharacterModel characterModel)
+        public CharacterStatsController(ICharacterModel characterModel)
         {
             _characterModel = characterModel;
             Init();

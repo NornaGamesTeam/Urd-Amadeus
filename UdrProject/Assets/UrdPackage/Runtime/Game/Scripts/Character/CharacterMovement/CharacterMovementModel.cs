@@ -7,13 +7,15 @@ namespace Urd.Models
     [System.Serializable]
     public class CharacterMovementModel
     {
-        private CharacterConfig _characterConfig;
-        public CharacterMovementModel(CharacterConfig characterConfig)
+        private CharacterModel _characterModel;
+        public CharacterMovementModel(CharacterModel characterModel)
         {
-            _characterConfig = characterConfig;
+            _characterModel = characterModel;
         }
         
-        public float Speed => _characterConfig.Speed;
+        [field: SerializeField, MyBox.ReadOnly]
+        public float Speed => _characterModel.CharacterConfig.Speed * 
+                              _characterModel.SkillSetModel.GetPassiveModificationFor(StatType.Speed);
 
         [field: SerializeField, MyBox.ReadOnly]
         public Vector2 AimDirection { get; private set; }
@@ -31,7 +33,7 @@ namespace Urd.Models
         public bool IsMoving { get; private set; }
 
         [field: SerializeField, MyBox.ReadOnly]
-        public Rigidbody2D CharacterPhysics => _characterConfig.CharacterPhysics;
+        public Rigidbody2D CharacterPhysics => _characterModel.CharacterConfig.CharacterPhysics;
         
         public event Action<Vector2> OnRawNormalizedMovementChanged;
         public event Action<Vector2> OnPhysicPositionChanged;
