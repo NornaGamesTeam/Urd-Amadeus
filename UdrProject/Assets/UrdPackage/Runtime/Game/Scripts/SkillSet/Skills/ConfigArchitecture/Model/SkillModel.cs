@@ -26,8 +26,8 @@ namespace Urd.Character.Skill
         public ISkillAnimationModel SkillAnimationModel { get; protected set; }
         [field: Header("Skill Properties"), Header("Generic Properties"), SerializeField]
         public float CoolDown { get; protected set; }
-        [field: SerializeField]
-        public float Duration { get; protected set; }
+        [field: SerializeField, ShowIf("Type", SkillType.Active)]
+        public virtual float Duration { get; protected set; }
         public TimerModel TimerModel { get; private set; }
         
         public bool IsActive { get; private set; }

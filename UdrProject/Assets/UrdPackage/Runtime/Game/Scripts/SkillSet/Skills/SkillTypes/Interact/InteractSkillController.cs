@@ -13,11 +13,10 @@ namespace Urd.Character.Skill
 
         private IHitModel _lastInteractModel;
         
-        public override void Init(ICharacterModel characterModel, ICharacterInput characterInput)
+        public override void Init(ISkillModel defaultSkill, ICharacterModel characterModel,
+            ICharacterInput characterInput)
         {
-            base.Init(characterModel, characterInput);
-
-            SetModel(_characterModel.SkillSetModel.GetSkillModel<InteractSkillModel>());
+            base.Init(defaultSkill, characterModel, characterInput);
 
             (_characterInput as MainCharacterInput).OnInteractChanged += OnSkillStatusChanged;
             _characterInput.OnAimDirectionChanged += OnAimChanged;

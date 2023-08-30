@@ -19,11 +19,12 @@ namespace Urd.Character.Skill
 
         protected float _skillTime;
         
-        public virtual void Init(ICharacterModel characterModel,
+        public virtual void Init(ISkillModel skillModel, ICharacterModel characterModel,
             ICharacterInput characterInput)
         {
             _characterModel = characterModel;
             SetInput(characterInput);
+            SetModel(skillModel as TSkillModel);
             
             _clockService = StaticServiceLocator.Get<IClockService>();
         }
@@ -37,6 +38,7 @@ namespace Urd.Character.Skill
         {
             _skillModel = skillModel;
         }
+
 
         public void SetInput(ICharacterInput characterInput)
         {
@@ -118,7 +120,7 @@ namespace Urd.Character.Skill
 
         protected virtual bool CanDoSkill()
         {
-            return !_characterModel.SkillSetModel.IsSkill
+            return !_characterModel.SkillSetModel.IsDoingSkill
                    && !_skillModel.TimerModel.IsInCooldown;
         }
     }

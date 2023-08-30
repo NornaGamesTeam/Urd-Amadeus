@@ -15,7 +15,7 @@ namespace Urd.Models
         
         [field: SerializeField, MyBox.ReadOnly]
         public float Speed => _characterModel.CharacterConfig.Speed * 
-                              _characterModel.SkillSetModel.GetPassiveModificationFor(StatType.Speed);
+                              _characterModel.SkillSetModel.GetPassiveVulnerabilityFor(StatType.Speed);
 
         [field: SerializeField, MyBox.ReadOnly]
         public Vector2 AimDirection { get; private set; }

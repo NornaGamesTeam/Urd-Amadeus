@@ -14,15 +14,16 @@ namespace Urd.Character.Skill
         [field: SerializeField]
         public SkillTreeModel SkillTreeModel { get; private set; }
 
-        public bool IsSkill { get; private set; }
+        public Dictionary<SkillSlotType, ISkillModel> EquippedSkills { get; private set; } = new Dictionary<SkillSlotType, ISkillModel>();
+        public List<ISkillModel> Skills  { get; private set; } = new List<ISkillModel>();
+        public bool IsDoingSkill { get; private set; }
+        
         public MeleeAttackModel MeleeAttackModel => DefaultSkills.Find(skill => skill is MeleeAttackModel) as MeleeAttackModel;
         public DodgeSkillModel DodgeSkillModel => DefaultSkills.Find(skill => skill is DodgeSkillModel) as DodgeSkillModel;
 
-        public List<(SkillSlotType, ISkillModel)> EquippedSkills;
-        public List<(int, ISkillModel)> Skills;
         
         public event Action<ISkillModel> OnSkillAction;
-        public event Action<bool> OnIsSkill;
+        public event Action<bool> OnIsDoingSkill;
 
         public SkillSetModel(CharacterModel characterModel)
         {
@@ -62,19 +63,56 @@ namespace Urd.Character.Skill
 
         private void SetIsSkill(bool isSkill)
         {
-            IsSkill = isSkill;
-            OnIsSkill?.Invoke(IsSkill);
+            IsDoingSkill = isSkill;
+            OnIsDoingSkill?.Invoke(IsDoingSkill);
         }
         
-        public float GetPassiveModificationFor(StatType statType)
+        public float GetPassiveVulnerabilityFor(StatType statType)
         {
-            var passiveSkills = Skills.FindAll(skill => skill.Item2.Type == SkillType.Pasive);
-
+            var passiveSkills = Skills.FindAll(skill => skill.Type == SkillType.Pasive);
+            passiveSkills.AddRange(DefaultSkills.FindAll(skill => skill.Type == SkillType.Pasive));
+            
             float factor = 1;
             for (int i = 0; i < passiveSkills.Count; i++)
             {
-                var passiveSkillOfStatType = passiveSkills[i].Item2 as PassiveSkillModel;
-                if (passiveSkillOfStatType.AffectedElement == statType)
+                var passiveSkillOfStatType = passiveSkills[i] as ChangeStatsPassiveSkillModel;
+                if (passiveSkillOfStatType?.Stat == statType)
+                {
+                    factor += passiveSkillOfStatType.Factor;
+                }
+            }
+            
+            return factor;
+        }
+
+        public float GetPassiveVulnerabilityFor(ElementType elementType)
+        {
+            var passiveSkills = Skills.FindAll(skill => skill.Type == SkillType.Pasive);
+            passiveSkills.AddRange(DefaultSkills.FindAll(skill => skill.Type == SkillType.Pasive));
+            
+            float factor = 1;
+            for (int i = 0; i < passiveSkills.Count; i++)
+            {
+                var passiveSkillOfStatType = passiveSkills[i] as VulnerabilityPassiveSkillModel;
+                if (passiveSkillOfStatType?.Element == elementType)
+                {
+                    factor += passiveSkillOfStatType.Factor;
+                }
+            }
+            
+            return factor;
+        }
+        
+        public float GetPassiveResistanceFor(ElementType elementType)
+        {
+            var passiveSkills = Skills.FindAll(skill => skill.Type == SkillType.Pasive);
+            passiveSkills.AddRange(DefaultSkills.FindAll(skill => skill.Type == SkillType.Pasive));
+            
+            float factor = 1;
+            for (int i = 0; i < passiveSkills.Count; i++)
+            {
+                var passiveSkillOfStatType = passiveSkills[i] as ResistancePassiveSkillModel;
+                if (passiveSkillOfStatType?.Element == elementType)
                 {
                     factor += passiveSkillOfStatType.Factor;
                 }

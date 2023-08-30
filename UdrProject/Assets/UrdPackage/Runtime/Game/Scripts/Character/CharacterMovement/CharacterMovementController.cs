@@ -94,13 +94,13 @@ namespace Urd.Character
 
         private bool CanMove()
         {
-            return !_characterModel.SkillSetModel.IsSkill &&
+            return !_characterModel.SkillSetModel.IsDoingSkill &&
                    !_characterModel.CharacterStatsModel.IsHit;
         }
 
         private void OnAimChanged(Vector2 aimDirection)
         {
-            if (_characterModel.SkillSetModel.IsSkill)
+            if (_characterModel.SkillSetModel.IsDoingSkill)
             {
                 return;
             }

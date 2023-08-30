@@ -17,9 +17,10 @@ namespace Urd.Character.Skill
 
         private List<Collider2D> _alreadyHit = new ();
         
-        public override void Init(ICharacterModel characterModel, ICharacterInput characterInput)
+        public override void Init(ISkillModel skillModel, ICharacterModel characterModel,
+            ICharacterInput characterInput)
         {
-            base.Init(characterModel, characterInput);
+            base.Init(skillModel, characterModel, characterInput);
 
             SetModel(_characterModel.SkillSetModel.MeleeAttackModel);
             

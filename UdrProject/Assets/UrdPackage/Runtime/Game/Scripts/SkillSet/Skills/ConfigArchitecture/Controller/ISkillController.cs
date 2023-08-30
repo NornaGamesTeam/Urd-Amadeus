@@ -4,7 +4,7 @@ namespace Urd.Character.Skill
 {
     public interface ISkillController : IDisposable
     {
-        void Init(ICharacterModel characterModel, ICharacterInput characterInput);
+        void Init(ISkillModel defaultSkill, ICharacterModel characterModel, ICharacterInput characterInput);
         void SetInput(ICharacterInput characterInput);
     }
 }

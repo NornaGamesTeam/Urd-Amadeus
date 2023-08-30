@@ -4,6 +4,7 @@ using Urd.UI;
 
 namespace Urd.Game.SkillTrees
 {
+    [CreateAssetMenu(fileName = "SkillConfig", menuName = "Urd/SkillConfig/New Skill Config", order = 1)]
     public class SkillConfig : ScriptableObject, ISkillConfig
     {
         [field:SerializeReference, Header("Logic Class"), SubclassSelector]

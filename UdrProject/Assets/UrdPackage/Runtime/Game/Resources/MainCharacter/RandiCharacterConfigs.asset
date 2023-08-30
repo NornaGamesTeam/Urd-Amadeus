@@ -30,6 +30,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 842fec75adf502a4f8903e398dbf2530, type: 2}
   - {fileID: 11400000, guid: dd39982a41ac0a142aafc008decad43b, type: 2}
   - {fileID: 11400000, guid: d6638b6ac9f4108428babeceb859afc4, type: 2}
+  - {fileID: 11400000, guid: 018cafda0a11d234aba67590d501f738, type: 2}
   <SkillTreeConfig>k__BackingField: {fileID: 11400000, guid: 363fd3d731479d54d954476eb740dce9, type: 2}
   <UICharacterConfig>k__BackingField: {fileID: 11400000, guid: b992e6025a9884543ac9595f3044e2e9, type: 2}
   <CharacterPhysics>k__BackingField: {fileID: 5124374630553961521, guid: c5088f634f1e896498b2d55d5116964b, type: 3}

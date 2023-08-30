@@ -26,7 +26,7 @@ namespace Urd.UI
             _characterModel = characterModel;
 
             _characterModel.SkillSetModel.OnSkillAction += OnSkillAction;
-            _characterModel.SkillSetModel.OnIsSkill += OnIsSkill;
+            _characterModel.SkillSetModel.OnIsDoingSkill += OnIsDoingSkill;
         }
 
         public void SetSkill(ISkillModel skillModel)
@@ -51,7 +51,7 @@ namespace Urd.UI
             }
         }
         
-        private void OnIsSkill(bool isSkill)
+        private void OnIsDoingSkill(bool isSkill)
         {
             if (!isSkill && _isActive)
             {

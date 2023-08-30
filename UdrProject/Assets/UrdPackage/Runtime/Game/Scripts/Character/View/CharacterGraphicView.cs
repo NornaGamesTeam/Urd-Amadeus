@@ -46,7 +46,7 @@ namespace Urd.Character
             _characterModel.MovementModel.OnRawNormalizedMovementChanged += OnRawNormalizedPositionChanged;
             _characterModel.MovementModel.OnIsMovingChanged += OnMovingChanged;
             _characterModel.MovementModel.OnAimDirectionChanged += OnAimDirectionChanged;
-            _characterModel.SkillSetModel.OnIsSkill += OnIsSkill;
+            _characterModel.SkillSetModel.OnIsDoingSkill += OnIsDoingSkill;
             _characterModel.SkillSetModel.OnSkillAction += OnSkillAction;
             
             // hitted related
@@ -78,7 +78,7 @@ namespace Urd.Character
             _animator.Play(skillModel.SkillAnimationModel.AnimationName.ToString());
         }
 
-        private void OnIsSkill(bool onIsSkill)
+        private void OnIsDoingSkill(bool onIsSkill)
         {
             _animator.SetBool(ANIMATION_KEY_IS_SKILL, onIsSkill);
             if (!onIsSkill && !string.IsNullOrEmpty(_lastAnimation))
