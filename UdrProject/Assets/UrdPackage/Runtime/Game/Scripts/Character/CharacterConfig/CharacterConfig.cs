@@ -8,6 +8,7 @@ using Urd.UI;
 
 namespace Urd.Character
 {
+    [CreateAssetMenu(fileName = "NewCharacterConfig", menuName = "Urd/Character/New CharacterConfig", order = 1)]
     public class CharacterConfig : ScriptableObject
     {
         [field: Header("Basic Stats")]

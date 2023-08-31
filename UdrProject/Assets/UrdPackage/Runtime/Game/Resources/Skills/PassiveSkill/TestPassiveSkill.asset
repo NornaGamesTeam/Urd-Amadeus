@@ -15,7 +15,7 @@ MonoBehaviour:
   <Controller>k__BackingField:
     rid: 6482105520577052674
   <Model>k__BackingField:
-    rid: 6482105520577052675
+    rid: 6482105520577052691
   references:
     version: 2
     RefIds:
@@ -23,16 +23,16 @@ MonoBehaviour:
       type: {class: , ns: , asm: }
     - rid: 6482105520577052674
       type: {class: PassiveSkillController, ns: Urd.Character.Skill, asm: Udr}
-    - rid: 6482105520577052675
-      type: {class: PassiveSkillModel, ns: Urd.Character.Skill, asm: Udr}
+    - rid: 6482105520577052691
+      type: {class: VulnerabilityPassiveSkillModel, ns: Urd.Character.Skill, asm: Udr}
       data:
         <Name>k__BackingField: 
         <LevelToUnlock>k__BackingField: 0
-        <Type>k__BackingField: 2
+        <Type>k__BackingField: 0
         <UISkillConfig>k__BackingField: {fileID: 0}
         <SkillAnimationModel>k__BackingField:
           rid: -2
         <CoolDown>k__BackingField: 0
         <Duration>k__BackingField: 0
-        <AffectedElement>k__BackingField: 0
-        <Factor>k__BackingField: 0.05
+        <Element>k__BackingField: 0
+        <Factor>k__BackingField: 0.043
