@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Urd.Game.SkillTrees;
+using Urd.Game.Projectile;
 using Urd.Inputs;
 using Urd.Services;
-using Urd.Services.Physics;
 using Urd.Utils;
 
 namespace Urd.Character.Skill
@@ -12,12 +11,9 @@ namespace Urd.Character.Skill
     [Serializable] 
     public class RangeAttackController : SkillController<RangeAttackModel>
     {
-        private List<AttackAreaModel> _hitAreas;
+        private ServiceHelper<IPoolService> _poolService = new ServiceHelper<IPoolService>();
 
-        private ServiceHelper<IPhysicsService> _physicsService = new ServiceHelper<IPhysicsService>();
-
-        private List<Collider2D> _alreadyHit = new ();
-        
+        private List<ProjectileView> _projectileViews = new List<ProjectileView>();
         public override void Init(ISkillModel skillModel, ICharacterModel characterModel,
             ICharacterInput characterInput)
         {
@@ -32,8 +28,11 @@ namespace Urd.Character.Skill
 
         private void InitProjectile()
         {
-            
-           // StaticServiceLocator.Get<IPoolService>().PreLoadGameObject(Mode);
+            var projectile = _skillModel.ProjectileConfig.ProjectileModel.ProjectileView;
+            _poolService.Service.PreLoadGameObject(
+                projectile.gameObject, 
+                projectile.name,
+                1);
         }
 
         private void OnSkillStatusChanged(bool isAttacking, Vector2 attackDirection, SkillActionType skillActionType)
@@ -54,11 +53,26 @@ namespace Urd.Character.Skill
         {
             base.BeginSkill(direction);
             
-            _alreadyHit.Clear();
             var skillDirection = direction.ConvertToDirection();
             _direction = skillDirection.ConvertToVector2();
-           Debug.Log("TTT Range Attack");
-           StaticServiceLocator.Get<IPoolService>()
+
+            SpawnProjectile();
+        }
+
+        private void SpawnProjectile()
+        {
+            var projectileGameObject = _poolService.Service.
+                                                  GetGameObject(_skillModel.ProjectileConfig.ProjectileModel.ProjectileView.name);
+
+            var projectileView = projectileGameObject.GetComponent<ProjectileView>();
+            projectileView.SetUp(_skillModel.ProjectileConfig.ProjectileModel);
+            projectileView.Begin(OnCollision);
+
+        }
+
+        private void OnCollision()
+        {
+            
         }
     }
 }

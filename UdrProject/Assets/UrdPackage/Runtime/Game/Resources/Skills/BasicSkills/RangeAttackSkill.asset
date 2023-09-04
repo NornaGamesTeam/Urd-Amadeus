@@ -32,7 +32,7 @@ MonoBehaviour:
           rid: 6482105542848282629
         <CoolDown>k__BackingField: 0.2
         <Duration>k__BackingField: 0.5
-        <ProjectileConfig>k__BackingField: {fileID: 0}
+        <ProjectileConfig>k__BackingField: {fileID: 11400000, guid: 65a523db28c3d4245be04d1b968692bd, type: 2}
     - rid: 6482105542848282629
       type: {class: SkillAnimationModel, ns: Urd.Game.SkillTrees, asm: Udr}
       data:
