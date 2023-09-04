@@ -107,6 +107,15 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RangeSwitchButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""00b33e39-a309-4743-bdc7-192000cd1124"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -234,7 +243,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                 {
                     ""name"": """",
                     ""id"": ""4fbef1ab-8685-4dbe-a226-c763723d2ad7"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -307,6 +316,17 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                     ""action"": ""RangeAttackButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6063ed4-2c57-441c-962f-3fbb34e5df66"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RangeSwitchButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -374,6 +394,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         m_Character_GamePadMovement = m_Character.FindAction("GamePadMovement", throwIfNotFound: true);
         m_Character_GamePadAim = m_Character.FindAction("GamePadAim", throwIfNotFound: true);
         m_Character_InteractButton = m_Character.FindAction("InteractButton", throwIfNotFound: true);
+        m_Character_RangeSwitchButton = m_Character.FindAction("RangeSwitchButton", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_DialogBox = m_UI.FindAction("DialogBox", throwIfNotFound: true);
@@ -447,6 +468,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
     private readonly InputAction m_Character_GamePadMovement;
     private readonly InputAction m_Character_GamePadAim;
     private readonly InputAction m_Character_InteractButton;
+    private readonly InputAction m_Character_RangeSwitchButton;
     public struct CharacterActions
     {
         private @CharacterInputMoveset m_Wrapper;
@@ -460,6 +482,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         public InputAction @GamePadMovement => m_Wrapper.m_Character_GamePadMovement;
         public InputAction @GamePadAim => m_Wrapper.m_Character_GamePadAim;
         public InputAction @InteractButton => m_Wrapper.m_Character_InteractButton;
+        public InputAction @RangeSwitchButton => m_Wrapper.m_Character_RangeSwitchButton;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -496,6 +519,9 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
             @InteractButton.started += instance.OnInteractButton;
             @InteractButton.performed += instance.OnInteractButton;
             @InteractButton.canceled += instance.OnInteractButton;
+            @RangeSwitchButton.started += instance.OnRangeSwitchButton;
+            @RangeSwitchButton.performed += instance.OnRangeSwitchButton;
+            @RangeSwitchButton.canceled += instance.OnRangeSwitchButton;
         }
 
         private void UnregisterCallbacks(ICharacterActions instance)
@@ -527,6 +553,9 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
             @InteractButton.started -= instance.OnInteractButton;
             @InteractButton.performed -= instance.OnInteractButton;
             @InteractButton.canceled -= instance.OnInteractButton;
+            @RangeSwitchButton.started -= instance.OnRangeSwitchButton;
+            @RangeSwitchButton.performed -= instance.OnRangeSwitchButton;
+            @RangeSwitchButton.canceled -= instance.OnRangeSwitchButton;
         }
 
         public void RemoveCallbacks(ICharacterActions instance)
@@ -601,6 +630,7 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         void OnGamePadMovement(InputAction.CallbackContext context);
         void OnGamePadAim(InputAction.CallbackContext context);
         void OnInteractButton(InputAction.CallbackContext context);
+        void OnRangeSwitchButton(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

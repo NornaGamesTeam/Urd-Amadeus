@@ -22,8 +22,8 @@ MonoBehaviour:
     - rid: 6482105542848282631
       type: {class: ProjectileModel, ns: Urd.Game.Projectile, asm: Udr}
       data:
-        ProjectileView: {fileID: 2463791864440396907, guid: e5e0a05ceb761dc41b1337fe73856b13, type: 3}
+        <ProjectileView>k__BackingField: {fileID: 2463791864440396907, guid: e5e0a05ceb761dc41b1337fe73856b13, type: 3}
         <Objetive>k__BackingField: 7168
-        <Speed>k__BackingField: 5
+        <Speed>k__BackingField: 0.7
     - rid: 6482105542848282632
       type: {class: StraightLineProjectileController, ns: Urd.Game.Projectile, asm: Udr}

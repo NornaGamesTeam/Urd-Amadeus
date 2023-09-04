@@ -12,8 +12,9 @@ namespace Urd.Character.Skill
     public class RangeAttackController : SkillController<RangeAttackModel>
     {
         private ServiceHelper<IPoolService> _poolService = new ServiceHelper<IPoolService>();
+        private ServiceHelper<IClockService> _clockService = new ServiceHelper<IClockService>();
 
-        private List<ProjectileView> _projectileViews = new List<ProjectileView>();
+        private List<IProjectileModel> _projectiles = new List<IProjectileModel>();
         public override void Init(ISkillModel skillModel, ICharacterModel characterModel,
             ICharacterInput characterInput)
         {
@@ -22,6 +23,8 @@ namespace Urd.Character.Skill
             SetModel(_characterModel.SkillSetModel.GetSkillModel<RangeAttackModel>());
             
             _characterInput.OnAttackingChanged += OnSkillStatusChanged;
+
+            _clockService.Service.SubscribeToUpdate(CustomUpdate);
 
             InitProjectile();
         }
@@ -56,20 +59,37 @@ namespace Urd.Character.Skill
             var skillDirection = direction.ConvertToDirection();
             _direction = skillDirection.ConvertToVector2();
 
-            SpawnProjectile();
+            SpawnProjectile(direction);
         }
 
-        private void SpawnProjectile()
+        private void SpawnProjectile(Vector2 direction)
         {
+            var projectileModel = new ProjectileModel(_skillModel.ProjectileConfig.ProjectileModel);
             var projectileGameObject = _poolService.Service.
-                                                  GetGameObject(_skillModel.ProjectileConfig.ProjectileModel.ProjectileView.name);
+                                                  GetGameObject(projectileModel.ProjectileView.name);
 
+            projectileGameObject.transform.parent = null;
+            projectileGameObject.transform.localScale = Vector3.one;
+            
             var projectileView = projectileGameObject.GetComponent<ProjectileView>();
-            projectileView.SetUp(_skillModel.ProjectileConfig.ProjectileModel);
+            projectileView.SetUp(projectileModel);
             projectileView.Begin(OnCollision);
 
+            projectileModel.SetPosition(_characterModel.MovementModel.Position);
+            projectileModel.SetDirection(direction);
+            _projectiles.Add(projectileModel);
         }
 
+        private void CustomUpdate(float deltaTime)
+        {
+            for (int i = 0; i < _projectiles.Count; i++)
+            {
+                var projectile = _projectiles[i];
+                Vector3 movement = (projectile.Direction * projectile.Speed * deltaTime);
+                projectile.SetPosition(projectile.Position + movement); 
+            }
+        }
+        
         private void OnCollision()
         {
             

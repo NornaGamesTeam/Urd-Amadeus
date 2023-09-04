@@ -1,10 +1,12 @@
 using System;
+using Unity.Collections;
 using UnityEngine;
 
 namespace Urd.Game.Projectile
 {
     public class ProjectileView : MonoBehaviour, IProjectileView
     {
+        [SerializeReference, ReadOnly]
         private IProjectileModel _projectileModel;
 
         private Action _callbackOnImpact;

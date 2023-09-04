@@ -15,9 +15,9 @@ namespace Urd.Character
         public Vector2 AimDirection => _aimDirection.normalized;
         protected Vector2 _aimDirection;
         private bool IsAiming => _aimDirection != Vector2.zero;
+        public bool IsAttacking =>
+            _skillActionType == SkillActionType.Melee || _skillActionType == SkillActionType.Range;
 
-        protected bool _isMeleeAttacking;
-        protected bool _isRangeAttacking;
         protected bool _isRangeSwitchPressed;
         protected SkillActionType _skillActionType;
         protected Vector2 _finalAimDirection;
@@ -67,8 +67,8 @@ namespace Urd.Character
                 }
 
                 OnAimDirectionChanged?.Invoke(_finalAimDirection);
-                OnAttackingChanged?.Invoke(_isMeleeAttacking || _isRangeAttacking, _finalAimDirection, _skillActionType);
+                OnAttackingChanged?.Invoke(IsAttacking, _finalAimDirection, _skillActionType);
             }
-        }
+        } 
     }
 }

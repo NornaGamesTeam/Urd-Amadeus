@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RangeSwitchButton",
+                    "type": "Button",
+                    "id": "00b33e39-a309-4743-bdc7-192000cd1124",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -212,7 +221,7 @@
                 {
                     "name": "",
                     "id": "4fbef1ab-8685-4dbe-a226-c763723d2ad7",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -283,6 +292,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RangeAttackButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6063ed4-2c57-441c-962f-3fbb34e5df66",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RangeSwitchButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

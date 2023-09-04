@@ -54,6 +54,9 @@ namespace Urd.Character
             
             _inputService.SubscribeToActionOnHold(RANGE_ATTACK_BUTTON, OnRangeAttackButtonDown);
             _inputService.SubscribeToActionOnCancel(RANGE_ATTACK_BUTTON, OnRangeAttackButtonUp);
+            
+            _inputService.SubscribeToActionOnHold(RANGE_SWITCH_BUTTON, OnRangeSwitchButtonDown);
+            _inputService.SubscribeToActionOnCancel(RANGE_SWITCH_BUTTON, OnRangeSwitchButtonUp);
 
             _inputService.SubscribeToActionOnHold(GAMEPAD_MOVEMENT, OnGamePadMovementDown);
             _inputService.SubscribeToActionOnCancel(GAMEPAD_MOVEMENT, OnGamePadMovementUp);
@@ -84,6 +87,12 @@ namespace Urd.Character
             
             _inputService.UnsubscribeToActionOnPerformed(MELEE_ATTACK_BUTTON, OnMeleeAttackButtonDown);
             _inputService.UnsubscribeToActionOnCancel(MELEE_ATTACK_BUTTON, OnMeleeAttackButtonUp);
+            
+            _inputService.UnsubscribeToActionOnHold(RANGE_ATTACK_BUTTON, OnRangeAttackButtonDown);
+            _inputService.UnsubscribeToActionOnCancel(RANGE_ATTACK_BUTTON, OnRangeAttackButtonUp);
+            
+            _inputService.UnsubscribeToActionOnHold(RANGE_SWITCH_BUTTON, OnRangeSwitchButtonDown);
+            _inputService.UnsubscribeToActionOnCancel(RANGE_SWITCH_BUTTON, OnRangeSwitchButtonUp);
 
             _inputService.UnsubscribeToActionOnHold(GAMEPAD_MOVEMENT, OnGamePadMovementDown);
             _inputService.UnsubscribeToActionOnCancel(GAMEPAD_MOVEMENT, OnGamePadMovementUp);
@@ -117,38 +126,51 @@ namespace Urd.Character
             if (aimDirection != Vector2.zero)
             {
                 _aimDirection = aimDirection;
-                _isMeleeAttacking = true;
+                _skillActionType = _isRangeSwitchPressed ?SkillActionType.Range:SkillActionType.Melee;
+            Debug.Log($"OnGamePadAimDown : {_skillActionType}, _isRangeSwitchPressed:{_isRangeSwitchPressed}");
             }
+
         } 
 
         private void OnGamePadAimUp(InputAction.CallbackContext inputAction)
         {
             _aimDirection = Vector2.zero;
-            _isMeleeAttacking = false;
+            _skillActionType = SkillActionType.None;
+            Debug.Log($"OnGamePadAimUp : {_skillActionType}, _isRangeSwitchPressed:{_isRangeSwitchPressed}");
         }
 
         private void OnMeleeAttackButtonDown(InputAction.CallbackContext inputAction)
         {
-            _isMeleeAttacking = true;
             _skillActionType = SkillActionType.Melee;
         }
         
         private void OnMeleeAttackButtonUp(InputAction.CallbackContext inputAction)
         {
-            _isMeleeAttacking = false;
             _skillActionType = SkillActionType.None;
         }
         
         private void OnRangeAttackButtonDown(InputAction.CallbackContext inputAction)
         {
-            _isRangeAttacking = true;
             _skillActionType = SkillActionType.Range;
         }
         
         private void OnRangeAttackButtonUp(InputAction.CallbackContext inputAction)
         {
-            _isRangeAttacking = false;
             _skillActionType = SkillActionType.None;
+        }
+        
+        private void OnRangeSwitchButtonDown(InputAction.CallbackContext inputAction)
+        {
+            _isRangeSwitchPressed = true;
+            Debug.Log($"OnRangeSwitchButtonDown : {_skillActionType}, _isRangeSwitchPressed:{_isRangeSwitchPressed}");
+
+        }
+        
+        private void OnRangeSwitchButtonUp(InputAction.CallbackContext inputAction)
+        {
+            _isRangeSwitchPressed = false;
+            Debug.Log($"OnRangeSwitchButtonUp : {_skillActionType}, _isRangeSwitchPressed:{_isRangeSwitchPressed}");
+
         }
 
         private void OnDodgeSkillDown(InputAction.CallbackContext inputAction) =>
