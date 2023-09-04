@@ -33,9 +33,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "AttackButton",
+                    "name": "MeleeAttackButton",
                     "type": "Button",
                     "id": "ffdaf5a0-cb85-4a00-b643-cad710dd9d8e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RangeAttackButton",
+                    "type": "Button",
+                    "id": "e6eac6f3-ae94-49ad-b581-7fd6375093e6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -262,7 +271,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AttackButton",
+                    "action": "MeleeAttackButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "199c627d-c7c8-4460-a4e6-6c5fd13b9988",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RangeAttackButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

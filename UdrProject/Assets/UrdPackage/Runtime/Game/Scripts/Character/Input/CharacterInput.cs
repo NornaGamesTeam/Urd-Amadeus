@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Urd.Inputs;
 using Urd.Services;
 using Urd.Utils;
 
@@ -15,7 +16,10 @@ namespace Urd.Character
         protected Vector2 _aimDirection;
         private bool IsAiming => _aimDirection != Vector2.zero;
 
-        protected bool _isAttacking;
+        protected bool _isMeleeAttacking;
+        protected bool _isRangeAttacking;
+        protected bool _isRangeSwitchPressed;
+        protected SkillActionType _skillActionType;
         protected Vector2 _finalAimDirection;
         
         private ICharacterModel _characterModel;
@@ -63,7 +67,7 @@ namespace Urd.Character
                 }
 
                 OnAimDirectionChanged?.Invoke(_finalAimDirection);
-                OnAttackingChanged?.Invoke(_isAttacking, _finalAimDirection);
+                OnAttackingChanged?.Invoke(_isMeleeAttacking || _isRangeAttacking, _finalAimDirection, _skillActionType);
             }
         }
     }

@@ -12,3 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a179790e345f584b96966673060ace3, type: 3}
   m_Name: ProjectileConfig
   m_EditorClassIdentifier: 
+  <ProjectileController>k__BackingField:
+    rid: 6482105542848282632
+  <ProjectileModel>k__BackingField:
+    rid: 6482105542848282631
+  references:
+    version: 2
+    RefIds:
+    - rid: 6482105542848282631
+      type: {class: ProjectileModel, ns: Urd.Game.Projectile, asm: Udr}
+      data:
+        ProjectileView: {fileID: 2463791864440396907, guid: e5e0a05ceb761dc41b1337fe73856b13, type: 3}
+        <Objetive>k__BackingField: 7168
+        <Speed>k__BackingField: 5
+    - rid: 6482105542848282632
+      type: {class: StraightLineProjectileController, ns: Urd.Game.Projectile, asm: Udr}

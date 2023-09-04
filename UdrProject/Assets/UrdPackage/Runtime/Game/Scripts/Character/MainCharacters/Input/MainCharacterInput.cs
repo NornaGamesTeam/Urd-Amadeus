@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Urd.Inputs;
 using Urd.Services;
 using Urd.Utils;
 
@@ -14,7 +15,9 @@ namespace Urd.Character
         private const string GAMEPAD_MOVEMENT = "GamePadMovement";
         private const string GAMEPAD_AIM = "GamePadAim";
         private const string INTERACT_BUTTON = "InteractButton";
-        private const string ATTACK_BUTTON = "AttackButton";
+        private const string MELEE_ATTACK_BUTTON = "MeleeAttackButton";
+        private const string RANGE_ATTACK_BUTTON = "RangeAttackButton";
+        private const string RANGE_SWITCH_BUTTON = "RangeSwitchButton";
         
         private IInputService _inputService;
         
@@ -46,8 +49,11 @@ namespace Urd.Character
             _inputService.SubscribeToActionOnHold(DODGE_SKILL, OnDodgeSkillDown);
             _inputService.SubscribeToActionOnCancel(DODGE_SKILL, OnDodgeSkillUp);
             
-            _inputService.SubscribeToActionOnHold(ATTACK_BUTTON, OnAttackButtonDown);
-            _inputService.SubscribeToActionOnCancel(ATTACK_BUTTON, OnAttackButtonUp);
+            _inputService.SubscribeToActionOnHold(MELEE_ATTACK_BUTTON, OnMeleeAttackButtonDown);
+            _inputService.SubscribeToActionOnCancel(MELEE_ATTACK_BUTTON, OnMeleeAttackButtonUp);
+            
+            _inputService.SubscribeToActionOnHold(RANGE_ATTACK_BUTTON, OnRangeAttackButtonDown);
+            _inputService.SubscribeToActionOnCancel(RANGE_ATTACK_BUTTON, OnRangeAttackButtonUp);
 
             _inputService.SubscribeToActionOnHold(GAMEPAD_MOVEMENT, OnGamePadMovementDown);
             _inputService.SubscribeToActionOnCancel(GAMEPAD_MOVEMENT, OnGamePadMovementUp);
@@ -76,8 +82,8 @@ namespace Urd.Character
             _inputService.UnsubscribeToActionOnPerformed(DODGE_SKILL, OnDodgeSkillDown);
             _inputService.UnsubscribeToActionOnCancel(DODGE_SKILL, OnDodgeSkillUp);
             
-            _inputService.UnsubscribeToActionOnPerformed(ATTACK_BUTTON, OnAttackButtonDown);
-            _inputService.UnsubscribeToActionOnCancel(ATTACK_BUTTON, OnAttackButtonUp);
+            _inputService.UnsubscribeToActionOnPerformed(MELEE_ATTACK_BUTTON, OnMeleeAttackButtonDown);
+            _inputService.UnsubscribeToActionOnCancel(MELEE_ATTACK_BUTTON, OnMeleeAttackButtonUp);
 
             _inputService.UnsubscribeToActionOnHold(GAMEPAD_MOVEMENT, OnGamePadMovementDown);
             _inputService.UnsubscribeToActionOnCancel(GAMEPAD_MOVEMENT, OnGamePadMovementUp);
@@ -111,24 +117,38 @@ namespace Urd.Character
             if (aimDirection != Vector2.zero)
             {
                 _aimDirection = aimDirection;
-                _isAttacking = true;
+                _isMeleeAttacking = true;
             }
         } 
 
         private void OnGamePadAimUp(InputAction.CallbackContext inputAction)
         {
             _aimDirection = Vector2.zero;
-            _isAttacking = false;
+            _isMeleeAttacking = false;
         }
 
-        private void OnAttackButtonDown(InputAction.CallbackContext inputAction)
+        private void OnMeleeAttackButtonDown(InputAction.CallbackContext inputAction)
         {
-            _isAttacking = true;
+            _isMeleeAttacking = true;
+            _skillActionType = SkillActionType.Melee;
         }
         
-        private void OnAttackButtonUp(InputAction.CallbackContext inputAction)
+        private void OnMeleeAttackButtonUp(InputAction.CallbackContext inputAction)
         {
-            _isAttacking = false;
+            _isMeleeAttacking = false;
+            _skillActionType = SkillActionType.None;
+        }
+        
+        private void OnRangeAttackButtonDown(InputAction.CallbackContext inputAction)
+        {
+            _isRangeAttacking = true;
+            _skillActionType = SkillActionType.Range;
+        }
+        
+        private void OnRangeAttackButtonUp(InputAction.CallbackContext inputAction)
+        {
+            _isRangeAttacking = false;
+            _skillActionType = SkillActionType.None;
         }
 
         private void OnDodgeSkillDown(InputAction.CallbackContext inputAction) =>

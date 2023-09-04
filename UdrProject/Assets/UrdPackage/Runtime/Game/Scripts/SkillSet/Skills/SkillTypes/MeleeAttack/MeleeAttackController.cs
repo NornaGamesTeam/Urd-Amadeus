@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Urd.Game.SkillTrees;
+using Urd.Inputs;
 using Urd.Services;
 using Urd.Services.Physics;
 using Urd.Utils;
@@ -26,13 +27,21 @@ namespace Urd.Character.Skill
             
             _characterInput.OnAttackingChanged += OnSkillStatusChanged;
         }
-        
+
         public override void Dispose()
         {
             _characterInput.OnAttackingChanged -= OnSkillStatusChanged;
             base.Dispose();
         }
 
+        private void OnSkillStatusChanged(bool isAttacking, Vector2 attackDirection, SkillActionType skillActionType)
+        {
+            if (skillActionType == SkillActionType.Melee)
+            {
+                OnSkillStatusChanged(isAttacking, attackDirection);
+            }
+        }
+        
         protected override void BeginSkill(Vector2 direction)
         {
             base.BeginSkill(direction);

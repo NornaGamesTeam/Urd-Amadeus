@@ -13,7 +13,6 @@ namespace Urd.Models
             _characterModel = characterModel;
         }
         
-        [field: SerializeField, MyBox.ReadOnly]
         public float Speed => _characterModel.CharacterConfig.Speed * 
                               _characterModel.SkillSetModel.GetPassiveVulnerabilityFor(StatType.Speed);
 
@@ -32,7 +31,6 @@ namespace Urd.Models
         [field: SerializeField, MyBox.ReadOnly]
         public bool IsMoving { get; private set; }
 
-        [field: SerializeField, MyBox.ReadOnly]
         public Rigidbody2D CharacterPhysics => _characterModel.CharacterConfig.CharacterPhysics;
         
         public event Action<Vector2> OnRawNormalizedMovementChanged;

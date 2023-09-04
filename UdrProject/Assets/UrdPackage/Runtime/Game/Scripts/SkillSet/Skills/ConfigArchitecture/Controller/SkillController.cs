@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Urd.Inputs;
 using Urd.Services;
 using Urd.Utils;
 
@@ -87,7 +88,6 @@ namespace Urd.Character.Skill
         
         protected virtual void OnFinishSkill()
         {
-
             SetIsDoing(false);
             _clockService.UnSubscribeToUpdate(SkillUpdate);
             BeginCoolDown();
@@ -109,6 +109,8 @@ namespace Urd.Character.Skill
             {
                 return;
             }
+
+            _skillModel.TimerModel.SetDuration(_skillModel.CoolDown);
             _skillModel.TimerModel.BeginTimer(OnFinishCoolDown);
             _clockService.SubscribeToUpdate(CoolDownUpdate);
         }

@@ -55,9 +55,18 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""AttackButton"",
+                    ""name"": ""MeleeAttackButton"",
                     ""type"": ""Button"",
                     ""id"": ""ffdaf5a0-cb85-4a00-b643-cad710dd9d8e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RangeAttackButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""e6eac6f3-ae94-49ad-b581-7fd6375093e6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -284,7 +293,18 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AttackButton"",
+                    ""action"": ""MeleeAttackButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""199c627d-c7c8-4460-a4e6-6c5fd13b9988"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RangeAttackButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -348,7 +368,8 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         m_Character_HorizontalMovement = m_Character.FindAction("HorizontalMovement", throwIfNotFound: true);
         m_Character_VerticalMovement = m_Character.FindAction("VerticalMovement", throwIfNotFound: true);
         m_Character_DodgeSkill = m_Character.FindAction("DodgeSkill", throwIfNotFound: true);
-        m_Character_AttackButton = m_Character.FindAction("AttackButton", throwIfNotFound: true);
+        m_Character_MeleeAttackButton = m_Character.FindAction("MeleeAttackButton", throwIfNotFound: true);
+        m_Character_RangeAttackButton = m_Character.FindAction("RangeAttackButton", throwIfNotFound: true);
         m_Character_MousePosition = m_Character.FindAction("MousePosition", throwIfNotFound: true);
         m_Character_GamePadMovement = m_Character.FindAction("GamePadMovement", throwIfNotFound: true);
         m_Character_GamePadAim = m_Character.FindAction("GamePadAim", throwIfNotFound: true);
@@ -420,7 +441,8 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
     private readonly InputAction m_Character_HorizontalMovement;
     private readonly InputAction m_Character_VerticalMovement;
     private readonly InputAction m_Character_DodgeSkill;
-    private readonly InputAction m_Character_AttackButton;
+    private readonly InputAction m_Character_MeleeAttackButton;
+    private readonly InputAction m_Character_RangeAttackButton;
     private readonly InputAction m_Character_MousePosition;
     private readonly InputAction m_Character_GamePadMovement;
     private readonly InputAction m_Character_GamePadAim;
@@ -432,7 +454,8 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         public InputAction @HorizontalMovement => m_Wrapper.m_Character_HorizontalMovement;
         public InputAction @VerticalMovement => m_Wrapper.m_Character_VerticalMovement;
         public InputAction @DodgeSkill => m_Wrapper.m_Character_DodgeSkill;
-        public InputAction @AttackButton => m_Wrapper.m_Character_AttackButton;
+        public InputAction @MeleeAttackButton => m_Wrapper.m_Character_MeleeAttackButton;
+        public InputAction @RangeAttackButton => m_Wrapper.m_Character_RangeAttackButton;
         public InputAction @MousePosition => m_Wrapper.m_Character_MousePosition;
         public InputAction @GamePadMovement => m_Wrapper.m_Character_GamePadMovement;
         public InputAction @GamePadAim => m_Wrapper.m_Character_GamePadAim;
@@ -455,9 +478,12 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
             @DodgeSkill.started += instance.OnDodgeSkill;
             @DodgeSkill.performed += instance.OnDodgeSkill;
             @DodgeSkill.canceled += instance.OnDodgeSkill;
-            @AttackButton.started += instance.OnAttackButton;
-            @AttackButton.performed += instance.OnAttackButton;
-            @AttackButton.canceled += instance.OnAttackButton;
+            @MeleeAttackButton.started += instance.OnMeleeAttackButton;
+            @MeleeAttackButton.performed += instance.OnMeleeAttackButton;
+            @MeleeAttackButton.canceled += instance.OnMeleeAttackButton;
+            @RangeAttackButton.started += instance.OnRangeAttackButton;
+            @RangeAttackButton.performed += instance.OnRangeAttackButton;
+            @RangeAttackButton.canceled += instance.OnRangeAttackButton;
             @MousePosition.started += instance.OnMousePosition;
             @MousePosition.performed += instance.OnMousePosition;
             @MousePosition.canceled += instance.OnMousePosition;
@@ -483,9 +509,12 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
             @DodgeSkill.started -= instance.OnDodgeSkill;
             @DodgeSkill.performed -= instance.OnDodgeSkill;
             @DodgeSkill.canceled -= instance.OnDodgeSkill;
-            @AttackButton.started -= instance.OnAttackButton;
-            @AttackButton.performed -= instance.OnAttackButton;
-            @AttackButton.canceled -= instance.OnAttackButton;
+            @MeleeAttackButton.started -= instance.OnMeleeAttackButton;
+            @MeleeAttackButton.performed -= instance.OnMeleeAttackButton;
+            @MeleeAttackButton.canceled -= instance.OnMeleeAttackButton;
+            @RangeAttackButton.started -= instance.OnRangeAttackButton;
+            @RangeAttackButton.performed -= instance.OnRangeAttackButton;
+            @RangeAttackButton.canceled -= instance.OnRangeAttackButton;
             @MousePosition.started -= instance.OnMousePosition;
             @MousePosition.performed -= instance.OnMousePosition;
             @MousePosition.canceled -= instance.OnMousePosition;
@@ -566,7 +595,8 @@ public partial class @CharacterInputMoveset: IInputActionCollection2, IDisposabl
         void OnHorizontalMovement(InputAction.CallbackContext context);
         void OnVerticalMovement(InputAction.CallbackContext context);
         void OnDodgeSkill(InputAction.CallbackContext context);
-        void OnAttackButton(InputAction.CallbackContext context);
+        void OnMeleeAttackButton(InputAction.CallbackContext context);
+        void OnRangeAttackButton(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnGamePadMovement(InputAction.CallbackContext context);
         void OnGamePadAim(InputAction.CallbackContext context);

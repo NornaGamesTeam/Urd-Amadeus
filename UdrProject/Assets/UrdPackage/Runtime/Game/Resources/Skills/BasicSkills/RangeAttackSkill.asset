@@ -30,11 +30,9 @@ MonoBehaviour:
         <UISkillConfig>k__BackingField: {fileID: 0}
         <SkillAnimationModel>k__BackingField:
           rid: 6482105542848282629
-        <CoolDown>k__BackingField: 1
-        <Duration>k__BackingField: 1
-        <DamageElement>k__BackingField: 0
-        <DamageFromStats>k__BackingField: 0
-        <DamageOverTime>k__BackingField: []
+        <CoolDown>k__BackingField: 0.2
+        <Duration>k__BackingField: 0.5
+        <ProjectileConfig>k__BackingField: {fileID: 0}
     - rid: 6482105542848282629
       type: {class: SkillAnimationModel, ns: Urd.Game.SkillTrees, asm: Udr}
       data:

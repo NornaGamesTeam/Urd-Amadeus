@@ -30,6 +30,10 @@ namespace Urd.Timer
             IsPausable = isPausable;
         }
         
+        public void SetDuration(float newDuration)
+        {
+            Duration = newDuration;
+        }
 
         private void CallFinishCallback()
         {
