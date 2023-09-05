@@ -4,6 +4,7 @@ using UnityEngine;
 using Urd.Game.Projectile;
 using Urd.Inputs;
 using Urd.Services;
+using Urd.Services.Physics;
 using Urd.Utils;
 
 namespace Urd.Character.Skill
@@ -13,6 +14,7 @@ namespace Urd.Character.Skill
     {
         private ServiceHelper<IPoolService> _poolService = new ServiceHelper<IPoolService>();
         private ServiceHelper<IClockService> _clockService = new ServiceHelper<IClockService>();
+        private ServiceHelper<IPhysicsService> _physicService = new ServiceHelper<IPhysicsService>();
 
         private List<IProjectileModel> _projectiles = new List<IProjectileModel>();
         public override void Init(ISkillModel skillModel, ICharacterModel characterModel,
@@ -94,10 +96,30 @@ namespace Urd.Character.Skill
             {
                 var projectile = _projectiles[i];
                 Vector3 movement = (projectile.Direction * projectile.Speed * deltaTime);
-                projectile.Move(movement); 
+                projectile.Move(movement);
+                CheckCollision(projectile);
             }
         }
-        
+
+        private void CheckCollision(IProjectileModel projectileModel)
+        {
+            var directionType = DirectionUtils.ConvertToDirection(projectileModel.Direction);
+
+            var areaShape = projectileModel.AreaShape?.Find(
+                areaShapeModel => areaShapeModel.Direction == directionType)?.Item ?? new AreaShapeSphereModel();
+            
+            IHitModel hitModel = new HitModel(
+                projectileModel.Position,
+                projectileModel.Direction, 
+                areaShape, 
+                projectileModel.Objetive);
+            hitModel.DrawDebug = true;
+            if (_physicService.Service.TryHit(ref hitModel))
+            {
+                Debug.Log("Hit");    
+            }
+        }
+
         private void OnCollision()
         {
             

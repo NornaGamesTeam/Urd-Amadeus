@@ -16,6 +16,7 @@ namespace Urd.Services.Physics
         List<Collider2D> Collisions { get;  }
         
         bool HasCollision { get; }
+        bool DrawDebug { get; set; }
 
         void SetCollision(List<Collider2D> newCollisions);
         

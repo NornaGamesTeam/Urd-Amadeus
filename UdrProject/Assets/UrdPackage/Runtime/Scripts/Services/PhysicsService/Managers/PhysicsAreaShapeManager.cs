@@ -32,7 +32,6 @@ namespace Urd.Services.Physics
         
         private void CreateDebugObject(Vector2 originPoint, Vector2 direction, IAreaShapeModel areaShapeModel)
         {
-            return;
             var gameObject = new GameObject($"DEBUG_{areaShapeModel.GetType()}");
             gameObject.transform.position = originPoint;
             _debugAreaShapeView = gameObject.AddComponent<DebugAreaShapeView>();

@@ -5,9 +5,9 @@ using Urd.Utils;
 
 namespace Urd.Services.Physics
 {
-    public abstract class HitModel : IHitModel
+    public class HitModel : IHitModel
     {
-        public abstract LayerMaskTypes LayerMask { get; }
+        public virtual LayerMaskTypes LayerMask { get; protected set; }
 
         public Vector2 Position { get; private set; }
         public Vector2 Direction { get; private set; }
@@ -16,12 +16,15 @@ namespace Urd.Services.Physics
         public List<Collider2D> Collisions { get; protected set; } = new();
 
         public bool HasCollision => !Collisions.IsNullOrEmpty();
+        public bool DrawDebug { get; set; }
 
-        protected HitModel(Vector2 position, Vector2 direction, IAreaShapeModel areaShapeModel)
+        public HitModel(Vector2 position, Vector2 direction, IAreaShapeModel areaShapeModel,
+            LayerMaskTypes layerMask)
         {
             Position = position;
             Direction = direction;
             AreaShapeModel = areaShapeModel;
+            LayerMask = layerMask;
         }
         
         public void SetCollision(List<Collider2D> newCollisions)

@@ -12,8 +12,11 @@ namespace Urd.Services.Physics
         {
             Vector2 originPoint = hitModel.Position;
             Vector2 direction = hitModel.Direction;
-            
-            PrintDebugObject(hitModel);
+
+            if (hitModel.DrawDebug)
+            {
+                PrintDebugObject(hitModel);
+            }
 
             var areaShapeSphereModel = hitModel.AreaShapeModel as AreaShapeSphereModel;
             var targets = Physics2D.OverlapCircleAll(originPoint, areaShapeSphereModel.Radio, hitModel.LayerMask.ToLayer());

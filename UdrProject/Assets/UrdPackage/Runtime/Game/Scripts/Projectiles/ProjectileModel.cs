@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Urd.Services.Physics;
 using Urd.Utils;
 
 namespace Urd.Game.Projectile
@@ -17,13 +18,16 @@ namespace Urd.Game.Projectile
         [field: SerializeField]
         public float Speed { get; private set; }
 
-        [field: SerializeField]
-        public List<OffsetDirection<Vector3>> OffsetInitialPosition { get; protected set; }
-
         public bool HasDelayProjectile => DelayProjectile > 0;
         
         [field: SerializeField]
         public float DelayProjectile { get; private set; }
+        
+        [field: SerializeField]
+        public List<OffsetDirectionParameter<Vector3>> OffsetInitialPosition { get; protected set; }
+        
+        [field: SerializeField]
+        public List<OffsetDirectionReference<AreaShapeModel>> AreaShape { get; protected set; }
 
         public Vector3 Position { get; private set; }
         public Vector2 Direction { get; private set; }
@@ -38,13 +42,14 @@ namespace Urd.Game.Projectile
             Position = projectileModel.Position;
             Direction = projectileModel.Direction;
             OffsetInitialPosition = projectileModel.OffsetInitialPosition;
+            AreaShape = projectileModel.AreaShape;
         }        
         public void SetInitialPositionAndDirection(Vector3 position, Vector2 direction)
         {
             var directionType = DirectionUtils.ConvertToDirection(direction);
             var offsetPosition = OffsetInitialPosition?
                 .Find(offsetInitialPosition 
-                          => offsetInitialPosition.Direction == directionType)?.Class ?? Vector3.zero;
+                          => offsetInitialPosition.Direction == directionType)?.Item ?? Vector3.zero;
             Position = position + offsetPosition;
             Direction = direction;
             OnChangeDirection?.Invoke(Direction);

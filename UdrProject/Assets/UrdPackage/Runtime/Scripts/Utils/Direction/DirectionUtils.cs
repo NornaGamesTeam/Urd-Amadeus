@@ -55,9 +55,16 @@ namespace Urd.Utils
     }
 
     [Serializable]
-    public class OffsetDirection<T>
+    public class OffsetDirectionParameter<T>
     {
         [field: SerializeField] public DirectionType Direction { get; private set; }
-        [field: SerializeField] public T Class { get; private set; }
+        [field: SerializeField] public T Item { get; private set; }
+    }
+    
+    [Serializable]
+    public class OffsetDirectionReference<T>
+    {
+        [field: SerializeField] public DirectionType Direction { get; private set; }
+        [field: SerializeReference, SubclassSelector] public T Item { get; private set; }
     }
 }

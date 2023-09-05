@@ -187,6 +187,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1185070726402085232, guid: c949d33bbd4ed87419f6935257a04463, type: 3}
+      propertyPath: m_Size.y
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185070726402085232, guid: c949d33bbd4ed87419f6935257a04463, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185070726402085232, guid: c949d33bbd4ed87419f6935257a04463, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.47
+      objectReference: {fileID: 0}
     - target: {fileID: 2873589096360441820, guid: c949d33bbd4ed87419f6935257a04463, type: 3}
       propertyPath: m_Name
       value: WolfEnemy
@@ -239,6 +251,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3847105078314471395, guid: c949d33bbd4ed87419f6935257a04463, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4229777118678751114, guid: c949d33bbd4ed87419f6935257a04463, type: 3}
       propertyPath: _boxSize.x
       value: 9.54
@@ -250,6 +266,10 @@ PrefabInstance:
     - target: {fileID: 4229777118678751114, guid: c949d33bbd4ed87419f6935257a04463, type: 3}
       propertyPath: _drawGizmos
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718528534988389185, guid: c949d33bbd4ed87419f6935257a04463, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6857030737528685915, guid: c949d33bbd4ed87419f6935257a04463, type: 3}
       propertyPath: _navMeshAgent

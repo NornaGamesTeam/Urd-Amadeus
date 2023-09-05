@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Urd.Services.Physics;
 using Urd.Utils;
 
 namespace Urd.Game.Projectile
@@ -13,7 +14,9 @@ namespace Urd.Game.Projectile
         
         Vector3 Position { get; }
         Vector2 Direction { get; }
-        List<OffsetDirection<Vector3>> OffsetInitialPosition { get; }
+        List<OffsetDirectionParameter<Vector3>> OffsetInitialPosition { get; }
+        List<OffsetDirectionReference<AreaShapeModel>> AreaShape { get; }
+
         bool HasDelayProjectile { get; }
         float DelayProjectile { get; }
 
