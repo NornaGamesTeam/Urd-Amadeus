@@ -59,7 +59,16 @@ namespace Urd.Character.Skill
             var skillDirection = direction.ConvertToDirection();
             _direction = skillDirection.ConvertToVector2();
 
-            SpawnProjectile(direction);
+            var projectileModel = _skillModel.ProjectileConfig.ProjectileModel;
+            if (projectileModel.HasDelayProjectile)
+            {
+                _clockService.Service.AddDelayCall(projectileModel.DelayProjectile,
+                                                   () => SpawnProjectile(direction));
+            }
+            else
+            {
+                SpawnProjectile(direction);
+            }
         }
 
         private void SpawnProjectile(Vector2 direction)

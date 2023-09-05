@@ -19,7 +19,12 @@ namespace Urd.Game.Projectile
 
         [field: SerializeField]
         public List<OffsetDirection<Vector3>> OffsetInitialPosition { get; protected set; }
+
+        public bool HasDelayProjectile => DelayProjectile > 0;
         
+        [field: SerializeField]
+        public float DelayProjectile { get; private set; }
+
         public Vector3 Position { get; private set; }
         public Vector2 Direction { get; private set; }
 

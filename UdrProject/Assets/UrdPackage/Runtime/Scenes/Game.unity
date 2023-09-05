@@ -481,9 +481,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1465502029}
   - component: {fileID: 1465502028}
-  - component: {fileID: 1465502027}
   - component: {fileID: 1465502026}
   - component: {fileID: 1465502030}
+  - component: {fileID: 1465502031}
   m_Layer: 0
   m_Name: Pixel Perfect Camera
   m_TagString: MainCamera
@@ -524,26 +524,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &1465502027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465502025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AssetsPPU: 10
-  m_RefResolutionX: 640
-  m_RefResolutionY: 360
-  m_UpscaleRT: 0
-  m_PixelSnapping: 1
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
 --- !u!20 &1465502028
 Camera:
   m_ObjectHideFlags: 0
@@ -571,7 +551,7 @@ Camera:
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 4.99
+  orthographic size: 7.2
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -614,6 +594,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafac002b89be5f45931e84c39e53350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1465502031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465502025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_AssetsPPU: 25
+  m_RefResolutionX: 640
+  m_RefResolutionY: 360
+  m_CropFrame: 0
+  m_GridSnapping: 1
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &1651696542
 GameObject:
   m_ObjectHideFlags: 0
