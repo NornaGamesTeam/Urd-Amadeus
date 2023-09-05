@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Urd.Utils;
 
@@ -16,27 +17,39 @@ namespace Urd.Game.Projectile
         [field: SerializeField]
         public float Speed { get; private set; }
 
+        [field: SerializeField]
+        public List<OffsetDirection<Vector3>> OffsetInitialPosition { get; protected set; }
+        
         public Vector3 Position { get; private set; }
         public Vector2 Direction { get; private set; }
+
+        public event Action<Vector3> OnChangeDirection;
         public event Action<Vector3> OnChangePosition;
-        
-        public ProjectileModel(IProjectileModel projectileModel)
+       public ProjectileModel(IProjectileModel projectileModel)
         {
             ProjectileView = projectileModel.ProjectileView;
             Objetive = projectileModel.Objetive;
             Speed = projectileModel.Speed;
             Position = projectileModel.Position;
             Direction = projectileModel.Direction;
+            OffsetInitialPosition = projectileModel.OffsetInitialPosition;
         }        
-        public void SetPosition(Vector3 position)
+        public void SetInitialPositionAndDirection(Vector3 position, Vector2 direction)
         {
-            Position = position;
+            var directionType = DirectionUtils.ConvertToDirection(direction);
+            var offsetPosition = OffsetInitialPosition?
+                .Find(offsetInitialPosition 
+                          => offsetInitialPosition.Direction == directionType)?.Class ?? Vector3.zero;
+            Position = position + offsetPosition;
+            Direction = direction;
+            OnChangeDirection?.Invoke(Direction);
             OnChangePosition?.Invoke(Position);
         }
-
-        public void SetDirection(Vector2 direction)
+        
+        public void Move(Vector3 movement)
         {
-            Direction = direction;
+            Position += movement;
+            OnChangePosition?.Invoke(Position);
         }
     }
 }

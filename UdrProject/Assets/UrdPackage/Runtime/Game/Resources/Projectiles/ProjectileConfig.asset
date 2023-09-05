@@ -24,6 +24,15 @@ MonoBehaviour:
       data:
         <ProjectileView>k__BackingField: {fileID: 2463791864440396907, guid: e5e0a05ceb761dc41b1337fe73856b13, type: 3}
         <Objetive>k__BackingField: 7168
-        <Speed>k__BackingField: 0.7
+        <Speed>k__BackingField: 14
+        <OffsetInitialPosition>k__BackingField:
+        - <Direction>k__BackingField: 0
+          <Class>k__BackingField: {x: 0, y: 1.5, z: 0}
+        - <Direction>k__BackingField: 1
+          <Class>k__BackingField: {x: 0, y: 0.3, z: 0}
+        - <Direction>k__BackingField: 2
+          <Class>k__BackingField: {x: -0.3, y: 0.7, z: 0}
+        - <Direction>k__BackingField: 3
+          <Class>k__BackingField: {x: 0.3, y: 0.7, z: 0}
     - rid: 6482105542848282632
       type: {class: StraightLineProjectileController, ns: Urd.Game.Projectile, asm: Udr}

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5ce3dfbcb08eb76429db3b76a48208c8
+guid: 2b2d38f91f097f24cb70e7b058a9d92c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,43 +102,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -153,64 +117,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Popoi Idle_Down_01
+      name: Projectile Idle_Down_01
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 20
-        height: 24
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36d4961cb0bdb16428e3be2885f6918a
-      internalID: 1343273566
+      spriteID: 0f1933e541e49544896fa3c8efdd95ab
+      internalID: -790635486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Popoi Idle_Up_01
+      name: Projectile Idle_Up_01
       rect:
         serializedVersion: 2
-        x: 24
+        x: 9
         y: 0
-        width: 20
-        height: 23
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49634ca6023aff644860a7a61f726481
-      internalID: -591856287
+      spriteID: fc81b4cb5fa0c2942b7b02e108c93736
+      internalID: -98476068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Popoi Idle_Side_01
+      name: Projectile Idle_Side_01
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 19
-        height: 26
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 18
+        y: 9
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93e8eeef8d8990d44a218b9c69b4e7b1
-      internalID: -1007777393
+      spriteID: a34254f010756894786445ac1290d373
+      internalID: 561148209
       vertices: []
       indices: 
       edges: []
@@ -226,9 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Popoi Idle_Down_01: 1343273566
-      Popoi Idle_Side_01: -1007777393
-      Popoi Idle_Up_01: -591856287
+      Projectile Idle_Down_01: -790635486
+      Projectile Idle_Side_01: 561148209
+      Projectile Idle_Up_01: -98476068
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

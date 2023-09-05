@@ -65,18 +65,17 @@ namespace Urd.Character.Skill
         private void SpawnProjectile(Vector2 direction)
         {
             var projectileModel = new ProjectileModel(_skillModel.ProjectileConfig.ProjectileModel);
-            var projectileGameObject = _poolService.Service.
-                                                  GetGameObject(projectileModel.ProjectileView.name);
+            var projectileGameObject = _poolService.Service.GetGameObject(projectileModel.ProjectileView.name);
 
             projectileGameObject.transform.parent = null;
             projectileGameObject.transform.localScale = Vector3.one;
-            
+
             var projectileView = projectileGameObject.GetComponent<ProjectileView>();
             projectileView.SetUp(projectileModel);
             projectileView.Begin(OnCollision);
 
-            projectileModel.SetPosition(_characterModel.MovementModel.Position);
-            projectileModel.SetDirection(direction);
+            projectileModel.SetInitialPositionAndDirection(_characterModel.MovementModel.Position,
+                                                           direction);
             _projectiles.Add(projectileModel);
         }
 
@@ -86,7 +85,7 @@ namespace Urd.Character.Skill
             {
                 var projectile = _projectiles[i];
                 Vector3 movement = (projectile.Direction * projectile.Speed * deltaTime);
-                projectile.SetPosition(projectile.Position + movement); 
+                projectile.Move(movement); 
             }
         }
         
