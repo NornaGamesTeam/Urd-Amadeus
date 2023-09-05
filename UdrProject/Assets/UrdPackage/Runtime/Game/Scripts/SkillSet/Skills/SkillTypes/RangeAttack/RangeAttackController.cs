@@ -17,6 +17,10 @@ namespace Urd.Character.Skill
         private ServiceHelper<IPhysicsService> _physicService = new ServiceHelper<IPhysicsService>();
 
         private List<IProjectileModel> _projectiles = new List<IProjectileModel>();
+        private Dictionary<IProjectileModel, ProjectileView> _projectilesViewsByModels = new ();
+        
+        private List<Collider2D> _alreadyHit = new ();
+
         public override void Init(ISkillModel skillModel, ICharacterModel characterModel,
             ICharacterInput characterInput)
         {
@@ -33,7 +37,7 @@ namespace Urd.Character.Skill
 
         private void InitProjectile()
         {
-            var projectile = _skillModel.ProjectileConfig.ProjectileModel.ProjectileView;
+            var projectile = _skillModel.ProjectileConfig.ProjectileModel.ProjectileViewPrefab;
             _poolService.Service.PreLoadGameObject(
                 projectile.gameObject, 
                 projectile.name,
@@ -58,6 +62,8 @@ namespace Urd.Character.Skill
         {
             base.BeginSkill(direction);
             
+            _alreadyHit.Clear();
+
             var skillDirection = direction.ConvertToDirection();
             _direction = skillDirection.ConvertToVector2();
 
@@ -76,18 +82,18 @@ namespace Urd.Character.Skill
         private void SpawnProjectile(Vector2 direction)
         {
             var projectileModel = new ProjectileModel(_skillModel.ProjectileConfig.ProjectileModel);
-            var projectileGameObject = _poolService.Service.GetGameObject(projectileModel.ProjectileView.name);
-
+            var projectileGameObject = _poolService.Service.GetGameObject(projectileModel.ProjectileViewPrefab.name);
+            projectileGameObject.gameObject.SetActive(true);
             projectileGameObject.transform.parent = null;
             projectileGameObject.transform.localScale = Vector3.one;
 
             var projectileView = projectileGameObject.GetComponent<ProjectileView>();
             projectileView.SetUp(projectileModel);
-            projectileView.Begin(OnCollision);
 
             projectileModel.SetInitialPositionAndDirection(_characterModel.MovementModel.Position,
                                                            direction);
             _projectiles.Add(projectileModel);
+            _projectilesViewsByModels.Add(projectileModel, projectileGameObject.GetComponent<ProjectileView>());
         }
 
         private void CustomUpdate(float deltaTime)
@@ -116,13 +122,47 @@ namespace Urd.Character.Skill
             hitModel.DrawDebug = true;
             if (_physicService.Service.TryHit(ref hitModel))
             {
-                Debug.Log("Hit");    
+                CheckHit(projectileModel, hitModel);
+            }
+        }
+        
+        private void CheckHit(IProjectileModel projectileModel, IHitModel hitModel)
+        {
+            for (int i = 0; i < hitModel.Collisions.Count; i++)
+            {
+                if (!_alreadyHit.Contains(hitModel.Collisions[i]))
+                {
+                    Hit(projectileModel, hitModel.Collisions[i]);
+                    
+                    _alreadyHit.Add(hitModel.Collisions[i]);
+                    DestroyProjectile(projectileModel);
+                    return;
+                }
             }
         }
 
-        private void OnCollision()
+        private void DestroyProjectile(IProjectileModel projectileModel)
         {
+            var projectileView = _projectilesViewsByModels[projectileModel];
+
+            _projectilesViewsByModels.Remove(projectileModel);
+            _projectiles.Remove(projectileModel);
             
+            projectileModel.Dispose();
+            _poolService.Service.FreeGameObject(projectileModel.ProjectileViewPrefab.name, projectileView.gameObject);
+        }
+
+        private void Hit(IProjectileModel projectileModel, Collider2D collider)
+        {
+            var hittableObject = collider.GetComponentInParent<IHittable>();
+            if (hittableObject == null)
+            {
+                return;
+            }
+            
+            float damage = _characterModel.CharacterStatsModel.GetFinalDamage(projectileModel.DamageElement, projectileModel.DamageFromStats);
+            var attackDirection = collider.transform.position - (Vector3)projectileModel.Position;
+            hittableObject.Hit(damage, attackDirection.normalized);
         }
     }
 }

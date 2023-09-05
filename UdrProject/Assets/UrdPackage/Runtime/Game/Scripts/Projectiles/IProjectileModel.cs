@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Urd.Character.Skill;
 using Urd.Services.Physics;
 using Urd.Utils;
 
 namespace Urd.Game.Projectile
 {
-    public interface IProjectileModel
+    public interface IProjectileModel : IDisposable
     {
-        ProjectileView ProjectileView { get; }
+        ProjectileView ProjectileViewPrefab { get; }
         LayerMaskTypes Objetive { get;  }
         float Speed { get;  }
         
@@ -19,6 +20,8 @@ namespace Urd.Game.Projectile
 
         bool HasDelayProjectile { get; }
         float DelayProjectile { get; }
+        ElementType DamageElement { get; }
+        float DamageFromStats { get; }
 
         public void SetInitialPositionAndDirection(Vector3 position, Vector2 direction);
         void Move(Vector3 movement);

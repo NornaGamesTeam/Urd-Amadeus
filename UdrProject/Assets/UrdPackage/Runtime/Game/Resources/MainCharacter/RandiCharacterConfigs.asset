@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RandiCharacterConfigs
   m_EditorClassIdentifier: 
   <HitPoints>k__BackingField: 20
-  <Attack>k__BackingField: 100
+  <Attack>k__BackingField: 50
   <Defense>k__BackingField: 200
   <SpecialAttack>k__BackingField: 150
   <SpecialDefense>k__BackingField: 250

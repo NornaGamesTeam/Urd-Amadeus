@@ -12,8 +12,6 @@ namespace Urd.Game.Projectile
         [SerializeReference, ReadOnly]
         private IProjectileModel _projectileModel;
 
-        private Action _callbackOnImpact;
-        
         private Animator _animator;
 
         private void Awake()
@@ -28,12 +26,6 @@ namespace Urd.Game.Projectile
             _projectileModel.OnChangeDirection += OnChangeDirection;
         }
 
-        private void OnDestroy()
-        {
-            _projectileModel.OnChangePosition -= OnChangePosition;
-            _projectileModel.OnChangeDirection -= OnChangeDirection;
-        }
-
         private void OnChangeDirection(Vector3 direction)
         {
             _animator.SetFloat(ANIMATION_KEY_AIM_X, direction.x);
@@ -43,12 +35,7 @@ namespace Urd.Game.Projectile
         public void Dispose()
         {
             _projectileModel.OnChangePosition -= OnChangePosition;
-        }
-
-
-        public void Begin(Action callbackOnImpact)
-        {
-            _callbackOnImpact = callbackOnImpact;
+            _projectileModel.OnChangeDirection -= OnChangeDirection;
         }
 
         public void Finish()

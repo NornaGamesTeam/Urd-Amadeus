@@ -38,10 +38,12 @@ MonoBehaviour:
     - rid: 6482105542848282631
       type: {class: ProjectileModel, ns: Urd.Game.Projectile, asm: Udr}
       data:
-        <ProjectileView>k__BackingField: {fileID: 2463791864440396907, guid: e5e0a05ceb761dc41b1337fe73856b13, type: 3}
+        <ProjectileViewPrefab>k__BackingField: {fileID: 2463791864440396907, guid: e5e0a05ceb761dc41b1337fe73856b13, type: 3}
         <Objetive>k__BackingField: 7168
-        <Speed>k__BackingField: 1
+        <Speed>k__BackingField: 15
         <DelayProjectile>k__BackingField: 0.2
+        <DamageElement>k__BackingField: 0
+        <DamageFromStats>k__BackingField: 0.5
         <OffsetInitialPosition>k__BackingField:
         - <Direction>k__BackingField: 0
           <Item>k__BackingField: {x: 0, y: 1.5, z: 0}

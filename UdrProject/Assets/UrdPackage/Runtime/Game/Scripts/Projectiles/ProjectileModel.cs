@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Urd.Character.Skill;
 using Urd.Services.Physics;
 using Urd.Utils;
 
@@ -10,7 +11,7 @@ namespace Urd.Game.Projectile
     public class ProjectileModel : IProjectileModel
     {
         [field: SerializeField] 
-        public ProjectileView ProjectileView { get; private set; }
+        public ProjectileView ProjectileViewPrefab { get; private set; }
 
         [field: SerializeField]
         public LayerMaskTypes Objetive { get; private set; }
@@ -24,6 +25,11 @@ namespace Urd.Game.Projectile
         public float DelayProjectile { get; private set; }
         
         [field: SerializeField]
+        public ElementType DamageElement { get; protected set; }
+        [field: SerializeField, Range(0f,1f), Tooltip("Percentage of damage from the Stat")]
+        public float DamageFromStats { get; protected set; }
+        
+        [field: SerializeField]
         public List<OffsetDirectionParameter<Vector3>> OffsetInitialPosition { get; protected set; }
         
         [field: SerializeField]
@@ -33,16 +39,20 @@ namespace Urd.Game.Projectile
         public Vector2 Direction { get; private set; }
 
         public event Action<Vector3> OnChangeDirection;
+        public event Action OnDestroy;
+        
         public event Action<Vector3> OnChangePosition;
        public ProjectileModel(IProjectileModel projectileModel)
         {
-            ProjectileView = projectileModel.ProjectileView;
+            ProjectileViewPrefab = projectileModel.ProjectileViewPrefab;
             Objetive = projectileModel.Objetive;
             Speed = projectileModel.Speed;
             Position = projectileModel.Position;
             Direction = projectileModel.Direction;
             OffsetInitialPosition = projectileModel.OffsetInitialPosition;
             AreaShape = projectileModel.AreaShape;
+            DamageElement = projectileModel.DamageElement;
+            DamageFromStats = projectileModel.DamageFromStats;
         }        
         public void SetInitialPositionAndDirection(Vector3 position, Vector2 direction)
         {
@@ -60,6 +70,11 @@ namespace Urd.Game.Projectile
         {
             Position += movement;
             OnChangePosition?.Invoke(Position);
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }
