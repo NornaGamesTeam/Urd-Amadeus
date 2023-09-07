@@ -62,8 +62,14 @@ TagManager:
   - name: HexBuiding
     uniqueID: 1890043399
     locked: 0
+  - name: HexDecorationsBelow
+    uniqueID: 170679407
+    locked: 0
   - name: Character
     uniqueID: 514754175
+    locked: 0
+  - name: HexDecorationAbove
+    uniqueID: 3998885671
     locked: 0
   - name: WorldUI
     uniqueID: 3146680203
