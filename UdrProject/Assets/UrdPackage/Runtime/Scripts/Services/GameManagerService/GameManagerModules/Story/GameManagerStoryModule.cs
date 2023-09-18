@@ -23,7 +23,6 @@ namespace Urd.GameManager
 
         private void LoadSaveData()
         {
-            StaticServiceLocator.Get<i>()
         }
 
         public void NewGame(int slot)

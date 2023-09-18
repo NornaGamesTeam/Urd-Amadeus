@@ -31,6 +31,7 @@ MonoBehaviour:
   - rid: 4932070783904383038
   - rid: 4932070783904383040
   - rid: 4932070783904383022
+  - rid: 5393405116629123075
   <BaseServices2>k__BackingField: []
   references:
     version: 2
@@ -120,3 +121,10 @@ MonoBehaviour:
       type: {class: RemoteConfigurationProviderUnity, ns: Urd.Services.RemoteConfiguration, asm: Udr}
     - rid: 4932070851253895185
       type: {class: PhysicsAreaSphereManager, ns: Urd.Services.Physics, asm: Udr}
+    - rid: 5393405116629123075
+      type: {class: SaveLoadDataService, ns: Urd.Services, asm: Udr}
+      data:
+        _providers:
+        - rid: 5393405116629123076
+    - rid: 5393405116629123076
+      type: {class: SaveLoadDataServicePlayerPrefProvider, ns: Urd.SaveLoad, asm: Udr}

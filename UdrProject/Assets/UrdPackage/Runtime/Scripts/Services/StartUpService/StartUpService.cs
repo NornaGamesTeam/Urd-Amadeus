@@ -25,7 +25,7 @@ namespace Urd.Services
 
         private readonly ServiceHelper<INavigationService> _navigationService = new ServiceHelper<INavigationService>();
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        //[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void OnLoadGame()
         {
             if (SceneManager.GetActiveScene().buildIndex != 0)
