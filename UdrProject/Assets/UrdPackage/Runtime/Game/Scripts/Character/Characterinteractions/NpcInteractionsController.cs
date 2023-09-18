@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Urd.Game;
+using Urd.GameManager;
 using Urd.Utils;
 
 namespace Urd.Character
@@ -26,7 +27,7 @@ namespace Urd.Character
         public void Interact(Vector3 directionNormalized)
         {
             var text = _interactionsModel.Text;
-            _gameManagerService.Service.DialogModule.ShowDialog(text);
+            _gameManagerService.Service.GetModule<GameManagerDialogModule>().ShowDialog(text);
             _interactionsModel.Interact(directionNormalized);
         }
     }

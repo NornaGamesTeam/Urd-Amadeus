@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using Urd.Error;
+using Urd.Game;
 using Urd.Scene;
 using Urd.UI;
 using Urd.Utils;
@@ -30,6 +31,9 @@ namespace Urd.Services
         [SerializeField]
         private UIImageController _backgroundImageController;
 
+        [SerializeField, Header("DEBUG")] 
+        private bool _autoBegin;
+        
         void Start()
         {
             Init();
@@ -47,9 +51,11 @@ namespace Urd.Services
             
             LoadBackground();
             LoadLogo();
-            
-            // TODO temporal click in ok
-            ClickOnPlayGame();
+
+            if (_autoBegin)
+            {
+                ClickOnPlayGame();
+            }
         }
 
         private void LoadBackground()
@@ -69,6 +75,16 @@ namespace Urd.Services
             StaticServiceLocator.Get<INavigationService>().Open(sceneModel);
             sceneModel = new SceneModel(SceneTypes.MainMenu);
             StaticServiceLocator.Get<INavigationService>().Close(sceneModel);
+        }
+
+        public void ClickOnLoadGame()
+        {
+            
+        }
+        
+        public void ClickOnCloseGame()
+        {
+            StaticServiceLocator.Get<IGameManagerService>().CloseGame();
         }
     }
 }

@@ -6,7 +6,7 @@ using Urd.Utils;
 
 namespace Urd.GameManager
 {
-    public class GameManagerCameraModule
+    public class GameManagerCameraModule : GameManagerModule
     {
         public GameCameraModel GameCameraModel { get; private set; }
         private GameCameraController _gameCameraController;

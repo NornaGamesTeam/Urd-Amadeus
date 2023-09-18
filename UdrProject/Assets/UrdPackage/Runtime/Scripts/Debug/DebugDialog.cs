@@ -1,5 +1,6 @@
 using UnityEngine;
 using Urd.Game;
+using Urd.GameManager;
 using Urd.Utils;
 
 namespace Urd.DebugTools
@@ -10,7 +11,8 @@ namespace Urd.DebugTools
         private string debugText = "esto es un test de prueba";
         public override void OnInputGetDown()
         {
-            StaticServiceLocator.Get<IGameManagerService>().DialogModule.ShowDialog(debugText);
+            StaticServiceLocator.Get<IGameManagerService>().
+                                 GetModule<GameManagerDialogModule>().ShowDialog(debugText);
         }
     }
 }

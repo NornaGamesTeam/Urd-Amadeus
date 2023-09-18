@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using Urd.Dialog;
 using Urd.Game;
+using Urd.GameManager;
 using Urd.Utils;
 
 namespace Urd.UI.Dialog
@@ -29,7 +30,7 @@ namespace Urd.UI.Dialog
         private void Init()
         {
             HideDialogBox(true);
-            var dialogModule = StaticServiceLocator.Get<IGameManagerService>().DialogModule;
+            var dialogModule = StaticServiceLocator.Get<IGameManagerService>().GetModule<GameManagerDialogModule>();
             dialogModule.OnNewDialog += OnNewDialog;
             dialogModule.OnFinishDialog += OnFinishDialog;
         }

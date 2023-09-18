@@ -5,7 +5,7 @@ namespace Urd.Game
 {
     public interface IGameManagerService : IBaseService
     {
-        GameManagerCameraModule CameraModule { get; }
-        GameManagerDialogModule DialogModule { get; }
+        T GetModule<T>() where T : class, IGameManagerModule;
+        void CloseGame();
     }
 }

@@ -12,7 +12,7 @@ using Urd.Utils;
 
 namespace Urd.GameManager
 {
-    public class GameManagerDialogModule
+    public class GameManagerDialogModule : GameManagerModule
     {
         private const string DIALOG_CONFIG_PATH = "UI/UIDialog/DialogConfigs";
         

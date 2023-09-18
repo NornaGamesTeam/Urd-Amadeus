@@ -1,4 +1,5 @@
 using UnityEngine;
+using Urd.GameManager;
 using Urd.Utils;
 
 namespace Urd.Game.Camera
@@ -17,7 +18,8 @@ namespace Urd.Game.Camera
         {
             _camera = GetComponent<UnityEngine.Camera>();
                 
-            _gameCameraModel = StaticServiceLocator.Get<IGameManagerService>().CameraModule.GameCameraModel;
+            _gameCameraModel = StaticServiceLocator.Get<IGameManagerService>().
+                                                    GetModule<GameManagerCameraModule>().GameCameraModel;
             _gameCameraModel.OnPositionChagned += OnGameCameraPositionChanged;
 
             SetUpCamera();

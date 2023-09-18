@@ -3,7 +3,7 @@ using Urd.Story;
 
 namespace Urd.GameManager
 {
-    public class GameManagerStoryModule
+    public class GameManagerStoryModule : GameManagerModule
     {
         public StorySteps CurrentStoryStep { get; private set; }
 
