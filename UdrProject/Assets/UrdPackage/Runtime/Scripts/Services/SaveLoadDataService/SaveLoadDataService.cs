@@ -18,6 +18,13 @@ namespace Urd.Services
         private Dictionary<string, int> _dataBeingSaved = new Dictionary<string, int>();
         private Dictionary<string, int> _dataBeingLoaded = new Dictionary<string, int>();
 
+        public override void Init()
+        {
+            base.Init();
+            
+            SetAsLoaded();
+        }
+
         public void AddProvider(ISaveLoadDataServiceProvider saveLoadDataServiceProvider)
         {
             if (_providers == null)
