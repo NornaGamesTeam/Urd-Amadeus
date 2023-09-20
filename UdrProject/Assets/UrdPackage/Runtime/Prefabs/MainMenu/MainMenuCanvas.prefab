@@ -464,7 +464,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3957301464786142766}
         m_TargetAssemblyTypeName: Urd.Services.MainMenuView, Udr
-        m_MethodName: ClickOnPlayGame
+        m_MethodName: ClickOnContinue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -733,7 +733,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3957301464786142766}
         m_TargetAssemblyTypeName: Urd.Services.MainMenuView, Udr
-        m_MethodName: ClickOnLoadGame
+        m_MethodName: ClickOnPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

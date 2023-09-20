@@ -130,9 +130,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 205932746948382188, guid: ade855d44112b7749848902b5761b060, type: 3}
+      propertyPath: m_text
+      value: Continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337692034151807911, guid: ade855d44112b7749848902b5761b060, type: 3}
+      propertyPath: m_text
+      value: Play
+      objectReference: {fileID: 0}
     - target: {fileID: 3957301464786142766, guid: ade855d44112b7749848902b5761b060, type: 3}
       propertyPath: _autoBegin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634924390097658522, guid: ade855d44112b7749848902b5761b060, type: 3}
+      propertyPath: m_Name
+      value: ContinueButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634924390097658522, guid: ade855d44112b7749848902b5761b060, type: 3}
+      propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793818377494379759, guid: ade855d44112b7749848902b5761b060, type: 3}
+      propertyPath: m_Name
+      value: PlayGameButton
       objectReference: {fileID: 0}
     - target: {fileID: 9033323656115663561, guid: ade855d44112b7749848902b5761b060, type: 3}
       propertyPath: m_Pivot.x

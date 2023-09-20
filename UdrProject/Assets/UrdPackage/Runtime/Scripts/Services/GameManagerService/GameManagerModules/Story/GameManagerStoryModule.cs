@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Urd.Game;
 using Urd.Story;
 using Urd.Utils;
 
@@ -7,17 +8,20 @@ namespace Urd.GameManager
 {
     public class GameManagerStoryModule : GameManagerModule
     {
-        public const int SAVED_DATA_AMOUNT = 3; 
+        private List<GameStoryModel> _gameStoryModel;
         
-        private List<GameStoryModel> _gameStoryModel = new List<GameStoryModel>(SAVED_DATA_AMOUNT);
-        private int _currentSlot = -1;
-        
-        public GameStoryModel CurrentStoryModel => _gameStoryModel[_currentSlot];
-        
+
+        public GameStoryModel CurrentStoryModel =>
+            StaticServiceLocator.Get<IGameManagerService>().GetModule<GameManagerGameDataModule>().CurrentGameDataModel.GameStoryModel;
+
         public event Action OnStoryStepChanged;
-        
-        public GameManagerStoryModule()
+
+        public override void Init(GameManagerConfig gameManagerConfig)
         {
+            base.Init(gameManagerConfig);
+
+            _gameStoryModel = new List<GameStoryModel>(_gameManagerConfig.SaveLoadDataAmount);
+
             LoadSaveData();
         }
 
@@ -25,11 +29,7 @@ namespace Urd.GameManager
         {
         }
 
-        public void NewGame(int slot)
-        {
-            _gameStoryModel[slot].NewGame();
-        }
-
+        
         public void DeleteSaveData(int slot)
         {
             _gameStoryModel[slot] = new GameStoryModel();

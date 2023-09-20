@@ -5,6 +5,7 @@ namespace Urd.Popup
         None,
         Info,
         SkillTree,
+        GameDataSelection,
         Size,
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using Urd.Error;
 using Urd.Game;
+using Urd.Popup;
 using Urd.Scene;
 using Urd.UI;
 using Urd.Utils;
@@ -54,7 +55,7 @@ namespace Urd.Services
 
             if (_autoBegin)
             {
-                ClickOnPlayGame();
+                ClickOnContinue();
             }
         }
 
@@ -68,18 +69,15 @@ namespace Urd.Services
             _logoImageController = new UIImageController(_logoConfig.FileLoaded.LogoModel, _logoParent);
         }
         
-        public void ClickOnPlayGame()
+        public void ClickOnContinue()
         {
-            var sceneModel = new SceneModel(SceneTypes.Game);
-            sceneModel.SetAsActiveSceneAfterOpen(true);
-            StaticServiceLocator.Get<INavigationService>().Open(sceneModel);
-            sceneModel = new SceneModel(SceneTypes.MainMenu);
-            StaticServiceLocator.Get<INavigationService>().Close(sceneModel);
+            StaticServiceLocator.Get<IGameManagerService>().ContinueGame();
         }
 
-        public void ClickOnLoadGame()
+        public void ClickOnPlay()
         {
-            
+            var gameDataSelectionModel = new GameDataSelectionPopupModel(); 
+            StaticServiceLocator.Get<INavigationService>().Open(gameDataSelectionModel);
         }
         
         public void ClickOnCloseGame()
