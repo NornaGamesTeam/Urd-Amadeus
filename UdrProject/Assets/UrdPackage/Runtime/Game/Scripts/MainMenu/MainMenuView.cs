@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using Urd.Error;
 using Urd.Game;
+using Urd.GameManager;
 using Urd.Popup;
 using Urd.Scene;
 using Urd.UI;
@@ -34,6 +35,11 @@ namespace Urd.Services
 
         [SerializeField, Header("DEBUG")] 
         private bool _autoBegin;
+
+        [SerializeField] 
+        private GameObject _continueButton;
+        
+        private GameManagerGameDataModule _gameDataModule;
         
         void Start()
         {
@@ -42,6 +48,9 @@ namespace Urd.Services
 
         private void Init()
         {
+            _gameDataModule = StaticServiceLocator.Get<IGameManagerService>().GetModule<GameManagerGameDataModule>();
+
+            
             if (_logoConfig.FileLoaded == null)
             {
                 var error = new ErrorModel("[StartUpServiceView] Logo Config not available",
@@ -57,6 +66,25 @@ namespace Urd.Services
             {
                 ClickOnContinue();
             }
+
+            CheckContinueButton();
+        }
+        
+        private void OnDestroy()
+        {
+            _gameDataModule.OnCurrentSlotChanged -= OnCurrentSlotChanged;
+        }
+
+        private void CheckContinueButton()
+        {
+            _gameDataModule.OnCurrentSlotChanged += OnCurrentSlotChanged;
+            OnCurrentSlotChanged();
+        }
+
+        private void OnCurrentSlotChanged()
+        {
+            bool hasData = _gameDataModule.HasData;
+            _continueButton.SetActive(hasData);
         }
 
         private void LoadBackground()
@@ -71,7 +99,9 @@ namespace Urd.Services
         
         public void ClickOnContinue()
         {
-            StaticServiceLocator.Get<IGameManagerService>().ContinueGame();
+            var gameManagerService = StaticServiceLocator.Get<IGameManagerService>();
+            var currentGameDataModel = gameManagerService.GetModule<GameManagerGameDataModule>().CurrentGameDataModel;
+            gameManagerService.LoadGame(currentGameDataModel);
         }
 
         public void ClickOnPlay()

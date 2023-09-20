@@ -22,6 +22,7 @@ namespace Urd.GameManager
 
             _gameStoryModel = new List<GameStoryModel>(_gameManagerConfig.SaveLoadDataAmount);
 
+            
             LoadSaveData();
         }
 

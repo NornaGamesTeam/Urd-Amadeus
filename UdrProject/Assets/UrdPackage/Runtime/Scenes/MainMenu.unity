@@ -154,6 +154,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayGameButton
       objectReference: {fileID: 0}
+    - target: {fileID: 9033323656115663560, guid: ade855d44112b7749848902b5761b060, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2040104609}
     - target: {fileID: 9033323656115663561, guid: ade855d44112b7749848902b5761b060, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -164,7 +168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9033323656115663561, guid: ade855d44112b7749848902b5761b060, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9033323656115663561, guid: ade855d44112b7749848902b5761b060, type: 3}
       propertyPath: m_AnchorMax.x
@@ -244,3 +248,74 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ade855d44112b7749848902b5761b060, type: 3}
+--- !u!1001 &2040104608
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1802571989538733144, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733144, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733144, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733144, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733144, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733144, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733144, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733144, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733144, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733144, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733144, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733220, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_Name
+      value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733223, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_Depth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802571989538733223, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1802571989538733221, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+--- !u!20 &2040104609 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1802571989538733223, guid: cd21fd28927abe641ba62697abb9b127, type: 3}
+  m_PrefabInstance: {fileID: 2040104608}
+  m_PrefabAsset: {fileID: 0}

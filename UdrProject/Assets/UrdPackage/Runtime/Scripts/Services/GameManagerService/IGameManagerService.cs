@@ -9,6 +9,6 @@ namespace Urd.Game
         T GetModule<T>() where T : class, IGameManagerModule;
         void CloseGame();
         void NewGame();
-        void ContinueGame();
+        void LoadGame(GameDataModel gameDataModel);
     }
 }

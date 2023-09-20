@@ -19,3 +19,5 @@ MonoBehaviour:
     <PopupView>k__BackingField: {fileID: 1036255927605503503, guid: fd1f414cd30f9c548ab65c719daa9e84, type: 3}
   - <PopupType>k__BackingField: 2
     <PopupView>k__BackingField: {fileID: -7605573691364287316, guid: e3f4d0f3f4afe9349a6ba5cfcfb160a7, type: 3}
+  - <PopupType>k__BackingField: 3
+    <PopupView>k__BackingField: {fileID: -8191463401300777895, guid: 1f2bc3483bfc2b04fb6ac5b212152623, type: 3}

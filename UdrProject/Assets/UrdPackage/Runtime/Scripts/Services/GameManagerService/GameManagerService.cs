@@ -51,9 +51,16 @@ namespace Urd.Game
             LoadGameScene();
         }
 
-        public void ContinueGame()
+        public void LoadGame(GameDataModel gameDataModel)
         {
+            GetModule<GameManagerGameDataModule>().LoadGame(gameDataModel);
             
+            // TODO make animation
+            var sceneModel = new SceneModel(SceneTypes.Game);
+            sceneModel.SetAsActiveSceneAfterOpen(true);
+            StaticServiceLocator.Get<INavigationService>().Open(sceneModel);
+            sceneModel = new SceneModel(SceneTypes.MainMenu);
+            StaticServiceLocator.Get<INavigationService>().Close(sceneModel);
         }
 
         private void LoadGameScene()
