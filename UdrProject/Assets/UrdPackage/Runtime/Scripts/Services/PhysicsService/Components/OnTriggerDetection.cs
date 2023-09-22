@@ -5,7 +5,7 @@ namespace Urd.Utils.Game.Physics
 {
     public class OnTriggerDetection : MonoBehaviour, IOnTriggerDetection
     {
-        [SerializeField]
+        [field: SerializeField]
         public LayerMaskTypes Detection { get; private set; }
         
         public event Action<Collider2D> OnTriggerEnter; 

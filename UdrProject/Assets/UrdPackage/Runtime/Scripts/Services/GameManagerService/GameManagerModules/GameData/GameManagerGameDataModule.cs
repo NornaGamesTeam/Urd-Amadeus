@@ -25,7 +25,7 @@ namespace Urd.GameManager
         
         private int _currentSlot = -1;
 
-        public event Action OnCurrentSlotChanged; 
+        public event Action OnCurrentLoadDataChanged; 
         
         public override void Init(GameManagerConfig gameManagerConfig)
         {
@@ -49,7 +49,7 @@ namespace Urd.GameManager
         private void OnCurrentSlotLoaded(ErrorModel errorModel, int value)
         {
             _currentSlot = value;
-            OnCurrentSlotChanged?.Invoke();
+            OnCurrentLoadDataChanged?.Invoke();
         }
 
         private void SaveData()
@@ -79,13 +79,13 @@ namespace Urd.GameManager
             
         }
         
-        public void LoadGame(GameDataModel gameDataModel)
+        public override void LoadGame(GameDataModel gameDataModel)
         {
             var index = GetIndex(gameDataModel);
 
             GameDataModels[index].LoadGame();
             _currentSlot = index;
-            OnCurrentSlotChanged?.Invoke();
+            OnCurrentLoadDataChanged?.Invoke();
             
             SaveData();
         }
@@ -97,7 +97,7 @@ namespace Urd.GameManager
             if (_currentSlot == index)
             {
                 _currentSlot = GetNewCurrentSlot();
-                OnCurrentSlotChanged?.Invoke();
+                OnCurrentLoadDataChanged?.Invoke();
             }
             SaveData();
         }

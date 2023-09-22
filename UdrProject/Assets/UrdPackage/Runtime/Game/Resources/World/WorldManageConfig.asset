@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8338761f17a272b438a483e47c6b7f0f, type: 3}
+  m_Name: WorldManageConfig
+  m_EditorClassIdentifier: 
+  _worldAreas:
+  - {fileID: 3479318508649982871, guid: ce3ad2c68256a5244964a43276717cd3, type: 3}
+  - {fileID: 3479318508649982871, guid: 522db2bb3e99c5c479729c19320777bf, type: 3}

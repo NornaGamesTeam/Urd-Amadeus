@@ -10,7 +10,7 @@ namespace Urd.Game.Camera
 
         private GameCameraConfig _gameCameraConfig;
 
-        public event Action<Vector2> OnPositionChagned;
+        public event Action<Vector2> OnPositionChanged;
 
         public void SetPosition(Vector2 newPosition)
         {
@@ -20,7 +20,7 @@ namespace Urd.Game.Camera
             }
 
             Position = newPosition;
-            OnPositionChagned?.Invoke(Position);
+            OnPositionChanged?.Invoke(Position);
         }
 
         public void SetConfig(GameCameraConfig gameCameraConfig)

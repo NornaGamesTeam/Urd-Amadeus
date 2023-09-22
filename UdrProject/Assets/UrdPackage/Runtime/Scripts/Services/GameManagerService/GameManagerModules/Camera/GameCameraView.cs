@@ -20,7 +20,7 @@ namespace Urd.Game.Camera
                 
             _gameCameraModel = StaticServiceLocator.Get<IGameManagerService>().
                                                     GetModule<GameManagerCameraModule>().GameCameraModel;
-            _gameCameraModel.OnPositionChagned += OnGameCameraPositionChanged;
+            _gameCameraModel.OnPositionChanged += OnGameCameraPositionChanged;
 
             SetUpCamera();
         }
@@ -32,7 +32,7 @@ namespace Urd.Game.Camera
 
         private void OnDisable()
         {
-            _gameCameraModel.OnPositionChagned -= OnGameCameraPositionChanged;
+            _gameCameraModel.OnPositionChanged -= OnGameCameraPositionChanged;
         }
         
         private void OnGameCameraPositionChanged(Vector2 cameraPosition)

@@ -72,16 +72,16 @@ namespace Urd.Services
         
         private void OnDestroy()
         {
-            _gameDataModule.OnCurrentSlotChanged -= OnCurrentSlotChanged;
+            _gameDataModule.OnCurrentLoadDataChanged -= OnCurrentLoadDataChanged;
         }
 
         private void CheckContinueButton()
         {
-            _gameDataModule.OnCurrentSlotChanged += OnCurrentSlotChanged;
-            OnCurrentSlotChanged();
+            _gameDataModule.OnCurrentLoadDataChanged += OnCurrentLoadDataChanged;
+            OnCurrentLoadDataChanged();
         }
 
-        private void OnCurrentSlotChanged()
+        private void OnCurrentLoadDataChanged()
         {
             bool hasData = _gameDataModule.HasData;
             _continueButton.SetActive(hasData);
