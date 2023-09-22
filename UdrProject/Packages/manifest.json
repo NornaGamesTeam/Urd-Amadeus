@@ -7,6 +7,7 @@
     "com.qriva.monobehaviourtree": "https://github.com/Qriva/MonoBehaviourTree.git#upm",
     "com.superkerokero.bookmark4unity": "https://github.com/superkerokero/Bookmark4Unity.git?path=/Assets/Bookmark4Unity",
     "com.unity.addressables": "1.21.10",
+    "com.unity.ai.navigation": "1.0.0-exp.4",
     "com.unity.cinemachine": "2.8.9",
     "com.unity.editorcoroutines": "1.0.0",
     "com.unity.feature.2d": "2.0.0",
