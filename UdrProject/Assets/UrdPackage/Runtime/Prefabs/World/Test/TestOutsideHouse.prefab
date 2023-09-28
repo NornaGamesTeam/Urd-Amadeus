@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1535343060421955396}
-  - component: {fileID: 1449469077693501842}
   - component: {fileID: 4359311573589078040}
+  - component: {fileID: 8955662409786190745}
   m_Layer: 0
   m_Name: NavMesh
   m_TagString: Untagged
@@ -25,15 +25,31 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535343060421955451}
-  m_LocalRotation: {x: -0.7069834, y: -0, z: -0, w: 0.70723015}
-  m_LocalPosition: {x: -1.7211655, y: -0.15585196, z: -0.7190858}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8763605382112070456}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1449469077693501842
+--- !u!114 &4359311573589078040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535343060421955451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bd44a44cd62c64fbfc1eea95b24880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideByGrid: 0
+  m_UseMeshPrefab: {fileID: 0}
+  m_CompressBounds: 0
+  m_OverrideVector: {x: 1, y: 1, z: 1}
+--- !u!114 &8955662409786190745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,23 +78,7 @@ MonoBehaviour:
   m_VoxelSize: 0.033333335
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 38e1468a77bdab0459edccdf3cc0483b, type: 2}
---- !u!114 &4359311573589078040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535343060421955451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70bd44a44cd62c64fbfc1eea95b24880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideByGrid: 0
-  m_UseMeshPrefab: {fileID: 0}
-  m_CompressBounds: 0
-  m_OverrideVector: {x: 1, y: 1, z: 1}
+  m_NavMeshData: {fileID: 23800000, guid: e99e109b3d172cd4787e25fc719c45fe, type: 2}
 --- !u!1 &4444428185593688263
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,15 +456,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6637273897897151717, guid: 657eeb4693b34fc4a96d50c65a729d9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7211655
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6637273897897151717, guid: 657eeb4693b34fc4a96d50c65a729d9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15585196
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6637273897897151717, guid: 657eeb4693b34fc4a96d50c65a729d9c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.7190858
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6637273897897151717, guid: 657eeb4693b34fc4a96d50c65a729d9c, type: 3}
       propertyPath: m_LocalRotation.w

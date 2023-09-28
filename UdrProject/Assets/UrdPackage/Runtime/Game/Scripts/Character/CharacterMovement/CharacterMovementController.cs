@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Networking;
 using Urd.Services;
 using Urd.Utils;
@@ -23,7 +24,7 @@ namespace Urd.Character
             SetInput(characterInput);
 
             InitRightBody(rigidbody2D);
-            
+            rigidbody2D.GetComponent<NavMeshAgent>().updateUpAxis = false;
             _characterModel.MovementModel.ForceSetPhysicPosition(initialPosition);
             _characterModel.MovementModel.SetPosition(initialPosition);
             _rigidbody2D.position = _characterModel.MovementModel.Position;
