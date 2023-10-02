@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Urd.Error;
 using Urd.Game;
@@ -5,6 +6,7 @@ using Urd.Scene;
 using Urd.Services;
 using Urd.Services.Navigation;
 using Urd.Utils;
+using Urd.World;
 
 namespace Urd.GameManager
 {
@@ -15,6 +17,8 @@ namespace Urd.GameManager
         private ResourceHelper<WorldManagerConfig> _worldManagerConfig = 
             new (WORLD_MANAGER_CONFIG, false);
 
+        public WorldAreaView _currentWorldArea;
+        
         public override void Init(GameManagerConfig gameManagerConfig)
         {
             base.Init(gameManagerConfig);
@@ -29,18 +33,41 @@ namespace Urd.GameManager
 
         private void OnNavigableLoaded(INavigable iNavigable)
         {
-            
             if ((iNavigable as SceneModel)?.SceneType == SceneTypes.Game)
             {
                 StaticServiceLocator.Get<INavigationService>().OnFinishLoadNavigable -= OnNavigableLoaded;
                 
-                LoadMap();
+                LoadMap(_gameDataModel.WorldAreaType);
             }
         }
 
-        private void LoadMap()
+        public void LoadMap(WorldAreaTypes worldAreaTypes)
         {
-            
+            ShowMapTransition(worldAreaTypes);
+        }
+
+        private void ShowMapTransition(WorldAreaTypes worldAreaTypes)
+        {
+            // TODO show map transition
+            OnFinishMapTransition(worldAreaTypes);
+        }
+
+        private void OnFinishMapTransition(WorldAreaTypes worldAreaTypes)
+        {
+            UnLoadCurrentMap();
+            LoadNewMap(worldAreaTypes);
+        }
+        
+        private void UnLoadCurrentMap()
+        {
+            if (_currentWorldArea != null)
+            {
+                GameObject.Destroy(_currentWorldArea.gameObject);
+            }
+        }
+
+        private void LoadNewMap(WorldAreaTypes worldAreaType)
+        {
             if (!_worldManagerConfig.FileLoaded.TryGetArea(_gameDataModel.WorldAreaType, out var gameWorldAreaViewPrefab))
             {
                 string errorMessage = $"[GameManagerWorldManagerModule] View with WorldAreaType {_gameDataModel.WorldAreaType} No found";
@@ -48,8 +75,9 @@ namespace Urd.GameManager
                 return;
             }
             
-            var gameWorldAreaView = GameObject.Instantiate(gameWorldAreaViewPrefab);
-            gameWorldAreaView.SetModel(_gameDataModel.CurrentGameWorldModel);
+            _gameDataModel.SetWorldAreaType(worldAreaType);
+            _currentWorldArea = GameObject.Instantiate(gameWorldAreaViewPrefab);
+            _currentWorldArea.SetModel(_gameDataModel.CurrentGameWorldModel);
         }
     }
 }

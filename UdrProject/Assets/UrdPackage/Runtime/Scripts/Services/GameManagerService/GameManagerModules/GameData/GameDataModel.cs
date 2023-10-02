@@ -39,6 +39,7 @@ namespace Urd.Game
             GameStoryModel = new GameStoryModel();
             GameWorldModels = new List<GameWorldModel>();
             GameWorldModels.Add(new GameWorldModel());
+            WorldAreaType = (WorldAreaTypes)1;
         }
 
         public void NewGame()
@@ -60,6 +61,9 @@ namespace Urd.Game
             Init();
         }
 
-        
+        public void SetWorldAreaType(WorldAreaTypes worldAreaType)
+        {
+            WorldAreaType = worldAreaType;
+        }
     }
 }

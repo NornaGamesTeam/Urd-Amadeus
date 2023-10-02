@@ -95,7 +95,7 @@ namespace Urd.AI
                 if(!CalculateNextPosition())
                 {
                     _characterModel.MovementModel.TrySetPhysicPosition(_nextPosition);
-                    Debug.Log($"Next Pos: {_nextPosition}");
+                    //Debug.Log($"Next Pos: {_nextPosition}");
                     return NodeResult.success;
                 }
                 _timestamp = 0;

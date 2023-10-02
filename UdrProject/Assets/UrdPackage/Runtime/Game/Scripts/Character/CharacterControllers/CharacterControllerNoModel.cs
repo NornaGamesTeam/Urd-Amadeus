@@ -1,10 +1,11 @@
+using System;
 using MyBox;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Urd.Character
 {
-    public abstract class CharacterControllerNoModel : MonoBehaviour, ICharacterController
+    public abstract class CharacterControllerNoModel : MonoBehaviour, ICharacterController, IDisposable
     {
         [field: SerializeReference, ReadOnly]
         public ICharacterModel CharacterModel { get; protected set; }
@@ -20,6 +21,11 @@ namespace Urd.Character
         {
             // TODO move this to other place
             CharacterInput = characterInput;
+        }
+
+        private void OnDestroy()
+        {
+            Dispose();
         }
     }
 }

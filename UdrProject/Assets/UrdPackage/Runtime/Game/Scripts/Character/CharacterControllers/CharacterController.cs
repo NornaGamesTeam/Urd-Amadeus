@@ -42,6 +42,7 @@ namespace Urd.Character
         {
             base.Dispose();
 
+            StatsController?.Dispose();
             _movementController?.Dispose();
             _skillSetController?.Dispose();
         }
