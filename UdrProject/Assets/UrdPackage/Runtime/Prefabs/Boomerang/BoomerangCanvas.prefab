@@ -114,4 +114,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasesGamesConfig: {fileID: 11400000, guid: d1dbb79db3009eb42a1eaddd16286041, type: 2}
-  _canvasTagName: BoomerangCanvas
+  _canvasTag: BoomerangCanvas

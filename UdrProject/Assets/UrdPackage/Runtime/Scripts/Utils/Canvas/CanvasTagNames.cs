@@ -7,5 +7,6 @@ namespace Urd.Utils
         PopupCanvas,
         BoomerangCanvas,
         PoolCanvas,
+        WorldAreaTransitionCanvas,
     }
 }
